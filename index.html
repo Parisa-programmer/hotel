@@ -1,0 +1,1255 @@
+<html>
+  <head>
+    <!-- Bootstrap CSS -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/sass.sass">
+    <link rel="stylesheet" href="./css/isLoader.css">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"> -->
+    <!-- disabel auto zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <!-- jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>هتل آهوان چابکسر</title>
+    <link rel="stylesheet" href="./css/datepicker.css">
+  </head>
+  <body>
+    <!-- header -->
+    
+    <div class="headerDiv">
+      <div id="header" v-cloak class="widthAll" style="top: 0;right:0;z-index: 99;">
+        <v-app>
+            <v-row class="header grey lighten-3" justify="center">
+              <div class=" indexDiv pa-3">
+                <a href="https://ahuan.ir"><img height="20px" src="./image/logo-header.png" alt="صفحه اصلی" ></a>
+                <span class="headerSpan mb-1 .v-application .body-2">رزرو آنلاین خدمات گردشگری</span>
+                <v-icon class="mr-2 float-left">
+                  mdi-phone-in-talk
+                </v-icon>
+                <span class="headerText float-left">021-41889</span>
+              </div>
+            </v-row>
+            <v-row class="white top-bar " justify="center" align="center">
+              <div class="indexDiv">
+                <v-row>
+                  <v-col cols="6" sm="9" md="8" class="py-3 px-2 px-sm-0 headerButtons ">
+                    <v-row class="d-none d-sm-block pr-4">
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">پرواز</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">هتل</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">تور</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">هتل آهوان</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">اتوبوس</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">قطار</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">بیمه</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">مجله گردشگری</span>
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">شرکت ها</span>
+                    </v-row>
+                    <v-row class="d-block d-sm-none">
+                      <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
+                      <v-navigation-drawer
+                        v-model="showMenuSmall"
+                        fixed
+                        right
+                        temporary style="z-index:2;top: 112px ;"
+                      >
+                        <v-list
+                          nav
+                          dense
+                        >
+                          <v-list-item-group v-model="activePage"
+                            active-class="red--text text--accent-4"
+                          >
+                            <v-list-item @click="showMenuSmall = false">
+                                <v-icon class="ml-2">mdi-airplane</v-icon>
+                              <v-list-item-title>پرواز</v-list-item-title>
+                            </v-list-item>
+                  
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-sofa-single</v-icon>
+                              <v-list-item-title>هتل</v-list-item-title>
+                            </v-list-item>
+                  
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-account-group</v-icon>
+                              <v-list-item-title>تور</v-list-item-title>
+                            </v-list-item>
+                  
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-alpha-a-box</v-icon>
+                              <v-list-item-title class="active">هتل آهوان</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-bus</v-icon>
+                              <v-list-item-title>اتوبوس</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-train-variant</v-icon>
+                              <v-list-item-title>قطار</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-checkbook</v-icon>
+                              <v-list-item-title>بیمه</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                              <v-list-item-title>مجله گردشگری</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-sitemap</v-icon>
+                              <v-list-item-title>شرکت ها</v-list-item-title>
+                            </v-list-item>
+                          </v-list-item-group>
+                        </v-list>
+                      </v-navigation-drawer>
+                    </v-row>
+                  </v-col>
+                  <v-col cols="6" sm="3" md="4" class="pa-3">
+                      <span class="font-14 mt-1 grey--text float-left">ورود - ثبت نام</span>
+                      <v-icon large class="m-2 float-left">
+                        mdi-account-outline
+                      </v-icon>              
+                  </v-col>
+                </v-row>
+              </div>
+            </v-row> 
+        </v-app>
+      </div>
+    </div>
+    
+    <!-- main page -->
+    <!-- image slider and hotel tab -->
+    <div v-cloak id="imageSlider">
+      <v-app>
+        <v-row class="mb-3 mt-6" justify="center">
+          <div class=" indexDiv px-2 white rounded-lg px-4 py-6">
+            <v-skeleton-loader class=""
+              type="chip"
+              :loading="isLoading"
+            >
+              <h4 class="red--text text--darken-3">رزرو هتل آهوان</h4>
+            </v-skeleton-loader>
+            <v-divider class="mt-2"></v-divider>
+            <v-row align="center">
+              <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-0 mt-1 mt-sm-2 mt-md-4 mt-lg-6">
+                <v-skeleton-loader class="inputLoader"
+                  type="card-heading"
+                  :loading="isLoading"
+                >
+                  <v-select id="hotelName" ref="testRef"
+                    color="white"
+                    prepend-icon="mdi-city"
+                    class="headerBoxFields font-small-xs"
+                    v-model="cityName"
+                    :items="cityes"
+                  ></v-select>
+                </v-skeleton-loader>
+              </v-col>
+              <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-0 mt-1 mt-sm-2 mt-md-4 mt-lg-6">
+                <v-skeleton-loader class="inputLoader"
+                  type="card-heading"
+                  :loading="isLoading"
+                >
+                  <div class="input-group" class="font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;height: 46px;border-radius: 10px;padding: 8px 4px;">
+                    <v-icon class="grey--text text--darken-2">mdi-calendar-month</v-icon>
+                    <input type="text" ref="dtp1" value="" data-name="dtp1-text" class="cursorPointer heightAll " readOnly placeholder="انتخاب تاریخ"
+                    id="dtp1" style="width:80%">
+                    <input class="d-none" data-name="dtp1-date" >
+                  </div>
+                </v-skeleton-loader>
+              </v-col>
+              <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-0 mt-1 mt-sm-2 mt-md-4 mt-lg-6">
+                <v-skeleton-loader class="inputLoader"
+                  type="card-heading"
+                  :loading="isLoading"
+                >
+                <div class="relative">
+                  <v-text-field readOnly v-model="allPeaples"
+                  readOnley prepend-icon="mdi-account"  class="font-small-xs form-control headerBoxFields hideEventPeaple"
+                    
+                    ></v-text-field>
+                  <div id="showPeaple" class="allPeaplesAfter rounded-lg hideOver widthAll absolute white" style="z-index: 3;top: 40px;" >
+                    <div v-for="(room,i) in headerRooms" :key="i" class="my-3">
+                      <v-row align="center">
+                        <v-col>                    
+                          <h3 class="pa-3 float-right">اتاق {{i == 0 ? 'اول' : i == 1 ? 'دوم' : i == 2 ? 'سوم' :'چهارم'  }}</h3>
+                        </v-col>
+                        <v-col>
+                          <v-icon class="pt-2 pl-3 float-left red--text cursorPointer" @click="headerRooms.length > 1 ? headerRooms.splice(i,1) : '';selectedRooms.length > 1 ? selectedRooms=[] : '';roomTab=null;changeRoomValue()">mdi-delete</v-icon>
+                          <span class="mt-3 float-left caption red--text cursorPointer" style="font-family:Byekan !important;" @click="headerRooms.length > 1 ? headerRooms.splice(i,1) : '';selectedRooms.length > 1 ? selectedRooms=[] : '';roomTab=null;changeRoomValue()">حذف</span>
+                        </v-col>
+                      </v-row>
+                      <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
+                        <v-col>
+                          <span>بزرگسال</span>
+                          <span class="caption grey--text " style="font-family: Byekan !important;">(12 سال به بالا)</span>
+                        </v-col>
+                        <v-col>
+                          <v-icon @click="room.peaple > 1 ? room.peaple-- : '';changeRoomValue()" class="green--text float-left" light>
+                            mdi-minus-circle
+                          </v-icon>
+                          <h4 class="float-left mx-3 ">{{room.peaple}}</h4>
+                          <v-icon @click="room.peaple++;changeRoomValue()" class="green--text float-left" light>
+                            mdi-plus-circle
+                          </v-icon>
+                        </v-col>
+                      </v-row>
+                      <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
+                        <v-col>
+                          کودک
+                          <span class="caption grey--text " style="font-family: Byekan !important;">(2-12 سال)</span>
+                        </v-col>
+                        <v-col>
+                          <v-icon @click="room.child > 0 ? room.child-- : '';changeRoomValue()" class="green--text float-left" light>
+                            mdi-minus-circle
+                          </v-icon>
+                          <h4 class="float-left mx-3">{{room.child}}</h4>
+                          <!-- room.child < (room.peaple*2) &&  -->
+                          <v-icon @click="(((room.peaple*2)-(room.child)-(room.baby)) > 0) && room.child++;changeRoomValue()"  class="green--text float-left" light>
+                            mdi-plus-circle
+                          </v-icon>
+                        </v-col>
+                      </v-row>
+                      <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
+                        <v-col>
+                          <span>
+                            نوزاد
+                          </span>
+                          <span class="caption grey--text " style="font-family: Byekan !important;">(کمتر از 2 سال)</span>
+                        </v-col>
+                        <v-col>
+                          <v-icon @click="room.baby > 0 ? room.baby-- : '';changeRoomValue()" class="green--text float-left" light>
+                            mdi-minus-circle
+                          </v-icon>
+                          <h4 class="float-left mx-3">{{room.baby}}</h4>
+                          <v-icon @click="(((room.peaple*2)-(room.child)-(room.baby)) > 0) && room.baby++;changeRoomValue()" class="green--text float-left" light>
+                            mdi-plus-circle
+                          </v-icon>
+                        </v-col>
+                      </v-row>
+                      <v-divider v-if="i < headerRooms.length-1"></v-divider>
+                    </div>
+                    <div class="my-2">
+                      <span v-if="headerRooms.length < 4" class="mr-4 caption cursorPointer red--text" @click="headerRooms.push({peaple:1,child:0,baby:0});changeRoomValue()" style="font-family:Byekan !important;">+افزودن اتاق</span>
+                    </div>
+                    <v-divider></v-divider>
+                    <div class="pa-3">
+                      <v-btn class="widthAll hideEventPeaple" color="red" dark>تایید - {{allPeaples}}</v-btn>
+                    </div>
+                  </div>
+                </div>
+                </v-skeleton-loader>
+              </v-col>
+              <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-0 pt-4 pt-sm-2 pt-md-4 pt-lg-6">
+                <v-skeleton-loader class="inputLoader"
+                  type="card-heading"
+                  :loading="isLoading"
+                >
+                  <v-btn dark color="red" class="widthAll" id="searchRoom">جستجو</v-btn>
+                </v-skeleton-loader>
+              </v-col>
+            </v-row>
+          </div> 
+        </v-row>
+        <v-row justify="center" class="py-3">
+          <div class=" indexDiv white hideOver rounded-lg">
+            <v-row align="center">
+              <v-skeleton-loader class=" mr-4" :class="isLoading && ' mt-4'"
+                type="chip"
+                :loading="isLoading"
+              >
+                <h4 class="d-inline-block red--text text--darken-3">هتل آهوان</h4>
+                <v-rating class="d-inline-block mt-6 mr-3"
+                  color="yellow darken-3"
+                  background-color="grey darken-1"
+                  empty-icon="$ratingFull"
+                  half-increments
+                  hover
+                  readOnly
+                  :value="4"
+                />
+              </v-skeleton-loader>
+            </v-row>
+            <v-divider class="mx-6 mt-2"></v-divider>
+            <!-- <div class="mx-6" style="white-space: nowrap;">
+              <div v-for="(item, i) in items" :key="i" class="d-inline-block pa-2" style="width: 25%;">
+                <img width="100%" height="180" :src="item.image" class="rounded-lg"></img>
+              </div>
+            </div> -->
+            <v-sheet @mouseOver="clear()" @mouseLeave="start" max-width="100%" class="">
+              <v-skeleton-loader class=" mt-4" :class="isLoading && 'mx-6'"
+                type="image"
+                :loading="isLoading"
+              >
+                <v-slide-group v-model="slideGroup" class="py-4 ltr" show-arrows>
+                  <v-slide-item v-for="(item, i) in items" :key="i" v-slot="{ active }">
+                    <v-card outlined class="ma-4 cardSlider"  @click="dialogImage = true,carousel=i">
+                      <v-img height="180" :src="item.image"></v-img>
+                    </v-card> 
+                  </v-slide-item>
+                </v-slide-group>
+              </v-skeleton-loader>  
+            </v-sheet>
+            <v-row class="linkParent grey--text font-small-xs" justify="space-around">
+              <v-divider vertical></v-divider>
+              <v-col cols="6" sm="4" md="2" lg="2" xl="2" class="pa-0">
+                <v-row align="center" justify="center">
+                  <v-skeleton-loader class="my-3 "
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a href="#aboutHotel" class="cursorPointer black--text my-3 body-2" style="font-family: Byekan !important;">
+                      <v-icon size="19" class="black--text">
+                        mdi-domain
+                      </v-icon>
+                      درباره هتل
+                    </a>
+                  </v-skeleton-loader>
+                </v-row>
+              </v-col>
+              <v-divider vertical></v-divider>
+              <v-col cols="6" sm="4" md="2" lg="2" xl="2" class="pa-0">
+                <v-row align="center" justify="center">
+                  <v-skeleton-loader class="my-3 "
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a href="#rooms" class="widthAll text-center cursorPointer black--text my-3 body-2" style="font-family: Byekan !important;">
+                      <v-icon size="19" class="black--text">
+                        mdi-bed
+                      </v-icon>
+                      اتاق های موجود
+                    </a>
+                  </v-skeleton-loader>
+                </v-row>
+              </v-col>
+              <v-divider vertical></v-divider>
+              <v-col cols="6" sm="4" md="2" lg="2" xl="2" class="pa-0">
+                <v-row align="center" justify="center">
+                  <v-skeleton-loader class="my-3 "
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a href="#Possibilities" class="widthAll text-center cursorPointer black--text my-3 body-2" style="font-family: Byekan !important;">
+                      <v-icon size="19" class="black--text">
+                        mdi-star-settings
+                      </v-icon>
+                      امکانات هتل
+                    </a>
+                  </v-skeleton-loader>
+                </v-row>
+              </v-col>
+              <v-divider vertical></v-divider>
+              <v-col cols="6" sm="4" md="2" lg="2" xl="2" class="pa-0">
+                <v-row align="center" justify="center">
+                  <v-skeleton-loader class="my-3 "
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a href="#location" class="widthAll text-center cursorPointer black--text my-3 body-2" style="font-family: Byekan !important;">
+                      <v-icon size="19" class="black--text">
+                        mdi-pin-outline
+                      </v-icon>
+                      موقعیت مکانی
+                    </a>
+                  </v-skeleton-loader>
+                </v-row>
+              </v-col>
+              <v-divider vertical></v-divider>
+              <v-col cols="6" sm="4" md="2" lg="2" xl="2" class="pa-0">
+                <v-row align="center" justify="center">
+                  <v-skeleton-loader class="my-3 "
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a href="#comments" class="widthAll text-center cursorPointer black--text my-3 body-2" style="font-family: Byekan !important;">
+                      <v-icon size="19" class="black--text">
+                        mdi-comment-eye
+                      </v-icon>
+                    نظرات کاربران
+                    </a>  
+                  </v-skeleton-loader>
+                </v-row>
+              </v-col>
+            </v-row> 
+          </div>
+        </v-row>
+        <!-- image dialog -->
+        <div v-if="dialogImage" class="fixed widthAll heightAll d-flex justify-center align-center" style="top: 0;right:0;background:#000000a8;z-index:22222">
+          <div class="relative rounded-xl hideOver imageDialog" style="width: 70%">
+            <v-carousel v-model="carousel" class="relative heightAll">
+              <div @click="dialogImage = false" class="ma-2 pa-1 absolute cursorPointer rounded-circle" style="background:#161616ad;z-index: 22;">
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </div>
+              <v-carousel-item class="hideOver heightAll"
+                v-for="(item, i) in items"
+                :key="i"
+              >
+                <v-sheet cl
+                  tile
+                >
+                  <v-img :src="item.image" class="heightAll"></v-img>
+                </v-sheet>
+              </v-carousel-item>
+            </v-carousel>
+          </div>
+        </div>
+        <!-- about hotel -->
+        <v-row id="aboutHotel" justify="center">
+          <div class=" indexDiv white my-3 pa-6 rounded-lg">
+            <v-skeleton-loader class="headerIconLoading d-inline-block"
+              type="avatar"
+              :loading="isLoading"
+            >
+              <v-icon large class="mr-2 grey--text text--darken-2 d-inline-block">
+                mdi-domain
+              </v-icon>
+            </v-skeleton-loader>
+            <v-skeleton-loader class="headerTextLoading d-inline-block rounded-xl"
+              type="list-item"
+              :loading="isLoading"
+            >
+              <h4 class="mr-2 d-inline-block red--text text--darken-3">درباره هتل</h4>
+            </v-skeleton-loader>
+            <v-divider class="mb-6"></v-divider>
+            <v-row class="body-2" style="font-family: Byekan !important;line-height: 30px;">
+              <v-skeleton-loader class="textLoader"
+                type="chip"
+                :loading="isLoading"
+              >
+                <span class="font-small-xs d-inline-block text-justify">
+                هتل آهوان چابکسر از واحدهای اقامتی با سابقه این شهر می‌باشد که 
+                در زمینی به مساحت 18 هکتار به بهره‌برداری رسید. هتل ساحلی آهوان دارای سه مجموعه اقامتی با نام‌های گل‌نشان، گل‌افشان و ویلایی است.
+                مجموعه گل‌نشان هتل آهوان شامل 11 ساختمان سه طبقه، مجموعه گل‌افشان دارای یک ساختمان پنج طبقه
+                  <span v-if="!showAllAboutHotel">...</span>
+                  <span v-if="!showAllAboutHotel" @click="showAllAboutHotel = true" class="red--text d-inline-block cursorPointer">توضیحات بیشتر</span>
+                  <span v-else>
+                    و مجموعه ویلایی شامل 50 باب ویلا می‌شود. هتل تفریحی ساحلی آهوان مجموعاً مشتمل بر 212 باب سوئیت و ویلا است که با دارا بودن امکانات اقامتی مناسب پذیرای میهمانان و گردشگران محترم در ساحل دریای خزر می‌باشد. مجتمع اقامتی آهوان در 16 کیلومتری جاده رامسر به رودسر واقع شده‌است و 10 کیلومتر بعد از شهر چابکسر قرار دارد. قابل توجه میهمانان گرامی، مجموعه گل‌نشان هتل چهار ستاره آهوان چابکسر فاقد آسانسور است.
+                  </span>
+                </span>
+              </v-skeleton-loader>
+            </v-row>
+          </div>
+        </v-row>
+        <!-- rooms -->
+        <v-row id="rooms" justify="center">
+          <div class=" indexDiv white my-3 rounded-lg pa-8">
+            <v-skeleton-loader class="headerIconLoading d-inline-block"
+              type="avatar"
+              :loading="isLoading"
+            >
+              <v-icon large class="mr-2 grey--text text--darken-2">
+                mdi-bed
+              </v-icon>
+            </v-skeleton-loader>
+            <v-skeleton-loader class="headerTextLoading d-inline-block rounded-xl"
+              type="list-item"
+              :loading="isLoading"
+            >
+              <h4 class="mr-2 d-inline-block red--text text--darken-3">اتاق های موجود هتل</h4>
+            </v-skeleton-loader>
+            <v-divider class="mb-4"></v-divider>
+            <v-skeleton-loader class=""
+              type="image"
+              :loading="isLoading"
+            >
+              <v-tabs
+                v-model="roomTab"
+                flat
+              >
+                <v-tabs-slider color="red"></v-tabs-slider>
+                <v-tab
+                  v-for="(item,i) in headerRooms"
+                  :key="i"
+                >
+                  اتاق {{i == 0 ? 'اول' : i == 1 ? 'دوم' : i == 2 ? 'سوم' :'چهارم'  }}
+                </v-tab>
+              </v-tabs>
+              <v-tabs-items reverse v-model="roomTab" style="direction:ltr !important">
+                <v-tab-item v-for="(tab,tabIndex) in headerRooms" :key="tabIndex">
+                  <v-card outlined v-for="(room,j) in rooms" :key="j"
+                    class="mx-auto " :class="j < rooms.length-1 && 'mb-6'"
+                  >
+                    <v-row class="pa-4 mb-0 pb-0">
+                      <v-col cols="12" sm="12" md="4" lg="3" class="">
+                        <v-img class="rounded-lg" width="100%" src="./image/room1.jpg" alt="" />
+                      </v-col>
+                      <v-col cols="12" sm="12" md="8" lg="6" class="pr-4 pb-0">
+                        <h4 class="grey--text text--darken-3">{{room.name}}, {{room.room}} خوابه {{room.allPerson}} نفره</h4>
+                        <v-row>
+                          <v-card-subtitle class="font-small-xs mt-6 grey lighten-2 grey--text text--darken-2 rounded-lg pa-1">
+                            <v-icon class="grey--text text--darken-2">
+                              mdi-account
+                            </v-icon>
+                            {{room.allPerson}} بزرگسال  
+                            +
+                            <v-icon class="grey--text text--darken-2">
+                              mdi-bed
+                            </v-icon>
+                            1 نفر اضافه  (6 سال به بالا) +
+                            <v-icon class="grey--text text--darken-2">
+                              mdi-account-child
+                            </v-icon>
+                              2 کودک  (2-6) +
+                            <v-icon class="grey--text text--darken-2">
+                              mdi-baby-carriage
+                            </v-icon>
+                              2 نوزاد  (0-2)
+                          </v-card-subtitle>
+                        </v-row>
+                        <v-row>
+                          <v-card-subtitle class="grey lighten-2 grey--text text--darken-2 rounded-lg pa-1 mt-4 font-small-xs">
+                            نفر اضافه: کاناپه تختخوابشو، با صبحانه
+                          </v-card-subtitle>
+                          <v-card-subtitle class="mr-1 mr-sm-2 grey lighten-2 grey--text text--darken-2 rounded-lg pa-1 mt-4 font-small-xs">
+                            کودک: بدون تخت، با صبحانه
+                          </v-card-subtitle>
+                        </v-row>
+                        <v-row>
+                          <v-card-subtitle subtitle style="border:1px solid red" class="font-small-xs red--text text--darken-2 rounded-lg pa-1 mt-4">
+                            <span class="font-small-xs red--text text--darken-2 font-small-xs">نوزاد:</span>
+                            بدون تخت، بدون صبحانه
+                          </v-card-subtitle>
+                          <v-card-subtitle class="font-small-xs mr-2 green white--text darken-2 rounded-lg py-1 px-6 mt-4 font-small-xs">
+                            %20 تخفیف
+                          </v-card-subtitle>
+                        </v-row>
+                        <v-row class="mt-8 d-none d-lg-block">
+                          <v-expansion-panels multiple v-model="room.room_facilities">
+                            <v-expansion-panel @click="showRoomPanel('room_facilities',j)">
+                              <v-expansion-panel-header >
+                                امکانات اتاق
+                              </v-expansion-panel-header>
+                            </v-expansion-panel>
+                          </v-expansion-panels>
+                          <v-expansion-panels multiple v-model="room.cancellation_conditions">
+                            <v-expansion-panel @click="showRoomPanel('cancellation_conditions',j)">
+                              <v-expansion-panel-header>
+                                شرایط کنسلی
+                              </v-expansion-panel-header>
+                            </v-expansion-panel>
+                          </v-expansion-panels>
+                        </v-row>
+                      </v-col>
+                      <v-col cols="12" sm="12" md="8" lg="8" class="d-block d-lg-none px-0 px-sm-2 pb-0 order-1 order-md-0">
+                        <v-row class="heightAll" align="end">
+                          <v-expansion-panels multiple v-model="room.room_facilities">
+                            <v-expansion-panel @click="showRoomPanel('room_facilities',j)">
+                              <v-expansion-panel-header >
+                                امکانات اتاق
+                              </v-expansion-panel-header>
+                            </v-expansion-panel>
+                          </v-expansion-panels>
+                          <v-expansion-panels multiple v-model="room.cancellation_conditions">
+                            <v-expansion-panel @click="showRoomPanel('cancellation_conditions',j)">
+                              <v-expansion-panel-header>
+                                شرایط کنسلی
+                              </v-expansion-panel-header>
+                            </v-expansion-panel>
+                          </v-expansion-panels>
+                          
+                        </v-row>
+                      </v-col>
+                      <v-col cols="12" sm="12" md="4" lg="3" class="pr-4 order-0 order-md-1 py-2 py-md-12 py-lg-0">
+                        <v-row justify="center" class="grey--text text--darken-2">
+                          <h4 class="grey--text text--darken-2 mt-6 mt-md-12  ">
+                          قیمت اتاق 
+                          </h4>
+                        </v-row>
+                        <v-row>
+                          <h3 class="text-center widthAll mt-3">{{room.price}}
+                            تومان
+                          </h3>
+                        </v-row>
+                        <v-row justify="center" >
+                          <a href="#rooms" style="text-decoration: unset;">
+                            <v-btn class="red--text my-4" id="reserveRoom" @click="reserveRoom(room,roomTab)" outlined >انتخاب اتاق {{roomTab == 0 ? 'اول' : roomTab == 1 ? 'دوم' : roomTab == 2 ? 'سوم' :'چهارم'  }}</v-btn>
+                          </a>
+                        </v-row>
+                      </v-col>
+                    </v-row>
+                    <v-row v-show="room.room_facilities.length != 0 || room.cancellation_conditions.length != 0" class="grey lighten-4 pa-4" justify="center">
+                      <v-col v-show="room.room_facilities.length != 0" cols="6" sm="4" lg="2" class=" my-2 my-lg-0 pa-0 grey--text text--darken-3 text-lg-center font-small-xs">
+                        <v-icon class="red--text text--darken-2">
+                          mdi-toilet
+                        </v-icon>
+                        سرویس فرنگی
+                      </v-col>
+                      <v-col v-show="room.room_facilities.length != 0" cols="6" sm="4" lg="2" class=" my-2 my-lg-0 pa-0 grey--text text--darken-3 text-lg-center font-small-xs">
+                        <v-icon class="red--text text--darken-2">
+                          mdi-fridge-outline
+                        </v-icon>
+                        یخچال
+                      </v-col>
+                      <v-col v-show="room.room_facilities.length != 0" cols="6" sm="4" lg="2" class=" my-2 my-lg-0 pa-0 grey--text text--darken-3 text-lg-center font-small-xs">
+                        <v-icon class="red--text text--darken-2">
+                          mdi-snowflake-variant
+                        </v-icon>
+                        سرمایش
+                      </v-col>
+                      <v-col v-show="room.room_facilities.length != 0" cols="6" sm="4" lg="2" class=" my-2 my-lg-0 pa-0 grey--text text--darken-3 text-lg-center font-small-xs">
+                        <v-icon class="red--text text--darken-2">
+                          mdi-coolant-temperature
+                        </v-icon>
+                        گرمایش
+                      </v-col>
+                      <v-col v-show="room.room_facilities.length != 0" cols="6" sm="4" lg="2" class=" my-2 my-lg-0 pa-0 grey--text text--darken-3 text-lg-center font-small-xs">
+                        <v-icon class="red--text text--darken-2">
+                          mdi-wifi
+                        </v-icon>
+                        اینترنت
+                      </v-col>
+                      <v-col v-show="room.room_facilities.length != 0" cols="6" sm="4" lg="2" class=" my-2 my-lg-0 pa-0 grey--text text--darken-3 text-lg-center font-small-xs">
+                        <v-icon class="red--text text--darken-2">
+                          mdi-television-classic
+                        </v-icon>
+                        تلویزیون
+                      </v-col>
+                      <v-col v-show="room.cancellation_conditions.length != 0 " cols="12" sm="6" md="4" lg="3" v-for="(item,i) in cancell_facilities" :key="i">
+                        <v-card outlined
+                          class="mx-3"
+                          max-width="400"
+                        >
+                            <h3 class="red lighten-4 red--text text--darken-3 text-center pa-4">{{item.number}}%-</h3>
+                            <v-card-text class="text--primary">
+                              <div class="text-center font-small-xs">{{item.description}}</div>
+                            </v-card-text>
+                        </v-card>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+                </v-tab-item>
+              </v-tabs-items>
+            </v-skeleton-loader>
+          </div>
+          <v-row v-if="nextPage" id="nextPage" class="widthAll heightAll white fixed justify-center" style="z-index: 2222;top:0;right:0;">
+            <v-col>
+              <!-- header -->
+              <v-row class="header grey lighten-3" justify="center">
+                <div class="widthAll pa-3">
+                  <a href="https://ahuan.ir"><img height="20px" src="./image/logo-header.png" alt="صفحه اصلی" ></a>
+                  <span class="headerSpan mb-1 .v-application .body-2">رزرو آنلاین خدمات گردشگری</span>
+                  <v-icon class="mr-2 float-left">
+                    mdi-phone-in-talk
+                  </v-icon>
+                  <span class="headerText float-left">021-41889</span>
+                </div>
+              </v-row>
+              <v-row class="white top-bar" justify="center" align="center">
+                <v-col cols="6" sm="9" md="8" class="py-3 px-2 px-sm-0 headerButtons">
+                  <v-row class="d-none d-sm-block pr-4">
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">پرواز</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">هتل</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">تور</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">هتل آهوان</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">اتوبوس</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">قطار</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">بیمه</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">مجله گردشگری</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-md-0">شرکت ها</span>
+                  </v-row>
+                  <v-row class="d-block d-sm-none">
+                    <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
+                    <v-navigation-drawer
+                      v-model="showMenuSmall"
+                      fixed
+                      right
+                      temporary style="z-index:2;top: 112px ;"
+                    >
+                      <v-list
+                        nav
+                        dense
+                      >
+                        <v-list-item-group v-model="activePage"
+                          active-class="red--text text--accent-4"
+                        >
+                          <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-airplane</v-icon>
+                            <v-list-item-title>پرواز</v-list-item-title>
+                          </v-list-item>
+                
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-sofa-single</v-icon>
+                            <v-list-item-title>هتل</v-list-item-title>
+                          </v-list-item>
+                
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-account-group</v-icon>
+                            <v-list-item-title>تور</v-list-item-title>
+                          </v-list-item>
+                
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-alpha-a-box</v-icon>
+                            <v-list-item-title class="active">هتل آهوان</v-list-item-title>
+                          </v-list-item>
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-bus</v-icon>
+                            <v-list-item-title>اتوبوس</v-list-item-title>
+                          </v-list-item>
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-train-variant</v-icon>
+                            <v-list-item-title>قطار</v-list-item-title>
+                          </v-list-item>
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-checkbook</v-icon>
+                            <v-list-item-title>بیمه</v-list-item-title>
+                          </v-list-item>
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                            <v-list-item-title>مجله گردشگری</v-list-item-title>
+                          </v-list-item>
+                          <v-list-item @click="showMenuSmall = false">
+                            <v-icon class="ml-2">mdi-sitemap</v-icon>
+                            <v-list-item-title>شرکت ها</v-list-item-title>
+                          </v-list-item>
+                        </v-list-item-group>
+                      </v-list>
+                    </v-navigation-drawer>
+                  </v-row>
+                </v-col>
+                <v-col cols="6" sm="3" md="4" class="pa-3">
+                    <span class="font-14 mt-1 grey--text float-left">ورود - ثبت نام</span>
+                    <v-icon large class="m-2 float-left">
+                      mdi-account-outline
+                    </v-icon>              
+                </v-col>
+              </v-row> 
+            </v-col>
+            <v-col>
+              <!-- main -->
+              <v-row justify="center">
+                <div class="widthAll" style="max-width:1000px">
+                  <v-row align="center" class=" pa-3">
+                    <h3 class="d-inline-block ">هتل آهوان چابکسر</h3>
+                    <v-rating class="d-inline-block mr-3"
+                      color="yellow darken-3"
+                      background-color="grey darken-1"
+                      empty-icon="$ratingFull"
+                      half-increments
+                      hover
+                      readOnly
+                      :value="4"
+                    />
+                  </v-row>
+                  <v-row>
+                    <span class="caption my-2 px-3" style="font-family:Byekan !important">گیلان ، چابکسر کیلومتر 16 جاده رامسر به رودسر – 10 کیلومتر بعد از ورودی چابکسر – مجتمع اقامتی آهوان</span>
+                  </v-row>
+                  <v-card outlined class="ma-3 pa-3">
+                    <h5 class="d-inline-block red--text text--darken-3">مشخصات اتاق ها</h5>
+                      <v-divider class="my-2"></v-divider>
+                    <div v-for="(room,k) in selectedRooms" :key="k" class="my-2 my-sm-8">
+                      <v-row class="grey lighten-3 my-3 mt-0 mt-sm-3 rounded pa-2 body-2" style="font-family:Byekan !important" >
+                        اتاق {{k == 0 ? 'اول' : k == 1 ? 'دوم' : k == 2 ? 'سوم' :'چهارم'  }}
+                      </v-row>
+                      <v-row class="mx-6 my-4 d-none d-sm-flex">
+                        <v-col cols="3" class="body-2" style="font-family:Byekan !important">
+                          <strong> نوع اتاق</strong>
+                        </v-col>
+                        <v-col cols="3" class="text-center body-2" style="font-family:Byekan !important">
+                          <strong> تاریخ ورود و خروج</strong>
+                        </v-col>
+                        <v-col cols="3" class="text-center body-2" style="font-family:Byekan !important">
+                          <strong> قیمت</strong>
+                        </v-col>
+                        <v-col cols="3" class="text-center body-2" style="font-family:Byekan !important">
+                          <strong>تعداد مسافران</strong>
+                        </v-col>
+                      </v-row>
+                      <v-divider class="d-none d-sm-flex"></v-divider>
+                      <v-row class="mx-6 mt-4 d-none d-sm-flex">
+                        <v-col cols="3" class="body-2" style="font-family:Byekan !important">
+                          {{room.name}}, {{room.room}} خوابه {{room.allPerson}} نفره
+                        </v-col>
+                        <v-col cols="3" id="nextpageDate" class="text-center body-2 " style="font-family:Byekan !important">
+                          {{fromDate}} الی {{toDate}}
+                        </v-col>
+                        <v-col cols="3" class="text-center body-2" style="font-family:Byekan !important">
+                          {{room.price}} تومان
+                        </v-col>
+                        <v-col cols="3" class="text-center body-2" style="font-family:Byekan !important">
+                          {{headerRooms[k].peaple}} بزرگسال {{headerRooms[k].child ? ('+ ' + headerRooms[k].child + ' کودک ') : '' }} {{headerRooms[k].baby ? ('+ ' + headerRooms[k].baby + ' نوزاد ') : ''}}
+                        </v-col>
+                      </v-row>
+                      <v-row class="d-block d-sm-none px-6">
+                        <v-col cols="12" class="my-3">
+                          <span class="ml-1 body-2" style="font-family:bYekan !important"><strong>نوع اتاق:</strong></span>
+                          <span class="caption" style="font-family:bYekan !important">{{room.name}}, {{room.room}} خوابه {{room.allPerson}} نفره</span>
+                        </v-col>
+                        <v-col cols="12" class="my-3">
+                          <span class="ml-1 body-2" style="font-family:bYekan !important"><strong>تاریخ ورود و خروج:</strong></span>
+                          <span class="caption" style="font-family:bYekan !important">{{fromDate}} الی {{toDate}}</span>
+                        </v-col>
+                        <v-col cols="12" class="my-3">
+                          <span class="ml-1 body-2" style="font-family:bYekan !important"><strong>قیمت:</strong></span>
+                          <span class="caption" style="font-family:bYekan !important">{{room.price}} تومان</span>
+                        </v-col>
+                        <v-col cols="12" class="my-3">
+                          <span class="ml-1 body-2" style="font-family:bYekan !important"><strong>تعداد مسافران:</strong></span>
+                          <span class="caption" style="font-family:bYekan !important">
+                            {{headerRooms[k].peaple}} بزرگسال {{headerRooms[k].child ? ('+ ' + headerRooms[k].child + ' کودک ') : '' }} {{headerRooms[k].baby ? ('+ ' + headerRooms[k].baby + ' نوزاد ') : ''}}
+                          </span>
+                        </v-col>
+                      </v-row>
+                    </div>
+                  </v-card>
+                  <v-form v-model="valid" lazy-validation
+                      ref="reserv"
+                    >
+                    <v-card outlined class="pa-3 ma-3 mt-6 mt-md-12 ">
+                      <h5 class="d-inline-block red--text text--darken-3">تکمیل اطلاعات رزرو کننده</h5>
+                      <v-divider class="my-2"></v-divider>
+                      <v-row>
+                        <v-col cols="12" sm="6" md="3" class="px-3 py-0 relative">
+                          <v-text-field filled class="nextpageBoxFields my-3"
+                            v-model="reserver.name"
+                            :rules="nameRules"
+                            placeholder="نام"
+                            required
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="3" class="px-3 py-0">
+                          <v-text-field filled class="nextpageBoxFields my-3"
+                            v-model="reserver.family"
+                            :rules="familyRules"
+                            placeholder="نام خانوادگی"
+                            required
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="3" class="px-3 py-0">
+                          <v-text-field filled
+                            v-model="reserver.phone" class="nextpageBoxFields my-3"
+                            :rules="phoneRules" type="number"
+                            placeholder="تلفن"
+                            :counter="11"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="3" class="px-3 py-0">
+                          <v-text-field filled class="nextpageBoxFields my-3"
+                            v-model="reserver.email"
+                            :rules="emailRules"
+                            placeholder="ایمیل"
+                            required
+                          ></v-text-field>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-checkbox class="font-small-xs"
+                            v-model="saveInDatabase"
+                            label="ذخیره اطلاعات در پایگاه داده ها"
+                            color="red darken-3"
+                            hide-details
+                          ></v-checkbox>
+                      </v-row>
+                    </v-card>
+                    <v-card outlined class="pa-1 ma-3 pa-md-3 my-4 my-md-12 ">
+                      <h5 class=" ma-3 mb-0 d-inline-block red--text text--darken-3">نحوه پرداخت</h5>
+                      <v-divider class="my-2"></v-divider>
+                      <v-row class="pa-sm-4">
+                        <v-col cols="12" md="6" class="py-0">
+                          <h5>در صورت داشتن کد تخفیف آن را وارد کنید:</h5>
+                          <div class="my-4">
+                            <v-text-field placeholder="کد تخفیف" filled  class="d-inline-block text-center filledBackground" style="width: 200px;"></v-text-field>
+                            <v-btn class="red relative" height="45" width="100" dark style="left: 11px;">اعمال کد</v-btn>
+                          </div>
+                        </v-col>
+                        <v-divider></v-divider>
+                        <v-col cols="12" md="6" class="">
+                            <v-checkbox
+                            class="body-2 d-inline-block mt-0"
+                            v-model="useWallet"
+                            label=""
+                            color="red darken-3"
+                          ></v-checkbox>
+                          <h5 class="d-inline-block relative" style="bottom: 5px;">استفاده از اعتبار حساب کاربری</h5>
+                          <span class="mx-4 grey lighten-3 py-1 px-2 rounded-xl grey--text">0 ریال</span>
+                          <h5>هنگام پرداخت با استفاده از موجودی،در صورت استرداد،مبلغ پرداختی به حساب شما بازمیگردد.</h5>
+                        </v-col>
+                      </v-row>
+                    </v-card>
+                    <v-card outlined class="pa-1 ma-3 pa-md-3 my-4 my-md-12 ">
+                      <h5 class=" ma-3 mb-0 d-inline-block red--text text--darken-3">پرداخت الکترونیکی</h5>
+                      <v-divider class="my-2"></v-divider>
+                      <v-row class="pa-a pa-sm-4">
+                        <v-col cols="12"  sm="8" lg='9' class="pa-0">
+                          <v-row>
+                            <v-checkbox
+                              ref="acceptRulles" class="font-small-xs"
+                              v-model="acceptRulles"
+                              label="قوانین و مقررات هتل آهوان را مطالعه کرده و میپذیرم."
+                              color="red"
+                              :rules="[v => !!v || 'فیلد اجباری']"
+                              required
+                            ></v-checkbox>
+                          </v-row>
+                          <v-row class="d-none d-sm-flex">
+                            <v-btn @click="nextPage = false" dark class="red mt-2 mt-sm-6 nextPageButton">بازگشت به مرحله قبلی</v-btn>
+                          </v-row>
+                        </v-col>
+                        <v-col cols="12" sm="4" lg='3' class="mt-2 mt-sm-0">
+                          <v-row class="my-sm-3" justify="center">
+                            <h2>10,500,000</h2>
+                            <span class="caption mt-1  mr-1" style="font-family: Byekan !important;">
+                              ریال
+                            </span>
+                          </v-row>
+                          <v-row justify="center">
+                            <v-btn class="green darken-2 mt-2 mt-sm-6 nextPageButton" dark @click="validateForm">تایید و پرداخت</v-btn>
+                          </v-row>
+                          <v-row justify="center" class="d-flex d-sm-none">
+                            <v-btn @click="nextPage = false" dark class="red mt-2 mt-sm-4 nextPageButton">بازگشت به مرحله قبلی</v-btn>
+                          </v-row>
+                        </v-col>
+                      </v-row>
+                    </v-card>
+                  </v-form>
+                </div>
+              </v-row> 
+              <!-- footer -->
+              <v-row justify="center" class="grey lighten-3">
+                <div class=" indexDiv my-3 pa-sm-6 pb-2 rounded-lg mb-12">
+                  <v-row>
+                    <v-col cols="12" sm="6" class="pa-0 pa-sm-3">
+                      <v-row class="caption grey--text text--darken-3" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
+                      <v-row class="caption grey--text text--darken-3" style="font-family: Byekan !important;">شماره تماس:41889-021</v-row>
+                      <v-row class=" mt-2 mt-md-12">
+                        <v-col cols="5" sm="12" md="6" class="pa-0 pa-sm-3">
+                          <h4>درباره هتل آهوان</h4>
+                          <ul class="mr-4 mr-md-2 my-2 my-md-12">
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تماس با ما</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">درباره ما</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">سوالات متداول</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">فرصت‌های شغلی</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">شرایط قوانین</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">حقوق مسافرین</li>
+                          </ul>
+                        </v-col>
+                        <v-col cols="7" sm="12" md="6" class="pa-0 pa-sm-3">
+                          <h4>پیشنهادات آهوان</h4>
+                          <ul class="mr-4 mr-md-2 my-2 my-md-12">
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تورهای ویژه آهوان</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">هتل‌های ویژه آهوان</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پروازهای ویژه آهوان</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین تورهای داخلی</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین تورهای خارجی</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین هتل‌های داخلی</li>
+                            <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین هتل‌های خارجی</li>
+                          </ul>
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="12" sm="6">
+                      <v-row class="justify-center justify-sm-end">
+                        <v-icon class="mx-1" color="grey">mdi-whatsapp</v-icon>
+                        <v-icon class="mx-1" color="grey">mdi-email-outline</v-icon>
+                        <v-icon class="mx-1" color="grey">mdi-instagram</v-icon>
+                        <v-icon class="mx-1" color="grey">mdi-twitter</v-icon>
+                        <v-icon class="mx-1" color="grey" style="transform: rotate(-36deg);">mdi-send</v-icon>
+                      </v-row>
+                      <div class="widthAll mt-3" style="height:1px;background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(208,208,208,0.6026785714285714) 63%, rgba(205,205,205,1) 100%)"></div>
+                      <v-row>
+                        <p class="body-2 text-justify grey--text text--darken-1 my-6" style="font-family: Byekan !important;line-height:25px">
+                          آهوان با ارائه بهترین و با کیفیت ترین خدمات گردشگری به صورت آنلاین 
+                          میکوشد تا بعنوان معتبرترین شرکت گردشگری در ایران تجربه لذت بخش یک رزرو 
+                          اینترنتی را برایتان تداعی کند.
+                        </p>
+                      </v-row>
+                      <v-row justify="center" class="footerImagesParent">
+                        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
+                          <img class="mx-2 mx-md-4" src="./image/logo (1).png"></img>
+                        </a>
+                        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
+                          <img class="mx-2 mx-md-4" src="./image/logo.png"></img>
+                        </a>
+                        <a target="_blank" href="https://www.cao.ir/">
+                          <img class="mx-2 mx-md-4" src="./image/cao.png"></img>
+                        </a>
+                        <a target="_blank" href="http://www.aira.ir/">
+                          <img class="mx-2 mx-md-4" src="./image/lohoaira.png"></img>
+                        </a>
+                        <a target="_blank" href="https://www.cao.ir/paxrights">
+                          <img class="mx-2 mx-md-4" src="./image/Passenger.png"></img>
+                        </a>
+                      </v-row>
+                      <v-row justify="center" class="mt-12">
+                        <h4 class="grey--text text--darken-2">دانلود اپلیکیشن آهوان</h4>
+                      </v-row>
+                      <v-row justify="center" class="my-2">
+                        <p class="grey--text text--darken-3 text-center text-sm-right">با اپلیکیشن آهوان سرعت،کیفیت و قیمت ارزان را تجربه کنید.</p>
+                      </v-row>
+                      <v-row justify="center" class="my-2">
+                        <div class="px-3 py-1 mx-1 rounded-lg downloadButton" style="background-color: #56c59b;">
+                          <img class="mx-2 mx-md-4" src="./image/bazar-download.png"></img>
+                        </div>
+                        <div class="px-3 mr-x mt-sm-3 mt-md-0 py-1 rounded-lg downloadButton" style="background-color: #56c59b;">
+                          <img class="mx-2 mx-md-4" src="./image/google-download.png"></img>
+                        </div>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </div>
+              </v-row> 
+            </v-col>
+            </v-row>
+          <div class="fixed" style="z-index: 9999999999999; bottom:0;right: 10px;">
+            <v-alert v-if="showAlert" dark class="white--text"
+              :type="alertType"
+            >{{alertText}}</v-alert>
+          </div>
+          
+        </v-row>
+        <!-- Possibilities -->
+        <v-row id="Possibilities" justify="center" class="">
+          <div class=" indexDiv white my-3 pa-6 pb-12 rounded-lg">
+            <v-skeleton-loader class="headerIconLoading d-inline-block"
+              type="avatar"
+              :loading="isLoading"
+            >
+              <v-icon large class="mr-2 grey--text text--darken-2">
+                mdi-star-outline
+              </v-icon>
+            </v-skeleton-loader>
+            <v-skeleton-loader class="headerTextLoading d-inline-block rounded-xl"
+              type="list-item"
+              :loading="isLoading"
+            >
+              <h4 class="mr-2 d-inline-block red--text text--darken-3">امکانات هتل</h4>
+            </v-skeleton-loader>
+            <v-divider class="mb-6"> </v-divider>
+            <v-skeleton-loader class=""
+              type="image"
+              :loading="isLoading"
+            >
+              <v-row class="justify-center justify-lg-start ">
+                <span v-for="(possibility,i) in possibilityItems" :key="i" class="grey--text text--darken-3 py-1 mx-1 mx-lg-1 my-3 text-center grey lighten-3" style="border: 1px solid #d6d6d6;min-width:130px">{{possibility}}</span>
+              </v-row>
+            </v-skeleton-loader>
+          </div>
+        </v-row>
+        <v-row id="location" justify="center">
+          <div class=" indexDiv white my-3 pa-6 pb-12 rounded-lg">
+            <v-skeleton-loader class="headerIconLoading d-inline-block"
+              type="avatar"
+              :loading="isLoading"
+            >
+              <v-icon large class="mr-2 grey--text text--darken-2">
+                mdi-pin
+              </v-icon>
+              </v-skeleton-loader>
+              <v-skeleton-loader class="headerTextLoading d-inline-block rounded-xl"
+                type="list-item"
+                :loading="isLoading"
+              >
+                <h4 class="mr-2 d-inline-block red--text text--darken-3">موقعیت مکانی</h4>
+              </v-skeleton-loader>
+            <v-divider class=" mb-6"></v-divider>
+            <v-skeleton-loader class=""
+              type="image"
+              :loading="isLoading"
+            >
+              <v-card outlined class="pa-4 my-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2678.9037202516233!2d50.49027598380845!3d37.01525047492792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8b1c9490a8801d%3A0xf82730cb088b5358!2z2YfYqtmEINii2YfZiNin2YY!5e0!3m2!1sfa!2s!4v1662532324468!5m2!1sfa!2s" width="100%" height="450" class="miniSizeHeight" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </v-card>
+            </v-skeleton-loader>
+          </div>
+        </v-row>
+        <!-- comments -->
+        <v-row id="comments" justify="center">
+          <div class=" indexDiv white my-3 pa-6 pb-2 rounded-lg">
+            <v-skeleton-loader class="headerIconLoading d-inline-block"
+              type="avatar"
+              :loading="isLoading"
+            >
+              <v-icon large class="mr-2 grey--text text--darken-2">
+                mdi-comment
+              </v-icon>
+            </v-skeleton-loader>
+            <v-skeleton-loader class="headerTextLoading d-inline-block rounded-xl"
+              type="list-item"
+              :loading="isLoading"
+            >
+              <h4 class="mr-2 d-inline-block red--text text--darken-3">نظرات کاربران</h4>
+            </v-skeleton-loader>
+            <v-divider class=" mb-6"></v-divider>
+            <v-skeleton-loader class=""
+              type="image"
+              :loading="isLoading"
+            >
+              <v-card outlined class="pa-4 my-6 relative" v-for="(comment, i) in comments" :key="i">
+                <div class="widthAll">
+                  <v-row>
+                    <v-col xl='11'>
+                      <v-row class="mt-8 mt-sm-0">
+                        <h4 class="grey--text text--darken-2 ml-2">{{comment.name}}</h4>
+                        <v-card-subtitle class="grey caption lighten-2 grey--text text--darken-3 rounded-lg pa-1" style="font-family: Byekan !important;">
+                          {{comment.date}}
+                        </v-card-subtitle>
+                      </v-row>
+                      <div class="grey--text text--darken-2 my-4 relative font-small-xs">
+                        <span class="font-small-xs">{{comment.text}}</span>
+                        <v-row class="my-2">
+                          <span class="cursorPointer body-2 dislikeIcon red--text text--darken-2 ml-6" @click="comment.replyMood = !comment.replyMood;comment.showReply=false" style="font-family: Byekan !important;">پاسخ</span>
+                          <span class="cursorPointer body-2 dislikeIcon red--text text--darken-2" v-if="comment.replyes.length" style="font-family: Byekan !important;" @click="comment.showReply = !comment.showReply;comment.replyMood =false">{{comment.showReply ? 'مخفی کردن پاسخ ها' : 'مشاهده پاسخ ها'}}   </span>
+                        </v-row>
+                        <v-row v-if="comment.replyMood" align="center" >
+                          <v-textarea outlined v-model="comment.newComment.text" class="font-small-xs replyField"></v-textarea>
+                          <v-icon size="60" color="red" class="cursorPointer replyIcon" @click="replyToComment(i)" style="transform: rotate(180deg)">mdi-send-circle</v-icon>
+                        </v-row>
+                        <v-row v-show="comment.showReply" class="grey lighten-5 px-4 rounded-xl">
+                          <v-col>
+                            <v-row class="my-2 font-small-xs" v-for="(reply , j) in comment.replyes" :key="j" :style="{borderBottom: j < (comment.replyes.length-1) ? '1px solid rgb(223, 223, 223)' : 'none'}">
+                              <h5 class="grey--text text--darken-1 ml-2 mt-1">{{reply.name}}</h5>
+                              <v-card-subtitle class="grey caption lighten-2 grey--text text--darken-3 rounded-lg pa-1" style="font-family: Byekan !important;">
+                                {{reply.date}}
+                              </v-card-subtitle>
+                              <div class="widthAll my-2 body-2 " style="font-family: Byekan !important;">{{reply.text}}</div>
+                            </v-row>
+                          </v-col>
+                        </v-row>
+                      </div>
+                      <div class="absolute"style="left:10;top:10">
+                        <v-icon @click="comment.like++" class="cursorPointer likeIcon" color="green" >
+                          mdi-thumb-up
+                        </v-icon>
+                        <span class="mt-9">
+                          {{comment.like}}
+                        </span>
+                      </div>
+                      <div class="absolute" style="left:65px;top:10px">
+                        <v-icon @click="comment.dislike++" class=" cursorPointer dislikeIcon" color="red">
+                        mdi-thumb-down
+                      </v-icon>
+                      {{comment.dislike}}
+                      </div>
+                    </v-col>
+                  </v-row>
+                </div>
+              </v-card>
+            </v-skeleton-loader>
+            <v-row v-if="newCommentMood" align="center" >
+              <v-textarea class="font-small-xs replyField" outlined v-model="newComment.text" placeHolder="نظر خود را با دیگران به اشتراک بگذارید..."></v-textarea>
+              <v-icon size="60" @click="addNewComment" color="red" class="cursorPointer replyIcon" style="transform: rotate(180deg)">mdi-send-circle</v-icon>
+            </v-row>
+            <v-row v-if="!newCommentMood" justify="center" class="my-2">
+              <v-skeleton-loader class="headerIconLoading d-inline-block"
+                type="button"
+                :loading="isLoading"
+              >
+                <v-btn class="red" @click="newCommentMood = true" dark>ثبت نظر جدید</v-btn>
+              </v-skeleton-loader>
+            </v-row>
+          </div>
+        </v-row>
+        <!-- loading -->
+        <div v-if="isLoading" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9999 ;top:0;right:0;background:#00000048">
+          <img src="./image/logo-header.png" class="white pa-12 rounded-xl" alt="">
+        </div>
+        <!-- footer -->
+        <v-row justify="center" class="grey lighten-3">
+          <div class=" indexDiv my-3 pa-sm-6 pb-2 rounded-lg mb-12">
+            <v-row>
+              <v-col cols="12" sm="6" class="pa-0 pa-sm-3">
+                <v-row class="caption grey--text text--darken-3" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
+                <v-row class="caption grey--text text--darken-3" style="font-family: Byekan !important;">شماره تماس:41889-021</v-row>
+                <v-row class=" mt-2 mt-md-12">
+                  <v-col cols="5" sm="12" md="6" class="pa-0 pa-sm-3">
+                    <h4>درباره هتل آهوان</h4>
+                    <ul class="mr-4 mr-md-2 my-2 my-md-12">
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تماس با ما</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">درباره ما</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">سوالات متداول</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">فرصت‌های شغلی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">شرایط قوانین</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">حقوق مسافرین</li>
+                    </ul>
+                  </v-col>
+                  <v-col cols="7" sm="12" md="6" class="pa-0 pa-sm-3">
+                    <h4>پیشنهادات آهوان</h4>
+                    <ul class="mr-4 mr-md-2 my-2 my-md-12">
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تورهای ویژه آهوان</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">هتل‌های ویژه آهوان</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پروازهای ویژه آهوان</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین تورهای داخلی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین تورهای خارجی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین هتل‌های داخلی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین هتل‌های خارجی</li>
+                    </ul>
+                  </v-col>
+                </v-row>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-row class="justify-center justify-sm-end">
+                  <v-icon class="mx-1" color="grey">mdi-whatsapp</v-icon>
+                  <v-icon class="mx-1" color="grey">mdi-email-outline</v-icon>
+                  <v-icon class="mx-1" color="grey">mdi-instagram</v-icon>
+                  <v-icon class="mx-1" color="grey">mdi-twitter</v-icon>
+                  <v-icon class="mx-1" color="grey" style="transform: rotate(-36deg);">mdi-send</v-icon>
+                </v-row>
+                <div class="widthAll mt-3" style="height:1px;background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(208,208,208,0.6026785714285714) 63%, rgba(205,205,205,1) 100%)"></div>
+                <v-row>
+                  <p class="body-2 text-justify grey--text text--darken-1 my-6" style="font-family: Byekan !important;line-height:25px">
+                    آهوان با ارائه بهترین و با کیفیت ترین خدمات گردشگری به صورت آنلاین 
+                    میکوشد تا بعنوان معتبرترین شرکت گردشگری در ایران تجربه لذت بخش یک رزرو 
+                    اینترنتی را برایتان تداعی کند.
+                  </p>
+                </v-row>
+                <v-row justify="center" class="footerImagesParent">
+                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
+                    <img class="mx-2 mx-md-4" src="./image/logo (1).png"></img>
+                  </a>
+                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
+                    <img class="mx-2 mx-md-4" src="./image/logo.png"></img>
+                  </a>
+                  <a target="_blank" href="https://www.cao.ir/">
+                    <img class="mx-2 mx-md-4" src="./image/cao.png"></img>
+                  </a>
+                  <a target="_blank" href="http://www.aira.ir/">
+                    <img class="mx-2 mx-md-4" src="./image/lohoaira.png"></img>
+                  </a>
+                  <a target="_blank" href="https://www.cao.ir/paxrights">
+                    <img class="mx-2 mx-md-4" src="./image/Passenger.png"></img>
+                  </a>
+                </v-row>
+                <v-row justify="center" class="mt-12">
+                  <h4 class="grey--text text--darken-2">دانلود اپلیکیشن آهوان</h4>
+                </v-row>
+                <v-row justify="center" class="my-2">
+                  <p class="grey--text text--darken-3 text-center text-sm-right">با اپلیکیشن آهوان سرعت،کیفیت و قیمت ارزان را تجربه کنید.</p>
+                </v-row>
+                <v-row justify="center" class="my-2">
+                  <div class="px-3 py-1 mx-1 rounded-lg downloadButton" style="background-color: #56c59b;">
+                    <img class="mx-2 mx-md-4" src="./image/bazar-download.png"></img>
+                  </div>
+                  <div class="px-3 mr-x mt-sm-3 mt-md-0 py-1 rounded-lg downloadButton" style="background-color: #56c59b;">
+                    <img class="mx-2 mx-md-4" src="./image/google-download.png"></img>
+                  </div>
+                </v-row>
+              </v-col>
+            </v-row>
+          </div>
+        </v-row>
+      </v-app>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <!-- import component slides -->
+    <script src="./js/headerSite.js"></script>
+
+    <script src="./js/imageSlider.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="./dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
+    <script src="./dist/mds.bs.datetimepicker.js"></script>
+    <script>
+      $(document).ready(function(){
+        
+      });
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+
+  :root {
+    --animate: 2.5s;
+    --pause: 3s;
+    --totall-duration: calc(var(--animate) * 2 + var(--pause) * 2);
+  }
+
+  .container {
+    width: 500px;
+    height: 333px;
+    overflow: hidden;
+  }
+
+  .slider-wrapper {
+    width: 200%;
+    display: flex;
+    position: relative;
+  }
+
+  .image {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-image-1 {
+    top: 0;
+    left: 0;
+    position: absolute;
+    animation: slide-out-image-1 var(--totall-duration) 3s
+      cubic-bezier(0.54, 0.12, 0.44, 1) infinite;
+  }
+  /* start + pause + start + pause = totall */
+  /* 2.5s + 3s + 2.5s + 3s = 11s*/
+  @keyframes slide-out-image-1 {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-100%);
+    }
+    25.0001% {
+      transform: translateX(100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+    75% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .hero-image-2 {
+    top: 0;
+    right: 0;
+    position: absolute;
+    animation: slide-in-image-2 var(--totall-duration) 3s
+      cubic-bezier(0.54, 0.12, 0.44, 1) infinite;
+  }
+
+  /* start + pause + start + pause = totall */
+  /* 2.5s + 3s + 2.5s + 3s = 11s*/
+  @keyframes slide-in-image-2 {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(-100%);
+    }
+    75% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="slider-wrapper">
+      <div class="hero-image-1">
+        <img class="image" src="https://drive.google.com/uc?export=view&id=1l7cTX35wqd-4eYvFL8A5QLZ7LbOF9m4J" />
+      </div>
+      <div class="hero-image-2">
+        <img class="image" src="https://drive.google.com/uc?export=view&id=1iB9R1aoeYSmkPX9Ju3NNOZhKylOjCA0y" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

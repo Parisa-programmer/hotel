@@ -1,0 +1,44 @@
+.inputLoader .v-skeleton-loader__heading {
+  width: 100%;
+  margin: 0;
+  padding: 22px 0;
+}
+
+.headerTextLoading .v-skeleton-loader__text{
+  width: 161px !important;
+  padding: 17px 0;
+}
+
+.headerIconLoading{
+  width: fit-content;
+}
+
+#aboutHotel .textLoader{
+  width:100%
+}
+
+#aboutHotel .textLoader .v-skeleton-loader__chip{
+  width:100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.v-skeleton-loader__button{
+  width: 150px;
+}
+
+.v-skeleton-loader__list-item-avatar .v-skeleton-loader__avatar{
+  margin-left: 20px ;
+  margin-top: 5px;
+}
+
+.v-skeleton-loader__list-item-avatar .v-skeleton-loader__text{
+  min-height: 30px;
+  margin-top: 10px;
+}
+
+.downloadTextLoadig .v-skeleton-loader__text{
+  max-width: 500px;
+  height: 100px;
+}
+

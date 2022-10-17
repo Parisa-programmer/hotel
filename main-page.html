@@ -28,161 +28,286 @@
       <v-app>
         <div class="headerDiv " v-cloak style="top: 0;right:0">
           <div id="header" v-cloak class="widthAll fixed" style="top: 0;right:0;z-index: 99;">
-                <v-row class="header grey lighten-3" justify="center">
-                  <div class=" indexDiv pa-3 pb-0">
-                    <a href="https://ahuan.ir"><img height="20px" src="./image/logo-header.png" alt="صفحه اصلی" ></a>
-                    <span class="headerSpan .v-application .body-2">رزرو آنلاین خدمات گردشگری</span>
-                    <v-icon class="mr-2 float-left">
-                      mdi-phone-in-talk
-                    </v-icon>
-                    <span class="headerText float-left">
-                      021-41889
-                    </span>
-                  </div>
-                </v-row>
-                <v-row class="white top-bar " justify="center" align="center">
-                  <div class="indexDiv">
-                    <v-row>
-                      <v-col cols="6" sm="9" md="8" class="pt-3 px-2 px-sm-0 headerButtons ">
-                        <v-row class="d-none d-sm-block pr-4">
-                          <v-skeleton-loader class="textLoader d-inline-block"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                          <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">پرواز</span>
-                          </v-skeleton-loader>
-                          <v-skeleton-loader class="textLoader d-inline-block"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                            <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل</span>
-                          </v-skeleton-loader>
-                          <v-skeleton-loader class="textLoader d-inline-block"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                            <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور</span>
-                          </v-skeleton-loader>
-                          <v-skeleton-loader class="textLoader d-inline-block"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                            <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل آهوان</span>
-                          </v-skeleton-loader>
-                          <v-skeleton-loader class="textLoader d-inline-block"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                            <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">اتوبوس</span>
-                          </v-skeleton-loader>
-                          <v-skeleton-loader class="textLoader d-inline-block"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                            <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">قطار</span>
-                          </v-skeleton-loader>
-                          <v-skeleton-loader class="textLoader d-inline-block"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                            <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">بیمه</span>
-                          </v-skeleton-loader>
-                            <span v-if="!isLoading" class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">مجله گردشگری</span>
-                            <span v-if="!isLoading" class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">شرکت ها</span>
-                        </v-row>
-                        <v-row class="d-block d-sm-none">
-                          <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
-                          <v-navigation-drawer
-                            v-model="showMenuSmall"
-                            fixed
-                            right
-                            temporary style="z-index:2;top: 100px ;"
-                          >
-                            <v-list
-                              nav
-                              dense
-                            >
-                              <v-list-item-group v-model="activePage"
-                                active-class="red--text text--accent-4"
-                              >
-                                <v-list-item @click="showMenuSmall = false">
-                                    <v-icon class="ml-2">mdi-airplane</v-icon>
-                                  <v-list-item-title>پرواز</v-list-item-title>
-                                </v-list-item>
-                      
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-sofa-single</v-icon>
-                                  <v-list-item-title>هتل</v-list-item-title>
-                                </v-list-item>
-                      
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-account-group</v-icon>
-                                  <v-list-item-title>تور</v-list-item-title>
-                                </v-list-item>
-                      
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-alpha-a-box</v-icon>
-                                  <v-list-item-title>هتل آهوان</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-bus</v-icon>
-                                  <v-list-item-title>اتوبوس</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-train-variant</v-icon>
-                                  <v-list-item-title>قطار</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-checkbook</v-icon>
-                                  <v-list-item-title>بیمه</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
-                                  <v-list-item-title>مجله گردشگری</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="showMenuSmall = false">
-                                  <v-icon class="ml-2">mdi-sitemap</v-icon>
-                                  <v-list-item-title>شرکت ها</v-list-item-title>
-                                </v-list-item>
-                              </v-list-item-group>
-                            </v-list>
-                          </v-navigation-drawer>
-                        </v-row>
-                      </v-col>
-                      <v-col cols="6" sm="3" md="4" class="pa-1 ">
-                        <v-row justify="end" align="center">
-                          <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
-                            type="chip"
-                            :loading="isLoading"
-                          >
-                            <v-icon large class="">
-                              mdi-account-outline
-                            </v-icon>
-                            <span class="font-14 grey--text">ورود - ثبت نام</span>       
-                          </v-skeleton-loader>       
-                        </v-row>
-                      </v-col>
+            <v-row class="header grey lighten-3" justify="center">
+              <div class=" indexDiv pa-1 pa-sm-3 pb-0">
+                <a href="https://ahuan.ir"><img height="20px" src="./image/logo-header.png" alt="صفحه اصلی" ></a>
+                <span class="headerSpan .v-application .body-2 d-none d-sm-inline-block">رزرو آنلاین خدمات گردشگری</span>
+                <v-icon class="mr-2 float-left d-none d-sm-inline-block">
+                  mdi-phone-in-talk
+                </v-icon>
+                <span class="headerText float-left">
+                  021-41889
+                </span>
+              </div>
+            </v-row>
+            <v-row class="white top-bar " justify="center" align="center">
+              <div class="indexDiv">
+                <v-row align="center">
+                  <v-col cols="6" sm="9" md="8" class="py-0 pt-sm-3 px-2 px-sm-0 headerButtons ">
+                    <v-row class="d-none d-sm-block pr-4">
+                      <v-skeleton-loader class="textLoader d-inline-block"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">پرواز</span>
+                      </v-skeleton-loader>
+                      <v-skeleton-loader class="textLoader d-inline-block"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل</span>
+                      </v-skeleton-loader>
+                      <v-skeleton-loader class="textLoader d-inline-block"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور</span>
+                      </v-skeleton-loader>
+                      <v-skeleton-loader class="textLoader d-inline-block"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل آهوان</span>
+                      </v-skeleton-loader>
+                      <v-skeleton-loader class="textLoader d-inline-block"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">اتوبوس</span>
+                      </v-skeleton-loader>
+                      <v-skeleton-loader class="textLoader d-inline-block"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">قطار</span>
+                      </v-skeleton-loader>
+                      <v-skeleton-loader class="textLoader d-inline-block"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">بیمه</span>
+                      </v-skeleton-loader>
+                        <span v-if="!isLoading" class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">مجله گردشگری</span>
+                        <span v-if="!isLoading" class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">شرکت ها</span>
                     </v-row>
-                  </div>
-                </v-row> 
+                    <v-row class="d-block d-sm-none">
+                      <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
+                      <v-navigation-drawer
+                        v-model="showMenuSmall"
+                        fixed
+                        right
+                        temporary style="z-index:2;top: 82px ;"
+                      >
+                        <v-list
+                          nav
+                          dense
+                        >
+                          <v-list-item-group v-model="activePage"
+                            active-class="red--text text--accent-4"
+                          >
+                            <v-list-item @click="showMenuSmall = false">
+                                <v-icon class="ml-2">mdi-airplane</v-icon>
+                              <v-list-item-title>پرواز</v-list-item-title>
+                            </v-list-item>
+                  
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-sofa-single</v-icon>
+                              <v-list-item-title>هتل</v-list-item-title>
+                            </v-list-item>
+                  
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-account-group</v-icon>
+                              <v-list-item-title>تور</v-list-item-title>
+                            </v-list-item>
+                  
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-alpha-a-box</v-icon>
+                              <v-list-item-title>هتل آهوان</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-bus</v-icon>
+                              <v-list-item-title>اتوبوس</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-train-variant</v-icon>
+                              <v-list-item-title>قطار</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-checkbook</v-icon>
+                              <v-list-item-title>بیمه</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                              <v-list-item-title>مجله گردشگری</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="showMenuSmall = false">
+                              <v-icon class="ml-2">mdi-sitemap</v-icon>
+                              <v-list-item-title>شرکت ها</v-list-item-title>
+                            </v-list-item>
+                          </v-list-item-group>
+                        </v-list>
+                      </v-navigation-drawer>
+                    </v-row>
+                  </v-col>
+                  <v-col cols="6" sm="3" md="4" class="pa-1">
+                    <v-row justify="end" align="center">
+                      <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
+                        type="chip"
+                        :loading="isLoading"
+                      >
+                        <div class="cursorPointer" @click="loginDialog = true">
+                          <v-icon large class="icon-small-xs">
+                            mdi-account-outline
+                          </v-icon>
+                          <span class="font-14 grey--text d-none d-sm-inline-block ">ورود - ثبت نام</span>
+                        </div>
+                      </v-skeleton-loader>       
+                    </v-row>
+                  </v-col>
+                </v-row>
+              </div>
+            </v-row> 
           </div>
+          <v-dialog v-if="loginDialog" class="rounded-xl loginDialog"
+            v-model="loginDialog"
+            style="z-index: 9999999999998"
+            width="450"
+          >
+            <v-card class="pa-2 hideOver" style="border-radius: 30px;">
+              <v-icon @click="loginDialog = false">mdi-close</v-icon>
+              <v-row justify="center">
+                <img src="./image/logoSite.png" width="50" alt="">
+              </v-row>
+              <!-- <v-row justify="center">
+                <div class="grey lighten-4 my-6 rounded-lg hideOver" style="width:300px">
+                  <v-row>
+                    <v-col class="py-3 text-center cursorPointer text-center " @click="loginType = 'register'" :class="loginType == 'register' && 'red lighten-5'">
+                      <h4 :class="loginType == 'register' ? 'red--text' : 'grey--text text--darken-1' ">
+                        ثبت نام
+                      </h4>
+                    </v-col>
+                    <v-col class="py-3 text-center cursorPointer " @click="loginType = 'login'" :class="loginType == 'login' && 'red lighten-5'">
+                      <h4 :class="loginType == 'login' ? 'red--text' : 'grey--text text--darken-1' ">
+                        ورود
+                      </h4>
+                    </v-col>
+                  </v-row>
+                </div>
+              </v-row> -->
+              <h2 v-if="loginType == 'login'" class="text-center mt-6">
+                ورود به حساب کاربری
+              </h2>
+              <h3 v-else class="text-center mt-6">
+                ثبت نام در سایت گردشگری آهوان
+              </h3>
+              <v-row justify="center">
+                <v-radio-group 
+                  v-model="UserType"
+                  row
+                >
+                  <v-radio 
+                    label="مسافر"
+                    color="red"
+                    :value="1"
+                    class="ml-4 ml-sm-0"
+                  ></v-radio>
+                  <v-radio
+                    label="شرکت"
+                    color="red"
+                    :value="2"
+                  ></v-radio>
+                </v-radio-group>
+              </v-row>
+              <v-row justify="center">
+                <v-form
+                  ref="loginForm"
+                  lazy-validation
+                >
+                <div v-if="UserType == 1">
+                  <span class="body-2" style="font-family: Byekan !important;">موبایل</span>
+                  <v-text-field outlined  class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" v-model='loginForm.phone' placeholder="موبایل" :rules="phoneRules"></v-text-field>
+                </div>
+                <div v-if="UserType == 2 && loginType == 'login'">
+                  <v-row>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">ایمیل</span>
+                    <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' placeholder="ایمیل" :rules="emailRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">موبایل</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" v-model='loginForm.phone' placeholder="موبایل" :rules="phoneRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">رمزعبور</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' placeholder="رمزعبور" :rules="emptyRules"></v-text-field>
+                  </v-row>
+                </div>
+                <div v-if="UserType == 2 && loginType == 'register'">
+                  <v-row>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">نام نماینده</span>
+                    <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.name' placeholder="نام نماینده" :rules="nameRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">نام خانوادگی نماینده</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.family' placeholder="نام خانوادگی نماینده" :rules="familyRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">نام شرکت یا آژانس</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-group" v-model='loginForm.companeyName' placeholder="نام شرکت یا آژانس" :rules="emptyRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">حوضه فعالیت شرکت</span>
+                    <v-select
+                      v-model="loginForm.companeyWork"
+                      :items="companeyWorkItems"
+                      :rules="emptyRules" outlined
+                      class="mt-2 rounded-xl" append-icon="mdi-semantic-web"
+                      placeholder="حوضه فعالیت شرکت"
+                    ></v-select>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">کد ثبت شرکت</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-numeric" v-model='loginForm.code' placeholder="کد ثبت شرکت" :rules="emptyRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">شماره موبایل نماینده</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" v-model='loginForm.phone' placeholder="شماره موبایل نماینده" :rules="phoneRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">آدرس ایمیل شرکت</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' placeholder="آدرس ایمیل شرکت" :rules="emailRules"></v-text-field>
+                    <span class="body-2 widthAll" style="font-family: Byekan !important;">رمز عبور</span>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' placeholder="رمزعبور" :rules="emptyRules"></v-text-field>
+                  </v-row>
+                </div>
+                <v-row justify="center">
+                  <span v-if="loginType == 'login'" class="body text-center widthAll" style="font-family: Byekan !important;">
+                    قبلا ثبت نام نکرده اید؟
+                    <span @click="loginType = 'register'" class=" blue--text text--lighten-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
+                  </span>
+                  <span v-else class="body text-center widthAll" style="font-family: Byekan !important;">
+                    قبلا ثبت نام کرده اید؟
+                    <span @click="loginType = 'login'" class=" blue--text text--lighten-2 cursorPointer" style="text-decoration: underline;">وارد شوید</span>
+                  </span>
+                </v-row>
+                <v-btn  @click="loginOrRegisterValidate()" dark class="widthAll red rounded-xl py-6 mt-1">
+                  {{(UserType == 2 && loginType == 'login') ? 'ورود' : 'مرحله بعدی'}}
+                </v-btn>
+                <h4 v-if="UserType != 2 " class="text-center my-2">یا</h4>
+                <v-btn dark v-if="UserType != 2 "
+                  tile
+                  color="blue darken-2" 
+                  class="widthAll red rounded-xl py-6"
+                >
+                  ورود از طریق گوگل
+                  <v-icon>
+                    mdi-pencil
+                  </v-icon>
+                </v-btn>
+                </v-form>
+              </v-row>
+            </v-card>
+          </v-dialog>
         </div>
-        <v-row>
+        <v-row class="d-none d-sm-flex">
           <v-img src="./image/flight-bg.jpg" height="260" alt="" />
         </v-row>
           <v-row justify="center">
             <div class="indexDiv">
-              <v-card elevation="1" class=" white relative pt-2 pt-sm-2 pt-md-4 pt-lg-6 pb-1 rounded-lg" style="bottom:70px;margin-bottom: -50px;">
+              <v-card elevation="1" class=" white relative pt-2 pt-sm-2 pt-md-4 pt-lg-6 pb-1 rounded-lg sections-card">
                 <v-row class="justify-center justify-md-space-between">
                   <div v-for="(item,i) in allSections" :key="i" class="px-1 px-md-2 px-lg-3 px-xl-4 sections" @click="changeActiveSection(i)">
                     <v-skeleton-loader class="inputLoader mb-1 mb-sm-1 mb-md-4"
                       type="card-heading"
                       :loading="isLoading"
                     >
-                      <v-row class="rounded-lg py-5 cursorPointer" justify="center" :class="item.active ? 'lighten-4 red' : 'lighten-3 grey'">
-                        <v-icon v-if="item.title != 'آهوان'" class="ml-2" :class="item.active ? 'text--darken-1 red--text' : 'text--darken-1 grey--text'">{{item.icon}}</v-icon>
+                      <v-row class="rounded-lg py-2 py-sm-2 py-md-3 py-lg-4 py-xl-5 cursorPointer" justify="center" :class="item.active ? 'lighten-5 red' : 'lighten-4 grey'">
+                        <v-icon v-if="item.title != 'آهوان'" class="ml-2 widthAll text-center" :class="item.active ? 'text--darken-1 red--text' : 'text--darken-1 grey--text'">{{item.icon}}</v-icon>
                         <img v-else class="ml-2" src="./image/logoSiteNoColor.png" width="28" height="20px"  alt="">
-                        <span :class="item.active ? 'text--darken-1 red--text' : 'text--darken-1 grey--text'">{{item.title}}</span>
+                        <span class="widthAll text-center mt-2 mt-sm-0" :class="item.active ? 'text--darken-1 red--text' : 'text--darken-1 grey--text'">{{item.title}}</span>
                       </v-row>
                       <v-row v-if="item.active" class="d-none d-sm-flex" justify="center">
                         <div class="triangleHeader" ></div>
@@ -196,10 +321,10 @@
           <!-- input box -->
           <v-row class="mb-3" justify="center">
             <div class="indexDiv">
-              <v-card v-show="selectedSection.title != 'بیمه'" elevation="1" class=" rounded-lg px-4 py-6">
-                <v-row class="">
-                  <v-col cols="3" v-if="selectedSection.title != 'آهوان'&&selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'">
-                    <v-skeleton-loader class="inputLoader mb-4 mx-4"
+              <v-card v-show="selectedSection.title != 'بیمه'" elevation="1" class=" rounded-lg px-sm-4 py-2 py-sm-4 py-md-6">
+                <v-row >
+                  <v-col cols="8" sm="5" md="4" lg="3" v-if="selectedSection.title != 'آهوان'&&selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'">
+                    <v-skeleton-loader class="inputLoader mb-sm-4 mx-0 mx-sm-4"
                       type="card-heading"
                       :loading="isLoading"
                     >
@@ -209,8 +334,8 @@
                       </v-row>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="1" v-if="selectedSection.title != 'آهوان' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'" ></v-col>
-                  <v-col cols="8" v-if="selectedSection.title != 'هتل' && selectedSection.title != 'آهوان' && selectedSection.title != 'تور' && selectedSection.title != 'قطار' && selectedSection.title != 'اتوبوس' ">
+                  <v-col class="d-none d-md-inline-block" cols="1" sm="0" md="1"  v-if="selectedSection.title != 'آهوان' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'" ></v-col>
+                  <v-col cols="12" sm="7" md="7" lg="8" class="py-0 py-sm-3" v-if="selectedSection.title != 'هتل' && selectedSection.title != 'آهوان' && selectedSection.title != 'تور' && selectedSection.title != 'قطار' && selectedSection.title != 'اتوبوس' ">
                     <v-skeleton-loader class="inputLoader mx-2"
                       type="card-heading"
                       :loading="isLoading"
@@ -223,26 +348,32 @@
                           label="یک طرفه"
                           color="red"
                           :value="1"
-                          class="byReturn"
+                          class="byReturn ml-4 ml-sm-0"
                         ></v-radio>
                         <v-radio
                           label="رفت و برگشت"
                           color="red"
                           :value="2"
-                          class="byReturn"
+                          class="byReturn ml-4 ml-sm-0"
+                        ></v-radio>
+                        <v-radio v-if="external == true && selectedSection.title == 'پرواز'"
+                          label="چند مسیره"
+                          color="red"
+                          :value="3"
+                          class="byReturn addFlightButton"
                         ></v-radio>
                       </v-radio-group>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="3" v-if="selectedSection.title == 'قطار' || selectedSection.title == 'اتوبوس'" class=mb-4>
-                    <v-row class="red lighten-4 rounded-lg mx-4 pa-1">
+                  <v-col cols="8" sm="7" md="4" lg="3"  v-if="selectedSection.title == 'قطار' || selectedSection.title == 'اتوبوس'" class=mb-4>
+                    <v-row class="red lighten-4 rounded-lg mx-md-4 pa-1">
                       <v-col class="mx-1 pa-1 text-center caption cursorPointer rounded-lg byReturn" style="font-family:Byekan !important" @click="byReturn = 1" :class="byReturn == 1 && 'white'">یک طرفه</v-col>
                       <v-col class="mx-1 pa-1 text-center caption cursorPointer rounded-lg byReturn" style="font-family:Byekan !important" @click="byReturn = 2" :class="byReturn == 2 && 'white'">رفت و برگشت</v-col>
                     </v-row>
                   </v-col>
                 </v-row>
-                <v-row align="center">
-                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'هتل' ? 3 : selectedSection.title == 'آهوان' ? 3 : 4" class="px-2 py-0">
+                <v-row align="center" class="justify-center justify-lg-start" :class="byReturn == 3 && 'borderFlight rounded-lg'">
+                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'هتل' ? 3 : selectedSection.title == 'آهوان' ? 3 : 4" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
@@ -253,7 +384,7 @@
                             v-model="originCity"
                             id="originCity"
                             :items="cityes"
-                            label="مبدا"
+                            :label="byReturn != 3 ? 'مبدا' : 'مبدا اول'"
                             class="font-small-xs hideArrow "
                             :class="originCity.length ? 'pt-2' : 'pt-0'"
                             prepend-inner-icon="mdi-map-marker"
@@ -272,7 +403,7 @@
                             class="font-small-xs hideArrow"
                             :class="destinationInternal.length ? 'pt-2' : 'pt-0'"
                             :items="selectedSection.title == 'هتل' ? hotels :selectedSection.title == 'آهوان' ? hotels :cityes"
-                            :label="selectedSection.title == 'هتل' ? 'نام هتل' :selectedSection.title == 'آهوان' ? 'نام هتل' :'مقصد'"
+                            :label="selectedSection.title == 'هتل' ? 'نام هتل' : selectedSection.title == 'آهوان' ? 'نام هتل' : byReturn == 3 ? 'مقصد اول' : 'مقصد'"
                             prepend-inner-icon="mdi-map-marker"
                             @click="hidePeaple"
                             @change="changeHeaderInput('destinationInternal')"
@@ -281,21 +412,21 @@
                       </v-row>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'هتل' ? 3 : selectedSection.title == 'آهوان' ? 3 : 2" class="px-2 py-0">
+                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'هتل' ? 3 : selectedSection.title == 'آهوان' ? 3 : 2" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
                     >
                       <div class="input-group" class="relative font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;height: 46px;border-radius: 10px;padding: 8px 4px;">
                         <v-icon class="grey--text text--darken-2">mdi-calendar-month</v-icon>
-                        <div class="cursorPointer heightAll d-inline-block grey--text text--darken-1 pt-1"> {{selectedDate ? selectedDate : 'انتخاب تاریخ'}}</div>
-                        <input type="text" ref="dtp1" value="" data-name="dtp1-text" class="cursorPointer heightAll widthAll absolute" readOnly style="top:0;left:0;opacity: 0;"
+                        <div class="cursorPointer heightAll d-inline-block grey--text text--darken-1 pt-1 font-small-xs"> {{selectedDate ? selectedDate : 'انتخاب تاریخ'}}</div>
+                        <input type="text" ref="dtp1" value="" data-name="dtp1-text" class="cursorPointer heightAll widthAll absolute dtp" readOnly style="top:0;left:0;opacity: 0;"
                         id="dtp1" style="width:80%">
                         <input class="d-none" data-name="dtp1-date" >
                       </div>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-0">
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
@@ -376,18 +507,100 @@
                     </div>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-0">
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 && 'd-none d-lg-block'">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
                     >
-                      <v-btn dark color="red" class="widthAll" @click="searchInHeaderBox">جستجو</v-btn>
+                      <v-btn dark color="red" class="widthAll mt-md-4 mt-lg-0 pt-6 pb-5 ronded-xl" @click="searchInHeaderBox" style="border-radius: 7px;" :class="byReturn == 3 && 'd-none d-lg-flex'">جستجو</v-btn>
                     </v-skeleton-loader>
                   </v-col>
                 </v-row>
+                <div v-for="(flight,i) in allFlights" :key="i">
+                  <v-row align="center" class="justify-center justify-md-start borderFlight rounded-lg" :class="((i+1) <= flightCityes.length && (external == true && selectedSection.title == 'پرواز' && byReturn == 3)) ? 'd-flex' : 'd-none'">
+                    <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
+                      <v-skeleton-loader class="inputLoader"
+                        type="card-heading"
+                        :loading="isLoading"
+                      >
+                        <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
+                          <v-col cols="5">
+                            <v-autocomplete
+                              v-model="flight.originCity"
+                              :id="'originCity' + i"
+                              :items="cityes"
+                              :label="'مبدا '+
+                              (i+2 == 2 ? 'دوم' : i+2 == 3 ? 'سوم'  : 'چهارم')
+                              "
+                              class="font-small-xs hideArrow "
+                              :class="flight.originCity.length ? 'pt-2' : 'pt-0'"
+                              prepend-inner-icon="mdi-map-marker"
+                              @click="hidePeaple"
+                              @change="changeHeaderInput('originCity'+i)"
+                            />
+                          </v-col>
+                          <v-col cols="2">
+                            <v-icon class="rounded-circle grey lighten-2 pa-1 mb-4" @click="exchangeCity(i)"> mdi-swap-horizontal </v-icon>
+                          </v-col>
+                          <v-col cols="5">
+                            <v-autocomplete
+                              v-model="flight.destinationInternal"
+                              :id="'destinationInternal'+i"
+                              class="font-small-xs hideArrow"
+                              :class="flight.destinationInternal.length ? 'pt-2' : 'pt-0'"
+                              :items="cityes"
+                              :label="'مقصد ' + (i+2 == 2 ? 'دوم' : i+2 == 3 ? 'سوم'  : 'چهارم')"
+                              prepend-inner-icon="mdi-map-marker"
+                              @click="hidePeaple"
+                              @change="changeHeaderInput('destinationInternal'+i)"
+                            />
+                          </v-col>
+                        </v-row>
+                      </v-skeleton-loader>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" lg="2" class="px-2 py-1">
+                      <v-skeleton-loader class="inputLoader"
+                        type="card-heading"
+                        :loading="isLoading"
+                      >
+                        <div class="input-group" class="relative font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;height: 46px;border-radius: 10px;padding: 8px 4px;">
+                          <v-icon class="grey--text text--darken-2">mdi-calendar-month</v-icon>
+                          <div class="cursorPointer heightAll d-inline-block grey--text text--darken-1 pt-1 font-small-xs dtp"> {{flight.date ? flight.date : 'انتخاب تاریخ'}}</div>
+                          <input type="text" :ref="'dtp'+(i+2)" value="" :data-name="'dtp-text'+(i+2)" class="cursorPointer heightAll widthAll absolute dtp" readOnly style="top:0;left:0;opacity: 0;"
+                          :id="'dtp'+(i+2)" style="width:80%">
+                          <input class="d-none" :data-name="'dtp-date'+(i+2)" >
+                        </div>
+                      </v-skeleton-loader>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                      <v-skeleton-loader class="inputLoader"
+                        type="card-heading"
+                        :loading="isLoading"
+                      >
+                        <v-btn color="white" outlined class="widthAll mt-sm-4 mt-md-0 pt-6 pb-5 ronded-xl red--text addFlightButton" 
+                          @click="addFlight(i,(i < (flightCityes.length-1) || i == 2) ? 'delete' : 'add')" 
+                          style="border-radius: 7px;"
+                        >
+                          <v-icon
+                            right
+                            color="red"
+                          >
+                            {{(i < flightCityes.length-1 || i == 2) ? 'mdi-delete' : 'mdi-plus'}}
+                          </v-icon> 
+                            {{(i < flightCityes.length-1 || i == 2) ? 'حذف مسیر' : 'افزودن پرواز' }}
+                        </v-btn>
+                      </v-skeleton-loader>
+                    </v-col>
+                  </v-row>
+                </div>
+                <v-row justify="center">
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 ? 'd-block d-lg-none' : 'd-none'">
+                      <v-btn v-if="byReturn == 3" dark color="red" class="mt-4 pt-6 pb-5 ronded-xl widthAll" @click="searchInHeaderBox" >جستجو</v-btn>
+                  </v-col>
+                </v-row>
               </v-card>
-              <v-card v-show="selectedSection.title == 'بیمه'" class=" rounded-lg px-4 py-12 text-center">
-                <h3 class="grey--text text--darken-2">این قسمت از سایت در حال توسعه میباشد...</h3>
+              <v-card v-show="selectedSection.title == 'بیمه'" class=" rounded-lg px-4 py-4 py-ms-8 py-md-12 text-center">
+                <h3 class="grey--text text--darken-2 font-small-xs">این قسمت از سایت در حال توسعه میباشد...</h3>
               </v-card>
             </div> 
           </v-row>
@@ -398,9 +611,8 @@
                 type="image"
                 :loading="isLoading"
               >
-                <v-carousel
+                <v-carousel class="banerSlider"
                   cycle reverse
-                  height="360"
                   hide-delimiter-background
                   :show-arrows="false"
                   delimiter-icon="mdi-minus"
@@ -422,18 +634,18 @@
           <!-- frequently questions -->
           <v-row class="my-6" justify="center">
             <div class="indexDiv relative">
-              <v-skeleton-loader class="mb-5 textLoader"
+              <v-skeleton-loader class="mb-sm-5 textLoader"
                 type="chip"
                 :loading="isLoading"
               >
-                <h3>سوالات متداول:</h3>
+                <h3 class="font-small-title-xs">سوالات متداول:</h3>
               </v-skeleton-loader>
               <v-expansion-panels multiple class="white ltr">
                 <v-expansion-panel class="white"
                   v-for="(item,i) in questions"
                   :key="i"
                 >
-                  <v-skeleton-loader class="my-6"
+                  <v-skeleton-loader class="my-2 my-sm-6"
                     type="list-item-avatar"
                     :loading="isLoading"
                   >
@@ -441,12 +653,12 @@
                       <v-row class="">
                         <v-expansion-panel-header>
                           <v-icon color="red" large class="mx-3 float-right">mdi-chat-question</v-icon>
-                          <span class="float-right questionText mt-2">{{item.question}}</span>
+                          <span class="float-right questionText mt-sm-2 font-small-xs">{{item.question}}</span>
                         </v-expansion-panel-header>
                       </v-row>
                       <v-row>
                         <v-expansion-panel-content>
-                          <span class="answerText text-justify grey--text text--darken-2">
+                          <span class="answerText grey--text text--darken-2 font-small-xs">
                             {{item.answer}}
                           </span>
                         </v-expansion-panel-content>
@@ -459,16 +671,16 @@
           </v-row>
           <!-- download app -->
           <v-row class="mb-3 grey lighten-3 downloadApp" justify="center">
-            <div class="indexDiv my-12 py-12 relative">
+            <div class="indexDiv my-lg-12 relative">
               <v-skeleton-loader class="my-6"
                 type="chip"
                 :loading="isLoading"
               >
-                <h1>دانلود اپلیکیشن آهوان</h1>
+                <h1 class="font-small-title-xs">دانلود اپلیکیشن آهوان</h1>
                 <div class="red mt-2 mb-4" style="height:5px;width:85px"></div>
               </v-skeleton-loader>
               <div>
-                <v-skeleton-loader class="downloadTextLoadig" style="max-width:500px;height:100px"
+                <v-skeleton-loader class="downloadTextLoadig font-small-xs"
                   type="text"
                   :loading="isLoading"
                 >
@@ -479,39 +691,38 @@
                 type="chip"
                 :loading="isLoading"
               >
-                <v-btn dark class=" px-12 red" disabled>دانلود</v-btn>
+                <v-btn dark class=" px-12 red font-small-xs" disabled>دانلود</v-btn>
               </v-skeleton-loader>
-              <img v-if="!isLoading" src="./image/mobile.png" width="410px" class="absolute" alt="" style="left:60px;bottom:0">
+              <img v-if="!isLoading" src="./image/mobile.png" class="mobileImageMainPage absolute d-none d-sm-block" alt="">
             </div>
           </v-row>
           <!-- get knewes  -->
-          <v-row class="my-12" justify="center">
+          <v-row class=" my-2 my-sm-12" justify="center">
             <div class="indexDiv ">
               <v-skeleton-loader class="mx-auto"
                 type="text"
                 :loading="isLoading"
               >
                 <v-row justify="center" >
-                    <h3 class="relative">
-                      <img v-if="!isLoading" src="./image/arrowGif2.png" class="absolute" alt="" style="right: -448px;top: -131px;width: 425px;height: 292px">
+                    <h3 class="relative font-small-title-xs">
+                      <img v-if="!isLoading" src="./image/arrowGif2.png" class="absolute d-none d-sm-block" alt="" style="right: -448px;top: -131px;width: 425px;height: 292px">
                       <span>از </span>
-                      <span class="red--text mx-1">تخفیفیات</span> و <span class="red--text mx-1"> اخبار جدید </span>آهوان باخبر شوید.
+                      <span class="red--text mx-1">تخفیفیات</span> و<span class="red--text mx-1"> اخبار جدید </span>آهوان باخبر شوید.
                     </h3>
-                  
                 </v-row>
               </v-skeleton-loader>
               <v-row justify="center" class="my-4">
-                <v-skeleton-loader class="my-6"
+                <v-skeleton-loader class="my-1 my-sm-6"
                   type="chip"
                   :loading="isLoading"
                 >
-                  <v-btn color="yellow" @click="getKnewesType='mail';getKnewesDialog = true" class="mx-1">دریافت از طریق ایمیل</v-btn>
+                  <v-btn color="yellow" @click="getKnewesType='mail';getKnewesDialog = true" class="mx-1 font-small-xs">دریافت از طریق ایمیل</v-btn>
                 </v-skeleton-loader>
-                <v-skeleton-loader class="my-6"
+                <v-skeleton-loader class="my-1 my-sm-6"
                   type="chip"
                   :loading="isLoading"
                 >
-                  <v-btn color="orange" @click="getKnewesType='phone';getKnewesDialog = true" dark class="mx-1">دریافت از طریق پیامک</v-btn>
+                  <v-btn color="orange" @click="getKnewesType='phone';getKnewesDialog = true" dark class="mx-1 font-small-xs">دریافت از طریق پیامک</v-btn>
                 </v-skeleton-loader>
               </v-row>
               <v-dialog v-if="getKnewesDialog"
@@ -522,8 +733,8 @@
                 <v-card>
                   <v-form ref="sendKnewsForm" class="relative hideOver">
                     
-                    <div class="rounded-xl absolute grey lighten-4" style="height: 50px;width:50px;top:20px;left: -20px;"></div>
-                    <div class="rounded-circle absolute red lighten-5" style="height: 50px;width:50px;top:-20px;right: -20px;"></div>
+                    <div class="rounded-xl absolute grey lighten-4" style="height: 50px;width:50px;bottom:20px;right: -20px;"></div>
+                    <div class="rounded-circle absolute red lighten-5" style="height: 50px;width:50px;top:-20px;left: -20px;"></div>
                     <v-icon class="red--text absolute" @click="getKnewesDialog = false" style="right:10px;top:10px">mdi-close</v-icon>
                     <div class="rounded-xl absolute grey lighten-4" style="height: 45px;width: 106px;bottom: -38px;right: 50%;"></div>
                     <v-card-text v-if="getKnewesType=='mail'">
@@ -559,41 +770,45 @@
           <v-row class="my-6" justify="center">
             <div class="indexDiv ">
               <v-row class="relative">
-                <v-col cols="7">
+                <v-col cols="12" sm="7" class="py-0">
                   <v-skeleton-loader class="my-6"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <h4>خدمات شرکت آهوان</h4>
+                    <h4 class="font-small-title-xs">خدمات شرکت آهوان</h4>
                     <div class="red mt-1 mb-2 mb-6" style="height:3px;width:55px"></div>
                   </v-skeleton-loader>
                   <v-skeleton-loader class="my-6"
                     type="image"
                     :loading="isLoading"
                   >
-                    <p class="body-2" style="font-family: Byekan !important;">
+                    <p class="body-2 text-justify" style="font-family: Byekan !important;">
                       آژانس مسافرتی (انگلیسی: Travel Agency) یا شرکت خدمات مسافرتی، به شرکتی اطلاق می‌شود که در زمینه ارائه خدمات گردشگری، جهانگردی و هواپیمایی به صورت خرده‌فروشی و عمده‌فروشی و پیش‌فروش، فعالیت می‌نماید.
                       در ایران آژانس‌های مسافرتی بنا به نوع فعالیت خود از وزارت میراث فرهنگی،
                       د.
                     </p>
-                    <p class="body-2" style="font-family: Byekan !important;">
+                    <p class="body-2 text-justify" style="font-family: Byekan !important;">
                       صنایع دستی و گردشگری همچنین از سازمان هواپیمایی کشوری و از سازمان حج و زیارت مجوز فعالیت دریافت می‌کنند و به نمایندگی از تأمین‌کنندگان، خدماتی چون اخذ ویزا، رزرو هتل و اماکن اقامتی، برگزاری تورهای مسافرتی گروهی و انفرادی، فروش بلیت هواپیما، قطار، و کشتی، انجام امور بیمه مسافرتی، صدور گواهینامه رانندگی بین‌المللی و… ارائه می‌نمای
                     </p>
                   </v-skeleton-loader>
                 </v-col>
-                <v-col cols="5">
+                <v-col cols="12" sm="5" class="py-0">
                   <img  v-if="!isLoading" src="./image/3image.png" alt="" class="relative" style="left: 0;bottom:32px;width:90%">
                 </v-col>
               </v-row>
             </div>
           </v-row>
         <!-- loading -->
-        <div v-if="isLoading" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9999 ;top:0;right:0;background:#00000048">
+        <div v-if="isLoading" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9998 ;top:0;right:0;background:#00000048">
           <img src="./image/logo-header.png" class="white pa-12 rounded-xl" alt="">
         </div>
+        <!-- alert -->
+        <v-alert v-if="showAlert" dark class="white--text"
+          :type="alertType" style="z-index:9999"
+        >{{alertText}}</v-alert>
         <!-- footer -->
         <v-row justify="center" class="grey lighten-3">
-          <div class=" indexDiv px-sm-6 pb-sm-0  rounded-lg">
+          <div class=" indexDiv px-sm-6 pb-sm-0 pt-2 pt-sm-0  rounded-lg">
             <v-row>
               <v-col cols="12" sm="6" class="pa-0 pa-sm-3">
                 <v-row class="caption grey--text text--darken-3" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>

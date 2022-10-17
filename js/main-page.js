@@ -1,3 +1,4 @@
+
 const vuetify = new Vuetify({
   theme: {
     themes: {
@@ -17,7 +18,7 @@ new Vue({
   data: {
     // header
     showMenuSmall: false,
-    activePage: 3,
+    activePage: null,
     fromDate: '',
     toDate: '',
     selectedDate: '',
@@ -27,6 +28,30 @@ new Vue({
       'کیش'
     ],
     hotels: ['اسپیناس پلاس', 'استقلال', 'مکس'],
+    allFlights:[
+      {
+        originCity: '',
+        destinationInternal: '',
+        date:''
+      },
+      {
+        originCity: '',
+        destinationInternal: '',
+        date:''
+      },
+      {
+        originCity: '',
+        destinationInternal: '',
+        date:''
+      },
+    ],
+    flightCityes: [
+      {
+        originCity: '',
+        destinationInternal: '',
+        date:''
+      }
+    ],
     originCity: '',
     destinationInternal: '',
     allPeaples: '1 مسافر ',
@@ -81,14 +106,32 @@ new Vue({
     },
     external: false,
     byReturn: 1,
+    // login
+    loginDialog:true,
+    loginType:'login',
+    UserType:1,
+    loginForm:{
+      name:'',
+      family:'',
+      companeyName:'',
+      companeyWork:'',
+      code:'',
+      phone:'',
+      mail:'',
+      password:''
+    },
+    companeyWorkItems:['آژانس مسافرتی','علمی و دانشگاهی','بانکی','صنعتی','تولیدی','سایر'],
+    emptyRules: [
+      v => !!v || 'پر کردن این فیلد اجباریست.'
+    ],
     //slider
     slides: [
-      // './image/sliderMain6.jpg',
+      './image/sliderMain6.jpg',
       './image/sliderMain5.jpg',
-      // './image/sliderMain2.jpg',
-      // './image/sliderMain3.jpg',
-      // './image/sliderMain4.jpg',
-      // './image/sliderMain1.jpg',
+      './image/sliderMain2.jpg',
+      './image/sliderMain3.jpg',
+      './image/sliderMain4.jpg',
+      './image/sliderMain1.jpg',
     ],
     // questions
     questions: [
@@ -118,18 +161,18 @@ new Vue({
       },
     ],
     // Knewes
-    getKnewesDialog:false,
-    getKnewesType:'mail',
-    mailForm:'',
-    nameForm:'',
-    familyForm:'',
-    phoneForm:'',
+    getKnewesDialog: false,
+    getKnewesType: 'mail',
+    mailForm: '',
+    nameForm: '',
+    familyForm: '',
+    phoneForm: '',
     emailRules: [
       v => /.+@.+\..+/.test(v) || 'ایمیل نادرست میباشد.',
     ],
     phoneRules: [
       v => !!v || 'پر کردن فیلد تلفن اجباریست.',
-      v => (v.length == 11 ) || 'شماره تلفن صحیح نیست.',
+      v => (v.length == 11) || 'شماره تلفن صحیح نیست.',
     ],
     nameRules: [
       v => !!v || 'پر کردن فیلد نام اجباریست.',
@@ -158,7 +201,10 @@ new Vue({
       v => (v || '').indexOf(9) < 0 || 'فرمت صحیح نیست',
     ],
     // loading
-    isLoading: true,
+    isLoading: false,
+    showAlert:true,
+    alertType:'error',
+    alertText:'hiii'
   },
   watch: {
     showAlert() {
@@ -174,9 +220,22 @@ new Vue({
         ['تهران', 'اهواز', 'کیش'];
       this.originCity = ''
       this.destinationInternal = '';
+      this.byReturn = 1
     },
+    byReturn() {
+      this.flightCityes = [
+        {
+          originCity: '',
+          destinationInternal: '',
+          date:''
+        }
+      ]
+    }
   },
   methods: {
+    loginOrRegisterValidate(){
+      this.$refs.loginForm.validate()
+    },
     georgian() {
       alert('hi')
     },
@@ -222,13 +281,37 @@ new Vue({
       }
       console.log(selectedSection);
     },
-    exchangeCity() {
-      var variable = this.originCity
-      this.originCity = this.destinationInternal
-      this.destinationInternal = variable
+    exchangeCity(index) {
+      if (isNaN(index)) {
+        let variable = this.originCity
+        this.originCity = this.destinationInternal
+        this.destinationInternal = variable
+      } else {
+        let variable = this.allFlights[index].originCity
+        this.allFlights[index].originCity = this.allFlights[index].destinationInternal
+        this.allFlights[index].destinationInternal = variable
+      }
+    },
+    addFlight(index, type) {
+      if (this.flightCityes.length < 3 && type == 'add') {
+        this.flightCityes.push({
+          originCity: '',
+          destinationInternal: '',
+          date:''
+        })
+        this.allFlights.push({
+          originCity: '',
+          destinationInternal: '',
+          date:''
+        })
+      } 
+      else {
+        this.flightCityes.splice(index, 1)
+        this.allFlights.splice(index, 1)
+      }
     },
     // send knewes
-    validateKnewes(){
+    validateKnewes() {
       this.$refs.sendKnewsForm.validate()
     },
     // rooms
@@ -297,9 +380,33 @@ new Vue({
         // trigger: 'focus'
       });
 
+      const dtp2 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp2'), {
+        targetTextSelector: '[data-name="dtp2-text"]',
+        targetDateSelector: '[data-name="dtp2-date"]',
+        rangeSelector: false,
+        disableBeforeDate: new Date(),
+        // trigger: 'focus'
+      });
+
+      const dtp3 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp3'), {
+        targetTextSelector: '[data-name="dtp3-text"]',
+        targetDateSelector: '[data-name="dtp3-date"]',
+        rangeSelector: false,
+        disableBeforeDate: new Date(),
+        // trigger: 'focus'
+      });
+      
+      const dtp4 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp4'), {
+        targetTextSelector: '[data-name="dtp4-text"]',
+        targetDateSelector: '[data-name="dtp4-date"]',
+        rangeSelector: false,
+        disableBeforeDate: new Date(),
+        // trigger: 'focus'
+      });
+
       // functions
       function defultShowDatePicker(value) {
-        if (value == 1) {
+        if (value == 1 || value == 3) {
           dtp1.updateOptions({
             rangeSelector: false,
             rangeSelectorMonthsToShow: [0, 0],
@@ -329,24 +436,88 @@ new Vue({
         }
       });
 
+      var firstAppend2 = 0
+      $('#dtp2').on('click', function () {
+        if (firstAppend2 == 0) {
+          var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+          $(".popover").append(r);
+          firstAppend2 = 1
+        }
+        if (firstAppend2 == 2) {
+          var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+          $(".popover").append(r);
+          firstAppend2 = 1
+        }
+      });
+
+      var firstAppend3 = 0
+      $('#dtp3').on('click', function () {
+        if (firstAppend3 == 0) {
+          var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+          $(".popover").append(r);
+          firstAppend3 = 1
+        }
+        if (firstAppend3 == 2) {
+          var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+          $(".popover").append(r);
+          firstAppend3 = 1
+        }
+      });
+
+      var firstAppend4 = 0
+      $('#dtp4').on('click', function () {
+        if (firstAppend4 == 0) {
+          var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+          $(".popover").append(r);
+          firstAppend4 = 1
+        }
+        if (firstAppend4 == 2) {
+          var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+          $(".popover").append(r);
+          firstAppend4 = 1
+        }
+      });
+
       $(document).on('click', '#solar', function () {
         dtp1.updateOptions({
+          isGregorian: false
+        });
+        dtp2.updateOptions({
+          isGregorian: false
+        });
+        dtp3.updateOptions({
+          isGregorian: false
+        });
+        dtp4.updateOptions({
           isGregorian: false
         });
         $(".popover").removeClass('solarDate')
         $(".popover").addClass('persianDate')
         firstAppend = 0
-        $('#dtp1').show()
+        firstAppend2 = 0
+        firstAppend3 = 0
+        firstAppend4 = 0
       });
 
       $(document).on('click', '#georgian', function () {
         dtp1.updateOptions({
           isGregorian: true
         });
+        dtp2.updateOptions({
+          isGregorian: true
+        });
+        dtp3.updateOptions({
+          isGregorian: true
+        });
+        dtp4.updateOptions({
+          isGregorian: true
+        });
         $(".popover").removeClass('persianDate')
         $(".popover").addClass('solarDate')
         firstAppend = 2
-        $('#dtp1').show()
+        firstAppend2 = 2
+        firstAppend3 = 2
+        firstAppend4 = 2
       });
 
       // for focuse after changes
@@ -390,6 +561,52 @@ new Vue({
         }
       })
 
+      $(document).on('hide.bs.popover', '#dtp2', function () {
+        firstAppend2 = 0
+        $('#dtp2').attr('value', dtp2.getText())
+        var selectedDate = $('#dtp2').attr('value')
+        if (selectedDate) {
+          selectedDate = selectedDate.split(' - ')
+          let options = { day: 'numeric', month: 'long' };
+          let fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          self.allFlights[0].date = fromDate
+        } else{
+          self.allFlights[0].date = ''
+        }
+      })
+
+      $(document).on('hide.bs.popover', '#dtp3', function () {
+        firstAppend3 = 0
+        $('#dtp3').attr('value', dtp3.getText())
+        var selectedDate = $('#dtp3').attr('value')
+        if(selectedDate){
+          selectedDate = selectedDate.split(' - ')
+          let options = { day: 'numeric', month: 'long' };
+          let fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          console.log(selectedDate);
+          self.allFlights[1].date = fromDate
+        } else{
+          self.allFlights[1].date = ''
+        }
+        
+      })
+
+      $(document).on('hide.bs.popover', '#dtp4', function () {
+        firstAppend4 = 0
+        $('#dtp4').attr('value', dtp4.getText())
+        var selectedDate = $('#dtp4').attr('value')
+        if(selectedDate){
+          selectedDate = selectedDate.split(' - ')
+          let options = { day: 'numeric', month: 'long' };
+          let fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          console.log(selectedDate);
+          self.allFlights[2].date = fromDate
+        } else{
+          self.allFlights[2].date = ''
+        }
+        
+      })
+
       $(document).on('click', '.hideEventPeaple', function () {
         $('#showPeaple').toggle()
       })
@@ -404,7 +621,6 @@ new Vue({
         dtp1.clearDate();
         defultShowDatePicker(self.byReturn)
       })
-
 
     }, 3000);
 

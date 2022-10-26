@@ -19,7 +19,7 @@ new Vue({
     // header
     windowWidth:0,
     showMenuSmall: false,
-    activePage: null,
+    activePage: 0,
     fromDate: '',
     toDate: '',
     selectedDate: '',
@@ -56,13 +56,11 @@ new Vue({
     originCity: '',
     destinationInternal: '',
     allPeaples: '1 مسافر ',
-    headerRooms: [
-      {
-        peaple: 1,
-        child: 0,
-        baby: 0
-      }
-    ],
+    Passenger: {
+      peaple: 1,
+      child: 0,
+      baby: 0
+    },
     allSections: [
       {
         icon: 'mdi-airplane',
@@ -130,49 +128,6 @@ new Vue({
     emptyRules: [
       v => !!v || 'پر کردن این فیلد اجباریست.'
     ],
-    //slider
-    slides: [
-      './image/sliderMain6.jpg',
-      './image/sliderMain5.jpg',
-      './image/sliderMain2.jpg',
-      './image/sliderMain3.jpg',
-      './image/sliderMain4.jpg',
-      './image/sliderMain1.jpg',
-    ],
-    // questions
-    questions: [
-      {
-        question: 'چند روز قبل از پرواز، بلیط هواپیما را بخریم؟',
-        answer: 'امکان رزرو بلیط هواپیما از ماه‌ها قبل وجود دارد. اما گاهی اوقات قیمت بلیط هواپیما در روزهای نزدیک به پرواز ارزان‌تر می‌شود. بنابراین در صورتی که شرایطتان اجازه می‌دهد، رزرو آنلاین بلیط هواپیما را به روزهای نزدیک پرواز موکول کنید. البته اگر قصد سفر در ایام پرسفر نظیر تعطیلات را دارید، باید هر چه زودتر رزرو بلیط هواپیما را انجام دهید.'
-      },
-      {
-        question: 'در هر پرواز، میزان بار مجاز چقدر است؟',
-        answer: 'میزان مجاز بار به کلاس پرواز و کلاس نرخی بلیط بستگی دارد. هنگام خرید آنلاین بلیط هواپیما می‌توانید میزان بار مجاز را در اطلاعات بلیط ببینید. طبیعی است که اگر میزان بارتان بیش از حد مجاز باشد، باید جریمه پرداخت کنید.'
-      },
-      {
-        question: 'نرخ بلیط هواپیما برای نوزادان و کودکان زیر ۱۲ سال چگونه است؟',
-        answer: 'نرخ بلیط کودکان و نوزادان به کلاس پرواز و کلاس نرخی بستگی دارد. به صورت کلی، قیمت بلیط مسافر کودک (2 الی 12 سال) معادل 50 الی 100 درصد بلیط بزرگسال، و قیمت بلیط مسافر نوزاد (تا دو سال) 10 درصد بلیط بزرگسال است. هنگام تهیه بلیط هواپیما به این نکته توجه داشته باشید.'
-      },
-      {
-        question: 'رزرو آنلاین بلیط هواپیما هزینه بیشتری از خرید حضوری دارد؟',
-        answer: 'خیر؛ زمانی که از یک سایت معتبر خرید بلیط هواپیما، اقدام به خرید می‌کنید، نه تنها هزینه بیشتری پرداخت نمی‌کنید، حتی ممکن است تخفیف هم بگیرید. ضمنا با خرید آنلاین بلیط هواپیما از پشتیبانی نیز برخودار هستید.'
-      },
-      {
-        question: 'آیا پس از خرید اینترنتی بلیط هواپیما امکان استرداد آن وجود دارد؟',
-        answer: 'وقتی از آهوان یعنی بهترین سایت خرید بلیط هواپیما ، بلیطتان را رزرو می‌کنید، خیالتان آسوده است که امکان استرداد وجه در صورت کنسل کردن بلیط وجود دارد. میزان جریمه را هم هنگام رزرو آنلاین بلیط هواپیما در قسمت قوانین استرداد بخوانید. میزان جریمه به نوع بلیط، کلاس پروازی، کلاس نرخی و... بستگی دارد.'
-      },
-      {
-        question: 'آیا پس از خرید بلیط هواپیما، امکان تغییر نام یا نام خانوادگی وجود دارد؟',
-        answer: 'در پرواز داخلی یا خارجی، امکان تغییر نام و نام خانوادگی در بلیط سیستمی وجود ندارد. اما در بلیط چارتر، برخی از چارترکننده‌ها این تغییر را می‌پذیرند.'
-      },
-    ],
-    // Knewes
-    getKnewesDialog: false,
-    getKnewesType: 'mail',
-    mailForm: '',
-    nameForm: '',
-    familyForm: '',
-    phoneForm: '',
     emailRules: [
       v => /.+@.+\..+/.test(v) || 'ایمیل نادرست میباشد.',
     ],
@@ -206,6 +161,114 @@ new Vue({
       v => (v || '').indexOf(8) < 0 || 'فرمت صحیح نیست',
       v => (v || '').indexOf(9) < 0 || 'فرمت صحیح نیست',
     ],
+    // filter
+    filter:{
+      priceItems:[
+        {
+          label:'صد تا سیصد هزار تومان',
+          value: 1
+        },
+        {
+          label:'سیصد تا پانصد هزار تومان',
+          value: 2
+        },
+        {
+          label:'پانصد تا هشتصد هزار تومان',
+          value: 3
+        },
+        {
+          label:'هشتصد تا یک میلیون تومان',
+          value: 4
+        },
+        {
+          label:'بیش از یک میلیون تومان',
+          value: 5
+        },
+      ],
+      price:[],
+      timeItems:[
+        {
+          label:' صبح (4 تا 11)',
+          value: 1
+        },
+        {
+          label:' ظهر (11 تا 14)',
+          value: 2
+        },
+        {
+          label:' عصر (14 تا 19)',
+          value: 3
+        },
+        {
+          label:'شب (19 تا 24)',
+          value: 4
+        },
+        {
+          label:'نیمه شب (24 تا 4)',
+          value: 5
+        },
+      ],
+      time:[],
+      classItems:[
+        {
+          label:'اکونومی',
+          value: 1
+        },
+        {
+          label:'بیزینس',
+          value: 2
+        },
+      ],
+      class:[],
+      airlineItems:[],
+      airline:[],
+      typeItems:[
+        {
+          label:'چارتری',
+          value: 1
+        },
+        {
+          label:'سیستمی',
+          value: 2
+        },
+      ],
+      type:[],
+      showTypeItems:[
+        {
+          label:'نمایش پروازهای موجود',
+          value: 1
+        },
+        {
+          label:'عدم نمایش پرواز تکراری',
+          value: 2
+        },
+      ],
+      showType:[],
+    },
+    tickets:[
+      {
+        originTime:'15:20',
+        destinationTime:'18:35',
+      },
+      {
+        originTime:'15:20',
+        destinationTime:'18:35',
+      },
+      {
+        originTime:'15:20',
+        destinationTime:'18:35',
+      },
+    ],
+    ticketDetailsModal:true,
+    activeTab: 0,
+    panelDetails:0,
+    ticketDetailsTabs: [
+      'جزییات پرواز', 'قوانین استرداد', 'بار مجاز',
+    ],
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    ticketInfo:[],
+    cancellConditions:[],
+    sortTab:0,
     // loading
     isLoading: false,
     showAlert: false,
@@ -320,15 +383,11 @@ new Vue({
       alert('hi')
     },
     changeRoomValue() {
-      var rooms = this.headerRooms
+      var rooms = this.Passenger
       var all = 0
-      for (let i = 0; i < rooms.length; i++) {
-        all = all + rooms[i].baby + rooms[i].child + rooms[i].peaple
-      }
+      all = all + rooms.baby + rooms.child + rooms.peaple
+      console.log(all);
       this.allPeaples = all + ' مسافر '
-      if (this.selectedSection.title == 'هتل' || this.selectedSection.title == 'تور' || this.selectedSection.title == 'آهوان') {
-        this.allPeaples = this.allPeaples + '+ ' + this.headerRooms.length + ' اتاق'
-      }
     },
     // header
     changeActiveSection(index) {
@@ -394,37 +453,11 @@ new Vue({
     validateKnewes() {
       this.$refs.sendKnewsForm.validate()
     },
+    // ticket
+    showTicketPanel(event,index){
+      console.log(this.passengerindex);
+    },
     // rooms
-    showRoomPanel(panel, index) {
-      var self = this
-      switch (panel) {
-        case 'room_facilities':
-          if (self.rooms[index].room_facilities.length == 0) {
-            self.rooms[index].cancellation_conditions = []
-          }
-          break;
-        case 'cancellation_conditions':
-          if (self.rooms[index].cancellation_conditions.length == 0) {
-            self.rooms[index].room_facilities = []
-          }
-          break;
-        default:
-          break;
-      }
-    },
-    reserveRoom(room, index) {
-      this.selectedRooms[index] = room
-      var selectedDate = $('#dtp1').attr('value')
-      selectedDate = selectedDate.split(' - ')
-      let options = { day: 'numeric', month: 'long' };
-      this.fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-      this.toDate = new Date(selectedDate[1]).toLocaleDateString('fa-IR', options);
-      if (this.roomTab < this.headerRooms.length - 1) {
-        this.roomTab++
-      } else {
-        this.nextPage = !this.nextPage
-      }
-    },
     hidePeaple() {
       $('#showPeaple').hide()
     },

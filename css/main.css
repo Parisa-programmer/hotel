@@ -20,7 +20,7 @@ html {
 }
 
 .v-dialog{
-  border-radius: 30px !important;
+  border-radius: 10px !important;
 }
 
 body::-webkit-scrollbar,
@@ -91,6 +91,18 @@ body {
   direction: ltr !important;
 }
 
+.v-otp-input{
+  direction: ltr !important;
+}
+
+.v-text-field__details {
+  display: none;
+}
+
+.error--text .v-text-field__details {
+  display: block;
+}
+
 .row {
   margin: 0 !important;
 }
@@ -141,7 +153,7 @@ body {
 
 .v-text-field__slot label {
   left: auto !important;
-  right: -8px !important;
+  /* right: -8px !important; */
 }
 
 .v-textarea label {
@@ -163,6 +175,7 @@ body {
 
 .v-application--is-ltr .v-text-field--outlined legend {
   text-align: right !important;
+  margin-right: 8px;
 }
 
 /* dont read on html */
@@ -276,6 +289,10 @@ ul li::before {
 .v-select__slot input,
 .v-text-field__slot input {
   color: #797979 !important;
+}
+
+.darkInput input{
+  color: #3b3b3b !important;
 }
 
 .v-input__icon .notranslate {
@@ -424,6 +441,10 @@ input::-webkit-inner-spin-button {
   width: 1200px !important;
 }
 
+.flight-go-flesh{
+  width: 340px;
+}
+
 .cardSlider {
   width: 255px;
 }
@@ -491,6 +512,24 @@ input::-webkit-inner-spin-button {
   margin-left: 15px;
 }
 
+.filter-card .v-input--selection-controls{
+  margin-top: 3px;
+}
+
+.filter-card label{
+  font-size: 13px !important;
+}
+
+.filter-card .v-input--selection-controls__input .v-icon {
+  font-size: 21px;
+}
+
+.ticketCircle{
+  height: 50px;width:50px;
+  background-color: #f8f8f8;
+  border: 1px solid #efefef
+}
+
 .v-input--selection-controls__input:hover
   .v-input--selection-controls__ripple:before {
   transform: scale(0.8) !important;
@@ -521,6 +560,26 @@ input::-webkit-inner-spin-button {
 .mdi-chevron-down::before {
   color: red;
   font-size: 34px;
+}
+
+.flightTicket .v-expansion-panel-header__icon .v-icon.v-icon{
+  transition: unset !important
+}
+
+.ticketDetailsTabs .v-expansion-panel-header__icon i{
+  bottom: 28px !important;
+  top: unset;
+}
+
+.flightTicket .mdi-chevron-down::before {
+  font-size: 24px;
+  top: 5px;
+  position: relative;
+  
+}
+
+.flightTicket .v-expansion-panel-header--active .mdi-chevron-down::before {
+  top: 0;
 }
 
 .questionText {

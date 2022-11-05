@@ -408,6 +408,13 @@ input::-webkit-inner-spin-button {
   padding: 8px 4px;
 }
 
+.priceInput input{
+  text-align: center;
+  font-size: 20px;
+  color: #535353 !important;
+  width: 135px;
+}
+
 .nextpageBoxFields {
   height: 45px;
   background-color: #f5f5f5;
@@ -612,6 +619,53 @@ input::-webkit-inner-spin-button {
   color: rgb(13 13 13);
 }
 
+.v-application--is-ltr .v-slider--horizontal .v-slider__tick .v-slider__tick-label {
+  transform: rotate(55deg) !important;
+  font-size: 12px;
+  top: 20px;
+  right: -12px;
+}
+
+.v-slider__thumb{
+  box-shadow: 1px 2px 7px #838383;
+  height: 20px;
+  width: 20px;
+  left: -9px !important;
+}
+
+.v-slider__thumb-label{
+  background-color: #1abc9c !important;
+}
+
+.v-slider__thumb:before{
+  display: none;
+}
+
+.v-slider__track-container{
+  height: 10px !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* progress tab */
+.v-progress-linear__determinate{
+  background: linear-gradient(90deg, rgba(27,226,186,1) 0%, rgba(26,206,170,1) 67%, rgba(26,188,156,1) 100%);
+}
+
+.ticketForm .v-text-field__slot input,.ticketForm .v-input__slot {
+  background: #f1f1f1 !important;
+  min-height: 40px;
+  border-radius: 15px;
+  padding: 0 10px;
+}
+
+.ticketForm .v-input__slot[role="button"]{
+  margin-top: -15px;
+}
+
+.user-date .v-list-item__content{
+ padding: 0 !important;
+}
+
 /* responsive */
 @media (min-width: 1264px) and (max-width: 1400px) {
   .v-expansion-panel-header {
@@ -782,6 +836,11 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 599px) {
+
+  .theme--light.v-label {
+    color: #424242;
+  }
+
   .borderFlight{
     border: 1px solid #b9b9b9;
   }

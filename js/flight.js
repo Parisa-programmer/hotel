@@ -17,7 +17,7 @@ new Vue({
   vuetify: new Vuetify(),
   data: {
     // header
-    windowWidth:0,
+    windowWidth: 0,
     showMenuSmall: false,
     activePage: 0,
     fromDate: '',
@@ -147,6 +147,7 @@ new Vue({
       v => (v || '').indexOf(7) < 0 || 'فرمت صحیح نیست',
       v => (v || '').indexOf(8) < 0 || 'فرمت صحیح نیست',
       v => (v || '').indexOf(9) < 0 || 'فرمت صحیح نیست',
+      v => !(/^[\u0600-\u06FF\s]+$/.test(v)) || 'فرمت صحیح نیست',
     ],
     familyRules: [
       v => !!v || 'پر کردن فیلد نام خانوادگی اجباریست.',
@@ -160,115 +161,206 @@ new Vue({
       v => (v || '').indexOf(7) < 0 || 'فرمت صحیح نیست',
       v => (v || '').indexOf(8) < 0 || 'فرمت صحیح نیست',
       v => (v || '').indexOf(9) < 0 || 'فرمت صحیح نیست',
+      v => !(/^[\u0600-\u06FF\s]+$/.test(v)) || 'فرمت صحیح نیست',
+    ],
+    nationalNumberRules: [
+      v => !!v || 'پر کردن این فیلد اجباریست.',
+      v => (v.length == 10) || 'کد ملی صحیح نیست.',
     ],
     // filter
-    filter:{
-      priceItems:[
+    filter: {
+      priceItems: [
         {
-          label:'صد تا سیصد هزار تومان',
+          label: 'صد تا سیصد هزار تومان',
           value: 1
         },
         {
-          label:'سیصد تا پانصد هزار تومان',
+          label: 'سیصد تا پانصد هزار تومان',
           value: 2
         },
         {
-          label:'پانصد تا هشتصد هزار تومان',
+          label: 'پانصد تا هشتصد هزار تومان',
           value: 3
         },
         {
-          label:'هشتصد تا یک میلیون تومان',
+          label: 'هشتصد تا یک میلیون تومان',
           value: 4
         },
         {
-          label:'بیش از یک میلیون تومان',
+          label: 'بیش از یک میلیون تومان',
           value: 5
         },
       ],
-      price:[],
-      timeItems:[
+      price: [0, 5000000],
+      timeItems: [
+        'صبح',
+        'ظهر',
+        'عصر',
+        'شب',
+        'نیمه شب'
+        // {
+        //   label:' صبح (4 تا 11)',
+        //   value: 1
+        // },
+        // {
+        //   label:' ظهر (11 تا 14)',
+        //   value: 2
+        // },
+        // {
+        //   label:' عصر (14 تا 19)',
+        //   value: 3
+        // },
+        // {
+        //   label:'شب (19 تا 24)',
+        //   value: 4
+        // },
+        // {
+        //   label:'نیمه شب (24 تا 4)',
+        //   value: 5
+        // },
+      ],
+      time: [0, 4],
+      classItems: [
         {
-          label:' صبح (4 تا 11)',
+          label: 'اکونومی',
           value: 1
         },
         {
-          label:' ظهر (11 تا 14)',
+          label: 'بیزینس',
+          value: 2
+        },
+      ],
+      class: [],
+      airlineItems: [
+        {
+          label: 'زاگرس',
+          value: 1
+        },
+        {
+          label: 'قشم ایر',
           value: 2
         },
         {
-          label:' عصر (14 تا 19)',
+          label: 'ماهان',
           value: 3
         },
         {
-          label:'شب (19 تا 24)',
+          label: 'البرز',
           value: 4
         },
-        {
-          label:'نیمه شب (24 تا 4)',
-          value: 5
-        },
       ],
-      time:[],
-      classItems:[
+      airline: [],
+      typeItems: [
         {
-          label:'اکونومی',
+          label: 'چارتری',
           value: 1
         },
         {
-          label:'بیزینس',
+          label: 'سیستمی',
           value: 2
         },
       ],
-      class:[],
-      airlineItems:[],
-      airline:[],
-      typeItems:[
+      type: [],
+      showTypeItems: [
         {
-          label:'چارتری',
+          label: 'نمایش پروازهای موجود',
           value: 1
         },
         {
-          label:'سیستمی',
+          label: 'عدم نمایش پرواز تکراری',
           value: 2
         },
       ],
-      type:[],
-      showTypeItems:[
-        {
-          label:'نمایش پروازهای موجود',
-          value: 1
-        },
-        {
-          label:'عدم نمایش پرواز تکراری',
-          value: 2
-        },
-      ],
-      showType:[],
+      showType: [],
     },
-    tickets:[
+    tickets: [
       {
-        originTime:'15:20',
-        destinationTime:'18:35',
+        originTime: '15:20',
+        destinationTime: '18:35',
       },
       {
-        originTime:'15:20',
-        destinationTime:'18:35',
+        originTime: '15:20',
+        destinationTime: '18:35',
       },
       {
-        originTime:'15:20',
-        destinationTime:'18:35',
+        originTime: '15:20',
+        destinationTime: '18:35',
       },
     ],
-    ticketDetailsModal:true,
+    fromPrice: 0,
+    toPrice: '5,000,000',
+    ticketDetailsModal: false,
     activeTab: 0,
-    panelDetails:0,
+    panelDetails: 0,
     ticketDetailsTabs: [
       'جزییات پرواز', 'قوانین استرداد', 'بار مجاز',
     ],
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    ticketInfo:[],
-    cancellConditions:[],
-    sortTab:0,
+    ticketInfo: [],
+    cancellConditions: [],
+    sortTab: 0,
+    slider: [5, 45],
+    icons: [
+      'mdi-sun-wireless-outline',
+      'mdi-white-balance-sunny',
+      'mdi-theme-light-dark',
+      'mdi-weather-night',
+      'mdi-weather-night-partly-cloudy'
+    ],
+    slideGroup: 10,
+    dates: [],
+    nextPage: true,
+    nationalities: ['ایرانی', 'غیر ایرانی'],
+    genders: ['زن', 'مرد'],
+    dateDays: [],
+    dateMonths: [],
+    dateYears: [],
+    dateYearsPass: [],
+    users: [
+      {
+        name: '',
+        family: '',
+        nationality: 'ایرانی',
+        nationalityCode: '',
+        gender: '',
+        phone: '',
+        email: '',
+        birthday: '0/0/0',
+        passportNumber: '',
+        expirePass: '0/0/0',
+      }
+    ],
+    contactInfo:[{
+      phone:'',
+      email:'',
+    }],
+    contactInfoHeaders: [
+      { text: 'تلفن', value: 'phone' ,width:'40%' },
+      { text: 'ایمیل', value: 'email' ,width:'40%'},
+      { text: 'عملیات', value: 'actions',width:'20%',align:'center'}
+    ],
+    persianTebelHeaders: [
+      { text: 'نام', value: 'name' },
+      { text: 'نام خانوادگی', value: 'family' },
+      { text: 'ملیت', value: 'nationality' },
+      { text: 'کدملی', value: 'nationalityCode' },
+      { text: 'جنسیت', value: 'gender' },
+      { text: 'تاریخ تولد', value: 'birthday' },
+      { text: 'عملیات', value: 'actions' },
+    ],
+    persianUsers:[],
+    otherUsers:[],
+    otherTebelHeaders: [
+      { text: 'نام', value: 'name' },
+      { text: 'نام خانوادگی', value: 'family' },
+      { text: 'ملیت', value: 'nationality' },
+      { text: 'جنسیت', value: 'gender' },
+      { text: 'تاریخ تولد', value: 'birthday' },
+      { text: 'شماره پاسپورت', value: 'passportNumber' },
+      { text: 'انقضا پاسپورت', value: 'expirePass' },
+      { text: 'عملیات', value: 'actions' },
+    ],
+    bookStep: 1,
     // loading
     isLoading: false,
     showAlert: false,
@@ -311,18 +403,57 @@ new Vue({
       }
       this.$refs.loginForm.resetValidation()
     },
-    loginDialog(){
+    loginDialog() {
       this.resetLoginForm()
     },
-    UserType(){
+    UserType() {
       this.$refs.loginForm.resetValidation()
     },
-    loginType(){
+    loginType() {
       this.$refs.loginForm.resetValidation()
+    },
+    fromPrice() {
+      let self = this
+      let value1 = self.fromPrice.toString().replace(/,/g, "")
+      let value2 = value1
+      if (value1.length == 0 || value1 < 0) {
+        value2 = 0
+      } else if (value1.length > 1 && value1[0] == 0) {
+        value2 = value1.replace(0, '')
+      } else {
+        value2 = value1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
+      self.fromPrice = value2
+      self.filter.price = [Number(value1), Number(self.toPrice.toString().replace(/,/g, ""))]
+    },
+    toPrice() {
+      let self = this
+      let value1 = self.toPrice.toString().replace(/,/g, "")
+      let value2 = value1
+      if (value1.length == 0 || value1 < 0) {
+        value2 = 0
+      } else if (value1.length > 1 && value1[0] == 0) {
+        value2 = value1.replace(0, '')
+      } else {
+        value2 = value1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
+      self.toPrice = value2
+      self.filter.price = [Number(self.fromPrice.toString().replace(/,/g, "")), Number(value1)]
     }
   },
+  computed: {
+    monthName() {
+      var date = new Date().toLocaleDateString('fa-IR-u-nu-latn')
+      date = date.split('/')
+      let months = new Array("فروردين", "ارديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر", "دي", "بهمن", "اسفند");
+      var month = months[date[1] - 1]
+      var textDateFormat = date[2] + ' ' + month + ' ' + date[0] + ' ساعت ' + new Date().getHours() + ':' + new Date().getMinutes()
+      return month
+    },
+
+  },
   methods: {
-    getWidth(){
+    getWidth() {
       this.windowWidth = window.innerWidth
     },
     resetLoginForm() {
@@ -342,7 +473,7 @@ new Vue({
       var self = this
       if (self.loginStep == 1) {
         if (self.$refs.loginForm.validate()) {
-          if ((self.loginForm.phone == '09054791374' && self.loginType == 'login' ) || self.loginType == 'register') {
+          if ((self.loginForm.phone == '09054791374' && self.loginType == 'login') || self.loginType == 'register') {
             if (self.UserType == 1) {
               self.resendSeconds = 60
               self.showAlert = true
@@ -358,7 +489,7 @@ new Vue({
             self.showAlert = true
             self.alertText = 'برای ورود به سایت باید ابتدا ثبت نام کنید.'
             self.alertType = 'error'
-            self.loginForm.password = '' 
+            self.loginForm.password = ''
           }
           this.$refs.loginForm.resetValidation()
         } else {
@@ -386,7 +517,23 @@ new Vue({
       var rooms = this.Passenger
       var all = 0
       all = all + rooms.baby + rooms.child + rooms.peaple
-      console.log(all);
+      this.users = []
+      for (let i = 0; i < all; i++) {
+        this.users.push(
+          {
+            name: '',
+            family: '',
+            nationality: 'ایرانی',
+            nationalityCode: '',
+            gender: '',
+            phone: '',
+            email: '',
+            birthday: '0/0/0',
+            passportNumber: '',
+            expirePass: '0/0/0',
+          }
+        )
+      }
       this.allPeaples = all + ' مسافر '
     },
     // header
@@ -454,7 +601,7 @@ new Vue({
       this.$refs.sendKnewsForm.validate()
     },
     // ticket
-    showTicketPanel(event,index){
+    showTicketPanel(event, index) {
       console.log(this.passengerindex);
     },
     // rooms
@@ -473,9 +620,137 @@ new Vue({
         default:
           break;
       }
+    },
+    setDates() {
+      this.dateDays = []
+      this.dateMonths = []
+      this.dateYears = []
+      this.dateYearsPass = []
+      var nowYear = new Date().toLocaleDateString('fa-IR-u-nu-latn').slice(0, 4)
+      for (let i = 0; i < 100; i++) {
+        this.dateYears.push(nowYear - i)
+        if (i > 0 && i < 32) {
+          this.dateDays.push(i)
+          if (i < 20) {
+            this.dateYearsPass.push(Number(nowYear) + i)
+            if (i < 13) {
+              this.dateMonths.push(i)
+            }
+          }
+        }
+      }
+    },
+    // filter
+    changeRangePrice() {
+      this.fromPrice = this.filter.price[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      this.toPrice = this.filter.price[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    },
+    filterTime(val) {
+      return this.icons[val]
+    },
+    dayNumber(number) {
+      var timestamp = (Math.floor(number / 1000) * 1000) - (86400000 * 10)
+      let months = new Array("فروردين", "ارديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر", "دي", "بهمن", "اسفند");
+      this.dates = []
+      for (let i = 0; i < 20; i++) {
+        let date = new Date(timestamp).toLocaleDateString('fa-IR-u-nu-latn')
+        date = date.split('/')
+        this.dates.push(
+          {
+            day: date[2],
+            month: months[date[1] - 1],
+            timestamp: timestamp,
+            weekDay: (new Date(timestamp).getDay()) + 1
+          }
+        )
+        timestamp = timestamp + 86400000
+
+      }
+      this.slideGroup = 10
+      // return date
+    },
+    changeDate(timeStamp, index) {
+      this.slideGroup = index
+      if (new Date().getTime() - 86400000 < timeStamp) {
+        console.log('hii')
+      }
+
+    },
+    chooseTicket(type) {
+      this.ticketDetailsModal = false;
+      // this.nextPage = false ;
+      // this.nextPage = type == 'change' ? false : true;
+    },
+    changeBookStep(step) {
+      this.bookStep = step;
+      var users = this.users;
+      // persianTebelHeaders--otherUsers-otherTebelHeaders
+      this.persianUsers = []
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].nationality == 'ایرانی') {
+          this.persianUsers.push(
+            {
+              name: users[i].name,
+              family: users[i].family,
+              nationality: users[i].nationality,
+              nationalityCode: users[i].nationalityCode,
+              gender: users[i].gender,
+              birthday: users[i].birthday,
+            }
+          )
+        } else{
+          this.otherUsers.push(
+            {
+              name: users[i].name,
+              family: users[i].family,
+              nationality: users[i].nationality,
+              gender: users[i].gender,
+              passportNumber: users[i].passportNumber,
+              expirePass: users[i].expirePass,
+              birthday: users[i].birthday,
+            }
+          )
+        }
+      }
+        console.log(step);
+    },
+    changebirthDay(type, number,index) {
+      var dateArray = this.users[index].birthday.split('/')
+      switch (type) {
+        case 'day':
+          dateArray[2] = number
+          break;
+        case 'month':
+          dateArray[1] = number
+          break;
+        case 'year':
+          dateArray[0] = number
+          break;
+        default:
+          break;
+      }
+      this.users[index].birthday = dateArray[0] + '/' + dateArray[1] + '/' +dateArray[2] 
+    },
+    changepassExpire(type, number,index) {
+      var dateArray = this.users[index].expirePass.split('/')
+      switch (type) {
+        case 'day':
+          dateArray[2] = number
+          break;
+        case 'month':
+          dateArray[1] = number
+          break;
+        case 'year':
+          dateArray[0] = number
+          break;
+        default:
+          break;
+      }
+      this.users[index].expirePass = dateArray[0] + '/' + dateArray[1] + '/' +dateArray[2] 
     }
   },
   created() {
+    this.dayNumber(Math.floor(new Date().getTime() / 1000) * 1000 )
     this.getWidth()
     window.addEventListener('resize', this.getWidth());
     setTimeout(() => {
@@ -490,6 +765,7 @@ new Vue({
     // create datepicker
     var self = this
     setTimeout(() => {
+      self.setDates();
       const dtp1 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp1'), {
         targetTextSelector: '[data-name="dtp1-text"]',
         targetDateSelector: '[data-name="dtp1-date"]',
@@ -669,6 +945,8 @@ new Vue({
         firstAppend = 0
         $('#dtp1').attr('value', dtp1.getText())
         var selectedDate = $('#dtp1').attr('value')
+        console.log(selectedDate);
+        self.dayNumber(new Date(selectedDate).getTime())
         selectedDate = selectedDate.split(' - ')
         let options = { day: 'numeric', month: 'long' };
         self.fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);

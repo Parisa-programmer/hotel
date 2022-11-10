@@ -1,4 +1,3 @@
-
 const vuetify = new Vuetify({
   theme: {
     themes: {
@@ -10,7 +9,7 @@ const vuetify = new Vuetify({
       },
     },
   },
-})
+});
 
 new Vue({
   el: '#main-page',
@@ -165,8 +164,9 @@ new Vue({
     ],
     nationalNumberRules: [
       v => !!v || 'پر کردن این فیلد اجباریست.',
-      v => (v.length == 10) || 'کد ملی صحیح نیست.',
+      v => !!v && v.length == 10 || 'کد ملی صحیح نیست.',
     ],
+    dateError:false,
     // filter
     filter: {
       priceItems: [
@@ -289,7 +289,7 @@ new Vue({
     ],
     fromPrice: 0,
     toPrice: '5,000,000',
-    ticketDetailsModal: false,
+    ticketDetailsModal: true,
     activeTab: 0,
     panelDetails: 0,
     ticketDetailsTabs: [
@@ -309,7 +309,7 @@ new Vue({
     ],
     slideGroup: 10,
     dates: [],
-    nextPage: true,
+    nextPage: false,
     nationalities: ['ایرانی', 'غیر ایرانی'],
     genders: ['زن', 'مرد'],
     dateDays: [],
@@ -325,19 +325,23 @@ new Vue({
         gender: '',
         phone: '',
         email: '',
-        birthday: '0/0/0',
+        birthdayDay: '',
+        birthdayMonth: '',
+        birthdayYear: '',
         passportNumber: '',
-        expirePass: '0/0/0',
+        expirePassDay: '',
+        expirePassMonth: '',
+        expirePassYear: '',
       }
     ],
-    contactInfo:[{
-      phone:'',
-      email:'',
+    contactInfo: [{
+      phone: '',
+      email: '',
     }],
     contactInfoHeaders: [
-      { text: 'تلفن', value: 'phone' ,width:'40%' },
-      { text: 'ایمیل', value: 'email' ,width:'40%'},
-      { text: 'عملیات', value: 'actions',width:'20%',align:'center'}
+      { text: 'تلفن', value: 'phone', sortable: false, width: '40%' },
+      { text: 'ایمیل', value: 'email', sortable: false, width: '40%' },
+      { text: 'عملیات', value: 'actions', sortable: false, width: '20%', align: 'center' }
     ],
     persianTebelHeaders: [
       { text: 'نام', value: 'name' },
@@ -346,10 +350,10 @@ new Vue({
       { text: 'کدملی', value: 'nationalityCode' },
       { text: 'جنسیت', value: 'gender' },
       { text: 'تاریخ تولد', value: 'birthday' },
-      { text: 'عملیات', value: 'actions' },
+      { text: 'عملیات', value: 'actions', sortable: false, align: 'center' },
     ],
-    persianUsers:[],
-    otherUsers:[],
+    persianUsers: [],
+    otherUsers: [],
     otherTebelHeaders: [
       { text: 'نام', value: 'name' },
       { text: 'نام خانوادگی', value: 'family' },
@@ -357,10 +361,20 @@ new Vue({
       { text: 'جنسیت', value: 'gender' },
       { text: 'تاریخ تولد', value: 'birthday' },
       { text: 'شماره پاسپورت', value: 'passportNumber' },
-      { text: 'انقضا پاسپورت', value: 'expirePass' },
-      { text: 'عملیات', value: 'actions' },
+      { text: 'انقضا پاسپورت', value: 'expiredate', align: 'center' },
+      { text: 'عملیات', value: 'actions', sortable: false, align: 'center' },
     ],
     bookStep: 1,
+    acceptRulls: false,
+    editTicketInfoDialog: false,
+    editUser: {},
+    editContact: {},
+    ModalUserType: true,
+    offCodeIsTrue: undefined,
+    offCodeDisabledButton:false,
+    offCodeLoading:false,
+    offCode:'',
+    showSmallMenu:false,
     // loading
     isLoading: false,
     showAlert: false,
@@ -439,6 +453,10 @@ new Vue({
       }
       self.toPrice = value2
       self.filter.price = [Number(self.fromPrice.toString().replace(/,/g, "")), Number(value1)]
+    },
+    offCode(){
+      this.offCodeIsTrue = undefined
+      this.offCodeDisabledButton = false
     }
   },
   computed: {
@@ -521,6 +539,7 @@ new Vue({
       for (let i = 0; i < all; i++) {
         this.users.push(
           {
+            id: i,
             name: '',
             family: '',
             nationality: 'ایرانی',
@@ -528,9 +547,13 @@ new Vue({
             gender: '',
             phone: '',
             email: '',
-            birthday: '0/0/0',
+            birthdayDay: '0',
+            birthdayMonth: '0',
+            birthdayYear: '0',
             passportNumber: '',
-            expirePass: '0/0/0',
+            expirePassDay: '',
+            expirePassMonth: '',
+            expirePassYear: '',
           }
         )
       }
@@ -565,7 +588,6 @@ new Vue({
         default:
           break;
       }
-      console.log(selectedSection);
     },
     exchangeCity(index) {
       if (isNaN(index)) {
@@ -600,9 +622,15 @@ new Vue({
     validateKnewes() {
       this.$refs.sendKnewsForm.validate()
     },
+    validateBookStep() {
+      if (this.$refs.nextPageForm.validate()) {
+        return true
+      } else {
+        return false
+      }
+    },
     // ticket
     showTicketPanel(event, index) {
-      console.log(this.passengerindex);
     },
     // rooms
     hidePeaple() {
@@ -625,14 +653,14 @@ new Vue({
       this.dateDays = []
       this.dateMonths = []
       this.dateYears = []
-      this.dateYearsPass = []
+      this.dateYearsPass = [new Date().getFullYear()]
       var nowYear = new Date().toLocaleDateString('fa-IR-u-nu-latn').slice(0, 4)
       for (let i = 0; i < 100; i++) {
         this.dateYears.push(nowYear - i)
         if (i > 0 && i < 32) {
           this.dateDays.push(i)
           if (i < 20) {
-            this.dateYearsPass.push(Number(nowYear) + i)
+            this.dateYearsPass.push(new Date().getFullYear() + i)
             if (i < 13) {
               this.dateMonths.push(i)
             }
@@ -672,9 +700,7 @@ new Vue({
     changeDate(timeStamp, index) {
       this.slideGroup = index
       if (new Date().getTime() - 86400000 < timeStamp) {
-        console.log('hii')
       }
-
     },
     chooseTicket(type) {
       this.ticketDetailsModal = false;
@@ -682,75 +708,72 @@ new Vue({
       // this.nextPage = type == 'change' ? false : true;
     },
     changeBookStep(step) {
-      this.bookStep = step;
-      var users = this.users;
-      // persianTebelHeaders--otherUsers-otherTebelHeaders
-      this.persianUsers = []
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].nationality == 'ایرانی') {
-          this.persianUsers.push(
-            {
-              name: users[i].name,
-              family: users[i].family,
-              nationality: users[i].nationality,
-              nationalityCode: users[i].nationalityCode,
-              gender: users[i].gender,
-              birthday: users[i].birthday,
-            }
-          )
-        } else{
-          this.otherUsers.push(
-            {
-              name: users[i].name,
-              family: users[i].family,
-              nationality: users[i].nationality,
-              gender: users[i].gender,
-              passportNumber: users[i].passportNumber,
-              expirePass: users[i].expirePass,
-              birthday: users[i].birthday,
-            }
-          )
+        if (step == 2 && this.validateBookStep()) {
+          var users = this.users;
+          this.persianUsers = []
+          this.otherUsers = []
+          this.persianUsers = users.filter((x) => x.nationality == 'ایرانی');
+          this.otherUsers = users.filter((x) => x.nationality != 'ایرانی');
+          this.bookStep = step;
+          this.dateError = false
+        } else if (step == 3 && this.$refs.acceptRulls.validate()) {
+          this.bookStep = step;
+          this.dateError = false
+        } else {
+          this.dateError = true
+          this.alertText = 'لطفا فیلدهای درخواستی را بدرستی تکمیل فرمایید.'
+          this.alertType = 'error'
+          this.showAlert = true
         }
-      }
-        console.log(step);
     },
-    changebirthDay(type, number,index) {
-      var dateArray = this.users[index].birthday.split('/')
-      switch (type) {
-        case 'day':
-          dateArray[2] = number
-          break;
-        case 'month':
-          dateArray[1] = number
-          break;
-        case 'year':
-          dateArray[0] = number
-          break;
-        default:
-          break;
-      }
-      this.users[index].birthday = dateArray[0] + '/' + dateArray[1] + '/' +dateArray[2] 
+    changebirthDay(type, number, index) {
     },
-    changepassExpire(type, number,index) {
-      var dateArray = this.users[index].expirePass.split('/')
-      switch (type) {
-        case 'day':
-          dateArray[2] = number
-          break;
-        case 'month':
-          dateArray[1] = number
-          break;
-        case 'year':
-          dateArray[0] = number
-          break;
-        default:
-          break;
+    changepassExpire(type, number, index) {
+    },
+    editUserInfo(item, type) {
+      if (type == 'user') {
+        this.editUser = Object.assign({}, item)
+        this.ModalUserType = true
+      } else {
+        this.editContact = Object.assign({}, this.contactInfo[0])
+        this.ModalUserType = false
       }
-      this.users[index].expirePass = dateArray[0] + '/' + dateArray[1] + '/' +dateArray[2] 
+      this.editTicketInfoDialog = true
+    },
+    confirmEditUser(type) {
+      if (this.validateBookStep()) {
+        if (type == 'user') {
+          var index = this.users.findIndex((x) => x.id == this.editUser.id)
+          this.users[index] = this.editUser;
+          this.changeBookStep(2)
+        } else {
+          this.contactInfo = []
+          this.contactInfo.push(this.editContact)
+        }
+        this.editTicketInfoDialog = false
+      } else {
+        this.alertText = 'لطفا فیلدهای درخواستی را بدرستی تکمیل فرمایید.'
+        this.alertType = 'error'
+        this.showAlert = true
+      }
+    },
+    checkCode() {
+      this.offCodeLoading = true
+      
+      setTimeout(() => {
+        this.offCodeLoading = false 
+        if (this.offCode == '1111') {
+          this.offCodeIsTrue = true
+          this.offCodeDisabledButton = true
+        } else{
+          this.offCodeIsTrue = false
+          this.offCodeDisabledButton = false
+        }
+      }, 1000);
     }
   },
   created() {
-    this.dayNumber(Math.floor(new Date().getTime() / 1000) * 1000 )
+    this.dayNumber(Math.floor(new Date().getTime() / 1000) * 1000)
     this.getWidth()
     window.addEventListener('resize', this.getWidth());
     setTimeout(() => {
@@ -945,13 +968,15 @@ new Vue({
         firstAppend = 0
         $('#dtp1').attr('value', dtp1.getText())
         var selectedDate = $('#dtp1').attr('value')
-        console.log(selectedDate);
-        self.dayNumber(new Date(selectedDate).getTime())
-        selectedDate = selectedDate.split(' - ')
-        let options = { day: 'numeric', month: 'long' };
-        self.fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-        self.toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
-        self.selectedDate = selectedDate[0] ? (self.fromDate + (self.toDate && ' الی ' + self.toDate)) : ''
+        if (selectedDate) {
+          selectedDate = selectedDate.split(' - ')
+          console.log(selectedDate);
+          let options = { day: 'numeric', month: 'long' };
+          self.fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          self.toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
+          self.selectedDate = selectedDate[0] ? (self.fromDate + (self.toDate && ' الی ' + self.toDate)) : ''
+          self.dayNumber(new Date(selectedDate[0]).getTime())
+        }
         if (self.selectedDate.length) {
           $('#showPeaple').toggle()
         }
@@ -979,7 +1004,6 @@ new Vue({
           selectedDate = selectedDate.split(' - ')
           let options = { day: 'numeric', month: 'long' };
           let fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-          console.log(selectedDate);
           self.allFlights[1].date = fromDate
         } else {
           self.allFlights[1].date = ''
@@ -995,7 +1019,6 @@ new Vue({
           selectedDate = selectedDate.split(' - ')
           let options = { day: 'numeric', month: 'long' };
           let fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-          console.log(selectedDate);
           self.allFlights[2].date = fromDate
         } else {
           self.allFlights[2].date = ''

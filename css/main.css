@@ -385,6 +385,16 @@ input::-webkit-inner-spin-button {
   border-color: transparent !important;
 }
 
+.codeCheckTrue input,.codeCheckTrue.v-text-field > .v-input__control > .v-input__slot:before {
+  border-color: green !important;
+  color : green !important;
+}
+
+.codeCheckFalse input,.codeCheckFalse.v-text-field > .v-input__control > .v-input__slot:before {
+  border-color: red !important;
+  color: red !important;
+}
+
 .theme--light.v-text-field > .v-input__control > .v-input__slot:after {
   transform: scaleX(0);
 }
@@ -466,6 +476,7 @@ input::-webkit-inner-spin-button {
 
 .v-tabs:not(.v-tabs--vertical) .v-tab {
   white-space: nowrap;
+  letter-spacing:0
 }
 
 .v-tab {
@@ -535,6 +546,11 @@ input::-webkit-inner-spin-button {
   height: 50px;width:50px;
   background-color: #f8f8f8;
   border: 1px solid #efefef
+}
+
+.v-input--selection-controls__input{
+  margin-right : 0 !important;
+  margin-left:10px !important
 }
 
 .v-input--selection-controls__input:hover
@@ -662,8 +678,43 @@ input::-webkit-inner-spin-button {
   margin-top: -15px;
 }
 
+.smallInputForm .v-text-field__slot input,.smallInputForm  .v-input__slot ,.smallInputForm  .v-input {
+  min-height: 10px;
+  padding: 5px 10px !important;
+  margin: 0 !important;
+}
+
 .user-date .v-list-item__content{
  padding: 0 !important;
+}
+
+.offCodeIsTrue::after{
+  content: '';
+    height: 2px;
+    width: 70%;
+    background-color: #d32f2f;
+    position: absolute;
+    left: 15%;
+    top: 12px;
+    transform: rotate(-12deg);
+}
+
+.rightSectionTicket{
+  width: 70%;
+  border-left: 1px dashed #c2c2c2;
+}
+
+.leftSectionTicket{
+  width: 30%;
+}
+
+.dateTicket{
+  right:37%;
+}
+
+.typeFlightTicket{
+  right:43%;
+  top: 50px;
 }
 
 /* responsive */
@@ -674,6 +725,10 @@ input::-webkit-inner-spin-button {
 
   .indexDiv {
     width: 1000px !important;
+  }
+
+  .priceInput input{
+    width: 100px;
   }
 
   .cardSlider {
@@ -701,6 +756,10 @@ input::-webkit-inner-spin-button {
 
   .indexDiv {
     width: 900px !important;
+  }
+
+  .priceInput input{
+    width: 100px;
   }
 
   .cardSlider {
@@ -749,6 +808,11 @@ input::-webkit-inner-spin-button {
       width: 775px !important;
     }
 
+    .priceInput input{
+      width: 80px;
+      font-size: 18px;
+    }
+
     .footerImagesParent a:nth-child(1) > img,
     .footerImagesParent a:nth-child(2) > img {
       height: 90px;
@@ -793,6 +857,25 @@ input::-webkit-inner-spin-button {
     .indexDiv {
       width: 600px !important;
     }
+
+    .v-input--selection-controls__input {
+      margin-left: 1px !important;
+    }
+    
+    h4{
+      font-size: 14px !important;
+    }
+
+    .filter-card label {
+      font-size: 12px !important;
+  }
+
+    .v-application--is-ltr .v-slider--horizontal .v-slider__tick .v-slider__tick-label {
+      transform: rotate(90deg) !important;
+      font-size: 10px;
+      top: 26px;
+      right: -11px;
+  }
 
     .sections {
       width: 25%;
@@ -970,6 +1053,31 @@ input::-webkit-inner-spin-button {
     margin-right: 0;  
   }
 
+  .rightSectionTicket{
+    width: 100%;
+    border-left: unset;
+    border-bottom: 1px dashed #c2c2c2;
+  }
+  
+  .leftSectionTicket{
+    width: 100%;
+  }
+
+  .ticketPrice,.ticketButtons{
+    width: 50% !important;
+    display: inline-block;
+    float: right;
+  }
+
+  .flight-go-flesh{
+    height: 9px !important;
+  }
+
+  .typeFlightTicket {
+    right: 43%;
+    top: 33px;
+  }
+
   @media (min-width: 500px) and (max-width: 599px) {
     .indexDiv {
       width: 500px !important;
@@ -982,6 +1090,16 @@ input::-webkit-inner-spin-button {
     .banerSlider {
       height: 190px !important;
     }
+
+    .flight-go-flesh {
+      width: 330px;
+    }
+
+    .ticketCircle:nth-child(1){
+      /* background-color: red !important; */
+    }
+
+    
   }
 
   @media (min-width: 400px) and (max-width: 499px) {
@@ -995,6 +1113,18 @@ input::-webkit-inner-spin-button {
 
     .banerSlider {
       height: 165px !important;
+    }
+
+    .flight-go-flesh {
+      width: 200px;
+    }
+
+    .dateTicket {
+      right: 33%;
+    }
+
+    .typeFlightTicket {
+      right: 43%;
     }
   }
 
@@ -1014,6 +1144,18 @@ input::-webkit-inner-spin-button {
     .sections {
       width: 25%;
     }
+
+    .flight-go-flesh {
+      width: 170px;
+    } 
+
+    .dateTicket {
+      right: 29%;
+    }
+
+    .typeFlightTicket {
+      right: 39%;
+    }
   }
 
   @media (min-width: 300px) and (max-width: 350px) {
@@ -1031,6 +1173,18 @@ input::-webkit-inner-spin-button {
 
     .banerSlider {
       height: 155px !important;
+    }
+
+    .flight-go-flesh {
+      width: 125px;
+    }
+
+    .dateTicket {
+      right: 22%;
+    }
+
+    .typeFlightTicket {
+      right: 35%;
     }
   }
 }

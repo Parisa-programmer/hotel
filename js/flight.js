@@ -168,6 +168,7 @@ new Vue({
     ],
     dateError:false,
     // filter
+    openPanelsFilter:[0,1,2,3,4,5,6],
     filter: {
       priceItems: [
         {
@@ -287,9 +288,14 @@ new Vue({
         destinationTime: '18:35',
       },
     ],
+    sortItems:[
+      { text: 'قیمت' },
+      { text: 'ساعت' },
+      { text: 'ایرلاین' }
+    ],
     fromPrice: 0,
     toPrice: '5,000,000',
-    ticketDetailsModal: true,
+    ticketDetailsModal: false,
     activeTab: 0,
     panelDetails: 0,
     ticketDetailsTabs: [
@@ -375,11 +381,13 @@ new Vue({
     offCodeLoading:false,
     offCode:'',
     showSmallMenu:false,
+    editFlightMood:false,
     // loading
-    isLoading: false,
+    isLoading: true,
     showAlert: false,
     alertType: 'error',
-    alertText: ''
+    alertText: '',
+    isLoadingAxios:false
   },
   watch: {
     showAlert() {
@@ -578,8 +586,13 @@ new Vue({
       }]
     },
     searchInHeaderBox() {
-      this.hidePeaple()
-      var selectedSection = this.selectedSection.title
+      this.hidePeaple();
+      this.isLoadingAxios = true;
+      setTimeout(() => {
+        this.editFlightMood = false;
+        this.isLoadingAxios = false;
+      }, 1000);
+      var selectedSection = this.selectedSection.title;
       switch (selectedSection) {
         case '':
 
@@ -774,8 +787,8 @@ new Vue({
   },
   created() {
     this.dayNumber(Math.floor(new Date().getTime() / 1000) * 1000)
+    window.addEventListener("resize", this.getWidth);
     this.getWidth()
-    window.addEventListener('resize', this.getWidth());
     setTimeout(() => {
       this.isLoading = false
     }, 2000);
@@ -1045,8 +1058,11 @@ new Vue({
 
   },
   beforeDestroy() {
-    clearInterval(this.interval)
-  }
+    
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.getWidth);
+  },
 })
 
 

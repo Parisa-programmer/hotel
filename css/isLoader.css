@@ -17,11 +17,13 @@
   width:100%
 }
 
-#aboutHotel .textLoader .v-skeleton-loader__chip{
+#aboutHotel .textLoader .v-skeleton-loader__chip,.widthAllFields .textLoader .v-skeleton-loader__chip{
   width:100%;
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
+
 
 .v-skeleton-loader__button{
   width: 150px;
@@ -40,5 +42,10 @@
 .downloadTextLoadig .v-skeleton-loader__text{
   max-width: 500px;
   height: 100px;
+}
+
+.widthAll .v-skeleton-loader__bone{
+  width: 100%;
+  margin: 0;
 }
 

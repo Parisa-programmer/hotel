@@ -676,6 +676,7 @@ input::-webkit-inner-spin-button {
 
 .ticketForm .v-input__slot[role="button"]{
   margin-top: -15px;
+  padding: 7px;
 }
 
 .smallInputForm .v-text-field__slot input,.smallInputForm  .v-input__slot ,.smallInputForm  .v-input {
@@ -717,6 +718,34 @@ input::-webkit-inner-spin-button {
   top: 50px;
 }
 
+.theme--light.v-tabs .v-tab--active:before, .theme--light.v-tabs .v-tab--active:hover:before, .theme--light.v-tabs .v-tab:focus:before {
+  opacity: 0 !important;
+}
+
+.next-page-ticket{
+  width: 860px;
+}
+
+.theme--light.v-expansion-panels .v-expansion-panel {
+  border: 1px solid #e3e3e3;
+  background: transparent !important;
+  margin-top: 20px !important;
+  box-shadow: 0px 1px 6px #ebebeb;
+}
+
+.filter-buttons-small-mood{
+  top:100px;
+  right:0
+}
+
+.done-icon{
+  width: 300px;
+}
+
+.overflow-button>.v-input__control>.v-input__slot>.v-select__slot>.v-select__selections>input {
+  /* display: none !important; */
+}
+
 /* responsive */
 @media (min-width: 1264px) and (max-width: 1400px) {
   .v-expansion-panel-header {
@@ -745,6 +774,10 @@ input::-webkit-inner-spin-button {
 
   .downloadButton img {
     width: 150px;
+  }
+
+  .flight-go-flesh {
+    width: 255px;
   }
 
 }
@@ -787,6 +820,10 @@ input::-webkit-inner-spin-button {
     max-width: 427px;
     height: 100px;
   }
+
+  .flight-go-flesh {
+    width: 193px;
+  }
 }
 
 @media (min-width: 600px) and (max-width: 959px) {
@@ -806,6 +843,10 @@ input::-webkit-inner-spin-button {
   @media (min-width: 775px) and (max-width: 959px) {
     .indexDiv {
       width: 775px !important;
+    }
+    
+    .next-page-ticket{
+      width: 760px;
     }
 
     .priceInput input{
@@ -851,11 +892,19 @@ input::-webkit-inner-spin-button {
       width: 255px;
       bottom: 22px;
     }
+
+    .flight-go-flesh {
+      width: 272px;
+    }
   }
 
   @media (min-width: 600px) and (max-width: 774px) {
     .indexDiv {
       width: 600px !important;
+    }
+
+    .next-page-ticket{
+      width: 585px;
     }
 
     .v-input--selection-controls__input {
@@ -914,6 +963,10 @@ input::-webkit-inner-spin-button {
 
     .downloadTextLoadig {
       max-width: 337px;
+    }
+
+    .flight-go-flesh {
+      width: 150px;
     }
   }
 }
@@ -1006,6 +1059,10 @@ input::-webkit-inner-spin-button {
     width: 97% !important;
   }
 
+  .next-page-ticket{
+    width: 485px;
+  }
+
   .answerText {
     line-height: unset;
   }
@@ -1065,7 +1122,7 @@ input::-webkit-inner-spin-button {
 
   .ticketPrice,.ticketButtons{
     width: 50% !important;
-    display: inline-block;
+    /* display:inline-block */
     float: right;
   }
 
@@ -1078,9 +1135,17 @@ input::-webkit-inner-spin-button {
     top: 33px;
   }
 
+  .filter-buttons-small-mood{
+    top:80px
+  }
+
   @media (min-width: 500px) and (max-width: 599px) {
     .indexDiv {
       width: 500px !important;
+    }
+
+    .next-page-ticket{
+      width: 387px;
     }
 
     .cardSlider {
@@ -1107,6 +1172,10 @@ input::-webkit-inner-spin-button {
       width: 400px !important;
     }
 
+    .next-page-ticket{
+      width: 387px;
+    }
+
     .cardSlider {
       width: 308px;
     }
@@ -1131,6 +1200,10 @@ input::-webkit-inner-spin-button {
   @media (min-width: 350px) and (max-width: 399px) {
     .indexDiv {
       width: 350px !important;
+    }
+
+    .next-page-ticket{
+      width: 331px;
     }
 
     .cardSlider {
@@ -1161,6 +1234,10 @@ input::-webkit-inner-spin-button {
   @media (min-width: 300px) and (max-width: 350px) {
     .indexDiv {
       width: 300px !important;
+    }
+
+    .next-page-ticket{
+      width: 285px;
     }
 
     .sections {

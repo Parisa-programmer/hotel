@@ -288,6 +288,7 @@ new Vue({
         destinationTime: '18:35',
       },
     ],
+    flights:[],
     sortItems:[
       { text: 'قیمت' },
       { text: 'ساعت' },
@@ -317,7 +318,7 @@ new Vue({
     dates: [],
     nextPage: false,
     nationalities: ['ایرانی', 'غیر ایرانی'],
-    genders: ['زن', 'مرد'],
+    genders: ['خانم', 'آقا'],
     dateDays: [],
     dateMonths: [],
     dateYears: [],
@@ -382,6 +383,10 @@ new Vue({
     offCode:'',
     showSmallMenu:false,
     editFlightMood:false,
+    // tickets
+    selectedTickets:[],
+    ticketChooseStep:0,
+    packageTickets:[],
     // loading
     isLoading: true,
     showAlert: false,
@@ -394,7 +399,7 @@ new Vue({
       if (this.showAlert) {
         setTimeout(() => {
           this.showAlert = false
-        }, 5000);
+        }, 3000);
       }
     },
     external() {
@@ -468,17 +473,17 @@ new Vue({
     }
   },
   computed: {
-    monthName() {
-      var date = new Date().toLocaleDateString('fa-IR-u-nu-latn')
-      date = date.split('/')
-      let months = new Array("فروردين", "ارديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر", "دي", "بهمن", "اسفند");
-      var month = months[date[1] - 1]
-      var textDateFormat = date[2] + ' ' + month + ' ' + date[0] + ' ساعت ' + new Date().getHours() + ':' + new Date().getMinutes()
-      return month
-    },
+    
 
   },
   methods: {
+    getDayName(dateSelected) {
+      var date = new Date(dateSelected).getDay()
+      // let months = new Array("فروردين", "ارديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر", "دي", "بهمن", "اسفند");
+      let days = new Array("یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنج شنبه", "جمعه", "شنبه");
+      var day = days[date]
+      return day
+    },
     getWidth() {
       this.windowWidth = window.innerWidth
     },
@@ -586,20 +591,152 @@ new Vue({
       }]
     },
     searchInHeaderBox() {
-      this.hidePeaple();
-      this.isLoadingAxios = true;
-      setTimeout(() => {
-        this.editFlightMood = false;
-        this.isLoadingAxios = false;
-      }, 1000);
-      var selectedSection = this.selectedSection.title;
-      switch (selectedSection) {
-        case '':
+      var flights=[]
+      this.flights = []
+      if(this.byReturn==1) {
+        // if flight is without return do :
+        this.hidePeaple();
+        this.isLoadingAxios = true;
+        setTimeout(() => {
+          this.editFlightMood = false;
+          this.isLoadingAxios = false;
+        }, 1000);
+        // var selectedSection = this.selectedSection.title;
+        // switch (selectedSection) {
+        //   case '':
 
-          break;
+        //     break;
 
-        default:
-          break;
+        //   default:
+        //     break;
+        // }
+        var selectedDate = $('#dtp1').attr('value').split(' - ')
+        var dayName= this.getDayName(selectedDate)
+        this.flights.push(
+          {
+            fromDate:this.fromDate,
+            originCity:this.originCity,
+            destinationInternal:this.destinationInternal,
+            originTime: '15:20',
+            destinationTime: '18:35',
+            day: dayName,
+            timestamp:new Date(selectedDate[0]).getTime()
+          },
+        )
+      } else if(this.byReturn==2) {
+        // if flight is with return do :
+        this.hidePeaple();
+        this.isLoadingAxios = true;
+        setTimeout(() => {
+          this.editFlightMood = false;
+          this.isLoadingAxios = false;
+        }, 1000);
+        var selectedDate = $('#dtp1').attr('value').split(' - ')
+        var dayName= this.getDayName(selectedDate)
+        this.flights.push(
+          {
+            fromDate:this.fromDate,
+            originCity:this.originCity,
+            destinationInternal:this.destinationInternal,
+            originTime: '15:20',
+            destinationTime: '18:35',
+            day: this.getDayName(selectedDate[0]),
+            timestamp:new Date(selectedDate[0]).getTime()
+          },
+          {
+            fromDate:this.toDate,
+            originCity:this.destinationInternal,
+            destinationInternal:this.originCity,
+            originTime: '15:20',
+            destinationTime: '18:35',
+            day: this.getDayName(selectedDate[1]),
+            timestamp:new Date(selectedDate[1]).getTime()
+          }
+        )
+      
+      } else if(this.byReturn==3) {
+        // if flight is multi flight do :  
+        var selectedDate = $('#dtp1').attr('value')
+        flights.push(
+          {
+            fromDate:this.fromDate,
+            originCity:this.originCity,
+            destinationInternal:this.destinationInternal,
+            originTime: '15:20',
+            destinationTime: '18:35',
+            day: this.getDayName(selectedDate.split(' - ')),
+            timestamp:new Date(selectedDate).getTime()
+          },
+        )
+        var selectedDate2 = $('#dtp2').attr('value')
+        if (selectedDate2) {
+          flights.push(
+            {
+              fromDate:this.allFlights[0].date,
+              originCity:this.allFlights[0].originCity,
+              destinationInternal:this.allFlights[0].destinationInternal,
+              originTime: '15:20',
+              destinationTime: '18:35',
+              day: this.getDayName(selectedDate2.split(' - ')),
+              timestamp:new Date(selectedDate2).getTime()
+            },
+          )
+        }
+        var selectedDate3 = $('#dtp3').attr('value')
+        if (selectedDate3) {
+          flights.push(
+            {
+              fromDate:this.allFlights[1].date,
+              originCity:this.allFlights[1].originCity,
+              destinationInternal:this.allFlights[1].destinationInternal,
+              originTime: '15:20',
+              destinationTime: '18:35',
+              day: this.getDayName(selectedDate3.split(' - ')),
+              timestamp:new Date(selectedDate3).getTime()
+            },
+          )
+        }
+        var selectedDate4 = $('#dtp4').attr('value')
+        if (selectedDate4) {
+          flights.push(
+            {
+              fromDate:this.allFlights[2].date,
+              originCity:this.allFlights[2].originCity,
+              destinationInternal:this.allFlights[2].destinationInternal,
+              originTime: '15:20',
+              destinationTime: '18:35',
+              day: this.getDayName(selectedDate4.split(' - ')),
+              timestamp:new Date(selectedDate4).getTime()
+            },
+          )
+        }
+        var timestamp = 0
+        let errorDate = false
+        for (let i = 0; i < flights.length; i++) {
+          if (flights[i].timestamp >= timestamp) {
+            timestamp = flights[i].timestamp
+          }
+           else{
+            this.alertType = 'error'
+            this.alertText = 'ترتیب تاریخ های انتخابی اشتباه است.'
+            this.showAlert = true
+            errorDate = true
+          }
+        }
+        if (!errorDate) {
+          this.flights = flights
+        }
+      }
+      
+      this.ticketChooseStep = 0
+    },
+    reserveTicket(ticket){
+      console.log(this.flights[this.ticketChooseStep]);
+      if (this.ticketChooseStep != this.flights.length-1) {
+        this.ticketChooseStep = this.ticketChooseStep+1
+        this.dayNumber(this.flights[this.ticketChooseStep].timestamp)
+      } else{
+        this.nextPage=true
       }
     },
     exchangeCity(index) {
@@ -625,6 +762,9 @@ new Vue({
           destinationInternal: '',
           date: ''
         })
+        // this.packageTickets.push({
+
+        // })
       }
       else {
         this.flightCityes.splice(index, 1)
@@ -783,6 +923,15 @@ new Vue({
           this.offCodeDisabledButton = false
         }
       }, 1000);
+    },
+    removeFilters(){
+      this.filter.time = [0, 4] 
+      this.filter.class = []
+      this.filter.airline = []
+      this.filter.type = []
+      this.filter.showType = []
+      this.toPrice = 5000000,
+      this.fromPrice = 0
     }
   },
   created() {
@@ -983,7 +1132,6 @@ new Vue({
         var selectedDate = $('#dtp1').attr('value')
         if (selectedDate) {
           selectedDate = selectedDate.split(' - ')
-          console.log(selectedDate);
           let options = { day: 'numeric', month: 'long' };
           self.fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
           self.toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';

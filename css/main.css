@@ -459,7 +459,11 @@ input::-webkit-inner-spin-button {
 }
 
 .flight-go-flesh{
-  width: 340px;
+  width: 480px;
+}
+
+.next-page-ticket .flight-go-flesh {
+  width: 380px;
 }
 
 .cardSlider {
@@ -710,12 +714,12 @@ input::-webkit-inner-spin-button {
 }
 
 .dateTicket{
-  right:37%;
+  right:41%;
 }
 
 .typeFlightTicket{
-  right:43%;
-  top: 50px;
+  right:46%;
+  top: 53px;
 }
 
 .theme--light.v-tabs .v-tab--active:before, .theme--light.v-tabs .v-tab--active:hover:before, .theme--light.v-tabs .v-tab:focus:before {
@@ -744,6 +748,10 @@ input::-webkit-inner-spin-button {
 
 .overflow-button>.v-input__control>.v-input__slot>.v-select__slot>.v-select__selections>input {
   /* display: none !important; */
+}
+
+.hide-header-data-tabel .v-data-table-header-mobile{
+  display: none;
 }
 
 /* responsive */
@@ -777,7 +785,7 @@ input::-webkit-inner-spin-button {
   }
 
   .flight-go-flesh {
-    width: 255px;
+    width: 384px;
   }
 
 }
@@ -822,7 +830,11 @@ input::-webkit-inner-spin-button {
   }
 
   .flight-go-flesh {
-    width: 193px;
+    width: 330px;
+  }
+  
+  .next-page-ticket .flight-go-flesh {
+    width: 380px;
   }
 }
 
@@ -848,6 +860,7 @@ input::-webkit-inner-spin-button {
     .next-page-ticket{
       width: 760px;
     }
+
 
     .priceInput input{
       width: 80px;
@@ -894,7 +907,11 @@ input::-webkit-inner-spin-button {
     }
 
     .flight-go-flesh {
-      width: 272px;
+      width: 417px;
+    }
+
+    .next-page-ticket .flight-go-flesh {
+      width: 310px;
     }
   }
 
@@ -905,6 +922,10 @@ input::-webkit-inner-spin-button {
 
     .next-page-ticket{
       width: 585px;
+    }
+
+    .next-page-ticket .dateTicket {
+      right: 30%; 
     }
 
     .v-input--selection-controls__input {
@@ -966,7 +987,11 @@ input::-webkit-inner-spin-button {
     }
 
     .flight-go-flesh {
-      width: 150px;
+      width: 290px;
+    }
+
+    .next-page-ticket .flight-go-flesh {
+      width: 185px; 
     }
   }
 }
@@ -1131,12 +1156,28 @@ input::-webkit-inner-spin-button {
   }
 
   .typeFlightTicket {
-    right: 43%;
-    top: 33px;
+    right: 45%;
+    top: 56px;
   }
 
   .filter-buttons-small-mood{
     top:80px
+  }
+
+  .ticketCircle:nth-child(1){
+    right: -30px !important ;
+  }
+
+  .ticketCircle:nth-child(2){
+    left: -30px !important;
+  }
+
+  .byReturnRadio .v-input--selection-controls__input {
+    margin-left: 5px !important;
+  }
+  
+  .byReturnRadio .v-input--radio-group__input{
+    justify-content: space-evenly;
   }
 
   @media (min-width: 500px) and (max-width: 599px) {
@@ -1148,6 +1189,10 @@ input::-webkit-inner-spin-button {
       width: 387px;
     }
 
+    .next-page-ticket .dateTicket {
+      right: 38%; 
+    }
+
     .cardSlider {
       width: 410px;
     }
@@ -1157,14 +1202,12 @@ input::-webkit-inner-spin-button {
     }
 
     .flight-go-flesh {
-      width: 330px;
+      width: 380px;
     }
 
-    .ticketCircle:nth-child(1){
-      /* background-color: red !important; */
+    .next-page-ticket .flight-go-flesh {
+      width: 325px; 
     }
-
-    
   }
 
   @media (min-width: 400px) and (max-width: 499px) {
@@ -1185,11 +1228,19 @@ input::-webkit-inner-spin-button {
     }
 
     .flight-go-flesh {
-      width: 200px;
+      width: 280px;
+    }
+
+    .next-page-ticket .flight-go-flesh {
+      width: 227px; 
+    }
+
+    .next-page-ticket .dateTicket {
+      right: 33%; 
     }
 
     .dateTicket {
-      right: 33%;
+      right: 39%;
     }
 
     .typeFlightTicket {
@@ -1219,11 +1270,19 @@ input::-webkit-inner-spin-button {
     }
 
     .flight-go-flesh {
-      width: 170px;
+      width: 230px;
     } 
 
+    .next-page-ticket .flight-go-flesh {
+      width: 180px; 
+    }
+
+    .next-page-ticket .dateTicket {
+      right: 30%; 
+    }
+
     .dateTicket {
-      right: 29%;
+      right: 37%;
     }
 
     .typeFlightTicket {
@@ -1253,11 +1312,19 @@ input::-webkit-inner-spin-button {
     }
 
     .flight-go-flesh {
-      width: 125px;
+      width: 180px;
+    }
+
+    .next-page-ticket .flight-go-flesh {
+      width: 130px; 
+    }
+
+    .next-page-ticket .dateTicket {
+      right: 25%; 
     }
 
     .dateTicket {
-      right: 22%;
+      right: 34%;
     }
 
     .typeFlightTicket {

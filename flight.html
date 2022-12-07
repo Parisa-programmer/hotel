@@ -10,7 +10,7 @@
     <link rel="icon" href="./image/logoSite.png" type="image/png" />
     <link rel="icon" href="./image/logoSite.png" type="image/png" />
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/sass.sass">
+    <!-- <link rel="stylesheet" href="./css/sass.sass"> -->
     <link rel="stylesheet" href="./css/isLoader.css">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"> -->
     <!-- disabel auto zoom -->
@@ -296,7 +296,7 @@
                                       </v-expansion-panel-content>
                                     </v-expansion-panel> -->
                                     <v-expansion-panel class="">
-                                      <v-expansion-panel-header>
+                                      <v-expansion-panel-header align="center" class="d-flex">
                                         <h4 class="mx-2 text-right">کلاس پرواز</h4>
                                       </v-expansion-panel-header>
                                       <v-divider></v-divider>
@@ -314,7 +314,7 @@
                                       </v-expansion-panel-content>
                                     </v-expansion-panel>
                                     <v-expansion-panel class="">
-                                      <v-expansion-panel-header>
+                                      <v-expansion-panel-header  align="center" class="d-flex">
                                         <h4 class="mr-2 text-right">ایرلاین</h4>
                                       </v-expansion-panel-header>
                                       <v-divider></v-divider>
@@ -333,7 +333,7 @@
                                       </v-expansion-panel-content>
                                     </v-expansion-panel>
                                     <v-expansion-panel class="">
-                                      <v-expansion-panel-header>
+                                      <v-expansion-panel-header align="center" class="d-flex">
                                         <h4 class="mx-2 text-right">نوع پرواز</h4>
                                       </v-expansion-panel-header>
                                       <v-divider></v-divider>
@@ -351,7 +351,7 @@
                                       </v-expansion-panel-content>
                                     </v-expansion-panel>
                                     <v-expansion-panel class="">
-                                      <v-expansion-panel-header>
+                                      <v-expansion-panel-header align="center" class="d-flex">
                                         <h4 class="mx-2 text-right">نمایش پرواز</h4>
                                       </v-expansion-panel-header>
                                       <v-divider></v-divider>
@@ -371,8 +371,8 @@
                                   </v-expansion-panels>
                                 </v-row>
                                 <v-row justify="end" class="my-6">
-                                  <v-btn outlined color="red">حذف فیلترها</v-btn>
-                                  <v-btn outlined color="#1abc9c" class="mr-2">اعمال فیلترها</v-btn>
+                                  <v-btn outlined color="red" @click="removeFilters">حذف فیلترها</v-btn>
+                                  <v-btn outlined color="#1abc9c" class="mr-2" @click="showSmallMenu = false">اعمال فیلترها</v-btn>
                                 </v-row>
                               </v-card>
                             </div>
@@ -422,7 +422,7 @@
               <v-icon class="absolute black--text" @click="loginDialog = false" style="top: 5px;right: 5px;">mdi-close</v-icon>
               <div class="my-6">
                 <h3 v-if="loginStep == 2 && UserType == 1 " class="text-center ">
-                  تایید شماره موبایل
+                  تائید شماره موبایل
                 </h3>
                 <h3 v-else-if="(loginType == 'login' && loginStep != 3) && (UserType == 1 && loginStep == 1 && loginType == 'login')  || (UserType == 2 && loginStep == 1 && loginType == 'login')" class="text-center mt-6">
                   ورود به حساب کاربری
@@ -500,7 +500,7 @@
               </v-row>
               <v-row v-if="loginStep == 3 || (UserType == 2 && loginType == 'register' && loginStep == 2) || (UserType == 2 && loginStep == 2)" justify="center">
                 <img class="my-6" src="./image/success.png" alt="" width="130px">
-                <h5 v-if="UserType == 2 && loginType == 'register'" class="green--text text--darken-2 my-3 text-center d-block">اطلاعات شما با موفقیت دریافت شد.لطفا منتظر تایید باشید.</h5>
+                <h5 v-if="UserType == 2 && loginType == 'register'" class="green--text text--darken-2 my-3 text-center d-block">اطلاعات شما با موفقیت دریافت شد.لطفا منتظر تائید باشید.</h5>
                 <h4 v-else class="green--text text--darken-2 my-3 widthAll text-center">عملیات ورود با موفقیت انجام شد.</h4>
               </v-row>
               <v-row justify="center">
@@ -551,21 +551,21 @@
                     type="card-heading"
                     :loading="isLoading"
                   >
-                    <v-radio-group v-if="windowWidth > 600" class="mt-0 mx-2"
+                    <v-radio-group v-if="windowWidth >= 600 || external" class="mt-0 mx-sm-2 byReturnRadio"
                       v-model="byReturn"
-                      row
+                      :row="windowWidth < 600 ? true : true"
                     >
                       <v-radio 
                         label="یک طرفه"
                         color="red"
                         :value="1"
-                        class="byReturn ml-4 ml-sm-0"
+                        class="byReturn ml-sm-4 ml-sm-0"
                       ></v-radio>
                       <v-radio
                         label="رفت و برگشت"
                         color="red"
                         :value="2"
-                        class="byReturn ml-4 ml-sm-0"
+                        class="byReturn ml-sm-4 ml-sm-0"
                       ></v-radio>
                       <v-radio v-if="external == true"
                         label="چند مسیره"
@@ -621,7 +621,7 @@
                     </v-row>
                   </v-skeleton-loader>
                 </v-col>
-                <v-col cols="12" sm="6" md="4" lg="2" class="px-2 py-1">
+                <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
                   <v-skeleton-loader class="inputLoader"
                     type="card-heading"
                     :loading="isLoading"
@@ -696,18 +696,19 @@
                         </div>
                         <v-divider></v-divider>
                         <div class="pa-3">
-                          <v-btn class="widthAll hideEventPeaple" color="red" dark>تایید - {{allPeaples}}</v-btn>
+                          <v-btn class="widthAll hideEventPeaple" color="red" dark>تائید - {{allPeaples}}</v-btn>
                         </div>
                       </div>
                     </div>
                   </v-skeleton-loader>
                 </v-col>
-                <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 && 'd-none d-lg-block'">
+                <v-col cols="12" sm="6" md="4" lg="2" class="px-2 py-1 relative" :class="byReturn == 3 && 'd-none d-lg-block'">
                   <v-skeleton-loader class="inputLoader"
                     type="card-heading"
                     :loading="isLoading"
                   >
                       <v-btn dark color="red" class="widthAll mt-md-4 mt-lg-0 pt-6 pb-5 ronded-xl" @click="searchInHeaderBox" style="border-radius: 7px;" :class="byReturn == 3 && 'd-none d-lg-flex'">جستجو</v-btn>
+                      <span v-if="showAlert" class="red--text caption absolute" style="font-family:Byekan !important;right:0;bottom: -40px;">ترتیب تاریخ های انتخابی اشتباه است.</span>
                   </v-skeleton-loader>
                 </v-col>
               </v-row>
@@ -735,7 +736,7 @@
                           />
                         </v-col>
                         <v-col cols="2">
-                          <v-icon class="rounded-circle grey lighten-2 pa-1 mb-4" @click="exchangeCity(i)"> mdi-swap-horizontal </v-icon>
+                          <v-icon class="rounded-circle grey lighten-2 pa-1 mb-4 mt-2" @click="exchangeCity(i)"> mdi-swap-horizontal </v-icon>
                         </v-col>
                         <v-col cols="5">
                           <v-autocomplete
@@ -753,7 +754,7 @@
                       </v-row>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4" lg="2" class="px-2 py-1">
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
@@ -791,6 +792,7 @@
               <v-row justify="center">
                 <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 ? 'd-block d-lg-none' : 'd-none'">
                   <v-btn v-if="byReturn == 3" dark color="red" class="mt-4 pt-6 pb-5 ronded-xl widthAll" @click="searchInHeaderBox">جستجو</v-btn>
+                  <span v-if="showAlert" class="red--text caption" style="font-family:Byekan !important;">ترتیب تاریخ های انتخابی اشتباه است.</span>
                 </v-col>
               </v-row>
             </v-card>
@@ -815,7 +817,7 @@
                       type="chip"
                       :loading="isLoading"
                     >
-                      <v-btn text class="body-2 red--text px-sm-1 px-md-3 d-block d-md-inline-block" style="font-family: Byekan !important;">حذف فیلتر ها</v-btn> 
+                      <v-btn text @click="removeFilters" class="body-2 red--text px-sm-1 px-md-3 d-block d-md-inline-block" style="font-family: Byekan !important;">حذف فیلتر ها</v-btn> 
                     </v-skeleton-loader>
                   </v-row>
                   <v-divider class="mb-3"></v-divider>
@@ -986,21 +988,20 @@
                 </v-card>
               </v-col>
               <v-col cols="12" md="9" class="pa-0 pr-md-3 " :class="(windowWidth < 960 && !editFlightMood) && 'mt-12 pt-12'">
-                <v-card flat class="rounded-lg pa-0 pa-sm-2 mb-4" :class="(windowWidth < 960 && !editFlightMood) && 'mt-sm-6'">
+                <v-card flat class="rounded-lg pa-2 pa-sm-2 mb-4" :class="(windowWidth < 960 && !editFlightMood) && 'mt-sm-6'" v-if="!(external && byReturn != 1)">
                   <v-slide-group ltr v-model="slideGroup" class="py-1 ltr" hide-arrows center-active>
                     <v-slide-item v-for="(date, i) in dates" :key="i" v-slot="{ active }" :style="{border:i == slideGroup ? '1px solid red !important' : 'unset !important'}" >
-                      <v-skeleton-loader class="textLoader d-inline-block mr-2"
+                      <!-- <v-skeleton-loader class="textLoader d-inline-block mr-2"
                         type="chip"
                         :loading="isLoading"
-                      >
-                        <v-card elevation="2" :disabled="new Date().getTime() - 86400000 > date.timestamp ? true : false" outlined class="py-2 px-3 px-sm-6 grey lighten-5" @click="changeDate(date.timestamp,i)">
+                      >-->
+                        <v-card elevation="2" :disabled="new Date().getTime() - 86400000 > date.timestamp ? true : false" outlined class="py-2 px-3 px-sm-6 grey lighten-5 mr-4" @click="changeDate(date.timestamp,i)"> 
                           <span class="text-center body d-block" :class="new Date().getTime() - 86400000 > date.timestamp ? 'grey--text text--lighten-1' : date.weekDay == 6 ? 'red--text' : ''" style="font-family: Byekan !important;">{{ date.day }}   {{ date.month }}</span>
                           <span class="text-center body-2 d-block mt-1" :class="new Date().getTime() - 86400000 > date.timestamp ? 'grey--text text--lighten-1' : date.weekDay == 6 ? 'red--text': ' grey--text text--darken-2'" style="font-family: Byekan !important;">
                             1,980
-                            <!-- {{Math.floor(new Date().getTime()/1000) }} -->
                           </span>
                         </v-card> 
-                      </v-skeleton-loader>
+                      <!-- </v-skeleton-loader> -->
                     </v-slide-item>
                   </v-slide-group>
                 </v-card>
@@ -1045,384 +1046,768 @@
                     </div>
                   </v-row>
                 </v-card>
-                <div class="hideOver my-4" v-for="(item,i) in tickets" :key="i">
-                  <v-skeleton-loader class="textLoader widthAll"
-                    type="image"
-                    :loading="isLoading"
-                  >
-                    <div class="widthAll white relative " style="border: 1px solid ;border-color: #efefef !important;">
-                      <div class="absolute rounded-circle ticketCircle" style="right: -25px;top:50%;margin-top: -25px;"></div>
-                      <div class="absolute rounded-circle ticketCircle" style="left: -25px;top:50%;margin-top: -25px;"></div>
-                      <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;bottom:-25px;margin-left: -25px;"></div>
-                      <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;top:-25px;margin-left: -25px;"></div>
-                      <v-row class="heightAll">
-                        <div class="pt-2 rightSectionTicket">
-                        <v-row class="mt-1 mt-sm-8 mr-2 mr-sm-6" align="center">
-                          <img src="./image/zagros.png" alt="" class="rounded-circle pa-1" width="50" height="50" style="box-shadow: 1px 1px 4px #b3b3b3">
-                          <span class="mx-2 mx-sm-6 body-2" style="font-family: Byekan !important;">مشهد</span>
-                          <div class="d-inline-block relative">
-                            <span class="absolute body-2 grey--text text--darken-1 dateTicket" style="font-family: Byekan !important;bottom: 25px;">دوشنبه 16 آبان</span>
-                            <span class="absolute caption typeFlightTicket" style="font-family: Byekan !important;">چارتری</span>
-                            <img src="./image/flight-go-flesh.png" class="flight-go-flesh mt-4 mt-sm-0" alt="" height="12">
-                          </div>
-                          <span class="mx-2 mx-sm-6 body-2" style="font-family: Byekan !important;">کیش</span>
-                        </v-row>
-                        <v-row class=" my-4 mr-7">
-                          <span class="body-2" style="font-family: Byekan !important;">زاگرس</span>
-                          <span class="mr-2 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">{{item.originTime}}</span>
-                          <v-spacer></v-spacer>
-                          <span class=" ml-6 ml-sm-12 pl-2 body-2" style="font-family: Byekan !important;">{{item.destinationTime}}</span>
-                        </v-row>
-                        </div>
-                        <div class="leftSectionTicket">
-                          <v-row class="heightAll" justify="center">
-                            <div class="widthAll text-center my-3">
-                              <div class="ticketPrice mt-3 mt-sm-0">
-                                <span class="">
-                                  قیمت
-                                </span>
-                                <br>
-                                <h3 class="mb-3 d-inline-block">
-                                  12,563,000
-                                </h3>
-                                <h3 class="mb-3 d-inline-block" style="font-family: Byekan !important;">ریال</h3>
-                              </div>
-                              <div class="ticketButtons">
-                                <v-btn class="px-6 px-lg-12" color="red" outlined @click="nextPage=true">رزرو بلیط</v-btn>
-                                <br>
-                                <v-btn class="px-1 px-lg-7 mt-2" color="blue darken-2" outlined @click="activeTab=0;ticketDetailsModal = true">مشاهده جزییات</v-btn>
-                              </div>
+                <div v-if="external == true && byReturn == 3">
+                  <div class="hideOver my-4" v-for="(item,i) in tickets" :key="i">
+                    <v-skeleton-loader class="textLoader widthAll"
+                      type="image"
+                      :loading="isLoading"
+                    >
+                      <div class="widthAll white relative " style="border: 1px solid ;border-color: #efefef !important;">
+                        <div class="absolute rounded-circle ticketCircle" style="right: -25px;top:50%;margin-top: -25px;"></div>
+                        <div class="absolute rounded-circle ticketCircle" style="left: -25px;top:50%;margin-top: -25px;"></div>
+                        <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;bottom:-25px;margin-left: -25px;"></div>
+                        <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;top:-25px;margin-left: -25px;"></div>
+                        <v-row class="heightAll">
+                          <div class="rightSectionTicket ">
+                            <div class="py-6" v-for="(flight,m) in flights" :key="m">
+                              <v-row class="mt-1 mt-sm-8 mr-2 mr-sm-6" align="center">
+                                <img src="./image/zagros.png" alt="" class="rounded-circle pa-1" width="50" height="50" style="box-shadow: 1px 1px 4px #b3b3b3">
+                                <div class="d-inline-block relative">
+                                  <span class="mx-2 mx-sm-2 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;">{{flight.originCity }}</span>
+                                  <span class="absolute body-2 grey--text text--darken-1 dateTicket" style="font-family: Byekan !important;bottom: 25px;">{{flight.day}} {{flight.fromDate}}</span>
+                                  <!-- <span class="absolute caption typeFlightTicket" style="font-family: Byekan !important;">چارتری</span> -->
+                                  <img src="./image/flight-go-flesh.png" class="flight-go-flesh mt-4 mt-sm-0 mx-2 mx-md-2" alt="" height="12">
+                                  <span class="mx-2 mx-sm-2 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;left:0">{{flight.destinationInternal }}</span>
+                                </div>
+                              </v-row>
+                              <v-row class=" my-4 mr-7">
+                                <span class="body-2" style="font-family: Byekan !important;">زاگرس</span>
+                                <span class="mr-2 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">{{item.originTime}}</span>
+                                <v-spacer></v-spacer>
+                                <span class=" ml-6 ml-sm-12 pl-2 body-2" style="font-family: Byekan !important;">{{item.destinationTime}}</span>
+                              </v-row>
                             </div>
-                          </v-row>
-                        </div>
-                        <v-dialog width="1400" v-model="ticketDetailsModal" style="z-index: 9997;">
-                          <v-sheet class="relative pa-2" style="min-height:500px">
-                            <v-row align="start">
-                              <v-icon class="ma-1" @click="ticketDetailsModal = false">mdi-close</v-icon>
-                              <v-spacer></v-spacer>
-                              <v-btn
-                                dark
-                                class="px-sm-6 py-sm-6 ma-3 absolute" 
-                                style="position: absolute;left: 0;z-index: 2;top: 0;"
-                                outlined
-                                color="red arken-2"
-                                @click="ticketDetailsModal = false;nextPage = !nextPage "
-                              >
-                                {{nextPage ? 'تغییر پرواز انتخابی' : 'انتخاب بلیط'}}
-                              </v-btn>
+                          </div>
+                          <div class="leftSectionTicket">
+                            <v-row class="heightAll" justify="center" align="center">
+                              <div class="widthAll text-center my-3">
+                                <div class="ticketPrice mt-3 mt-sm-0">
+                                  <span class="">
+                                    قیمت
+                                  </span>
+                                  <br>
+                                  <h3 class="mb-3 d-inline-block">
+                                    12,563,000
+                                  </h3>
+                                  <h3 class="mb-3 d-inline-block" style="font-family: Byekan !important;">ریال</h3>
+                                </div>
+                                <div class="ticketButtons">
+                                  <v-btn class="px-1 px-lg-7 mt-6 mt-sm-2" color="blue darken-2" outlined @click="activeTab=0;ticketDetailsModal = true">مشاهده جزییات</v-btn>
+                                  <v-btn class="px-1 px-lg-7 mt-6 mt-sm-2" color="red" outlined @click="nextPage=true">انتخاب بلیط ها</v-btn>
+                                </div>
+                              </div>
                             </v-row>
-                            <v-tabs width="300" 
-                              v-model="activeTab"
-                              class="mt-2"
-                              flat
-                            >
-                            <v-tabs-slider color="red"></v-tabs-slider>
-                              <v-tab style="width:fit-content"
-                                v-for="item in ticketDetailsTabs"
-                                :key="item"
-                              >
-                                {{ item }}
-                              </v-tab>
-                            </v-tabs>
-                            <v-tabs-items v-model="activeTab" reverse style="direction:ltr !important">
-                              <v-tab-item
-                              >
-                                <v-card class="mt-sm-4 py-4"
-                                  flat
+                          </div>
+                          <v-dialog width="1400" v-model="ticketDetailsModal" style="z-index: 9997;">
+                            <v-sheet class="relative pa-2" style="min-height:500px">
+                              <v-row align="start">
+                                <v-icon class="ma-1" @click="ticketDetailsModal = false">mdi-close</v-icon>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                  dark
+                                  class="px-sm-6 py-sm-6 ma-3 absolute" 
+                                  style="position: absolute;left: 0;z-index: 2;top: 0;"
+                                  outlined
+                                  color="red arken-2"
+                                  @click="ticketDetailsModal = false;nextPage = !nextPage "
                                 >
-                                  <v-row>
-                                    <v-col cols="12" md="9" class="pl-0">
-                                      <v-card flat class="grey lighten-3 ml-3 pa-4 rounded-lg ticketDetailsTabs">
-                                        <v-expansion-panels color="red" v-model="panelDetails">
-                                          <v-expansion-panel 
-                                          >
-                                            <v-expansion-panel-header color="grey lighten-3">
-                                              <v-row align="center">
-                                                <span class=" blue--text text--darken-3">0 0 0</span>
-                                                <v-icon large class="blue--text text--darken-1" style="transform: rotate(225deg);">mdi-airplane</v-icon>
-                                                <h4 class="blue--text text--darken-1 mr-3">پرواز رفت (مشهد - کیش)</h4>
-                                                <v-divider vertical class="mx-4"></v-divider>
-                                                <div class="text-right">
-                                                  <span class="grey--text caption widthAll mb-2 d-block" style="font-family: Byekan !important;">مدت زمان پرواز</span>
-                                                  <span class="font-weight-bold mt-4">
-                                                    1 ساعت و 30 دقیقه
-                                                  </span>
+                                  {{nextPage ? 'تغییر پرواز انتخابی' : 'انتخاب بلیط'}}
+                                </v-btn>
+                              </v-row>
+                              <v-tabs width="300" 
+                                v-model="activeTab"
+                                class="mt-2"
+                                flat
+                              >
+                              <v-tabs-slider color="red"></v-tabs-slider>
+                                <v-tab style="width:fit-content"
+                                  v-for="item in ticketDetailsTabs"
+                                  :key="item"
+                                >
+                                  {{ item }}
+                                </v-tab>
+                              </v-tabs>
+                              <v-tabs-items v-model="activeTab" reverse style="direction:ltr !important">
+                                <v-tab-item
+                                >
+                                  <v-card class="mt-sm-4 py-4"
+                                    flat
+                                  >
+                                    <v-row>
+                                      <v-col cols="12" md="9" class="pl-0">
+                                        <v-card flat class="grey lighten-3 ml-3 pa-4 rounded-lg ticketDetailsTabs">
+                                          <v-expansion-panels color="red" v-model="panelDetails">
+                                            <v-expansion-panel 
+                                            >
+                                              <v-expansion-panel-header color="grey lighten-3">
+                                                <v-row align="center">
+                                                  <span class=" blue--text text--darken-3">0 0 0</span>
+                                                  <v-icon large class="blue--text text--darken-1" style="transform: rotate(225deg);">mdi-airplane</v-icon>
+                                                  <h4 class="blue--text text--darken-1 mr-3">پرواز رفت (مشهد - کیش)</h4>
+                                                  <v-divider vertical class="mx-4"></v-divider>
+                                                  <div class="text-right">
+                                                    <span class="grey--text caption widthAll mb-2 d-block" style="font-family: Byekan !important;">مدت زمان پرواز</span>
+                                                    <span class="font-weight-bold mt-4">
+                                                      1 ساعت و 30 دقیقه
+                                                    </span>
+                                                  </div>
+                                                </v-row>
+                                              </v-expansion-panel-header>
+                                              <v-expansion-panel-content class="white py-4">
+                                                <v-row align="center">
+                                                  <v-col cols="12" sm="5" md="5" lg="3">
+                                                    <v-row class="justify-center justify-sm-start">
+                                                      <span class="body-2" style="font-family: Byekan !important;">(08 Nov)</span>
+                                                      <span class="body-2" style="font-family: Byekan !important;">17 آبان 1401</span>
+                                                    </v-row>
+                                                    <v-row class="mt-2 mt-sm-12 justify-center justify-sm-start">
+                                                      <span class="body-2" style="font-family: Byekan !important;">(08 Nov)</span>
+                                                      <span class="body-2" style="font-family: Byekan !important;">17 آبان 1401</span>
+                                                    </v-row>
+                                                  </v-col>
+                                                  <div class="d-block d-sm-none widthAll mx-12 px-12">
+                                                    <v-divider class="my-2"></v-divider>
+                                                  </div>
+                                                  <v-col cols="12" sm="7" md="7" lg="4">
+                                                    <v-row class="justify-center justify-sm-start">
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">7:50</span>
+                                                      <v-icon x-small class="mx-1 grey--text text--lighten-1">mdi-circle</v-icon>
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">مشهد ،(Shahid Hashemi)</span>
+                                                    </v-row>
+                                                    <v-row class="mt-2 mt-sm-4 mr-sm-11 caption grey--text text--darken-1 font-weight-bold justify-center justify-sm-start" style="font-family: Byekan !important;">
+                                                      مدت پرواز: 2 ساعت
+                                                    </v-row>
+                                                    <v-row class="mt-3 justify-center justify-sm-start">
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">9:50</span>
+                                                      <v-icon x-small class="mx-1 grey--text text--lighten-1">mdi-circle</v-icon>
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">کیش ،(Kish Island)</span>
+                                                    </v-row>
+                                                  </v-col>
+                                                  <v-divider vertical class="my-2 d-none d-lg-block"></v-divider>
+                                                  <div class="d-block d-lg-none widthAll mx-12 px-12">
+                                                    <v-divider class="my-2"></v-divider>
+                                                  </div>
+                                                  <!-- <div class="widthAll d-block d-lg-none">
+                                                    <v-divider class="mx-12 my-4"></v-divider>
+                                                  </div> -->
+                                                  <v-col cols="12" lg="5">
+                                                    <v-row align="center" class="justify-center justify-sm-start">
+                                                      <div class="d-inline-block">
+                                                        <v-row align="center">
+                                                          <img src="./image/zagros.png" class="mr-sm-2" width="40" alt="">
+                                                          <span class="mr-2 body-2" style="font-family: Byekan !important;">زاگرس</span>
+                                                        </v-row>
+                                                      </div>
+                                                      <v-divider vertical class="my-2 mx-3"></v-divider>
+                                                      <div class="d-inline-block">
+                                                        <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">شماره پرواز</v-row>
+                                                        <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">ZV4107</v-row>
+                                                      </div>
+                                                      <v-divider vertical class="my-2 mx-3"></v-divider>
+                                                      <div class="d-inline-block">
+                                                        <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">کلاس</v-row>
+                                                        <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">Economy</v-row>
+                                                      </div>
+                                                      <v-divider vertical class="my-2 mx-3"></v-divider>
+                                                      <div class="d-inline-block">
+                                                        <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">مدل هواپیما</v-row>
+                                                        <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">Airbus A320</v-row>
+                                                      </div>
+                                                    </v-row>
+                                                  </v-col>
+                                                </v-row>
+                                              </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                          </v-expansion-panels>
+                                        </v-card>
+                                      </v-col>
+                                      <v-col cols="12" md="3" class="">
+                                        <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
+                                          <div class="blue--text text--darken-1 text-center">
+                                            جزییات قیمت (تومان)
+                                          </div>
+                                          <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row align="center">
+                                              <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
+                                              <v-col cols="2" class="">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">1,800,000</v-col>
+                                            </v-row>
+                                          </div>
+                                          <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.child}} کودک</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
+                                            </v-row>                                          
+                                          </div>
+                                          <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">200,000</v-col>
+                                            </v-row>
+                                          </div> 
+                                          <h3 class="text-center mt-6 red--text ">
+                                            مجموع 3,200,000 تومان
+                                          </h3> 
+                                          <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
+                                        </v-card>
+                                      </v-col>
+                                    </v-row>
+                                  </v-card>
+                                </v-tab-item>
+                                <v-tab-item>
+                                  <v-card class="mt-sm-8 py-4" flat>
+                                    <v-row>
+                                      <v-col cols="12" md="9" class="">
+                                        <v-row >
+                                          <v-col v-for="(item,i) in 4" :key="'item'+i" cols="12" md="6" lg="4" class="px-2 mb-2">
+                                            <v-row align="center" class="grey lighten-3 rounded-lg pa-2 ">
+                                              <v-col v-if="windowWidth < 600">
+                                                <span class="body-2 font-weight-bold" style="font-family: Byekan !important;">تا ساعت 12:00، 5 روز مانده به پرواز</span>
+                                              </v-col>
+                                              <v-col v-if="windowWidth < 600">
+                                                <div class="white rounded-lg hideOver d-inline-block body-2 relative py-2 text-center float-left" style="font-family: Byekan !important;width: 100px;height:40px">
+                                                  <div class="red absolute red--text heightAll" style="width: 10px;top: 0;right:0"></div>
+                                                  <div class="d-inline-block caption font-weight-bold" style="font-family: Byekan !important;width:70%">70% جریمه</div>
                                                 </div>
-                                              </v-row>
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content class="white py-4">
-                                              <v-row align="center">
-                                                <v-col cols="12" sm="5" md="5" lg="3">
-                                                  <v-row class="justify-center justify-sm-start">
-                                                    <span class="body-2" style="font-family: Byekan !important;">(08 Nov)</span>
-                                                    <span class="body-2" style="font-family: Byekan !important;">17 آبان 1401</span>
-                                                  </v-row>
-                                                  <v-row class="mt-2 mt-sm-12 justify-center justify-sm-start">
-                                                    <span class="body-2" style="font-family: Byekan !important;">(08 Nov)</span>
-                                                    <span class="body-2" style="font-family: Byekan !important;">17 آبان 1401</span>
-                                                  </v-row>
-                                                </v-col>
-                                                <div class="d-block d-sm-none widthAll mx-12 px-12">
-                                                  <v-divider class="my-2"></v-divider>
-                                                </div>
-                                                <v-col cols="12" sm="7" md="7" lg="4">
-                                                  <v-row class="justify-center justify-sm-start">
-                                                    <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">7:50</span>
-                                                    <v-icon x-small class="mx-1 grey--text text--lighten-1">mdi-circle</v-icon>
-                                                    <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">مشهد ،(Shahid Hashemi)</span>
-                                                  </v-row>
-                                                  <v-row class="mt-2 mt-sm-4 mr-sm-11 caption grey--text text--darken-1 font-weight-bold justify-center justify-sm-start" style="font-family: Byekan !important;">
-                                                    مدت پرواز: 2 ساعت
-                                                  </v-row>
-                                                  <v-row class="mt-3 justify-center justify-sm-start">
-                                                    <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">9:50</span>
-                                                    <v-icon x-small class="mx-1 grey--text text--lighten-1">mdi-circle</v-icon>
-                                                    <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">کیش ،(Kish Island)</span>
-                                                  </v-row>
-                                                </v-col>
-                                                <v-divider vertical class="my-2 d-none d-lg-block"></v-divider>
-                                                <div class="d-block d-lg-none widthAll mx-12 px-12">
-                                                  <v-divider class="my-2"></v-divider>
-                                                </div>
-                                                <!-- <div class="widthAll d-block d-lg-none">
-                                                  <v-divider class="mx-12 my-4"></v-divider>
-                                                </div> -->
-                                                <v-col cols="12" lg="5">
-                                                  <v-row align="center" class="justify-center justify-sm-start">
-                                                    <div class="d-inline-block">
-                                                      <v-row align="center">
-                                                        <img src="./image/zagros.png" class="mr-sm-2" width="40" alt="">
-                                                        <span class="mr-2 body-2" style="font-family: Byekan !important;">زاگرس</span>
-                                                      </v-row>
-                                                    </div>
-                                                    <v-divider vertical class="my-2 mx-3"></v-divider>
-                                                    <div class="d-inline-block">
-                                                      <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">شماره پرواز</v-row>
-                                                      <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">ZV4107</v-row>
-                                                    </div>
-                                                    <v-divider vertical class="my-2 mx-3"></v-divider>
-                                                    <div class="d-inline-block">
-                                                      <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">کلاس</v-row>
-                                                      <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">Economy</v-row>
-                                                    </div>
-                                                    <v-divider vertical class="my-2 mx-3"></v-divider>
-                                                    <div class="d-inline-block">
-                                                      <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">مدل هواپیما</v-row>
-                                                      <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">Airbus A320</v-row>
-                                                    </div>
-                                                  </v-row>
-                                                </v-col>
-                                              </v-row>
-                                            </v-expansion-panel-content>
-                                          </v-expansion-panel>
-                                        </v-expansion-panels>
-                                      </v-card>
-                                    </v-col>
-                                    <v-col cols="12" md="3" class="">
-                                      <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
-                                        <div class="blue--text text--darken-1 text-center">
-                                          جزییات قیمت (تومان)
-                                        </div>
-                                        <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row align="center">
-                                            <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
-                                            <v-col cols="2" class="">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
-                                              </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr">1,800,000</v-col>
-                                          </v-row>
-                                        </div>
-                                        <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row>
-                                            <v-col cols="5">{{Passenger.child}} کودک</v-col>
-                                            <v-col cols="2">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
-                                              </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
-                                          </v-row>                                          
-                                        </div>
-                                        <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row>
-                                            <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
-                                            <v-col cols="2">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
-                                              </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr">200,000</v-col>
-                                          </v-row>
-                                        </div> 
-                                        <h3 class="text-center mt-6 red--text ">
-                                          مجموع 3,200,000 تومان
-                                        </h3> 
-                                        <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
-                                      </v-card>
-                                    </v-col>
-                                  </v-row>
-                                </v-card>
-                              </v-tab-item>
-                              <v-tab-item>
-                                <v-card class="mt-sm-8 py-4" flat>
-                                  <v-row>
-                                    <v-col cols="12" md="9" class="">
-                                      <v-row >
-                                        <v-col v-for="(item,i) in 4" :key="'item'+i" cols="12" md="6" lg="4" class="px-2 mb-2">
-                                          <v-row align="center" class="grey lighten-3 rounded-lg pa-2 ">
-                                            <v-col v-if="windowWidth < 600">
-                                              <span class="body-2 font-weight-bold" style="font-family: Byekan !important;">تا ساعت 12:00، 5 روز مانده به پرواز</span>
-                                            </v-col>
-                                            <v-col v-if="windowWidth < 600">
-                                              <div class="white rounded-lg hideOver d-inline-block body-2 relative py-2 text-center float-left" style="font-family: Byekan !important;width: 100px;height:40px">
+                                              </v-col>
+                                              <span v-if="windowWidth >= 600" class="body-2 font-weight-bold" style="font-family: Byekan !important;">تا ساعت 12:00، 5 روز مانده به پرواز</span>
+                                              <v-spacer v-if="windowWidth >= 600"></v-spacer>
+                                              <div v-if="windowWidth >= 600" class="white rounded-lg hideOver d-inline-block body-2 relative py-2 text-center" style="font-family: Byekan !important;width: 100px;height:40px">
                                                 <div class="red absolute red--text heightAll" style="width: 10px;top: 0;right:0"></div>
                                                 <div class="d-inline-block caption font-weight-bold" style="font-family: Byekan !important;width:70%">70% جریمه</div>
                                               </div>
-                                            </v-col>
-                                            <span v-if="windowWidth >= 600" class="body-2 font-weight-bold" style="font-family: Byekan !important;">تا ساعت 12:00، 5 روز مانده به پرواز</span>
-                                            <v-spacer v-if="windowWidth >= 600"></v-spacer>
-                                            <div v-if="windowWidth >= 600" class="white rounded-lg hideOver d-inline-block body-2 relative py-2 text-center" style="font-family: Byekan !important;width: 100px;height:40px">
-                                              <div class="red absolute red--text heightAll" style="width: 10px;top: 0;right:0"></div>
-                                              <div class="d-inline-block caption font-weight-bold" style="font-family: Byekan !important;width:70%">70% جریمه</div>
-                                            </div>
-                                          </v-row>
-                                        </v-col>
-                                      </v-row>
-                                    </v-col>
-                                    <v-col cols="12" md="3" class="">
-                                      <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
-                                        <div class="blue--text text--darken-1 text-center">
-                                          جزییات قیمت (تومان)
-                                        </div>
-                                        <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row align="center">
-                                            <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
-                                            <v-col cols="2" class="">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
-                                              </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr">1,800,000</v-col>
-                                          </v-row>
-                                        </div>
-                                        <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row>
-                                            <v-col cols="5">{{Passenger.child}} کودک</v-col>
-                                            <v-col cols="2">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
-                                              </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
-                                          </v-row>                                          
-                                        </div>
-                                        <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row>
-                                            <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
-                                            <v-col cols="2">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
-                                              </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr">200,000</v-col>
-                                          </v-row>
-                                        </div> 
-                                        <h3 class="text-center mt-6 red--text ">
-                                          مجموع 3,200,000 تومان
-                                        </h3> 
-                                        <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
-                                      </v-card>
-                                    </v-col>
-                                  </v-row>
-                                </v-card>
-                              </v-tab-item>
-                              <v-tab-item
-                              >
-                                <v-card class="mt-sm-8 py-4"
-                                  flat
+                                            </v-row>
+                                          </v-col>
+                                        </v-row>
+                                      </v-col>
+                                      <v-col cols="12" md="3" class="">
+                                        <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
+                                          <div class="blue--text text--darken-1 text-center">
+                                            جزییات قیمت (تومان)
+                                          </div>
+                                          <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row align="center">
+                                              <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
+                                              <v-col cols="2" class="">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">1,800,000</v-col>
+                                            </v-row>
+                                          </div>
+                                          <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.child}} کودک</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
+                                            </v-row>                                          
+                                          </div>
+                                          <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">200,000</v-col>
+                                            </v-row>
+                                          </div> 
+                                          <h3 class="text-center mt-6 red--text ">
+                                            مجموع 3,200,000 تومان
+                                          </h3> 
+                                          <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
+                                        </v-card>
+                                      </v-col>
+                                    </v-row>
+                                  </v-card>
+                                </v-tab-item>
+                                <v-tab-item
                                 >
-                                  <v-row>
-                                    <v-col cols="12" md="9" class="">
-                                      <v-row >
-                                        <v-col cols="12" sm="6" md="4" lg="3" class="mb-sm-2">
-                                          <div class="grey lighten-3 rounded-lg ma-sm-4 pa-4">
-                                            <v-row class="">
-                                              <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">Mashhad به KishIsland</span>
-                                            </v-row>
-                                            <v-row class="">
-                                              <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">شماره پرواز ZV4107</span>
-                                            </v-row>
-                                            <h3 class="mt-2">بزرگسال : 20 KG</h3>
+                                  <v-card class="mt-sm-8 py-4"
+                                    flat
+                                  >
+                                    <v-row>
+                                      <v-col cols="12" md="9" class="">
+                                        <v-row >
+                                          <v-col cols="12" sm="6" md="4" lg="3" class="mb-sm-2">
+                                            <div class="grey lighten-3 rounded-lg ma-sm-4 pa-4">
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">Mashhad به KishIsland</span>
+                                              </v-row>
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">شماره پرواز ZV4107</span>
+                                              </v-row>
+                                              <h3 class="mt-2">بزرگسال : 20 KG</h3>
+                                            </div>
+                                          </v-col>
+                                          <v-col cols="12" sm="6" md="4" lg="3" class="mb-sm-2">
+                                            <div class="grey lighten-3 rounded-lg ma-sm-4 pa-4">
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">Mashhad به KishIsland</span>
+                                              </v-row>
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">شماره پرواز ZV4107</span>
+                                              </v-row>
+                                              <h3 class="mt-2">کودک : 20 KG</h3>
+                                            </div>
+                                          </v-col>
+                                        </v-row>
+                                      </v-col>
+                                      <v-col cols="12" md="3" class="px-6 px-sm-10 px-md-3">
+                                        <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
+                                          <div class="blue--text text--darken-1 text-center">
+                                            جزییات قیمت (تومان)
                                           </div>
-                                        </v-col>
-                                        <v-col cols="12" sm="6" md="4" lg="3" class="mb-sm-2">
-                                          <div class="grey lighten-3 rounded-lg ma-sm-4 pa-4">
-                                            <v-row class="">
-                                              <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">Mashhad به KishIsland</span>
+                                          <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row align="center">
+                                              <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
+                                              <v-col cols="2" class="">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">1,800,000</v-col>
                                             </v-row>
-                                            <v-row class="">
-                                              <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">شماره پرواز ZV4107</span>
-                                            </v-row>
-                                            <h3 class="mt-2">کودک : 20 KG</h3>
                                           </div>
-                                        </v-col>
-                                      </v-row>
-                                    </v-col>
-                                    <v-col cols="12" md="3" class="px-6 px-sm-10 px-md-3">
-                                      <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
-                                        <div class="blue--text text--darken-1 text-center">
-                                          جزییات قیمت (تومان)
-                                        </div>
-                                        <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row align="center">
-                                            <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
-                                            <v-col cols="2" class="">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
+                                          <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.child}} کودک</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
+                                            </v-row>                                          
+                                          </div>
+                                          <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">200,000</v-col>
+                                            </v-row>
+                                          </div> 
+                                          <h3 class="text-center mt-6 red--text ">
+                                            مجموع 3,200,000 تومان
+                                          </h3> 
+                                          <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
+                                        </v-card>
+                                      </v-col>
+                                    </v-row>
+                                  </v-card>
+                                </v-tab-item>
+                              </v-tabs-items>
+                            </v-sheet>
+                          </v-dialog>
+                        </v-row>
+                      </div>
+                    </v-skeleton-loader>
+                  </div>
+                </div>
+                <div v-else>
+                  <div class="hideOver my-4" v-for="(item,i) in tickets" :key="i">
+                    <v-skeleton-loader class="textLoader widthAll"
+                      type="image"
+                      :loading="isLoading"
+                    >
+                      <div class="widthAll white relative " style="border: 1px solid ;border-color: #efefef !important;">
+                        <div class="absolute rounded-circle ticketCircle" style="right: -25px;top:50%;margin-top: -25px;"></div>
+                        <div class="absolute rounded-circle ticketCircle" style="left: -25px;top:50%;margin-top: -25px;"></div>
+                        <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;bottom:-25px;margin-left: -25px;"></div>
+                        <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;top:-25px;margin-left: -25px;"></div>
+                        <v-row class="heightAll">
+                          <div class="pt-2 rightSectionTicket">
+                          <v-row class="mt-1 mt-sm-8 mr-2 mr-sm-6" align="center">
+                            <img src="./image/zagros.png" alt="" class="rounded-circle pa-1" width="50" height="50" style="box-shadow: 1px 1px 4px #b3b3b3">
+                            <div class="d-inline-block relative">
+                              <span class="mx-2 mx-sm-2 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;">{{flights.length ? flights[ticketChooseStep].originCity : ''}}</span>
+                              <span class="absolute body-2 grey--text text--darken-1 dateTicket" style="font-family: Byekan !important;bottom: 25px;">{{flights.length ? flights[ticketChooseStep].day : ''}} {{flights.length ? flights[ticketChooseStep].fromDate : ''}}</span>
+                              <span class="absolute caption typeFlightTicket" style="font-family: Byekan !important;">چارتری</span>
+                              <img src="./image/flight-go-flesh.png" class="flight-go-flesh mt-4 mt-sm-0 mx-6" alt="" height="12">
+                              <span class="mx-2 mx-sm-6 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;left:0">{{flights.length ? flights[ticketChooseStep].destinationInternal : ''}}</span>
+                            </div>
+                          </v-row>
+                          <v-row class=" my-4 mr-7">
+                            <span class="body-2" style="font-family: Byekan !important;">زاگرس</span>
+                            <span class="mr-4 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">{{item.originTime}}</span>
+                            <v-spacer></v-spacer>
+                            <span class="ml-5 ml-sm-7 ml-md-10 pl-2 body-2" style="font-family: Byekan !important;">{{item.destinationTime}}</span>
+                          </v-row>
+                          </div>
+                          <div class="leftSectionTicket">
+                            <v-row class="heightAll" justify="center">
+                              <div class="widthAll text-center my-3">
+                                <div class="ticketPrice mt-3 mt-sm-0">
+                                  <span class="">
+                                    قیمت
+                                  </span>
+                                  <br>
+                                  <h3 class="mb-3 d-inline-block">
+                                    12,563,000
+                                  </h3>
+                                  <h3 class="mb-3 d-inline-block" style="font-family: Byekan !important;">ریال</h3>
+                                </div>
+                                <div class="ticketButtons">
+                                  <v-btn class="px-6 px-lg-12" color="red" outlined @click="reserveTicket(item)">رزرو بلیط</v-btn>
+                                  <br>
+                                  <v-btn class="px-1 px-lg-7 mt-2" color="blue darken-2" outlined @click="activeTab=0;ticketDetailsModal = true">مشاهده جزییات</v-btn>
+                                </div>
+                              </div>
+                            </v-row>
+                          </div>
+                          <v-dialog width="1400" v-model="ticketDetailsModal" style="z-index: 9997;">
+                            <v-sheet class="relative pa-2" style="min-height:500px">
+                              <v-row align="start">
+                                <v-icon class="ma-1" @click="ticketDetailsModal = false">mdi-close</v-icon>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                  dark
+                                  class="px-sm-6 py-sm-6 ma-3 absolute" 
+                                  style="position: absolute;left: 0;z-index: 2;top: 0;"
+                                  outlined
+                                  color="red arken-2"
+                                  @click="ticketDetailsModal = false;nextPage = !nextPage "
+                                >
+                                  {{nextPage ? 'تغییر پرواز انتخابی' : 'انتخاب بلیط'}}
+                                </v-btn>
+                              </v-row>
+                              <v-tabs width="300" 
+                                v-model="activeTab"
+                                class="mt-2"
+                                flat
+                              >
+                              <v-tabs-slider color="red"></v-tabs-slider>
+                                <v-tab style="width:fit-content"
+                                  v-for="item in ticketDetailsTabs"
+                                  :key="item"
+                                >
+                                  {{ item }}
+                                </v-tab>
+                              </v-tabs>
+                              <v-tabs-items v-model="activeTab" reverse style="direction:ltr !important">
+                                <v-tab-item
+                                >
+                                  <v-card class="mt-sm-4 py-4"
+                                    flat
+                                  >
+                                    <v-row>
+                                      <v-col cols="12" md="9" class="pl-0">
+                                        <v-card flat class="grey lighten-3 ml-3 pa-4 rounded-lg ticketDetailsTabs">
+                                          <v-expansion-panels color="red" v-model="panelDetails">
+                                            <v-expansion-panel 
+                                            >
+                                              <v-expansion-panel-header color="grey lighten-3">
+                                                <v-row align="center">
+                                                  <span class=" blue--text text--darken-3">0 0 0</span>
+                                                  <v-icon large class="blue--text text--darken-1" style="transform: rotate(225deg);">mdi-airplane</v-icon>
+                                                  <h4 class="blue--text text--darken-1 mr-3">پرواز رفت (مشهد - کیش)</h4>
+                                                  <v-divider vertical class="mx-4"></v-divider>
+                                                  <div class="text-right">
+                                                    <span class="grey--text caption widthAll mb-2 d-block" style="font-family: Byekan !important;">مدت زمان پرواز</span>
+                                                    <span class="font-weight-bold mt-4">
+                                                      1 ساعت و 30 دقیقه
+                                                    </span>
+                                                  </div>
+                                                </v-row>
+                                              </v-expansion-panel-header>
+                                              <v-expansion-panel-content class="white py-4">
+                                                <v-row align="center">
+                                                  <v-col cols="12" sm="5" md="5" lg="3">
+                                                    <v-row class="justify-center justify-sm-start">
+                                                      <span class="body-2" style="font-family: Byekan !important;">(08 Nov)</span>
+                                                      <span class="body-2" style="font-family: Byekan !important;">17 آبان 1401</span>
+                                                    </v-row>
+                                                    <v-row class="mt-2 mt-sm-12 justify-center justify-sm-start">
+                                                      <span class="body-2" style="font-family: Byekan !important;">(08 Nov)</span>
+                                                      <span class="body-2" style="font-family: Byekan !important;">17 آبان 1401</span>
+                                                    </v-row>
+                                                  </v-col>
+                                                  <div class="d-block d-sm-none widthAll mx-12 px-12">
+                                                    <v-divider class="my-2"></v-divider>
+                                                  </div>
+                                                  <v-col cols="12" sm="7" md="7" lg="4">
+                                                    <v-row class="justify-center justify-sm-start">
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">7:50</span>
+                                                      <v-icon x-small class="mx-1 grey--text text--lighten-1">mdi-circle</v-icon>
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">مشهد ،(Shahid Hashemi)</span>
+                                                    </v-row>
+                                                    <v-row class="mt-2 mt-sm-4 mr-sm-11 caption grey--text text--darken-1 font-weight-bold justify-center justify-sm-start" style="font-family: Byekan !important;">
+                                                      مدت پرواز: 2 ساعت
+                                                    </v-row>
+                                                    <v-row class="mt-3 justify-center justify-sm-start">
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">9:50</span>
+                                                      <v-icon x-small class="mx-1 grey--text text--lighten-1">mdi-circle</v-icon>
+                                                      <span class="body-2 grey--text text--darken-1" style="font-family: Byekan !important;">کیش ،(Kish Island)</span>
+                                                    </v-row>
+                                                  </v-col>
+                                                  <v-divider vertical class="my-2 d-none d-lg-block"></v-divider>
+                                                  <div class="d-block d-lg-none widthAll mx-12 px-12">
+                                                    <v-divider class="my-2"></v-divider>
+                                                  </div>
+                                                  <!-- <div class="widthAll d-block d-lg-none">
+                                                    <v-divider class="mx-12 my-4"></v-divider>
+                                                  </div> -->
+                                                  <v-col cols="12" lg="5">
+                                                    <v-row align="center" class="justify-center justify-sm-start">
+                                                      <div class="d-inline-block">
+                                                        <v-row align="center">
+                                                          <img src="./image/zagros.png" class="mr-sm-2" width="40" alt="">
+                                                          <span class="mr-2 body-2" style="font-family: Byekan !important;">زاگرس</span>
+                                                        </v-row>
+                                                      </div>
+                                                      <v-divider vertical class="my-2 mx-3"></v-divider>
+                                                      <div class="d-inline-block">
+                                                        <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">شماره پرواز</v-row>
+                                                        <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">ZV4107</v-row>
+                                                      </div>
+                                                      <v-divider vertical class="my-2 mx-3"></v-divider>
+                                                      <div class="d-inline-block">
+                                                        <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">کلاس</v-row>
+                                                        <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">Economy</v-row>
+                                                      </div>
+                                                      <v-divider vertical class="my-2 mx-3"></v-divider>
+                                                      <div class="d-inline-block">
+                                                        <v-row class="caption grey--text " justify="center" style="font-family: Byekan !important;">مدل هواپیما</v-row>
+                                                        <v-row class="caption font-weight-bold" justify="center" style="font-family: Byekan !important;">Airbus A320</v-row>
+                                                      </div>
+                                                    </v-row>
+                                                  </v-col>
+                                                </v-row>
+                                              </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                          </v-expansion-panels>
+                                        </v-card>
+                                      </v-col>
+                                      <v-col cols="12" md="3" class="">
+                                        <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
+                                          <div class="blue--text text--darken-1 text-center">
+                                            جزییات قیمت (تومان)
+                                          </div>
+                                          <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row align="center">
+                                              <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
+                                              <v-col cols="2" class="">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">1,800,000</v-col>
+                                            </v-row>
+                                          </div>
+                                          <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.child}} کودک</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
+                                            </v-row>                                          
+                                          </div>
+                                          <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">200,000</v-col>
+                                            </v-row>
+                                          </div> 
+                                          <h3 class="text-center mt-6 red--text ">
+                                            مجموع 3,200,000 تومان
+                                          </h3> 
+                                          <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
+                                        </v-card>
+                                      </v-col>
+                                    </v-row>
+                                  </v-card>
+                                </v-tab-item>
+                                <v-tab-item>
+                                  <v-card class="mt-sm-8 py-4" flat>
+                                    <v-row>
+                                      <v-col cols="12" md="9" class="">
+                                        <v-row >
+                                          <v-col v-for="(item,i) in 4" :key="'item'+i" cols="12" md="6" lg="4" class="px-2 mb-2">
+                                            <v-row align="center" class="grey lighten-3 rounded-lg pa-2 ">
+                                              <v-col v-if="windowWidth < 600">
+                                                <span class="body-2 font-weight-bold" style="font-family: Byekan !important;">تا ساعت 12:00، 5 روز مانده به پرواز</span>
+                                              </v-col>
+                                              <v-col v-if="windowWidth < 600">
+                                                <div class="white rounded-lg hideOver d-inline-block body-2 relative py-2 text-center float-left" style="font-family: Byekan !important;width: 100px;height:40px">
+                                                  <div class="red absolute red--text heightAll" style="width: 10px;top: 0;right:0"></div>
+                                                  <div class="d-inline-block caption font-weight-bold" style="font-family: Byekan !important;width:70%">70% جریمه</div>
+                                                </div>
+                                              </v-col>
+                                              <span v-if="windowWidth >= 600" class="body-2 font-weight-bold" style="font-family: Byekan !important;">تا ساعت 12:00، 5 روز مانده به پرواز</span>
+                                              <v-spacer v-if="windowWidth >= 600"></v-spacer>
+                                              <div v-if="windowWidth >= 600" class="white rounded-lg hideOver d-inline-block body-2 relative py-2 text-center" style="font-family: Byekan !important;width: 100px;height:40px">
+                                                <div class="red absolute red--text heightAll" style="width: 10px;top: 0;right:0"></div>
+                                                <div class="d-inline-block caption font-weight-bold" style="font-family: Byekan !important;width:70%">70% جریمه</div>
+                                              </div>
+                                            </v-row>
+                                          </v-col>
+                                        </v-row>
+                                      </v-col>
+                                      <v-col cols="12" md="3" class="">
+                                        <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
+                                          <div class="blue--text text--darken-1 text-center">
+                                            جزییات قیمت (تومان)
+                                          </div>
+                                          <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row align="center">
+                                              <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
+                                              <v-col cols="2" class="">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">1,800,000</v-col>
+                                            </v-row>
+                                          </div>
+                                          <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.child}} کودک</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
+                                            </v-row>                                          
+                                          </div>
+                                          <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">200,000</v-col>
+                                            </v-row>
+                                          </div> 
+                                          <h3 class="text-center mt-6 red--text ">
+                                            مجموع 3,200,000 تومان
+                                          </h3> 
+                                          <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
+                                        </v-card>
+                                      </v-col>
+                                    </v-row>
+                                  </v-card>
+                                </v-tab-item>
+                                <v-tab-item
+                                >
+                                  <v-card class="mt-sm-8 py-4"
+                                    flat
+                                  >
+                                    <v-row>
+                                      <v-col cols="12" md="9" class="">
+                                        <v-row >
+                                          <v-col cols="12" sm="6" md="4" lg="3" class="mb-sm-2">
+                                            <div class="grey lighten-3 rounded-lg ma-sm-4 pa-4">
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">Mashhad به KishIsland</span>
                                               </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr">1,800,000</v-col>
-                                          </v-row>
-                                        </div>
-                                        <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row>
-                                            <v-col cols="5">{{Passenger.child}} کودک</v-col>
-                                            <v-col cols="2">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">شماره پرواز ZV4107</span>
                                               </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
-                                          </v-row>                                          
-                                        </div>
-                                        <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
-                                          <v-row>
-                                            <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
-                                            <v-col cols="2">
-                                              <v-row justify="center">
-                                                <v-icon small>mdi-close</v-icon>
+                                              <h3 class="mt-2">بزرگسال : 20 KG</h3>
+                                            </div>
+                                          </v-col>
+                                          <v-col cols="12" sm="6" md="4" lg="3" class="mb-sm-2">
+                                            <div class="grey lighten-3 rounded-lg ma-sm-4 pa-4">
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">Mashhad به KishIsland</span>
                                               </v-row>
-                                            </v-col>
-                                            <v-col cols="5" class="ltr">200,000</v-col>
-                                          </v-row>
-                                        </div> 
-                                        <h3 class="text-center mt-6 red--text ">
-                                          مجموع 3,200,000 تومان
-                                        </h3> 
-                                        <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
-                                      </v-card>
-                                    </v-col>
-                                  </v-row>
-                                </v-card>
-                              </v-tab-item>
-                            </v-tabs-items>
-                          </v-sheet>
-                        </v-dialog>
-                      </v-row>
-                    </div>
-                  </v-skeleton-loader>
+                                              <v-row class="">
+                                                <span class="caption font-weight-bold blue--text d-block" style="font-family: Byekan !important;">شماره پرواز ZV4107</span>
+                                              </v-row>
+                                              <h3 class="mt-2">کودک : 20 KG</h3>
+                                            </div>
+                                          </v-col>
+                                        </v-row>
+                                      </v-col>
+                                      <v-col cols="12" md="3" class="px-6 px-sm-10 px-md-3">
+                                        <v-card flat class="grey lighten-3 py-4 rounded-lg ticketDetailsTabs px-sm-12 px-md-4 px-lg-12">
+                                          <div class="blue--text text--darken-1 text-center">
+                                            جزییات قیمت (تومان)
+                                          </div>
+                                          <div class="mt-6 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row align="center">
+                                              <v-col cols="5">{{Passenger.peaple}} بزرگسال</v-col>
+                                              <v-col cols="2" class="">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">1,800,000</v-col>
+                                            </v-row>
+                                          </div>
+                                          <div v-if="Passenger.child" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.child}} کودک</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr"><span>1,200,000</span></v-col>
+                                            </v-row>                                          
+                                          </div>
+                                          <div v-if="Passenger.baby" class="mt-4 mx-6 mx-sm-12 mx-md-0 px-sm-12 px-md-0 font-small-xs">
+                                            <v-row>
+                                              <v-col cols="5">{{Passenger.baby}} نوزاد</v-col>
+                                              <v-col cols="2">
+                                                <v-row justify="center">
+                                                  <v-icon small>mdi-close</v-icon>
+                                                </v-row>
+                                              </v-col>
+                                              <v-col cols="5" class="ltr">200,000</v-col>
+                                            </v-row>
+                                          </div> 
+                                          <h3 class="text-center mt-6 red--text ">
+                                            مجموع 3,200,000 تومان
+                                          </h3> 
+                                          <span class="d-block widthAll text-center green--text caption font-weight-bold mt-2" style="font-family: Byekan !important;">ظرفیت 24 نفر</span>
+                                        </v-card>
+                                      </v-col>
+                                    </v-row>
+                                  </v-card>
+                                </v-tab-item>
+                              </v-tabs-items>
+                            </v-sheet>
+                          </v-dialog>
+                        </v-row>
+                      </div>
+                    </v-skeleton-loader>
+                  </div>
                 </div>
               </v-col>
             </v-row>
@@ -1434,7 +1819,7 @@
             <v-row class="header grey lighten-3" justify="center">
               <div class=" indexDiv pa-1 pa-sm-3 pb-0">
                 <a href="https://ahuan.ir"><img height="20px" src="./image/logo-header.png" alt="صفحه اصلی" ></a>
-                <span class="headerSpan .v-application .body-2 d-none d-sm-inline-block">رزرو آنلاین خدمات گردشگری</span>
+                <span class="headerSpan d-none d-sm-inline-block">رزرو آنلاین خدمات گردشگری</span>
                 <v-icon class="mr-2 float-left d-none d-sm-inline-block">
                   mdi-phone-in-talk
                 </v-icon>
@@ -1605,7 +1990,7 @@
                       <v-col cols="3" class="hideOver">
                         <v-row justify="center" align="center" class="heightAll">
                           <v-icon :color="bookStep <= 1 ? 'grey darken-1' : '#1abc9c'">mdi-account-check</v-icon>
-                          <span class="body-2 d-md-inline-block text-center" style="font-family: Byekan !important;" :style="{color: bookStep <= 1 ?  '#757575' : '#1abc9c',width: windowWidth < 600 && '100%'}">تایید اطلاعات</span>
+                          <span class="body-2 d-md-inline-block text-center" style="font-family: Byekan !important;" :style="{color: bookStep <= 1 ?  '#757575' : '#1abc9c',width: windowWidth < 600 && '100%'}">تائید اطلاعات</span>
                         </v-row>
                       </v-col>
                       <v-col cols="3" class="hideOver">
@@ -1622,8 +2007,8 @@
                 </v-card>
               </v-row>
               <v-row justify="center" v-if="bookStep != 3" :style="{marginTop:windowWidth < 600 && '60px !important'}">
-                <h5 class="d-block text-right widthAll mt-6 mb-2" style="width: 875px;">پرواز انتخابی شما</h5>
-                <div class="hideOver" style="width: 875px;">
+                <h5 class="d-block text-right widthAll mt-6 mb-2" style="width: 875px;"> {{flights.length > 1 ? 'پروازهای انتخابی شما' : 'پرواز انتخابی شما'}}</h5>
+                <div class="hideOver next-page-ticket" style="width: 875px;">
                   <div class="hideOver my-4">
                     <div class="widthAll white relative " style="border: 1px solid ;border-color: #efefef !important;">
                       <div class="absolute rounded-circle ticketCircle" style="right: -25px;top:50%;margin-top: -25px;"></div>
@@ -1631,22 +2016,22 @@
                       <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;bottom:-25px;margin-left: -25px;"></div>
                       <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;top:-25px;margin-left: -25px;"></div>
                       <v-row class="heightAll">
-                        <div class="pt-2 rightSectionTicket">
+                        <div class="pt-2 rightSectionTicket ">
                         <v-row class="mt-1 mt-sm-8 mr-2 mr-sm-6" align="center">
                           <img src="./image/zagros.png" alt="" class="rounded-circle pa-1" width="50" height="50" style="box-shadow: 1px 1px 4px #b3b3b3">
-                          <span class="mx-2 mx-sm-6 body-2" style="font-family: Byekan !important;">مشهد</span>
+                          <span class="mx-2 mx-sm-5 body-2" style="font-family: Byekan !important;">مشهد</span>
                           <div class="d-inline-block relative">
                             <span class="absolute body-2 grey--text text--darken-1 dateTicket" style="font-family: Byekan !important;bottom: 25px;">دوشنبه 16 آبان</span>
                             <span class="absolute caption typeFlightTicket" style="font-family: Byekan !important;">چارتری</span>
                             <img src="./image/flight-go-flesh.png" class="flight-go-flesh mt-4 mt-sm-0" alt="" height="12">
                           </div>
-                          <span class="mx-2 mx-sm-6 body-2" style="font-family: Byekan !important;">کیش</span>
+                          <span class="mx-2 mx-sm-4 body-2" style="font-family: Byekan !important;">کیش</span>
                         </v-row>
                         <v-row class=" my-4 mr-7">
                           <span class="body-2" style="font-family: Byekan !important;">زاگرس</span>
                           <span class="mr-2 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">15:20</span>
                           <v-spacer></v-spacer>
-                          <span class=" ml-6 ml-sm-12 pl-2 body-2" style="font-family: Byekan !important;">18:35</span>
+                          <span class=" ml-6 ml-sm-6 pl-2 body-2" style="font-family: Byekan !important;">18:35</span>
                         </v-row>
                         </div>
                         <div class="leftSectionTicket">
@@ -2133,7 +2518,7 @@
                   </v-row>
                 </v-card>
               </v-row>
-              <v-row justify="center" v-if="bookStep == 2">
+              <v-row class="hide-header-data-tabel" justify="center" v-if="bookStep == 2">
                 <div v-if="persianUsers.length" style="width: 875px;">
                   <h5 class="widthAll mt-6">
                     {{persianUsers.length == 1 ? 'مشخصات مسافر' : 'مشخصات مسافران '}}
@@ -2159,7 +2544,8 @@
                     {{otherUsers.length == 1 ? 'مشخصات مسافر' : 'مشخصات مسافران '}}
                     {{persianUsers.length != 0 ? '(غیر ایرانی)' : '' }}
                   </h5>
-                  <v-card outlined v-if="otherUsers.length" class="mt-2" style="width: 875px;">
+                </div>
+                <v-card outlined v-if="otherUsers.length" class="mt-2" style="width: 875px;">
                     <v-data-table 
                       hide-default-footer
                       :headers="otherTebelHeaders"
@@ -2176,7 +2562,6 @@
                       </template>
                     </v-data-table>
                   </v-card>
-                </div>
               </v-row>
               <v-row justify="center" v-if="bookStep == 2">
                 <div style="width: 875px;">
@@ -2228,13 +2613,13 @@
                   </v-row>
                 </v-card>
               </v-row>
-              <v-row justify="center" v-if="bookStep == 3">
-                <div class="indexDiv rounded-xl my-6 pa-4" style="max-width:875px;border: 5px solid #9ee9da;">
+              <v-row justify="center" v-if="bookStep == 3" class="mt-12 mt-sm-6">
+                <div class="indexDiv rounded-xl mb-6 pa-4 mt-12 mt-sm-6" style="max-width:875px;border: 5px solid #9ee9da;">
                   <v-row justify="center" class="px-12">
                     <img src="./image/check-mark.png" class="done-icon" alt="">
                   </v-row>
                   <v-row justify="center" class="mt-12 mb-4">
-                    <h1 style="color:#00a182">عملیات رزرو با موفقیت انجام شد!</h1>
+                    <h1 style="color:#00a182" class="font-small-xs ">عملیات رزرو با موفقیت انجام شد!</h1>
                   </v-row>
                   <v-row justify="center" class="mb-12">
                     <v-btn outlined color="red">جهت دانلود بلیط ها کلیک کنید</v-btn>
@@ -2261,7 +2646,7 @@
                       <v-text-field filled clsss="grey" :rules="familyRules" v-model="editUser.family"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-6 py-2">
+                    <v-col cols="12" sm="6" md="4" class="px-6  px-md-2 py-2">
                       <label for="" class="mr-2">ملیت</label>
                       <v-select  :rules="emptyRules"
                         color="white"
@@ -2290,7 +2675,7 @@
                         :rules="emptyRules"
                       ></v-select>
                     </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-5 py-2 ">
+                    <v-col cols="12" sm="6" md="4" class="px-2 px-md-0 py-2 ">
                       <label for="" class="mr-4">تاریخ تولد</label>
                       <v-row>
                         <v-col class="px-1">
@@ -2325,7 +2710,7 @@
                         </v-col>
                       </v-row>
                     </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-5 py-2"  v-if="editUser.nationality != 'ایرانی'">
+                    <v-col cols="12" sm="6" md="4" class="px-2 px-md-3 py-2" v-if="editUser.nationality != 'ایرانی'">
                       <label for="" class="mr-4">تاریخ انقضا پاسپورت</label>
                       <v-row>
                         <v-col class="px-1">
@@ -2336,6 +2721,7 @@
                             :items="dateDays"
                             v-model="editUser.expirePassDay"
                             :rules="emptyRules"
+                            hide-details
                           ></v-select>
                         </v-col>
                         <v-col class="px-1">
@@ -2346,6 +2732,7 @@
                             :items="dateMonths"
                             v-model="editUser.expirePassMonth"
                             :rules="emptyRules"
+                            hide-details
                           ></v-select>
                         </v-col>
                         <v-col class="px-1">
@@ -2356,10 +2743,13 @@
                             :items="dateYearsPass"
                             v-model="editUser.expirePassYear"
                             :rules="emptyRules"
+                            hide-details
                           ></v-select>
                         </v-col>
+                        <span v-if="!editUser.expirePassYear || !editUser.expirePassMonth || !editUser.expirePassDay" class=" caption red--text widthAll" style="font-family:Byekan !important">تاریخ انقضا را مشخص کنید.</span>
                       </v-row>
                     </v-col>
+             
                   </v-row>
                   <v-row justify="end">
                     <v-btn dark color="red darken-2" outlined class="px-12 py-4 my-2 ml-4" @click="confirmEditUser('user')">اعمال تغییرات </v-btn>
@@ -2409,7 +2799,7 @@
                         style="bottom:-22px;right:0;font-family:Byekan !important">{{ offCodeIsTrue == true ? 'کد تخفیف اعمال شد!' : 'کد وارد شده صحیح نیست!' }}</span>
                       </div>
                     </v-row>
-                    <h5 class="red--text text--darken-2 mt-6 mt-md-0">لطفا توجه داشته باشید در صورت تایید اطلاعات،امکان اصلاح وجود ندارد!</h5>
+                    <h5 class="red--text text--darken-2 mt-6 mt-md-0">لطفا توجه داشته باشید در صورت تائید اطلاعات،امکان اصلاح وجود ندارد!</h5>
                     <v-row>
                       <v-form ref="acceptRulls">
                         <v-checkbox
@@ -2442,7 +2832,7 @@
                       <h3>4,000,000</h3>
                       <span class="caption mr-2 font-weight-bold" style="font-family: Byekan !important;">ریال</span>
                     </v-row>
-                    <v-btn class="green darken-2 px-9" dark @click="changeBookStep(3)"> تایید و پرداخت</v-btn>
+                    <v-btn class="green darken-2 px-9" dark @click="changeBookStep(3)"> تائید و پرداخت</v-btn>
                   </div>
                 </v-row>
               </div>

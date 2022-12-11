@@ -275,6 +275,16 @@ ul li::before {
   width: 1em;
   margin-right: -1em;
 }
+
+.text-right button , .text-right  .v-btn__content{
+  text-align:right !important;
+  justify-content: flex-start;
+}
+
+.text-left button , .text-left  .v-btn__content{
+  text-align:left !important;
+  justify-content: flex-end;
+}
 /* text fields */
 
 .v-select__slot label {
@@ -848,7 +858,7 @@ input::-webkit-inner-spin-button {
     height: 60vh !important;
   } 
 
-  .borderFlight{
+  .borderFlight:hover{
     border: 1px solid #b9b9b9;
   }
 
@@ -997,12 +1007,15 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 599px) {
+    .ticketButtons button {
+        width: 110px !important
+    }
 
   .theme--light.v-label {
     color: #424242;
   }
 
-  .borderFlight{
+  .borderFlight:hover{
     border: 1px solid #b9b9b9;
   }
   

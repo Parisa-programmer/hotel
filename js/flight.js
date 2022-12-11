@@ -5,7 +5,6 @@ const vuetify = new Vuetify({
         primary: '#d1d1d1',
         secondary: '#b0bec5',
         anchor: '#8c9eff',
-
       },
     },
   },
@@ -16,6 +15,7 @@ new Vue({
   vuetify: new Vuetify(),
   data: {
     // header
+    model:null,
     windowWidth: 0,
     showMenuSmall: false,
     activePage: 0,
@@ -727,7 +727,7 @@ new Vue({
           this.flights = flights
         }
       }
-      
+      window.scrollTo(0, 0)
       this.ticketChooseStep = 0
     },
     reserveTicket(ticket){
@@ -869,9 +869,11 @@ new Vue({
           this.otherUsers = users.filter((x) => x.nationality != 'ایرانی');
           this.bookStep = step;
           this.dateError = false
+          window.scrollTo(0, 0)
         } else if (step == 3 && this.$refs.acceptRulls.validate()) {
           this.bookStep = step;
           this.dateError = false
+          window.scrollTo(0, 0)
         } else {
           this.dateError = true
           this.alertText = 'لطفا فیلدهای درخواستی را بدرستی تکمیل فرمایید.'

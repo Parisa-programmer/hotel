@@ -15,7 +15,7 @@ new Vue({
   vuetify: new Vuetify(),
   data: {
     // header
-    model:null,
+    model: null,
     windowWidth: 0,
     showMenuSmall: false,
     activePage: 0,
@@ -166,9 +166,9 @@ new Vue({
       v => !!v || 'پر کردن این فیلد اجباریست.',
       v => !!v && v.length == 10 || 'کد ملی صحیح نیست.',
     ],
-    dateError:false,
+    dateError: false,
     // filter
-    openPanelsFilter:[0,1,2,3,4,5,6],
+    openPanelsFilter: [0, 1, 2, 3, 4, 5, 6],
     filter: {
       priceItems: [
         {
@@ -288,8 +288,8 @@ new Vue({
         destinationTime: '18:35',
       },
     ],
-    flights:[],
-    sortItems:[
+    flights: [],
+    sortItems: [
       { text: 'قیمت' },
       { text: 'ساعت' },
       { text: 'ایرلاین' }
@@ -320,7 +320,57 @@ new Vue({
     nationalities: ['ایرانی', 'غیر ایرانی'],
     genders: ['خانم', 'آقا'],
     dateDays: [],
-    dateMonths: [],
+    dateMonthsPersian: [
+      {
+        text:'فروردین',
+        value:1
+      },
+      {
+        text:'اردیبهشت',
+        value:2
+      },
+      {
+        text:'خرداد',
+        value:3
+      },
+      {
+        text:'تیر',
+        value:4
+      },
+      {
+        text:'مرداد',
+        value:5
+      },
+      {
+        text:'شهریور',
+        value:6
+      },
+      {
+        text:'مهر',
+        value:7
+      },
+      {
+        text:'آبان',
+        value:8
+      },
+      {
+        text:'آذر',
+        value:9
+      },
+      {
+        text:'دی',
+        value:10
+      },
+      {
+        text:'بهمن',
+        value:11
+      },
+      {
+        text:'اسفند',
+        value:12
+      },
+    ],
+    dateMonths:[1,2,3,4,5,6,7,8,9,10,11,12],
     dateYears: [],
     dateYearsPass: [],
     users: [
@@ -333,7 +383,7 @@ new Vue({
         phone: '',
         email: '',
         birthdayDay: '',
-        birthdayMonth: '',
+        birthdayMonth: 0,
         birthdayYear: '',
         passportNumber: '',
         expirePassDay: '',
@@ -378,21 +428,21 @@ new Vue({
     editContact: {},
     ModalUserType: true,
     offCodeIsTrue: undefined,
-    offCodeDisabledButton:false,
-    offCodeLoading:false,
-    offCode:'',
-    showSmallMenu:false,
-    editFlightMood:false,
+    offCodeDisabledButton: false,
+    offCodeLoading: false,
+    offCode: '',
+    showSmallMenu: false,
+    editFlightMood: false,
     // tickets
-    selectedTickets:[],
-    ticketChooseStep:0,
-    packageTickets:[],
+    selectedTickets: [],
+    ticketChooseStep: 0,
+    packageTickets: [],
     // loading
     isLoading: true,
     showAlert: false,
     alertType: 'error',
     alertText: '',
-    isLoadingAxios:false
+    isLoadingAxios: false
   },
   watch: {
     showAlert() {
@@ -467,13 +517,22 @@ new Vue({
       self.toPrice = value2
       self.filter.price = [Number(self.fromPrice.toString().replace(/,/g, "")), Number(value1)]
     },
-    offCode(){
+    offCode() {
       this.offCodeIsTrue = undefined
       this.offCodeDisabledButton = false
-    }
+    },
+    slideGroup() {
+      var dateInput = this.selectedDate.split(' ')
+      var newDate = this.dates[this.slideGroup].day + ' ' + this.dates[this.slideGroup].month
+      if (dateInput.length > 2) {
+        newDate = this.ticketChooseStep == 0 ? newDate + ' ' + dateInput[2] + ' ' + dateInput[3] + ' ' + dateInput[4] 
+          : dateInput[0] + ' ' + dateInput[1] + ' ' + dateInput[2] + ' ' + newDate
+      }
+      this.selectedDate = newDate
+    },
   },
   computed: {
-    
+
 
   },
   methods: {
@@ -561,7 +620,7 @@ new Vue({
             phone: '',
             email: '',
             birthdayDay: '0',
-            birthdayMonth: '0',
+            birthdayMonth: '',
             birthdayYear: '0',
             passportNumber: '',
             expirePassDay: '',
@@ -591,9 +650,9 @@ new Vue({
       }]
     },
     searchInHeaderBox() {
-      var flights=[]
+      var flights = []
       this.flights = []
-      if(this.byReturn==1) {
+      if (this.byReturn == 1) {
         // if flight is without return do :
         this.hidePeaple();
         this.isLoadingAxios = true;
@@ -611,19 +670,19 @@ new Vue({
         //     break;
         // }
         var selectedDate = $('#dtp1').attr('value').split(' - ')
-        var dayName= this.getDayName(selectedDate)
+        var dayName = this.getDayName(selectedDate)
         this.flights.push(
           {
-            fromDate:this.fromDate,
-            originCity:this.originCity,
-            destinationInternal:this.destinationInternal,
+            fromDate: this.fromDate,
+            originCity: this.originCity,
+            destinationInternal: this.destinationInternal,
             originTime: '15:20',
             destinationTime: '18:35',
             day: dayName,
-            timestamp:new Date(selectedDate[0]).getTime()
+            timestamp: new Date(selectedDate[0]).getTime()
           },
         )
-      } else if(this.byReturn==2) {
+      } else if (this.byReturn == 2) {
         // if flight is with return do :
         this.hidePeaple();
         this.isLoadingAxios = true;
@@ -632,53 +691,53 @@ new Vue({
           this.isLoadingAxios = false;
         }, 1000);
         var selectedDate = $('#dtp1').attr('value').split(' - ')
-        var dayName= this.getDayName(selectedDate)
+        var dayName = this.getDayName(selectedDate)
         this.flights.push(
           {
-            fromDate:this.fromDate,
-            originCity:this.originCity,
-            destinationInternal:this.destinationInternal,
+            fromDate: this.fromDate,
+            originCity: this.originCity,
+            destinationInternal: this.destinationInternal,
             originTime: '15:20',
             destinationTime: '18:35',
             day: this.getDayName(selectedDate[0]),
-            timestamp:new Date(selectedDate[0]).getTime()
+            timestamp: new Date(selectedDate[0]).getTime()
           },
           {
-            fromDate:this.toDate,
-            originCity:this.destinationInternal,
-            destinationInternal:this.originCity,
+            fromDate: this.toDate,
+            originCity: this.destinationInternal,
+            destinationInternal: this.originCity,
             originTime: '15:20',
             destinationTime: '18:35',
             day: this.getDayName(selectedDate[1]),
-            timestamp:new Date(selectedDate[1]).getTime()
+            timestamp: new Date(selectedDate[1]).getTime()
           }
         )
-      
-      } else if(this.byReturn==3) {
+
+      } else if (this.byReturn == 3) {
         // if flight is multi flight do :  
         var selectedDate = $('#dtp1').attr('value')
         flights.push(
           {
-            fromDate:this.fromDate,
-            originCity:this.originCity,
-            destinationInternal:this.destinationInternal,
+            fromDate: this.fromDate,
+            originCity: this.originCity,
+            destinationInternal: this.destinationInternal,
             originTime: '15:20',
             destinationTime: '18:35',
             day: this.getDayName(selectedDate.split(' - ')),
-            timestamp:new Date(selectedDate).getTime()
+            timestamp: new Date(selectedDate).getTime()
           },
         )
         var selectedDate2 = $('#dtp2').attr('value')
         if (selectedDate2) {
           flights.push(
             {
-              fromDate:this.allFlights[0].date,
-              originCity:this.allFlights[0].originCity,
-              destinationInternal:this.allFlights[0].destinationInternal,
+              fromDate: this.allFlights[0].date,
+              originCity: this.allFlights[0].originCity,
+              destinationInternal: this.allFlights[0].destinationInternal,
               originTime: '15:20',
               destinationTime: '18:35',
               day: this.getDayName(selectedDate2.split(' - ')),
-              timestamp:new Date(selectedDate2).getTime()
+              timestamp: new Date(selectedDate2).getTime()
             },
           )
         }
@@ -686,13 +745,13 @@ new Vue({
         if (selectedDate3) {
           flights.push(
             {
-              fromDate:this.allFlights[1].date,
-              originCity:this.allFlights[1].originCity,
-              destinationInternal:this.allFlights[1].destinationInternal,
+              fromDate: this.allFlights[1].date,
+              originCity: this.allFlights[1].originCity,
+              destinationInternal: this.allFlights[1].destinationInternal,
               originTime: '15:20',
               destinationTime: '18:35',
               day: this.getDayName(selectedDate3.split(' - ')),
-              timestamp:new Date(selectedDate3).getTime()
+              timestamp: new Date(selectedDate3).getTime()
             },
           )
         }
@@ -700,13 +759,13 @@ new Vue({
         if (selectedDate4) {
           flights.push(
             {
-              fromDate:this.allFlights[2].date,
-              originCity:this.allFlights[2].originCity,
-              destinationInternal:this.allFlights[2].destinationInternal,
+              fromDate: this.allFlights[2].date,
+              originCity: this.allFlights[2].originCity,
+              destinationInternal: this.allFlights[2].destinationInternal,
               originTime: '15:20',
               destinationTime: '18:35',
               day: this.getDayName(selectedDate4.split(' - ')),
-              timestamp:new Date(selectedDate4).getTime()
+              timestamp: new Date(selectedDate4).getTime()
             },
           )
         }
@@ -716,7 +775,7 @@ new Vue({
           if (flights[i].timestamp >= timestamp) {
             timestamp = flights[i].timestamp
           }
-           else{
+          else {
             this.alertType = 'error'
             this.alertText = 'ترتیب تاریخ های انتخابی اشتباه است.'
             this.showAlert = true
@@ -730,13 +789,13 @@ new Vue({
       window.scrollTo(0, 0)
       this.ticketChooseStep = 0
     },
-    reserveTicket(ticket){
+    reserveTicket(ticket) {
       console.log(this.flights[this.ticketChooseStep]);
-      if (this.ticketChooseStep != this.flights.length-1) {
-        this.ticketChooseStep = this.ticketChooseStep+1
+      if (this.ticketChooseStep != this.flights.length - 1) {
+        this.ticketChooseStep = this.ticketChooseStep + 1
         this.dayNumber(this.flights[this.ticketChooseStep].timestamp)
-      } else{
-        this.nextPage=true
+      } else {
+        this.nextPage = true
       }
     },
     exchangeCity(index) {
@@ -804,7 +863,6 @@ new Vue({
     },
     setDates() {
       this.dateDays = []
-      this.dateMonths = []
       this.dateYears = []
       this.dateYearsPass = [new Date().getFullYear()]
       var nowYear = new Date().toLocaleDateString('fa-IR-u-nu-latn').slice(0, 4)
@@ -814,9 +872,6 @@ new Vue({
           this.dateDays.push(i)
           if (i < 20) {
             this.dateYearsPass.push(new Date().getFullYear() + i)
-            if (i < 13) {
-              this.dateMonths.push(i)
-            }
           }
         }
       }
@@ -861,25 +916,28 @@ new Vue({
       // this.nextPage = type == 'change' ? false : true;
     },
     changeBookStep(step) {
-        if (step == 2 && this.validateBookStep()) {
-          var users = this.users;
-          this.persianUsers = []
-          this.otherUsers = []
-          this.persianUsers = users.filter((x) => x.nationality == 'ایرانی');
-          this.otherUsers = users.filter((x) => x.nationality != 'ایرانی');
-          this.bookStep = step;
-          this.dateError = false
-          window.scrollTo(0, 0)
-        } else if (step == 3 && this.$refs.acceptRulls.validate()) {
-          this.bookStep = step;
-          this.dateError = false
-          window.scrollTo(0, 0)
-        } else {
-          this.dateError = true
-          this.alertText = 'لطفا فیلدهای درخواستی را بدرستی تکمیل فرمایید.'
-          this.alertType = 'error'
-          this.showAlert = true
-        }
+      console.log();
+      if (step == 2 && this.validateBookStep()) {
+        var users = this.users;
+        this.persianUsers = []
+        this.otherUsers = []
+        this.persianUsers = users.filter((x) => x.nationality == 'ایرانی');
+        this.otherUsers = users.filter((x) => x.nationality != 'ایرانی');
+        this.bookStep = step;
+        this.dateError = false
+        this.scrollTopNextPage();
+        this.scrollTop()
+      } else if (step == 3 && this.$refs.acceptRulls.validate()) {
+        this.bookStep = step;
+        this.dateError = false
+        this.scrollTopNextPage();
+      } else {
+        this.dateError = true
+        this.alertText = 'لطفا فیلدهای درخواستی را بدرستی تکمیل فرمایید.'
+        this.alertType = 'error'
+        this.showAlert = true
+      }
+      
     },
     changebirthDay(type, number, index) {
     },
@@ -914,26 +972,36 @@ new Vue({
     },
     checkCode() {
       this.offCodeLoading = true
-      
+
       setTimeout(() => {
-        this.offCodeLoading = false 
+        this.offCodeLoading = false
         if (this.offCode == '1111') {
           this.offCodeIsTrue = true
           this.offCodeDisabledButton = true
-        } else{
+        } else {
           this.offCodeIsTrue = false
           this.offCodeDisabledButton = false
         }
       }, 1000);
     },
-    removeFilters(){
-      this.filter.time = [0, 4] 
+    removeFilters() {
+      this.filter.time = [0, 4]
       this.filter.class = []
       this.filter.airline = []
       this.filter.type = []
       this.filter.showType = []
       this.toPrice = 5000000,
-      this.fromPrice = 0
+        this.fromPrice = 0
+    },
+    scrollTop(){
+      window.scrollTo(0, 0)
+    },
+    scrollTopNextPage(){
+      this.$refs.nextPage.scrollTop = 0
+    },
+    changeSlideDate(date) {
+
+      // console.log(dateInput);
     }
   },
   created() {
@@ -1132,6 +1200,7 @@ new Vue({
         firstAppend = 0
         $('#dtp1').attr('value', dtp1.getText())
         var selectedDate = $('#dtp1').attr('value')
+        console.log(selectedDate);
         if (selectedDate) {
           selectedDate = selectedDate.split(' - ')
           let options = { day: 'numeric', month: 'long' };
@@ -1208,7 +1277,7 @@ new Vue({
 
   },
   beforeDestroy() {
-    
+
   },
   destroyed() {
     window.removeEventListener("resize", this.getWidth);

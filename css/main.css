@@ -19,13 +19,14 @@ html {
   color: red;
 }
 
-.v-dialog{
+.v-dialog {
   border-radius: 10px !important;
 }
 
 body::-webkit-scrollbar,
 #hotel::-webkit-scrollbar,
-#nextPage ,.v-dialog::-webkit-scrollbar{
+#nextPage,
+.v-dialog::-webkit-scrollbar {
   display: none;
 }
 
@@ -35,12 +36,16 @@ label {
 }
 
 .v-tabs:not(.v-tabs--vertical):not(.v-tabs--right)
-  > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-slide-group--has-affixes)
+  > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(
+    .v-slide-group--has-affixes
+  )
   .v-slide-group__prev {
   display: none !important;
 }
 
-#nextPage , #hotel , .v-dialog {
+#nextPage,
+#hotel,
+.v-dialog {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -58,6 +63,7 @@ body {
   scrollbar-width: none;
   /* Firefox */
   background-color: #f8f8f8;
+  overflow-x: hidden;
 }
 
 .v-btn__content {
@@ -76,7 +82,7 @@ body {
   background-color: #f8f8f8;
 }
 
-.banerSlider {
+.banerSlider,.banerSlider .v-image {
   height: 360px !important;
 }
 
@@ -91,7 +97,7 @@ body {
   direction: ltr !important;
 }
 
-.v-otp-input{
+.v-otp-input {
   direction: ltr !important;
 }
 
@@ -276,13 +282,15 @@ ul li::before {
   margin-right: -1em;
 }
 
-.text-right button , .text-right  .v-btn__content{
-  text-align:right !important;
+.text-right button,
+.text-right .v-btn__content {
+  text-align: right !important;
   justify-content: flex-start;
 }
 
-.text-left button , .text-left  .v-btn__content{
-  text-align:left !important;
+.text-left button,
+.text-left .v-btn__content {
+  text-align: left !important;
   justify-content: flex-end;
 }
 /* text fields */
@@ -301,7 +309,7 @@ ul li::before {
   color: #797979 !important;
 }
 
-.darkInput input{
+.darkInput input {
   color: #3b3b3b !important;
 }
 
@@ -360,15 +368,15 @@ input::-webkit-inner-spin-button {
   transform: rotate(180deg);
 }
 
-/* expansion */
+/* expansion panel*/
 
 .v-expansion-panel:before {
   box-shadow: 0 0 0;
 }
 
 .v-expansion-panels {
-  display: inline-grid !important;
-  width: auto;
+  /* display: inline-grid !important;
+  width: auto; */
 }
 
 .v-expansion-panel--active {
@@ -395,12 +403,14 @@ input::-webkit-inner-spin-button {
   border-color: transparent !important;
 }
 
-.codeCheckTrue input,.codeCheckTrue.v-text-field > .v-input__control > .v-input__slot:before {
+.codeCheckTrue input,
+.codeCheckTrue.v-text-field > .v-input__control > .v-input__slot:before {
   border-color: green !important;
-  color : green !important;
+  color: green !important;
 }
 
-.codeCheckFalse input,.codeCheckFalse.v-text-field > .v-input__control > .v-input__slot:before {
+.codeCheckFalse input,
+.codeCheckFalse.v-text-field > .v-input__control > .v-input__slot:before {
   border-color: red !important;
   color: red !important;
 }
@@ -428,7 +438,7 @@ input::-webkit-inner-spin-button {
   padding: 8px 4px;
 }
 
-.priceInput input{
+.priceInput input {
   text-align: center;
   font-size: 20px;
   color: #535353 !important;
@@ -468,7 +478,7 @@ input::-webkit-inner-spin-button {
   width: 1200px !important;
 }
 
-.flight-go-flesh{
+.flight-go-flesh {
   width: 480px;
 }
 
@@ -488,9 +498,14 @@ input::-webkit-inner-spin-button {
   justify-content: left !important;
 }
 
+.v-slide-group__wrapper .v-slide-group__content {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+
 .v-tabs:not(.v-tabs--vertical) .v-tab {
   white-space: nowrap;
-  letter-spacing:0
+  letter-spacing: 0;
 }
 
 .v-tab {
@@ -544,11 +559,11 @@ input::-webkit-inner-spin-button {
   margin-left: 15px;
 }
 
-.filter-card .v-input--selection-controls{
+.filter-card .v-input--selection-controls {
   margin-top: 3px;
 }
 
-.filter-card label{
+.filter-card label {
   font-size: 13px !important;
 }
 
@@ -556,15 +571,16 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-.ticketCircle{
-  height: 50px;width:50px;
+.ticketCircle {
+  height: 50px;
+  width: 50px;
   background-color: #f8f8f8;
-  border: 1px solid #efefef
+  border: 1px solid #efefef;
 }
 
-.v-input--selection-controls__input{
-  margin-right : 0 !important;
-  margin-left:10px !important
+.v-input--selection-controls__input {
+  margin-right: 0 !important;
+  margin-left: 10px !important;
 }
 
 .v-input--selection-controls__input:hover
@@ -584,14 +600,18 @@ input::-webkit-inner-spin-button {
 /* expansion-panel */
 
 .v-expansion-panels {
-  display: block !important;
+  /* display: block !important; */
 }
 
 .v-expansion-panel-header {
-  display: block !important;
-  flex-direction: row !important;
+  /* display: block !important;
+  flex-direction: row !important; */
   justify-content: center !important;
   width: 100% !important;
+}
+
+.questionPanell {
+  display: block !important;
 }
 
 .mdi-chevron-down::before {
@@ -599,11 +619,11 @@ input::-webkit-inner-spin-button {
   font-size: 34px;
 }
 
-.flightTicket .v-expansion-panel-header__icon .v-icon.v-icon{
-  transition: unset !important
+.flightTicket .v-expansion-panel-header__icon .v-icon.v-icon {
+  transition: unset !important;
 }
 
-.ticketDetailsTabs .v-expansion-panel-header__icon i{
+.ticketDetailsTabs .v-expansion-panel-header__icon i {
   bottom: 28px !important;
   top: unset;
 }
@@ -612,7 +632,6 @@ input::-webkit-inner-spin-button {
   font-size: 24px;
   top: 5px;
   position: relative;
-  
 }
 
 .flightTicket .v-expansion-panel-header--active .mdi-chevron-down::before {
@@ -622,6 +641,7 @@ input::-webkit-inner-spin-button {
 .questionText {
   font-size: 16px;
   font-weight: bold;
+  letter-spacing: -0.2px !important;
 }
 
 .answerText {
@@ -635,13 +655,13 @@ input::-webkit-inner-spin-button {
   bottom: 0;
 }
 
-.downloadTextLoadig{
-  max-width:500px;
-  height:100px
+.downloadTextLoadig {
+  max-width: 500px;
+  height: 100px;
 }
 
-.sections-card{
-  bottom:70px;
+.sections-card {
+  bottom: 70px;
   margin-bottom: -50px;
 }
 
@@ -649,119 +669,178 @@ input::-webkit-inner-spin-button {
   color: rgb(13 13 13);
 }
 
-.v-application--is-ltr .v-slider--horizontal .v-slider__tick .v-slider__tick-label {
+.v-application--is-ltr
+  .v-slider--horizontal
+  .v-slider__tick
+  .v-slider__tick-label {
   transform: rotate(55deg) !important;
   font-size: 12px;
   top: 20px;
   right: -12px;
 }
 
-.v-slider__thumb{
+.v-slider__thumb {
   box-shadow: 1px 2px 7px #838383;
   height: 20px;
   width: 20px;
   left: -9px !important;
 }
 
-.v-slider__thumb-label{
+.v-slider__thumb-label {
   background-color: #1abc9c !important;
 }
 
-.v-slider__thumb:before{
+.v-slider__thumb:before {
   display: none;
 }
 
-.v-slider__track-container{
+.v-slider__track-container {
   height: 10px !important;
   border-radius: 10px;
   overflow: hidden;
 }
 /* progress tab */
-.v-progress-linear__determinate{
-  background: linear-gradient(90deg, rgba(27,226,186,1) 0%, rgba(26,206,170,1) 67%, rgba(26,188,156,1) 100%);
+.v-progress-linear__determinate {
+  background: linear-gradient(
+    90deg,
+    rgba(27, 226, 186, 1) 0%,
+    rgba(26, 206, 170, 1) 67%,
+    rgba(26, 188, 156, 1) 100%
+  );
 }
 
-.ticketForm .v-text-field__slot input,.ticketForm .v-input__slot {
+.ticketForm .v-text-field__slot input,
+.ticketForm .v-input__slot {
   background: #f1f1f1 !important;
   min-height: 40px;
   border-radius: 15px;
   padding: 0 10px;
 }
 
-.ticketForm .v-input__slot[role="button"]{
+.ticketForm .v-input__slot[role="button"] {
   margin-top: -15px;
   padding: 7px;
 }
 
-.smallInputForm .v-text-field__slot input,.smallInputForm  .v-input__slot ,.smallInputForm  .v-input {
+.smallInputForm .v-text-field__slot input,
+.smallInputForm .v-input__slot,
+.smallInputForm .v-input {
   min-height: 10px;
   padding: 5px 10px !important;
   margin: 0 !important;
 }
 
-.user-date .v-list-item__content{
- padding: 0 !important;
+.user-date .v-list-item__content {
+  padding: 0 !important;
 }
 
-.offCodeIsTrue::after{
-  content: '';
-    height: 2px;
-    width: 70%;
-    background-color: #d32f2f;
-    position: absolute;
-    left: 15%;
-    top: 12px;
-    transform: rotate(-12deg);
+.offCodeIsTrue::after {
+  content: "";
+  height: 2px;
+  width: 70%;
+  background-color: #d32f2f;
+  position: absolute;
+  left: 15%;
+  top: 12px;
+  transform: rotate(-12deg);
 }
 
-.rightSectionTicket{
+.rightSectionTicket {
   width: 70%;
   border-left: 1px dashed #c2c2c2;
 }
 
-.leftSectionTicket{
+.leftSectionTicket {
   width: 30%;
 }
 
-.dateTicket{
-  right:41%;
+.dateTicket {
+  right: 41%;
 }
 
-.typeFlightTicket{
-  right:46%;
+.typeFlightTicket {
+  right: 46%;
   top: 53px;
 }
 
-.theme--light.v-tabs .v-tab--active:before, .theme--light.v-tabs .v-tab--active:hover:before, .theme--light.v-tabs .v-tab:focus:before {
+.theme--light.v-tabs .v-tab--active:before,
+.theme--light.v-tabs .v-tab--active:hover:before,
+.theme--light.v-tabs .v-tab:focus:before {
   opacity: 0 !important;
 }
 
-.next-page-ticket{
+.next-page-ticket {
   width: 860px;
 }
 
 .theme--light.v-expansion-panels .v-expansion-panel {
-  border: 1px solid #e3e3e3;
+  /* border: 1px solid #e3e3e3;
   background: transparent !important;
   margin-top: 20px !important;
-  box-shadow: 0px 1px 6px #ebebeb;
+  box-shadow: 0px 1px 6px #ebebeb; */
 }
 
-.filter-buttons-small-mood{
-  top:100px;
-  right:0
+.questionPanell .v-expansion-panel {
+  display: block !important;
+  width: 100%;
 }
 
-.done-icon{
+.questionPanell button {
+  display: block;
+}
+
+.filter-buttons-small-mood {
+  top: 100px;
+  right: 0;
+}
+
+.done-icon {
   width: 300px;
 }
 
-.overflow-button>.v-input__control>.v-input__slot>.v-select__slot>.v-select__selections>input {
+.overflow-button
+  > .v-input__control
+  > .v-input__slot
+  > .v-select__slot
+  > .v-select__selections
+  > input {
   /* display: none !important; */
 }
 
-.hide-header-data-tabel .v-data-table-header-mobile{
+.hide-header-data-tabel .v-data-table-header-mobile {
   display: none;
+}
+
+.small-height-input legend {
+  height: 40px !important;
+}
+
+.small-height-input input {
+  text-align: center !important;
+  margin-top: 10px !important;
+  width: 100%;
+}
+
+.small-filter-parent .v-expansion-panel-content__wrap {
+  /* display: flex;
+  justify-content: space-around; */
+}
+
+.small-filter-parent .v-expansion-panel-content__wrap > .v-input--checkbox {
+  display: inline-block;
+}
+
+.humberger-header-menue .v-list-item:hover .humberger-header-menue .v-list-item i,.humberger-header-menue .v-list-item:hover{
+  background-color: #fae1e1 !important;
+  color: red !important;
+}
+
+.sugestCity::before {
+  content: 'پرتردد';
+  font-size: 12px;
+  text-align: center;
+  margin-right: 14px;
+  color: #878787;
 }
 
 /* responsive */
@@ -774,7 +853,7 @@ input::-webkit-inner-spin-button {
     width: 1000px !important;
   }
 
-  .priceInput input{
+  .priceInput input {
     width: 100px;
   }
 
@@ -782,7 +861,7 @@ input::-webkit-inner-spin-button {
     width: 280px;
   }
 
-  .banerSlider {
+  .banerSlider,.banerSlider .v-image {
     height: 342px !important;
   }
 
@@ -795,9 +874,12 @@ input::-webkit-inner-spin-button {
   }
 
   .flight-go-flesh {
-    width: 384px;
+    width: 374px;
   }
 
+  .dateTicket {
+    right: 38%;
+  }
 }
 
 @media (min-width: 960px) and (max-width: 1263px) {
@@ -809,7 +891,7 @@ input::-webkit-inner-spin-button {
     width: 900px !important;
   }
 
-  .priceInput input{
+  .priceInput input {
     width: 100px;
   }
 
@@ -817,7 +899,7 @@ input::-webkit-inner-spin-button {
     width: 247px;
   }
 
-  .banerSlider {
+  .banerSlider,.banerSlider .v-image {
     height: 341px !important;
   }
 
@@ -840,11 +922,15 @@ input::-webkit-inner-spin-button {
   }
 
   .flight-go-flesh {
-    width: 330px;
+    width: 322px;
   }
-  
+
   .next-page-ticket .flight-go-flesh {
     width: 380px;
+  }
+
+  .dateTicket {
+    right: 38%;
   }
 }
 
@@ -854,11 +940,15 @@ input::-webkit-inner-spin-button {
     font-size: 12px;
   }
 
+  .headerButtons .widthAll span {
+    width: 100%;
+  }
+
   .imageDialog {
     height: 60vh !important;
-  } 
+  }
 
-  .borderFlight:hover{
+  .borderFlight:hover {
     border: 1px solid #b9b9b9;
   }
 
@@ -866,13 +956,12 @@ input::-webkit-inner-spin-button {
     .indexDiv {
       width: 775px !important;
     }
-    
-    .next-page-ticket{
+
+    .next-page-ticket {
       width: 760px;
     }
 
-
-    .priceInput input{
+    .priceInput input {
       width: 80px;
       font-size: 18px;
     }
@@ -898,14 +987,14 @@ input::-webkit-inner-spin-button {
       width: 325px;
     }
 
-    .banerSlider {
+    .banerSlider,.banerSlider .v-image {
       height: 285px !important;
     }
 
     .downloadApp {
       margin-top: 17px !important;
     }
-    
+
     .downloadTextLoadig {
       max-width: 427px;
       height: 75px;
@@ -930,32 +1019,35 @@ input::-webkit-inner-spin-button {
       width: 600px !important;
     }
 
-    .next-page-ticket{
+    .next-page-ticket {
       width: 585px;
     }
 
     .next-page-ticket .dateTicket {
-      right: 30%; 
+      right: 30%;
     }
 
     .v-input--selection-controls__input {
       margin-left: 1px !important;
     }
-    
-    h4{
+
+    h4 {
       font-size: 14px !important;
     }
 
     .filter-card label {
       font-size: 12px !important;
-  }
+    }
 
-    .v-application--is-ltr .v-slider--horizontal .v-slider__tick .v-slider__tick-label {
+    .v-application--is-ltr
+      .v-slider--horizontal
+      .v-slider__tick
+      .v-slider__tick-label {
       transform: rotate(90deg) !important;
       font-size: 10px;
       top: 26px;
       right: -11px;
-  }
+    }
 
     .sections {
       width: 25%;
@@ -982,7 +1074,7 @@ input::-webkit-inner-spin-button {
       width: 510px;
     }
 
-    .banerSlider {
+    .banerSlider,.banerSlider .v-image {
       height: 210px !important;
     }
 
@@ -1001,29 +1093,29 @@ input::-webkit-inner-spin-button {
     }
 
     .next-page-ticket .flight-go-flesh {
-      width: 185px; 
+      width: 185px;
     }
   }
 }
 
 @media (max-width: 599px) {
-    .ticketButtons button {
-        width: 110px !important
-    }
+  .ticketButtons button {
+    width: 110px !important;
+  }
 
   .theme--light.v-label {
     color: #424242;
   }
 
-  .borderFlight:hover{
+  .borderFlight:hover {
     border: 1px solid #b9b9b9;
   }
-  
+
   .sections {
     width: 25%;
   }
 
-  .sections-card{
+  .sections-card {
     bottom: 0;
     margin-bottom: 10px;
     margin-top: 90px;
@@ -1039,12 +1131,12 @@ input::-webkit-inner-spin-button {
   .v-application .body-2 {
     font-size: 12px !important;
   }
-  
-  .font-small-xs i{
+
+  .font-small-xs i {
     font-size: 18px !important;
   }
 
-  .icon-small-xs{
+  .icon-small-xs {
     font-size: 30px !important;
   }
 
@@ -1097,7 +1189,7 @@ input::-webkit-inner-spin-button {
     width: 97% !important;
   }
 
-  .next-page-ticket{
+  .next-page-ticket {
     width: 485px;
   }
 
@@ -1140,31 +1232,33 @@ input::-webkit-inner-spin-button {
     font-size: 20px;
   }
 
-  .font-small-title-xs{
+  .font-small-title-xs {
     font-size: 18px !important;
   }
 
-  .v-application--is-ltr .v-input--selection-controls__input ,.v-input--radio-group.v-input--radio-group--row .v-radio{
-    margin-right: 0;  
+  .v-application--is-ltr .v-input--selection-controls__input,
+  .v-input--radio-group.v-input--radio-group--row .v-radio {
+    margin-right: 0;
   }
 
-  .rightSectionTicket{
+  .rightSectionTicket {
     width: 100%;
     border-left: unset;
     border-bottom: 1px dashed #c2c2c2;
   }
-  
-  .leftSectionTicket{
+
+  .leftSectionTicket {
     width: 100%;
   }
 
-  .ticketPrice,.ticketButtons{
+  .ticketPrice,
+  .ticketButtons {
     width: 50% !important;
     /* display:inline-block */
     float: right;
   }
 
-  .flight-go-flesh{
+  .flight-go-flesh {
     height: 9px !important;
   }
 
@@ -1173,24 +1267,28 @@ input::-webkit-inner-spin-button {
     top: 56px;
   }
 
-  .filter-buttons-small-mood{
-    top:80px
+  .filter-buttons-small-mood {
+    top: 80px;
   }
 
-  .ticketCircle:nth-child(1){
-    right: -30px !important ;
+  .ticketCircle:nth-child(1) {
+    right: -36px !important ;
   }
 
-  .ticketCircle:nth-child(2){
-    left: -30px !important;
+  .ticketCircle:nth-child(2) {
+    left: -36px !important;
   }
 
   .byReturnRadio .v-input--selection-controls__input {
     margin-left: 5px !important;
   }
-  
-  .byReturnRadio .v-input--radio-group__input{
+
+  .byReturnRadio .v-input--radio-group__input {
     justify-content: space-evenly;
+  }
+
+  .cardSlider{
+    margin: auto;
   }
 
   @media (min-width: 500px) and (max-width: 599px) {
@@ -1198,28 +1296,32 @@ input::-webkit-inner-spin-button {
       width: 500px !important;
     }
 
-    .next-page-ticket{
+    .next-page-ticket {
       width: 387px;
     }
 
     .next-page-ticket .dateTicket {
-      right: 38%; 
+      right: 38%;
     }
 
     .cardSlider {
       width: 410px;
     }
 
-    .banerSlider {
+    .banerSlider,.banerSlider .v-image {
       height: 190px !important;
     }
 
     .flight-go-flesh {
-      width: 380px;
+      width: 377px;
     }
 
     .next-page-ticket .flight-go-flesh {
-      width: 325px; 
+      width: 325px;
+    }
+
+    .multi-flight .flight-go-flesh {
+      width: 413px;
     }
   }
 
@@ -1228,7 +1330,7 @@ input::-webkit-inner-spin-button {
       width: 400px !important;
     }
 
-    .next-page-ticket{
+    .next-page-ticket {
       width: 387px;
     }
 
@@ -1236,7 +1338,7 @@ input::-webkit-inner-spin-button {
       width: 308px;
     }
 
-    .banerSlider {
+    .banerSlider,.banerSlider .v-image {
       height: 165px !important;
     }
 
@@ -1244,12 +1346,16 @@ input::-webkit-inner-spin-button {
       width: 280px;
     }
 
+    .multi-flight .flight-go-flesh {
+      width: 310px;
+    }
+
     .next-page-ticket .flight-go-flesh {
-      width: 227px; 
+      width: 227px;
     }
 
     .next-page-ticket .dateTicket {
-      right: 33%; 
+      right: 33%;
     }
 
     .dateTicket {
@@ -1266,7 +1372,7 @@ input::-webkit-inner-spin-button {
       width: 350px !important;
     }
 
-    .next-page-ticket{
+    .next-page-ticket {
       width: 331px;
     }
 
@@ -1274,7 +1380,7 @@ input::-webkit-inner-spin-button {
       width: 258px;
     }
 
-    .banerSlider {
+    .banerSlider,.banerSlider .v-image {
       height: 160px !important;
     }
 
@@ -1284,14 +1390,18 @@ input::-webkit-inner-spin-button {
 
     .flight-go-flesh {
       width: 230px;
-    } 
+    }
 
     .next-page-ticket .flight-go-flesh {
-      width: 180px; 
+      width: 180px;
+    }
+
+    .multi-flight .flight-go-flesh {
+      width: 265px;
     }
 
     .next-page-ticket .dateTicket {
-      right: 30%; 
+      right: 30%;
     }
 
     .dateTicket {
@@ -1301,6 +1411,10 @@ input::-webkit-inner-spin-button {
     .typeFlightTicket {
       right: 39%;
     }
+
+    .multi-flight .typeFlightTicket {
+      right: 44%;
+    }
   }
 
   @media (min-width: 300px) and (max-width: 350px) {
@@ -1308,7 +1422,7 @@ input::-webkit-inner-spin-button {
       width: 300px !important;
     }
 
-    .next-page-ticket{
+    .next-page-ticket {
       width: 285px;
     }
 
@@ -1320,7 +1434,7 @@ input::-webkit-inner-spin-button {
       width: 208px;
     }
 
-    .banerSlider {
+    .banerSlider,.banerSlider .v-image {
       height: 155px !important;
     }
 
@@ -1329,19 +1443,31 @@ input::-webkit-inner-spin-button {
     }
 
     .next-page-ticket .flight-go-flesh {
-      width: 130px; 
+      width: 130px;
+    }
+
+    .multi-flight .flight-go-flesh {
+      width: 213px;
     }
 
     .next-page-ticket .dateTicket {
-      right: 25%; 
+      right: 25%;
     }
 
     .dateTicket {
       right: 34%;
     }
 
+    .multi-flight .dateTicket {
+      right: 32%;
+    }
+
     .typeFlightTicket {
       right: 35%;
+    }
+
+    .multi-flight .typeFlightTicket {
+      right: 41%;
     }
   }
 }

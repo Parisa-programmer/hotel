@@ -144,7 +144,7 @@
                                         <v-row justify="center" v-if="windowWidth < 960 && !nextPage" class="mb-1 d-md-none py-4 fixed widthAll filter-buttons-small-mood" style="background-color: #f8f8f8;z-index: 2;">
                                             <div class="widthAll indexDiv">
                                                 <v-row class="relative white" align="center">
-                                                    <v-col class="px-2">
+                                                    <v-col class="px-2 py-1">
                                                         <v-skeleton-loader class="textLoader d-inline-block widthAll" type="chip" :loading="isLoading" >
                                                             <v-btn color="grey" text class="body-2 px-2 px-sm-1 px-md-3 d-block d-md-inline-block text-right" @click="showSmallMenu = true;" style="font-family: Byekan !important;width: 100%;">
                                                                 <v-icon left class="ml-1">
@@ -154,9 +154,9 @@
                                                             </v-btn>
                                                         </v-skeleton-loader>
                                                     </v-col>
-                                                    <v-col class="px-2">
+                                                    <v-col class="px-2 py-1">
                                                         <v-skeleton-loader class="textLoader d-inline-block widthAll " type="chip" :loading="isLoading">
-                                                            <v-btn color="grey" text class="white body-2 ml-6 px-sm-1 d-block d-md-inline-block text-left widthAll" @click="editFlightMood = !editFlightMood" style="font-family: Byekan !important;">
+                                                            <v-btn color="grey" text class="white body-2 ml-6 px-sm-1 d-block d-md-inline-block text-left widthAll" @click="scrollTop();editFlightMood = !editFlightMood" style="font-family: Byekan !important;">
                                                                 <v-icon left class="ml-1">
                                                                     mdi-pencil
                                                                 </v-icon>
@@ -169,10 +169,10 @@
                                                 </v-row>
                                                 <div v-if="showSmallMenu" class="widthAll heightAll fixed" style="top:0;right:0;z-index: 222;overflow: scroll;min-height:100vh">
                                                     <v-card class="white pa-3 widthAll relative">
-                                                        <v-btn class="absolute" color="red" outlined style="left:16px;top:16px" @click="showSmallMenu = false">بازگشت</v-btn>
+                                                        <v-btn class="absolute" color="red" outlined style="left:16px;top:16px" @click="scrollTop();showSmallMenu = false;">بازگشت</v-btn>
                                                         <v-row justify="center">
-                                                            <v-expansion-panels multiple class="mt-12" v-model="openPanelsFilter" style="max-width:500px">
-                                                                <v-expansion-panel outined class="rounded-lg">
+                                                            <v-expansion-panels multiple class="mt-12 widthAll" v-model="openPanelsFilter">
+                                                                <v-expansion-panel outined class="rounded-lg ">
                                                                     <v-expansion-panel-header align="center" class="d-flex">
                                                                         <h4 class="ma-2 text-right">
                                                                             قیمت
@@ -180,23 +180,39 @@
                                                                     </v-expansion-panel-header>
                                                                     <v-divider class="mb-4"></v-divider>
                                                                     <v-expansion-panel-content>
-                                                                        <v-row align="center" class="px-3 mx-sm-1 mx-md-4 mx-lg-3 mx-xl-9 rounded-xl" style="border: 1px solid #bfbfbf;">
-                                                                            <span>از</span>
+                                                                        <v-row v-if="windowWidth >= 900" align="center" class="px-3 mx-sm-1 mx-md-4 mx-lg-3 mx-xl-9 rounded-xl" style="border: 1px solid #bfbfbf;">
+                                                                            <span style="width:fit-content">از</span>
                                                                             <v-text-field v-model="fromPrice"
                                                                                           class="pt-0 d-inline-block priceInput"
                                                                                           hide-details
                                                                                           pattern="\d*"
                                                                                           single-line></v-text-field>
-                                                                            <span class="">تومان</span>
+                                                                            <span class="" style="width:fit-content">تومان</span>
                                                                         </v-row>
-                                                                        <v-row align="center" class="mt-2 px-3 mx-sm-1 mx-md-4 mx-lg-3 mx-xl-9 rounded-xl" style="border: 1px solid #bfbfbf;">
-                                                                            <span>تا</span>
-                                                                            <v-text-field v-model="toPrice"
+                                                                        <v-row v-if="windowWidth >= 900" align="center" class="mt-2 px-3 mx-sm-1 mx-md-4 mx-lg-3 mx-xl-9 rounded-xl" style="border: 1px solid #bfbfbf;">
+                                                                            <span style="width:fit-content">تا</span>
+                                                                            <v-text-field  v-model="toPrice"
                                                                                           class="pt-0 d-inline-block priceInput"
                                                                                           hide-details
                                                                                           pattern="\d*"
                                                                                           single-line></v-text-field>
-                                                                            <span>تومان</span>
+                                                                            <span class="" style="width:fit-content">تومان</span>
+                                                                        </v-row>
+                                                                        <v-row v-else align="center" class="mt-2">
+                                                                            <span class="ml-2" style="width:fit-content">از</span>
+                                                                            <v-text-field outlined v-model="fromPrice"
+                                                                                        class="pt-0 d-inline-block priceInput text-center small-height-input"
+                                                                                        hide-details
+                                                                                        pattern="\d*"
+                                                                                        single-line style="width:20%;">
+                                                                            </v-text-field>
+                                                                            <span class="mx-2" style="width:fit-content">تا</span>
+                                                                            <v-text-field outlined v-model="toPrice"
+                                                                                        class="pa-0 d-inline-block priceInput small-height-input"
+                                                                                        hide-details
+                                                                                        pattern="\d*"
+                                                                                        single-line style="width:20%;">
+                                                                            </v-text-field>
                                                                         </v-row>
                                                                         <v-range-slider color="#1abc9c"
                                                                                         thumb-color="#fff"
@@ -210,7 +226,7 @@
                                                                         </v-range-slider>
                                                                     </v-expansion-panel-content>
                                                                 </v-expansion-panel>
-                                                                <v-expansion-panel class="">
+                                                                <v-expansion-panel outined class="">
                                                                     <v-expansion-panel-header align="center" class="d-flex">
                                                                         <h4 class="mx-2 text-right">ساعت پرواز</h4>
                                                                     </v-expansion-panel-header>
@@ -275,7 +291,7 @@
                                                                     </v-radio-group>
                                                                   </v-expansion-panel-content>
                                                                 </v-expansion-panel> -->
-                                                                <v-expansion-panel class="">
+                                                                <v-expansion-panel outined class="small-filter-parent">
                                                                     <v-expansion-panel-header align="center" class="d-flex">
                                                                         <h4 class="mx-2 text-right">کلاس پرواز</h4>
                                                                     </v-expansion-panel-header>
@@ -289,16 +305,19 @@
                                                                                     :label="item.label"
                                                                                     :value="item.value"
                                                                                     class="caption"
-                                                                                    hide-details></v-checkbox>
+                                                                                    hide-details
+                                                                                    :row="windowWidth <= 960 ? true : false"
+                                                                                    style="width: 50%"
+                                                                                    ></v-checkbox>
                                                                     </v-expansion-panel-content>
                                                                 </v-expansion-panel>
-                                                                <v-expansion-panel class="">
+                                                                <v-expansion-panel outined class="small-filter-parent">
                                                                     <v-expansion-panel-header align="center" class="d-flex">
-                                                                        <h4 class="mr-2 text-right">ایرلاین</h4>
+                                                                        <h4 class="mr-2 text-right">ایرلاین <span class="caption" style="font-family: Byekan !important;">(مجموع 0 پرواز)</span></h4>
                                                                     </v-expansion-panel-header>
                                                                     <v-divider></v-divider>
                                                                     <v-expansion-panel-content>
-                                                                        <span class="caption" style="font-family: Byekan !important;">(مجموع 0 پرواز)</span>
+                                                                        
                                                                         <v-checkbox v-for="(item,j) in filter.airlineItems" :key="'airlineItems'+j"
                                                                                     v-model="filter.airline"
                                                                                     color="red"
@@ -307,10 +326,10 @@
                                                                                     :label="item.label"
                                                                                     :value="item.value"
                                                                                     class="caption"
-                                                                                    hide-details></v-checkbox>
+                                                                                    hide-details style="width: 50%;"></v-checkbox>
                                                                     </v-expansion-panel-content>
                                                                 </v-expansion-panel>
-                                                                <v-expansion-panel class="">
+                                                                <v-expansion-panel outined class="small-filter-parent">
                                                                     <v-expansion-panel-header align="center" class="d-flex">
                                                                         <h4 class="mx-2 text-right">نوع پرواز</h4>
                                                                     </v-expansion-panel-header>
@@ -324,10 +343,11 @@
                                                                                     :label="item.label"
                                                                                     :value="item.value"
                                                                                     class="caption"
-                                                                                    hide-details></v-checkbox>
+                                                                                    hide-details
+                                                                                    style="width: 50%;"></v-checkbox>
                                                                     </v-expansion-panel-content>
                                                                 </v-expansion-panel>
-                                                                <v-expansion-panel class="">
+                                                                <v-expansion-panel outined class="">
                                                                     <v-expansion-panel-header align="center" class="d-flex">
                                                                         <h4 class="mx-2 text-right">نمایش پرواز</h4>
                                                                     </v-expansion-panel-header>
@@ -367,7 +387,7 @@
                                                 <!-- <v-icon large class="icon-small-xs">
                                                     mdi-account-outline
                                                 </v-icon> -->
-                                                <span class="font-14 grey--text d-none d-md-inline-block ">
+                                                <span class="font-14 grey--text d-inline-block ">
                                                     پریسا قاسمی
                                                 </span>
                                             </div>
@@ -462,7 +482,7 @@
                                 lazy-validation>
                             <span class="body-2 text-center d-block" style="font-family: Byekan !important;">کد 4 رقمی ارسال شده بر روی شماره موبایل را لطفا وارد نمایید.</span>
                             <div class="mb-2 mt-4 px-12">
-                                <v-otp-input v-model="loginForm.otp" class="mx-12"
+                                <v-otp-input pattern="\d*" v-model="loginForm.otp" class="mx-12"
                                              length="4"></v-otp-input>
                             </div>
                         </v-form>
@@ -906,7 +926,7 @@
                             </v-card>
                         </v-col>
                         <v-col cols="12" md="9" class="pa-0 pr-md-3 " :class="(windowWidth < 960 && !editFlightMood) && 'mt-12 pt-12'">
-                            <v-card flat class="rounded-lg pa-2 pa-sm-2 mb-4" :class="(windowWidth < 960 && !editFlightMood) && 'mt-sm-6'" v-if="!(external && byReturn != 1)">
+                            <v-card flat class="rounded-lg mt-2 mt-lg-0 pa-2 pa-sm-2 mb-4" :class="(windowWidth < 960 && !editFlightMood) && 'mt-sm-6'" v-if="!(external && byReturn != 1)">
                                 <v-slide-group ltr v-model="slideGroup" class="py-1 ltr" hide-arrows center-active>
                                     <v-slide-item v-for="(date, i) in dates" :key="i" v-slot="{ active }" :style="{border:i == slideGroup ? '1px solid red !important' : 'unset !important'}">
                                         <!-- <v-skeleton-loader class="textLoader d-inline-block mr-2"
@@ -1011,23 +1031,24 @@
                                             <div class="absolute rounded-circle ticketCircle" style="left: -25px;top:50%;margin-top: -25px;"></div>
                                             <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;bottom:-25px;margin-left: -25px;"></div>
                                             <div class="absolute rounded-circle ticketCircle d-none d-sm-inline-block" style="left: 30%;top:-25px;margin-left: -25px;"></div>
-                                            <v-row class="heightAll">
+                                            <v-row class="heightAll multi-flight">
                                                 <div class="rightSectionTicket ">
-                                                    <div class="py-6" v-for="(flight,m) in flights" :key="m">
-                                                        <v-row class="mt-1 mt-sm-8 mr-2 mr-sm-6" align="center">
+                                                    <div class="" v-for="(flight,m) in flights" :key="m">
+                                                        <v-row class="my-1 mt-sm-3 mb-1 mr-2 mr-sm-6" align="center">
                                                             <img src="./image/zagros.png" alt="" class="rounded-circle pa-1" width="50" height="50" style="box-shadow: 1px 1px 4px #b3b3b3">
                                                             <div class="d-inline-block relative">
                                                                 <span class="mx-2 mx-sm-2 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;">{{flight.originCity }}</span>
-                                                                <span class="absolute body-2 grey--text text--darken-1 dateTicket" style="font-family: Byekan !important;bottom: 25px;">{{flight.day}} {{flight.fromDate}}</span>
-                                                                <!-- <span class="absolute caption typeFlightTicket" style="font-family: Byekan !important;">چارتری</span> -->                                                                <span class="mx-2 mx-sm-2 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;left:0">{{flight.destinationInternal }}</span>
+                                                                <span class="absolute body-2 grey--text text--darken-1 dateTicket text-center" style="font-family: Byekan !important;bottom: 25px;margin-right: -18px;width: 120px;">{{flight.day}} {{flight.fromDate}}</span>
+                                                                <span class="absolute caption typeFlightTicket text-center" style="font-family: Byekan !important;top:25px;color: #706f6f;width: 120px;    margin-right: -43px;">بدون توقف</span>                                                                
+                                                                <span class="mx-2 mx-sm-2 body-2 absolute white pr-4 pl-2 pl-sm-4 pl-md-0 mt-2 mt-sm-0" style="font-family: Byekan !important;left:0">{{flight.destinationInternal }}</span>
                                                                 <img src="./image/flight-go-flesh.png" class="flight-go-flesh mt-4 mt-sm-0 mx-2 mx-md-2" alt="" height="12">
                                                             </div>
                                                         </v-row>
-                                                        <v-row class=" my-4 mr-7">
+                                                        <v-row class=" mb-6 mr-4 mr-sm-7">
                                                             <span class="body-2" style="font-family: Byekan !important;">زاگرس</span>
-                                                            <span class="mr-2 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">{{item.originTime}}</span>
+                                                            <span class="mr-7 pr-1 body-2" style="font-family: Byekan !important;">{{item.originTime}}</span>
                                                             <v-spacer></v-spacer>
-                                                            <span class=" ml-6 ml-sm-12 pl-2 body-2" style="font-family: Byekan !important;">{{item.destinationTime}}</span>
+                                                            <span class=" ml-4 ml-sm-12 pl-2 body-2" style="font-family: Byekan !important;">{{item.destinationTime}}</span>
                                                         </v-row>
                                                     </div>
                                                 </div>
@@ -1045,8 +1066,9 @@
                                                                 <h3 class="mb-3 d-inline-block" style="font-family: Byekan !important;">ریال</h3>
                                                             </div>
                                                             <div class="ticketButtons">
-                                                                <v-btn class="px-1 px-lg-7 mt-6 mt-sm-2" color="blue darken-2" outlined @click="activeTab=0;ticketDetailsModal = true">مشاهده جزییات</v-btn>
-                                                                <v-btn class="px-1 px-lg-7 mt-6 mt-sm-2" color="red" outlined @click="nextPage=true">انتخاب بلیط ها</v-btn>
+                                                                <v-btn class="px-lg-7 mt-2 mt-sm-2" color="blue darken-2" outlined @click="activeTab=0;ticketDetailsModal = true">مشاهده جزییات</v-btn>
+                                                                <br class="d-block d-sm-none">
+                                                                <v-btn class="px-lg-7 mt-2 mt-sm-2" color="red" outlined @click="nextPage=true">انتخاب بلیط ها</v-btn>
                                                             </div>
                                                         </div>
                                                     </v-row>
@@ -1061,7 +1083,7 @@
                                                                    style="position: absolute;left: 0;z-index: 2;top: 0;"
                                                                    outlined
                                                                    color="red arken-2"
-                                                                   @click="ticketDetailsModal = false;nextPage = !nextPage;editFlightMood = true">
+                                                                   @click="scrollTop();ticketDetailsModal = false;nextPage = !nextPage;editFlightMood = true;">
                                                                 {{nextPage ? 'تغییر پرواز انتخابی' : 'انتخاب بلیط'}}
                                                             </v-btn>
                                                         </v-row>
@@ -1389,13 +1411,14 @@
                                                         <div class="d-block relative">
                                                             <span class="mx-2 mx-sm-2 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;">{{flights.length ? flights[ticketChooseStep].originCity : ''}}</span>
                                                             <span class="absolute body-2 grey--text text--darken-1 dateTicket" style="font-family: Byekan !important;bottom: 25px;">{{flights.length ? flights[ticketChooseStep].day : ''}} {{flights.length ? flights[ticketChooseStep].fromDate : ''}}</span>
-                                                            <span class="absolute caption typeFlightTicket" style="font-family: Byekan !important;">چارتری</span>                                                            <span class="mx-2 mx-sm-6 body-2 absolute white px-4 mt-2 mt-sm-0" style="font-family: Byekan !important;left:0">{{flights.length ? flights[ticketChooseStep].destinationInternal : ''}}</span>
+                                                            <span class="absolute caption typeFlightTicket" style="font-family: Byekan !important;">چارتری</span>                                                            
+                                                            <span class="mx-2 mx-sm-6 body-2 absolute white pr-4 pl-2 mt-2 mt-sm-0" style="font-family: Byekan !important;left:0">{{flights.length ? flights[ticketChooseStep].destinationInternal : ''}}</span>
                                                             <img src="./image/flight-go-flesh.png" class="flight-go-flesh mt-4 mt-sm-0 mx-6" alt="" height="12">
                                                         </div>
                                                     </v-row>
-                                                    <v-row class=" my-4 mr-7">
+                                                    <v-row class=" my-4 mr-4 mr-sm-7">
                                                         <span class="body-2" style="font-family: Byekan !important;">زاگرس</span>
-                                                        <span class="mr-4 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">{{item.originTime}}</span>
+                                                        <span class="mr-8 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">{{item.originTime}}</span>
                                                         <v-spacer></v-spacer>
                                                         <span class="ml-5 ml-sm-7 ml-md-10 pl-2 body-2" style="font-family: Byekan !important;">{{item.destinationTime}}</span>
                                                     </v-row>
@@ -1431,7 +1454,7 @@
                                                                    style="position: absolute;left: 0;z-index: 2;top: 0;"
                                                                    outlined
                                                                    color="red arken-2"
-                                                                   @click="ticketDetailsModal = false;nextPage = !nextPage ;editFlightMood = true">
+                                                                   @click="scrollTop();ticketDetailsModal = false;nextPage = !nextPage ;editFlightMood = true;">
                                                                 {{nextPage ? 'تغییر پرواز انتخابی' : 'انتخاب بلیط'}}
                                                             </v-btn>
                                                         </v-row>
@@ -1747,7 +1770,7 @@
                 </div>
             </v-row>
             <!-- nextPage -->
-            <v-row v-if="nextPage" class="widthAll heightAll d-flex fixed justify-center" style="top:0;right:0;background:#f8f8f8;overflow: scroll;z-index:2">
+            <v-row v-if="nextPage" ref="nextPage" class="widthAll heightAll d-flex fixed justify-center" style="top:0;right:0;background:#f8f8f8;overflow: scroll;z-index:2">
                 <div class="widthAll fixed" style="z-index: 99;top: 0;right: 0;">
                     <v-row class="header grey lighten-3" justify="center">
                         <div class=" indexDiv pa-1 pa-sm-3 pb-0">
@@ -1945,9 +1968,9 @@
                                                     </div>
                                                     <span class="mx-2 mx-sm-4 body-2" style="font-family: Byekan !important;">کیش</span>
                                                 </v-row>
-                                                <v-row class=" my-4 mr-7">
+                                                <v-row class=" my-4 mr-4 mr-sm-7">
                                                     <span class="body-2" style="font-family: Byekan !important;">زاگرس</span>
-                                                    <span class="mr-2 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">15:20</span>
+                                                    <span class="mr-4 mr-sm-7 pr-1 body-2" style="font-family: Byekan !important;">15:20</span>
                                                     <v-spacer></v-spacer>
                                                     <span class=" ml-6 ml-sm-6 pl-2 body-2" style="font-family: Byekan !important;">18:35</span>
                                                 </v-row>
@@ -1966,7 +1989,7 @@
                                                             <h3 class="mb-3 d-inline-block" style="font-family: Byekan !important;">ریال</h3>
                                                         </div>
                                                         <div class="ticketButtons">
-                                                            <v-btn class="px-1 px-sm-2 px-md-3 px-lg-6" color="red" outlined @click="nextPage=false;bookStep = 1;editFlightMood = true">تغییر پرواز انتخابی</v-btn>
+                                                            <v-btn class="px-1 px-sm-2 px-md-3 px-lg-6" color="red" outlined @click="scrollTop();nextPage=false;bookStep = 1;editFlightMood = true;">تغییر پرواز انتخابی</v-btn>
                                                             <br>
                                                             <v-btn class="px-2 px-sm-3 px-md-4 px-lg-7 mt-2" color="blue darken-2" outlined @click="activeTab=0;ticketDetailsModal = true">مشاهده جزییات</v-btn>
                                                         </div>
@@ -1983,7 +2006,7 @@
                                                                style="position: absolute;left: 0;z-index: 2;top: 0;"
                                                                outlined
                                                                color="red arken-2"
-                                                               @click="ticketDetailsModal = false;nextPage = !nextPage ;editFlightMood = true">
+                                                               @click="scrollTop();ticketDetailsModal = false;nextPage = !nextPage ;editFlightMood = true;">
 
                                                             {{nextPage ? 'تغییر پرواز انتخابی' : 'انتخاب بلیط'}}
 
@@ -2355,7 +2378,7 @@
                                                 <v-select color="white"
                                                           placeholder="ماه"
                                                           class="font-small-xs"
-                                                          :items="dateMonths"
+                                                          :items="dateMonthsPersian"
                                                           v-model="user.birthdayMonth"
                                                           :rules="emptyRules"
                                                           hide-details></v-select>
@@ -2372,7 +2395,7 @@
                                             <span v-if="dateError && (!user.birthdayYear || !user.birthdayMonth || !user.birthdayDay)" class="caption red--text widthAll" style="font-family:Byekan !important">تاریخ تولد را مشخص کنید.</span>
                                         </v-row>
                                     </v-col>
-                                    <v-col cols="12" sm="6" md="4" class="px-5 py-2" v-if="user.nationality != 'ایرانی' ">
+                                    <v-col cols="12" sm="6" md="4" class="px-2 px-lg-3 py-2" v-if="user.nationality != 'ایرانی' ">
                                         <label for="" class="mr-4">تاریخ انقضا پاسپورت</label>
                                         <v-row>
                                             <v-col class="px-1">
@@ -2508,7 +2531,7 @@
                                 </v-row>
                             </div>
                         </v-row>
-                        <v-dialog v-model="editTicketInfoDialog" width="700px" style="z-index:223">
+                        <v-dialog v-model="editTicketInfoDialog"   width="700px" style="z-index:223">
                             <v-card class="pa-4" v-if="ModalUserType">
                                 <v-row>
                                     <v-icon class="d-inline-block ml-1" color="red">mdi-pen</v-icon>
@@ -2566,7 +2589,7 @@
                                                           placeholder="ماه"
                                                           class="font-small-xs"
                                                           v-model="editUser.birthdayMonth"
-                                                          :items="dateMonths"
+                                                          :items="dateMonthsPersian"
                                                           :rules="emptyRules"></v-select>
                                             </v-col>
                                             <v-col class="px-1">
@@ -2680,7 +2703,7 @@
                     <v-row v-if="bookStep == 2" justify="center" class="mt-8 mb-12">
                         <div class="indexDiv" style="max-width: 875px;">
                             <v-row align="end">
-                                <v-btn class="red--text red lighten-4 " @click="bookStep = 1;dateError = false"> بازگشت به مرحله قبلی</v-btn>
+                                <v-btn class="red--text red lighten-4 " @click="scrollTopNextPage();bookStep = 1;dateError = false;"> بازگشت به مرحله قبلی</v-btn>
                                 <v-spacer></v-spacer>
                                 <div class="relative" :class="offCodeIsTrue && 'offCodeIsTrue'">
                                     <v-row justify="center" class="mb-1" align="center">
@@ -2789,7 +2812,9 @@
                 <img src="./image/logo-header.png" class="white pa-12 rounded-xl" alt="">
             </div>
             <!-- alert -->
-            <v-alert v-if="showAlert && (loginStep == 1) || (loginStep == 2 && UserType==1)" dark class="white--text fixed"
+            <!-- <v-alert v-if="showAlert && (loginStep == 1) || (loginStep == 2 && UserType==1)" dark class="white--text fixed"
+                     :type="alertType" style="z-index:9999;bottom: 0;right: 10px;min-width: 200px;">{{alertText}}</v-alert> -->
+            <v-alert v-if="showAlert" dark class="white--text fixed"
                      :type="alertType" style="z-index:9999;bottom: 0;right: 10px;min-width: 200px;">{{alertText}}</v-alert>
             <!-- footer -->
             <v-row justify="center" class="grey lighten-3">
@@ -2891,7 +2916,7 @@
 
         @media (max-width: 599px) {
             .ticketButtons button {
-                width: 110px !important
+                width: 113px !important
             }
         }
     </style>

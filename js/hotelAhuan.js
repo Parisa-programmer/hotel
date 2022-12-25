@@ -19,6 +19,7 @@ new Vue({
     // header
     showMenuSmall: false,
     activePage:3,
+    selectedDate:'',
     // image slider
     items: [
       {
@@ -148,6 +149,7 @@ new Vue({
       },
     ],
     isLoading:true,
+    isLoadingAxios:false,
     roomTab: null,
     nextPage:false,
     useWallet:false,
@@ -281,8 +283,17 @@ new Vue({
           this.showAlert = false
         }, 2000);
       }
+    },
+    async isLoadingAxios(){
+      if (this.isLoadingAxios) {
+        await setTimeout(() => {
+          this.isLoadingAxios = false
+        }, 1000);
+        $('#showPeaple').hide()
+        window.location.href = '#rooms'
+        
+      }
     }
-    
   },
   methods: {
     sliderSwaper() {
@@ -353,13 +364,11 @@ new Vue({
           break;
       }
     },
+    searchRoom(){
+      this.isLoadingAxios = true
+    },
     reserveRoom(room,index){
       this.selectedRooms[index] = room
-      var selectedDate = $('#dtp1').attr('value')
-      selectedDate = selectedDate.split(' - ')
-      let options = { day: 'numeric', month: 'long' };
-      this.fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-      this.toDate = new Date(selectedDate[1]).toLocaleDateString('fa-IR', options);
       if (this.roomTab < this.headerRooms.length-1) {
         this.roomTab++
       } else{
@@ -422,6 +431,19 @@ new Vue({
         },
       )
       this.newCommentMood = false
+    },
+    changeDate(){
+      var selectedDate =  $('#dtp1').attr('value')
+        if (selectedDate) {
+          selectedDate = selectedDate.split(' - ')
+          let options = { day: 'numeric', month: 'long' };
+          this.fromDate = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          this.toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
+          this.selectedDate = selectedDate[0] ? (this.fromDate + (this.toDate && ' الی ' + this.toDate)) : '';
+        }
+        if (this.selectedDate.length) {
+          $('#showPeaple').show()
+        }
     }
   },
   created() {
@@ -469,36 +491,40 @@ new Vue({
           $('#dtp1').show()
         });
     
-        $(document).on('click', '#georgian', function() {
-          dtp1.updateOptions({
-            isGregorian : true
-          });
-          $(".popover").removeClass('persianDate')
-          $(".popover").addClass('solarDate')
-          firstAppend = 2
-          $('#dtp1').show()
+      $(document).on('click', '#georgian', function() {
+        dtp1.updateOptions({
+          isGregorian : true
         });
-      
-        // for focuse after changes
-        $(document).on('click', '.v-list-item', function() {
-          $('#dtp1').popover('show')
-        });
-        
-        $(document).on('hidden.bs.popover', '#dtp1', function() {
-          $('#showPeaple').show()
-          dtp1.updateOption('selectedDateToShow', new Date());
-          firstAppend = 0
-          $('#dtp1').attr('value',dtp1.getText())
-        })
-        
-        $(document).on('click', '.hideEventPeaple', function() {
-          $('#showPeaple').toggle()
-        })
+        $(".popover").removeClass('persianDate')
+        $(".popover").addClass('solarDate')
+        firstAppend = 2
+        $('#dtp1').show()
+      });
+    
+      // for focuse after changes
+      $(document).on('click', '.v-list-item', function() {
+        $('#dtp1').popover('show')
+      });
+      var self = this
+      $(document).on('hide.bs.popover', '#dtp1', function () {
+        firstAppend = 0
+        $('#dtp1').attr('value',dtp1.getText())
+        self.changeDate()
+        dtp1.updateOption('selectedDateToShow', new Date());
+      })
 
-        $('#searchRoom').on('click',function(){
-          // var popover = dtp1.getDateRange()
+      $(document).on('show.bs.popover', '#dtp1', function () {
+        $('#showPeaple').hide()
+      })
 
-        });
+      $(document).on('click', '.hideEventPeaple', function() {
+        $('#showPeaple').toggle()
+      })
+
+      $('#searchRoom').on('click',function(){
+        // var popover = dtp1.getDateRange()
+
+      });
     }, 2000);
     
   },

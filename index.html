@@ -415,15 +415,17 @@
                     >
                       <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
                         <v-col cols="5" v-if="selectedSection.title != 'هتل' && selectedSection.title != 'آهوان' " class="originCityParent relative">
-                          <v-autocomplete
+                          <v-autocomplete top
                             v-model="originCity"
                             id="originCity"
-                            :items="external ? otherCityes : persianCityes"
+                            ref="originCity"
+                            :items="external ? otherCityesOrigin : persianCityes"
+                            :search-input.sync="originSearchInput"
                             :label="byReturn != 3 ? 'مبدا' : 'مبدا اول'"
                             class="font-small-xs hideArrow headerCityes"
                             :class="originCity.length ? 'pt-2' : 'pt-0'"
                             prepend-inner-icon="mdi-map-marker"
-                            @click="addChangeTypeButtonDate"
+                            @click="hidePeaple()"
                             @change="changeHeaderInput('originCity')"
                           />
                         </v-col>
@@ -436,13 +438,14 @@
                             ref="destinationInternal"
                             id="destinationInternal"
                             class="font-small-xs hideArrow"
+                            :search-input.sync="destinationSearchInput"
                             :class="destinationInternal.length ? 'pt-2' : 'pt-0'"
-                            :items="selectedSection.title == 'هتل' ? hotels :selectedSection.title == 'آهوان' ? hotels : (external ? otherCityes : persianCityes)"
+                            :items="selectedSection.title == 'هتل' ? hotels :selectedSection.title == 'آهوان' ? hotels : (external ? otherCityesOrigin2 : persianCityes)"
                             :label="selectedSection.title == 'هتل' ? 'نام هتل' : selectedSection.title == 'آهوان' ? 'نام هتل' : byReturn == 3 ? 'مقصد اول' : 'مقصد'"
                             prepend-inner-icon="mdi-map-marker"
                             @click="hidePeaple"
                             @change="changeHeaderInput('destinationInternal')"
-                          />
+                          ></v-autocomplete>
                         </v-col>
                       </v-row>
                     </v-skeleton-loader>
@@ -558,7 +561,157 @@
                     </v-skeleton-loader>
                   </v-col>
                 </v-row>
-                <div v-for="(flight,i) in allFlights" :key="i">
+                <v-row align="center" class="justify-center justify-lg-start borderFlight rounded-lg'">
+                  <!-- <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                     <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
+                        <v-col cols="5" v-if="selectedSection.title != 'هتل' && selectedSection.title != 'آهوان' " class="originCityParent relative">
+                          <v-autocomplete top
+                            :v-model="allFlights[0].originCity"
+                            id="originCity2"
+                            :items="otherCityes"
+                            :search-input.sync="originSearchInput2"
+                            label="مبدا دوم"
+                            class="font-small-xs hideArrow headerCityes"
+                            :class="allFlights[0].originCity.length ? 'pt-2' : 'pt-0'"
+                            prepend-inner-icon="mdi-map-marker"
+                            @click="hidePeaple"
+                            @change="changeHeaderInput('originCity0')"
+                          />
+                        </v-col>
+                        <v-col cols="2" v-if="selectedSection.title != 'هتل' && selectedSection.title != 'آهوان'">
+                          <v-icon class="rounded-circle grey lighten-2 pa-1" @click="exchangeCity(0)"> mdi-swap-horizontal </v-icon>
+                        </v-col>
+                        <v-col cols="5" class="destinationInternalParent relative">
+                          <v-autocomplete
+                            :v-model="allFlights[0].destinationInternal"
+                            ref="destinationInternal2"
+                            id="destinationInternal2"
+                            class="font-small-xs hideArrow"
+                            :search-input.sync="destinationSearchInput2"
+                            :class="allFlights[0].destinationInternal.length ? 'pt-2' : 'pt-0'"
+                            :items="otherCityes"
+                            label="مقصد دوم"
+                            prepend-inner-icon="mdi-map-marker"
+                            @click="hidePeaple"
+                            @change="changeHeaderInput('destinationInternal0')"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-skeleton-loader>
+                  </v-col> -->
+                  <!-- <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                      <div class="input-group" class="relative font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;border-radius: 10px;">
+                        <input type="text" ref="dtp2" value="" data-name="dtp2-text" class="cursorPointer heightAll widthAll absolute dtp " readOnly style="top:0;left:50%;opacity: 0;width:0;z-index:1"
+                        id="dtp2" style="width:100%">
+                        <input class="d-none" data-name="dtp2-date" >
+                        <div class="cursorPointer heightAll d-inline-block grey--text text--darken-3 font-small-xs widthAll showPopup" style="z-index:22;padding: 10px 4px;">
+                          <v-icon class="grey--text text--darken-2">
+                            mdi-calendar-month
+                          </v-icon>
+                           {{allFlights[0].date ? allFlights[0].date : 'انتخاب تاریخ'}}
+                        </div>
+                        
+                      </div>
+                    </v-skeleton-loader>
+                  </v-col> -->
+                  <!-- <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                    <div class="relative">
+                      <v-text-field readOnly v-model="allPeaples"
+                        readOnley prepend-inner-icon="mdi-account"  class="font-small-xs form-control headerBoxFields hideEventPeaple darkInput"
+                        ></v-text-field>
+                      <div id="showPeaple" class="allPeaplesAfter rounded-lg hideOver widthAll absolute white" style="z-index: 3;top: 40px;" >
+                        <div v-for="(room,i) in headerRooms" :key="i" class="my-3">
+                          <v-row align="center" v-if="selectedSection.title != 'پرواز' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار' && selectedSection.title != 'بیمه'">
+                            <v-col>                    
+                              <h3 class="pa-3 float-right">اتاق {{i == 0 ? 'اول' : i == 1 ? 'دوم' : i == 2 ? 'سوم' :'چهارم'  }}</h3>
+                            </v-col>
+                            <v-col>
+                              <v-icon class="pt-2 pl-3 float-left red--text cursorPointer" @click="headerRooms.length > 1 ? headerRooms.splice(i,1) : '';selectedRooms.length > 1 ? selectedRooms=[] : '';roomTab=null;changeRoomValue()">mdi-delete</v-icon>
+                              <span class="mt-3 float-left caption red--text cursorPointer" style="font-family:Byekan !important;" @click="headerRooms.length > 1 ? headerRooms.splice(i,1) : '';selectedRooms.length > 1 ? selectedRooms=[] : '';roomTab=null;changeRoomValue()">حذف</span>
+                            </v-col>
+                          </v-row>
+                          <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
+                            <v-col>
+                              <span>بزرگسال</span>
+                              <span class="caption grey--text " style="font-family: Byekan !important;">(12 سال به بالا)</span>
+                            </v-col>
+                            <v-col>
+                              <v-icon @click="room.peaple > 1 ? room.peaple-- : '';changeRoomValue()" class="green--text float-left" light>
+                                mdi-minus-circle
+                              </v-icon>
+                              <h4 class="float-left mx-3 ">{{room.peaple}}</h4>
+                              <v-icon @click="room.peaple++;changeRoomValue()" class="green--text float-left" light>
+                                mdi-plus-circle
+                              </v-icon>
+                            </v-col>
+                          </v-row>
+                          <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
+                            <v-col>
+                              کودک
+                              <span class="caption grey--text " style="font-family: Byekan !important;">(2-12 سال)</span>
+                            </v-col>
+                            <v-col>
+                              <v-icon @click="room.child > 0 ? room.child-- : '';changeRoomValue()" class="green--text float-left" light>
+                                mdi-minus-circle
+                              </v-icon>
+                              <h4 class="float-left mx-3">{{room.child}}</h4>
+                              <v-icon @click="(((room.peaple*2)-(room.child)-(room.baby)) > 0) && room.child++;changeRoomValue()"  class="green--text float-left" light>
+                                mdi-plus-circle
+                              </v-icon>
+                            </v-col>
+                          </v-row>
+                          <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
+                            <v-col>
+                              <span>
+                                نوزاد
+                              </span>
+                              <span class="caption grey--text " style="font-family: Byekan !important;">(کمتر از 2 سال)</span>
+                            </v-col>
+                            <v-col>
+                              <v-icon @click="room.baby > 0 ? room.baby-- : '';changeRoomValue()" class="green--text float-left" light>
+                                mdi-minus-circle
+                              </v-icon>
+                              <h4 class="float-left mx-3">{{room.baby}}</h4>
+                              <v-icon @click="(((room.peaple*2)-(room.child)-(room.baby)) > 0) && room.baby++;changeRoomValue()" class="green--text float-left" light>
+                                mdi-plus-circle
+                              </v-icon>
+                            </v-col>
+                          </v-row>
+                          <v-divider v-if="i < headerRooms.length-1"></v-divider>
+                        </div>
+                        <div class="my-2" v-if="selectedSection.title != 'پرواز' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار' && selectedSection.title != 'بیمه'">
+                          <span v-if="headerRooms.length < 4" class="mr-4 caption cursorPointer red--text" @click="headerRooms.push({peaple:1,child:0,baby:0});changeRoomValue()" style="font-family:Byekan !important;">+افزودن اتاق</span>
+                        </div>
+                        <v-divider></v-divider>
+                        <div class="pa-3">
+                          <v-btn class="widthAll hideEventPeaple" color="red" dark>تایید - {{allPeaples}}</v-btn>
+                        </div>
+                      </div>
+                    </div>
+                    </v-skeleton-loader>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'پرواز' ? 2 : 3" :xl="selectedSection.title == 'پرواز' ? 2 : 3" class="px-2 py-1" :class="byReturn == 3 && 'd-none d-lg-block'">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                      <v-btn dark color="red" class="widthAll mt-md-4 mt-lg-0 pt-6 pb-5 ronded-xl searchInHeaderBox" @click="searchInHeaderBox" style="border-radius: 7px;" :class="byReturn == 3 && 'd-none d-lg-flex'">جستجو</v-btn>
+                    </v-skeleton-loader>
+                  </v-col> -->
+                </v-row>
+                <!-- <div v-for="(flight,i) in allFlights" :key="i">
                   <v-row align="center" class="justify-center justify-md-start borderFlight rounded-lg" :class="((i+1) <= flightCityes.length && (external == true && selectedSection.title == 'پرواز' && byReturn == 3)) ? 'd-flex' : 'd-none'">
                     <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
                       <v-skeleton-loader class="inputLoader"
@@ -566,11 +719,12 @@
                         :loading="isLoading"
                       >
                         <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
-                          <v-col cols="5">
+                          <v-col cols="5">{{flight.searchOrigin}}
                             <v-autocomplete
                               v-model="flight.originCity"
                               :id="'originCity' + i"
-                              :items="persianCityes"
+                              :items="otherCityes"
+                              :search-input.sync="flight.searchOrigin"
                               :label="'مبدا '+
                               (i+2 == 2 ? 'دوم' : i+2 == 3 ? 'سوم'  : 'چهارم')
                               "
@@ -590,7 +744,8 @@
                               :id="'destinationInternal'+i"
                               class="font-small-xs hideArrow"
                               :class="flight.destinationInternal.length ? 'pt-2' : 'pt-0'"
-                              :items="persianCityes"
+                              :items="otherCityes"
+                              :search-input.sync="flight.searchDestination"
                               :label="'مقصد ' + (i+2 == 2 ? 'دوم' : i+2 == 3 ? 'سوم'  : 'چهارم')"
                               prepend-inner-icon="mdi-map-marker"
                               @click="hidePeaple"
@@ -600,7 +755,7 @@
                         </v-row>
                       </v-skeleton-loader>
                     </v-col>
-                    <v-col cols="12" sm="6" md="4" lg="2" class="px-2 py-1">
+                    <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
                       <v-skeleton-loader class="inputLoader"
                         type="card-heading"
                         :loading="isLoading"
@@ -634,7 +789,7 @@
                       </v-skeleton-loader>
                     </v-col>
                   </v-row>
-                </div>
+                </div> -->
                 <v-row justify="center">
                   <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 ? 'd-block d-lg-none' : 'd-none'">
                     <a :href="selectedSection.title == 'پرواز'  && './flight.html'" class="text-decoration-none">
@@ -685,16 +840,16 @@
                 <h4 class="font-small-title-xs">تور های پیشنهادی آهوان</h4>
                 <div class="red mt-1 mb-2 " style="height:3px;width:55px"></div>
                 <div class="widthAll slick-tour slick-parent relative">
-                  <div v-for="(item, i) in items" :key="i">
+                  <div v-for="(item, i) in tourItems" :key="i">
                     <v-card outlined class="ma-sm-4 cardSlider" >
-                      <img width="100%" height="280" :src="item.image">
-                      <h3 class="ma-2 font-small-title-xs">آنتالیا</h3>
+                      <img width="100%" :src="item.image">
+                      <h3 class="ma-2 font-small-title-xs">{{item.city}}</h3>
                       <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">دو شب و سه روز</div>
                       <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">خدمات:پرواز ،هتل و ترانسفر فرودگاهی</div>
                       <v-row align="center">
                         <v-btn outlined color="red" class="ma-2 px-9">رزرو</v-btn>
                         <v-spacer></v-spacer>
-                        <h3 class="">26,500,000</h3>
+                        <h3 class="">{{item.price}}</h3>
                         <span class="caption mx-2" style="font-family:Byekan !important">تومان</span>
                       </v-row>
                     </v-card>
@@ -713,10 +868,10 @@
                 <h4 class="font-small-title-xs">مطالب پیشنهادی آهوان</h4>
                 <div class="red mt-1 mb-2 " style="height:3px;width:55px"></div>
                 <div class="widthAll slick-title slick-parent relative ">
-                  <div v-for="(item, i) in items" :key="i">
-                    <v-card outlined class="ma-sm-4 cardSlider" >
-                      <img width="100%" height="280" :src="item.image">
-                      <h5 class="ma-2 font-small-title-xs text-center">مطلب پیشنهادی شماره {{ i }}</h5>
+                  <div v-for="(item, i) in newItems" :key="i">
+                    <v-card outlined class="newesCardSlider" >
+                      <img width="100%" :src="item.image">
+                      <h5 class="ma-2 font-small-title-xs text-center">{{ item.text }}</h5>
                       <v-row justify="center">
                         <v-btn outlined color="red" class="ma-2 px-12">مشاهده</v-btn>
                       </v-row>

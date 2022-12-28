@@ -490,6 +490,10 @@ input::-webkit-inner-spin-button {
   width: 255px;
 }
 
+.newesCardSlider{
+  width: 370px;
+}
+
 .v-expansion-panel--active > .v-expansion-panel-header {
   min-height: 48px !important;
 }
@@ -858,7 +862,11 @@ input::-webkit-inner-spin-button {
   }
 
   .cardSlider {
-    width: 280px;
+    width: 260px;
+  }
+
+  .newesCardSlider{
+    width: 300px;
   }
 
   .banerSlider,.banerSlider .v-image {
@@ -896,7 +904,11 @@ input::-webkit-inner-spin-button {
   }
 
   .cardSlider {
-    width: 247px;
+    width: 260px;
+  }
+
+  .newesCardSlider{
+    width: 288px;
   }
 
   .banerSlider,.banerSlider .v-image {
@@ -984,7 +996,11 @@ input::-webkit-inner-spin-button {
     }
 
     .cardSlider {
-      width: 325px;
+      width: 240px;
+    }
+
+    .newesCardSlider{
+      width: 370px;
     }
 
     .banerSlider,.banerSlider .v-image {
@@ -1071,7 +1087,11 @@ input::-webkit-inner-spin-button {
     }
 
     .cardSlider {
-      width: 510px;
+      width: 245px;
+    }
+
+    .newesCardSlider{
+      width: 290px;
     }
 
     .banerSlider,.banerSlider .v-image {
@@ -1288,7 +1308,11 @@ input::-webkit-inner-spin-button {
   }
 
   .cardSlider{
-    margin: auto;
+    margin: 0;
+  }
+
+  .v-menu__content{
+    max-height: 180px !important;
   }
 
   @media (min-width: 500px) and (max-width: 599px) {
@@ -1305,7 +1329,11 @@ input::-webkit-inner-spin-button {
     }
 
     .cardSlider {
-      width: 410px;
+      width: 500px;
+    }
+
+    .newesCardSlider{
+      width: 510px;
     }
 
     .banerSlider,.banerSlider .v-image {
@@ -1335,7 +1363,11 @@ input::-webkit-inner-spin-button {
     }
 
     .cardSlider {
-      width: 308px;
+      width: 400px;
+    }
+
+    .newesCardSlider{
+      width: 510px;
     }
 
     .banerSlider,.banerSlider .v-image {
@@ -1377,7 +1409,7 @@ input::-webkit-inner-spin-button {
     }
 
     .cardSlider {
-      width: 258px;
+      width: 350px;
     }
 
     .banerSlider,.banerSlider .v-image {
@@ -1431,7 +1463,7 @@ input::-webkit-inner-spin-button {
     }
 
     .cardSlider {
-      width: 208px;
+      width: 300px;
     }
 
     .banerSlider,.banerSlider .v-image {

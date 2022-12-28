@@ -202,3 +202,7 @@
     opacity: .75;
     color: black;
 }
+
+.slick-arrow{
+    z-index: 9;
+}

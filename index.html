@@ -593,6 +593,7 @@
                               v-model="allFlights[0].originCity"
                               id="originCity2"
                               :items="otherCityesOrigin3"
+                              ref="originCity2"
                               :rules="byReturn == 3 ? emptyRules2 : []"
                               :search-input.sync="originSearchInput2"
                               label="مبدا دوم"
@@ -682,6 +683,7 @@
                             <v-autocomplete
                               v-model="allFlights[1].originCity"
                               id="originCity3"
+                              ref="originCity3"
                               :items="otherCityesOrigin5"
                               :rules="(byReturn == 3 && flightCityes.length > 1) ? emptyRules2 : []"
                               :search-input.sync="originSearchInput3"
@@ -784,6 +786,7 @@
                             <v-autocomplete
                               v-model="allFlights[2].originCity"
                               id="originCity4"
+                              ref="originCity4"
                               :items="otherCityesOrigin7"
                               :rules="(byReturn == 3 && flightCityes.length > 2) ? emptyRules2 : []"
                               :search-input.sync="originSearchInput4"

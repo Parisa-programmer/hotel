@@ -1351,13 +1351,14 @@ input::-webkit-inner-spin-button {
     justify-content: space-evenly;
   }
 
-  .cardSlider{
-    margin: 0;
-  }
-
   .v-menu__content{
     max-height: 180px !important;
   }
+  
+  .cardSlider {
+      width: 300px;
+      margin: 0;
+    }
 
   @media (min-width: 500px) and (max-width: 599px) {
     .indexDiv {
@@ -1370,10 +1371,6 @@ input::-webkit-inner-spin-button {
 
     .next-page-ticket .dateTicket {
       right: 38%;
-    }
-
-    .cardSlider {
-      width: 500px;
     }
 
     .newesCardSlider{
@@ -1395,6 +1392,10 @@ input::-webkit-inner-spin-button {
     .multi-flight .flight-go-flesh {
       width: 413px;
     }
+
+    .slick-tour .slick-track {
+      margin-right: 106px !important;
+    }
   }
 
   @media (min-width: 400px) and (max-width: 499px) {
@@ -1404,10 +1405,6 @@ input::-webkit-inner-spin-button {
 
     .next-page-ticket {
       width: 387px;
-    }
-
-    .cardSlider {
-      width: 400px;
     }
 
     .newesCardSlider{
@@ -1441,6 +1438,11 @@ input::-webkit-inner-spin-button {
     .typeFlightTicket {
       right: 43%;
     }
+
+    .slick-tour .slick-track {
+      margin-right: 52px !important;
+    }
+
   }
 
   @media (min-width: 350px) and (max-width: 399px) {
@@ -1450,10 +1452,6 @@ input::-webkit-inner-spin-button {
 
     .next-page-ticket {
       width: 331px;
-    }
-
-    .cardSlider {
-      width: 350px;
     }
 
     .banerSlider,.banerSlider .v-image {
@@ -1490,6 +1488,14 @@ input::-webkit-inner-spin-button {
 
     .multi-flight .typeFlightTicket {
       right: 44%;
+    }
+
+    .cardSlider {
+      width: 270px;
+    }
+
+    .slick-tour .slick-track {
+      margin-right: 40px !important;
     }
   }
 
@@ -1544,6 +1550,10 @@ input::-webkit-inner-spin-button {
 
     .multi-flight .typeFlightTicket {
       right: 41%;
+    }
+
+    .slick-tour .slick-track {
+      margin-right: 0 !important;
     }
   }
 }

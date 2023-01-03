@@ -134,17 +134,19 @@ new Vue({
         originCity: '',
         destinationInternal: '',
         date: '',
+        timestamp: 0
       },
       {
         originCity: '',
         destinationInternal: '',
         date: '',
-
+        timestamp: 0
       },
       {
         originCity: '',
         destinationInternal: '',
         date: '',
+        timestamp: 0
       },
     ],
     flightCityes: [
@@ -434,7 +436,8 @@ new Vue({
     alertText: '',
     isLoadingAxios: false,
     startTypeAnimation: false,
-    searchLink: ''
+    searchLink: '',
+    timestampDate: 0
   },
   watch: {
     test(term) {
@@ -534,6 +537,7 @@ new Vue({
         } else {
           self.persianCityes = self.AllpersianCityes
         }
+        $('.v-select-list').removeClass("sugestCity")
       } else {
         if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
           $('.v-select-list').addClass("sugestCity")
@@ -732,6 +736,7 @@ new Vue({
     destinationSearchInput2() {
       var self = this
       if (!!self.destinationSearchInput2) {
+        $('.v-select-list').removeClass("sugestCity")
         axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.destinationSearchInput2)
           .then(function (response) {
             // handle success
@@ -992,12 +997,12 @@ new Vue({
       this.hidePeaple()
     },
     searchInHeaderBox() {
-      let self = this
+      var self = this
       this.hidePeaple()
-      console.log(!this.$refs.headerInputForm.validate(),
-        !this.selectedDate.length,
-        (self.byReturn == 3 && (!self.allFlights[0].date || self.flightCityes.length > 1 && !self.allFlights[1].date || self.flightCityes.length > 2 && !self.allFlights[2].date)));
-      if (!this.$refs.headerInputForm.validate() || !this.selectedDate.length || (self.byReturn == 3 && (!self.allFlights[0].date || self.flightCityes.length > 1 && !self.allFlights[1].date || self.flightCityes.length > 2 && !self.allFlights[2].date))) {
+      if (!this.$refs.headerInputForm.validate()
+        || !this.selectedDate.length
+        || (self.byReturn == 3 && (!self.allFlights[0].date || self.flightCityes.length > 1 && !self.allFlights[1].date || self.flightCityes.length > 2 && !self.allFlights[2].date))
+      ) {
         // validate is false_____________________________________________________________________
         if (!this.selectedDate.length) {
           $('.showPopup').css("color", "red");
@@ -1016,8 +1021,35 @@ new Vue({
         self.alertText = 'فیلد های درخواستی را بدرستی تکمیل کنید.';
         self.alertType = 'error';
         self.showAlert = true;
-      }
-      else {
+      } else if (self.originCity == self.destinationInternal) {
+        self.alertText = 'مبداء و مقصد نباید یکسان باشد.';
+        self.alertType = 'error';
+        self.showAlert = true;
+      } else if (
+        (self.byReturn == 3) &&
+        (
+          (self.allFlights[0].destinationInternal == self.allFlights[0].originCity)
+          || (self.flightCityes.length > 1 && self.allFlights[1].destinationInternal == self.allFlights[1].originCity)
+          || (self.flightCityes.length > 2 && self.allFlights[2].destinationInternal == self.allFlights[2].originCity)
+        )
+      ) {
+        self.alertText = 'مبداء و مقصد نباید یکسان باشد.';
+        self.alertType = 'error';
+        self.showAlert = true;
+        console.log(self.allFlights);
+      } else if (
+        (self.byReturn == 3) &&
+        (
+          (self.timestampDate < self.allFlights[0].timestamp)
+          || (self.flightCityes.length > 1 && self.allFlights[0].timestamp < self.allFlights[1].timestamp)
+          || (self.flightCityes.length > 2 && self.allFlights[1].timestamp < self.allFlights[2].timestamp)
+        )
+      ) {
+        self.alertText = 'تاریخ های انتخابی صحیح نیست.';
+        self.alertType = 'error';
+        self.showAlert = true;
+        console.log(self.allFlights);
+      } else {
         // validate is true _____________________________________________________________________
         // get date 1 ___________________________________________________________________________
         var selectedDate = $('#dtp1').attr('value')
@@ -1048,7 +1080,7 @@ new Vue({
             destinationIATA = self.otherCityesOrigin2.find(x => x.text == self.destinationInternal)
             destinationIATA = destinationIATA.IATA
           }
-        } else if (this.selectedSection.title != 'آهوان') {
+        } else if (this.selectedSection.title != 'آهوان' && this.selectedSection.title != 'تور' && this.selectedSection.title != 'هتل') {
           originIATA = self.AllpersianCityes.find(x => x.text == self.originCity)
           originIATA = originIATA.code
           destinationIATA = self.AllpersianCityes.find(x => x.text == self.destinationInternal)
@@ -1064,7 +1096,7 @@ new Vue({
               '&adl=' + adl +
               '&chd=' + childs +
               '&id=' + (self.destinationInternal == 'هتل آهوان چابکسر' ? '3' : '1005')
-              window.location.href = self.searchLink
+            window.location.href = self.searchLink
             break;
           case 'پرواز':
             self.searchLink = 'https://ahuan.ir/flight?' +
@@ -1082,9 +1114,6 @@ new Vue({
             break;
         }
       }
-
-
-
     },
     exchangeCity(index) {
       this.hidePeaple()
@@ -1169,12 +1198,14 @@ new Vue({
         this.flightCityes.push({
           originCity: '',
           destinationInternal: '',
-          date: ''
+          date: '',
+          timestamp: 0
         })
         this.allFlights.push({
           originCity: '',
           destinationInternal: '',
-          date: ''
+          date: '',
+          timestamp: 0
         })
         this.$refs.headerInputForm.resetValidation()
         $('.showPopup , .showPopup2 , .showPopup3 , .showPopup4').css("color", '#424242')
@@ -1322,6 +1353,7 @@ new Vue({
           self.fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
           self.toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
           self.toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
+          self.timestampDate = new Date(selectedDate[0]).getTime()
           if (dtp1.setting.isGregorian) {
             self.selectedDate = selectedDate[0] ? (self.fromDate + (self.toDate && ' to ' + self.toDate)) : '';
           } else {
@@ -1346,7 +1378,7 @@ new Vue({
           let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
           let toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
           let toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
-
+          self.allFlights[0].timestamp = new Date(selectedDate[0]).getTime()
           if (dtp2.setting.isGregorian) {
             self.allFlights[0].date = selectedDate[0] ? (fromDate + (toDate && ' to ' + toDate)) : '';
           } else {
@@ -1366,7 +1398,7 @@ new Vue({
           let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
           let toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
           let toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
-
+          self.allFlights[1].timestamp = new Date(selectedDate[0]).getTime()
           if (dtp3.setting.isGregorian) {
             self.allFlights[1].date = selectedDate[0] ? (fromDate + (toDate && ' to ' + toDate)) : '';
           } else {
@@ -1386,7 +1418,7 @@ new Vue({
           let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
           let toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
           let toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
-
+          self.allFlights[2].timestamp = new Date(selectedDate[0]).getTime()
           if (dtp4.setting.isGregorian) {
             self.allFlights[2].date = selectedDate[0] ? (fromDate + (toDate && ' to ' + toDate)) : '';
           } else {
@@ -1548,138 +1580,203 @@ new Vue({
           $('#showPeaple').toggle()
         })
 
+        var openOrigin = false
+        var openOrigin2 = false
+        var openOrigin3 = false
+        var openOrigin4 = false
+        var openDestination = false
+        var openDestination2 = false
+        var openDestination3 = false
+        var openDestination4 = false
+
         $(document).on('click', '.originCityParent', function () {
-          if (self.external) {
-            let index = self.AllotherCityes.findIndex(x => x.text == self.originCity)
-            if (!self.originCity || index != (-1)) {
-              $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin = self.AllotherCityes
-            } else {
-              $('.v-select-list').removeClass("sugestCity")
-            }
-          } else if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
-            let variabel = [
-              { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
-              { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
-              { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
-              { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
-              { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
-              { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
-              { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
-            ]
-            if (self.originCity) {
-              let index = variabel.findIndex(x => x.text == self.originCity)
-              if (index == (-1)) {
-                self.persianCityes = self.AllpersianCityes
+          if (openOrigin) {
+            self.$refs.originCity.$refs.menu.isActive = false
+            openOrigin = false
+          } else {
+            self.$refs.originCity.$refs.menu.isActive = true
+            openOrigin = true
+            if (self.external) {
+              let index = self.AllotherCityes.findIndex(x => x.text == self.originCity)
+              if (!self.originCity || index != (-1)) {
+                $('.v-select-list').addClass("sugestCity")
+                self.otherCityesOrigin = self.AllotherCityes
+              } else {
                 $('.v-select-list').removeClass("sugestCity")
+              }
+            } else if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
+              let variabel = [
+                { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+                { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+                { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+                { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+                { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+                { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+                { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+              ]
+              if (self.originCity) {
+                let index = variabel.findIndex(x => x.text == self.originCity)
+                if (index == (-1)) {
+                  self.persianCityes = self.AllpersianCityes
+                  $('.v-select-list').removeClass("sugestCity")
+                } else {
+                  $('.v-select-list').addClass("sugestCity")
+                  self.persianCityes = variabel
+                }
               } else {
                 $('.v-select-list').addClass("sugestCity")
                 self.persianCityes = variabel
               }
-            } else {
-              $('.v-select-list').addClass("sugestCity")
-              self.persianCityes = variabel
             }
           }
         })
 
         $(document).on('click', '.originCityParent2', function () {
-          let variabel = self.allFlights[0].originCity
-          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
-          if (!self.allFlights[0].originCity || index != (-1)) {
-            $('.v-select-list').addClass("sugestCity")
-            self.otherCityesOrigin3 = self.AllotherCityes
+          if (openOrigin2) {
+            self.$refs.originCity2.$refs.menu.isActive = false
+            openOrigin2 = false
           } else {
-            $('.v-select-list').removeClass("sugestCity")
+            self.$refs.originCity2.$refs.menu.isActive = true
+            openOrigin2 = true
+            let variabel = self.allFlights[0].originCity
+            let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+            if (!self.allFlights[0].originCity || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin3 = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
           }
         })
 
         $(document).on('click', '.originCityParent3', function () {
-          let variabel = self.allFlights[1].originCity
-          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
-          if (!self.allFlights[1].originCity || index != (-1)) {
-            $('.v-select-list').addClass("sugestCity")
-            self.otherCityesOrigin5 = self.AllotherCityes
+          if (openOrigin3) {
+            self.$refs.originCity3.$refs.menu.isActive = false
+            openOrigin3 = false
           } else {
-            $('.v-select-list').removeClass("sugestCity")
+            self.$refs.originCity3.$refs.menu.isActive = true
+            openOrigin3 = true
+            let variabel = self.allFlights[1].originCity
+            let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+            if (!self.allFlights[1].originCity || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin5 = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
           }
         })
 
         $(document).on('click', '.originCityParent4', function () {
-          let variabel = self.allFlights[2].originCity
-          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
-          if (!self.allFlights[2].originCity || index != (-1)) {
-            $('.v-select-list').addClass("sugestCity")
-            self.otherCityesOrigin7 = self.AllotherCityes
+          if (openOrigin4) {
+            self.$refs.originCity4.$refs.menu.isActive = false
+            openOrigin4 = false
           } else {
-            $('.v-select-list').removeClass("sugestCity")
+            self.$refs.originCity4.$refs.menu.isActive = true
+            openOrigin4 = true
+            let variabel = self.allFlights[2].originCity
+            let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+            if (!self.allFlights[2].originCity || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin7 = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
           }
         })
 
         $(document).on('click', '.destinationInternalParent', function () {
-          if (self.external) {
-            let index = self.AllotherCityes.findIndex(x => x.text == self.destinationInternal)
-            if (!self.destinationInternal || index != (-1)) {
-              $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin2 = self.AllotherCityes
-            } else {
-              $('.v-select-list').removeClass("sugestCity")
-            }
-          } else if (self.selectedSection.title != 'هتل' && self.selectedSection.title != 'آهوان') {
-            let variabel = [
-              { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
-              { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
-              { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
-              { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
-              { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
-              { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
-              { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
-            ]
-            if (self.destinationInternal) {
-              let index = variabel.findIndex(x => x.text == self.destinationInternal)
-              if (index == (-1)) {
-                self.persianCityes2 = self.AllpersianCityes
-                // $('.v-select-list').removeClass("sugestCity")
+          if (openDestination) {
+            self.$refs.destinationInternal.$refs.menu.isActive = false
+            openDestination = false
+          } else {
+            self.$refs.destinationInternal.$refs.menu.isActive = true
+            openDestination = true
+            if (self.external) {
+              let index = self.AllotherCityes.findIndex(x => x.text == self.destinationInternal)
+              if (!self.destinationInternal || index != (-1)) {
+                $('.v-select-list').addClass("sugestCity")
+                self.otherCityesOrigin2 = self.AllotherCityes
               } else {
-                // $('.v-select-list').addClass("sugestCity")
+                $('.v-select-list').removeClass("sugestCity")
+              }
+            } else if (self.selectedSection.title != 'هتل' && self.selectedSection.title != 'آهوان') {
+              let variabel = [
+                { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+                { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+                { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+                { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+                { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+                { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+                { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+              ]
+              if (self.destinationInternal) {
+                let index = variabel.findIndex(x => x.text == self.destinationInternal)
+                if (index == (-1)) {
+                  self.persianCityes2 = self.AllpersianCityes
+                  // $('.v-select-list').removeClass("sugestCity")
+                } else {
+                  // $('.v-select-list').addClass("sugestCity")
+                  self.persianCityes2 = variabel
+                }
+              } else {
+                $('.v-select-list').addClass("sugestCity")
                 self.persianCityes2 = variabel
               }
             } else {
-              $('.v-select-list').addClass("sugestCity")
-              self.persianCityes2 = variabel
+              $('.v-select-list').removeClass("sugestCity")
             }
-          } else {
-            $('.v-select-list').removeClass("sugestCity")
           }
         })
 
         $(document).on('click', '.destinationInternalParent2', function () {
-          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[0].destinationInternal)
-          if (!self.allFlights[0].destinationInternal || index != (-1)) {
-            // $('.v-select-list').addClass("sugestCity")
-            self.otherCityesOrigin4 = self.AllotherCityes
+          if (openDestination2) {
+            self.$refs.destinationInternal2.$refs.menu.isActive = false
+            openDestination2 = false
           } else {
-            // $('.v-select-list').removeClass("sugestCity")
+            self.$refs.destinationInternal2.$refs.menu.isActive = true
+            openDestination2 = true
+            let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[0].destinationInternal)
+            if (!self.allFlights[0].destinationInternal || index != (-1)) {
+              // $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin4 = self.AllotherCityes
+            } else {
+              // $('.v-select-list').removeClass("sugestCity")
+            }
           }
         })
 
         $(document).on('click', '.destinationInternalParent3', function () {
-          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[1].destinationInternal)
-          if (!self.allFlights[1].destinationInternal || index != (-1)) {
-            $('.v-select-list').addClass("sugestCity")
-            self.otherCityesOrigin6 = self.AllotherCityes
+          if (openDestination3) {
+            self.$refs.destinationInternal3.$refs.menu.isActive = false
+            openDestination3 = false
           } else {
-            $('.v-select-list').removeClass("sugestCity")
+            self.$refs.destinationInternal3.$refs.menu.isActive = true
+            openDestination3 = true
+            let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[1].destinationInternal)
+            if (!self.allFlights[1].destinationInternal || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin6 = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
           }
         })
 
         $(document).on('click', '.destinationInternalParent4', function () {
-          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[2].destinationInternal)
-          if (!self.allFlights[2].destinationInternal || index != (-1)) {
-            $('.v-select-list').addClass("sugestCity")
-            self.otherCityesOrigin8 = self.AllotherCityes
+          if (openDestination4) {
+            self.$refs.destinationInternal4.$refs.menu.isActive = false
+            openDestination4 = false
           } else {
-            $('.v-select-list').removeClass("sugestCity")
+            self.$refs.destinationInternal4.$refs.menu.isActive = true
+            openDestination4 = true
+            let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[2].destinationInternal)
+            if (!self.allFlights[2].destinationInternal || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin8 = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
           }
         })
 

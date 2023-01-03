@@ -872,6 +872,10 @@ input::-webkit-inner-spin-button {
   color: #878787;
 }
 
+.hideArrow .v-text-field__details{
+  display: none;
+}
+
 /* typeSlider */
 .typeSliderMainPage{
   background-color: #f44336;

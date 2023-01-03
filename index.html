@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <!-- jquery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
@@ -335,10 +336,12 @@
           <!-- input box -->
           <v-row class="mb-3" justify="center" v-show="(showSection && windowWidth < 600) || windowWidth >= 600">
             <div class="indexDiv">
-              <v-card v-show="selectedSection.title != 'بیمه'" elevation="1" class=" rounded-lg px-sm-4 py-2 py-sm-4 py-md-6">
+              <v-card v-show="selectedSection.title != 'بیمه'" elevation="1" class=" rounded-lg px-sm-4 py-2 py-sm-4" :class="selectedSection.title == 'هتل' || selectedSection.title == 'تور' || selectedSection.title == 'اتوبوس' || selectedSection.title == 'قطار' ? '' : 'py-md-6'">
                 <v-row >
-                  <v-col cols="12" sm="5" md="4" lg="3" v-if="selectedSection.title != 'آهوان'&&selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'">
-                    <v-skeleton-loader class="inputLoader mb-sm-4 mx-0 mx-sm-4"
+                  <v-col cols="12" sm="5" md="4" lg="3" v-if="selectedSection.title != 'آهوان' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'"
+                    :class="(selectedSection.title == 'هتل' || selectedSection.title == 'تور') && 'pa-0'">
+                    <v-skeleton-loader class="inputLoader mx-0 mx-sm-4"
+                      :class="selectedSection.title == 'هتل' || selectedSection.title == 'تور' ? 'mb-sm-2' : 'mb-sm-4'"
                       type="card-heading"
                       :loading="isLoading"
                     >
@@ -400,7 +403,7 @@
                       </v-row>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="7" md="4" lg="3"  v-if="selectedSection.title == 'قطار' || selectedSection.title == 'اتوبوس'" class=mb-4>
+                  <v-col cols="12" sm="7" md="4" lg="3"  v-if="selectedSection.title == 'قطار' || selectedSection.title == 'اتوبوس'" class="py-2">
                     <v-row class="red lighten-4 rounded-lg mx-md-4 pa-1">
                       <v-col class="mx-1 pa-1 text-center caption cursorPointer rounded-lg byReturn" style="font-family:Byekan !important" @click="byReturn = 1" :class="byReturn == 1 && 'white'">یک طرفه</v-col>
                       <v-col class="mx-1 pa-1 text-center caption cursorPointer rounded-lg byReturn" style="font-family:Byekan !important" @click="byReturn = 2" :class="byReturn == 2 && 'white'">رفت و برگشت</v-col>
@@ -423,9 +426,9 @@
                             :search-input.sync="originSearchInput"
                             :label="byReturn != 3 ? 'مبدا' : 'مبدا اول'"
                             class="font-small-xs hideArrow headerCityes"
-                            :class="originCity.length ? 'pt-2' : 'pt-0'"
+                            :class="originCity && originCity.length ? 'pt-2' : 'pt-0'"
                             prepend-inner-icon="mdi-map-marker"
-                            @click="hidePeaple()"
+                            @click="hidePeaple"
                             @change="changeHeaderInput('originCity')"
                           />
                         </v-col>
@@ -439,10 +442,11 @@
                             id="destinationInternal"
                             class="font-small-xs hideArrow"
                             :search-input.sync="destinationSearchInput"
-                            :class="destinationInternal.length ? 'pt-2' : 'pt-0'"
-                            :items="selectedSection.title == 'هتل' ? hotels :selectedSection.title == 'آهوان' ? hotels : (external ? otherCityesOrigin2 : persianCityes)"
+                            :class="destinationInternal && destinationInternal.length ? 'pt-2' : 'pt-0'"
+                            :items="selectedSection.title == 'هتل' ? hotels :selectedSection.title == 'آهوان' ? hotels : (external ? otherCityesOrigin2 : persianCityes2)"
                             :label="selectedSection.title == 'هتل' ? 'نام هتل' : selectedSection.title == 'آهوان' ? 'نام هتل' : byReturn == 3 ? 'مقصد اول' : 'مقصد'"
                             prepend-inner-icon="mdi-map-marker"
+                            append-inner-icon="mdi-map-marker"
                             @click="hidePeaple"
                             @change="changeHeaderInput('destinationInternal')"
                           ></v-autocomplete>
@@ -450,7 +454,7 @@
                       </v-row>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'هتل' ? 3 : selectedSection.title == 'آهوان' ? 3 : selectedSection.title == 'پرواز' ? 3 : 2" class="px-2 py-1">
+                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'هتل' ? 3 : selectedSection.title == 'آهوان' ? 3 : selectedSection.title == 'پرواز' || selectedSection.title == 'تور' || selectedSection.title == 'قطار' || selectedSection.title == 'اتوبوس' ? 3 : 2" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
@@ -550,60 +554,64 @@
                     </div>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'پرواز' ? 2 : 3" :xl="selectedSection.title == 'پرواز' ? 2 : 3" class="px-2 py-1" :class="byReturn == 3 && 'd-none d-lg-block'">
+                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'پرواز' || selectedSection.title == 'تور' || selectedSection.title == 'قطار' || selectedSection.title == 'اتوبوس' ? 2 : 3" :xl="selectedSection.title == 'پرواز' || selectedSection.title == 'تور' || selectedSection.title == 'قطار' || selectedSection.title == 'اتوبوس' ? 2 : 3" class="px-2 py-1" :class="byReturn == 3 && 'd-none d-lg-block'">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
-                    >
-                      <!-- <a :href="selectedSection.title == 'پرواز' && './flight.html'" class="text-decoration-none"> -->
+                    > 
+                      <!-- <a :href="searchLink"> -->
+                      <!-- <a :href="selectedSection.title == 'پرواز'  ? 
+                          'https://ahuan.ir/flight?path={ow,rt,mp}&from=IKA&to=IST&start=date&end=date&adl=...&chd=...&info=...' :
+                          selectedSection.title == 'آهوان' && searchLink" class="text-decoration-none"> -->
                         <v-btn dark color="red" class="widthAll mt-md-4 mt-lg-0 pt-6 pb-5 ronded-xl searchInHeaderBox" @click="searchInHeaderBox" style="border-radius: 7px;" :class="byReturn == 3 && 'd-none d-lg-flex'">جستجو</v-btn>
                       <!-- </a> -->
                     </v-skeleton-loader>
                   </v-col>
                 </v-row>
-                <v-row align="center" class="justify-center justify-lg-start borderFlight rounded-lg'">
-                  <!-- <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
+                <br>
+                <v-row align="center" v-show="byReturn == 3" class="justify-center justify-lg-start borderFlight rounded-lg'">
+                  <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
                     >
                      <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
-                        <v-col cols="5" v-if="selectedSection.title != 'هتل' && selectedSection.title != 'آهوان' " class="originCityParent relative">
-                          <v-autocomplete top
-                            :v-model="allFlights[0].originCity"
+                        <v-col cols="5" class="originCityParent2 relative">
+                          <v-autocomplete
+                            v-model="allFlights[0].originCity"
                             id="originCity2"
-                            :items="otherCityes"
+                            :items="otherCityesOrigin3"
                             :search-input.sync="originSearchInput2"
                             label="مبدا دوم"
                             class="font-small-xs hideArrow headerCityes"
-                            :class="allFlights[0].originCity.length ? 'pt-2' : 'pt-0'"
+                            :class="allFlights[0].originCity && allFlights[0].originCity.length ? 'pt-2' : 'pt-0'"
                             prepend-inner-icon="mdi-map-marker"
                             @click="hidePeaple"
                             @change="changeHeaderInput('originCity0')"
                           />
                         </v-col>
-                        <v-col cols="2" v-if="selectedSection.title != 'هتل' && selectedSection.title != 'آهوان'">
+                        <v-col cols="2">
                           <v-icon class="rounded-circle grey lighten-2 pa-1" @click="exchangeCity(0)"> mdi-swap-horizontal </v-icon>
                         </v-col>
-                        <v-col cols="5" class="destinationInternalParent relative">
+                        <v-col cols="5" class="destinationInternalParent2 relative">
                           <v-autocomplete
-                            :v-model="allFlights[0].destinationInternal"
+                            v-model="allFlights[0].destinationInternal"
                             ref="destinationInternal2"
                             id="destinationInternal2"
                             class="font-small-xs hideArrow"
                             :search-input.sync="destinationSearchInput2"
-                            :class="allFlights[0].destinationInternal.length ? 'pt-2' : 'pt-0'"
-                            :items="otherCityes"
+                            :class="allFlights[0].destinationInternal && allFlights[0].destinationInternal.length ? 'pt-2' : 'pt-0'"
+                            :items="otherCityesOrigin4"
                             label="مقصد دوم"
                             prepend-inner-icon="mdi-map-marker"
                             @click="hidePeaple"
                             @change="changeHeaderInput('destinationInternal0')"
-                          />
+                          /> 
                         </v-col>
                       </v-row>
                     </v-skeleton-loader>
-                  </v-col> -->
-                  <!-- <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
@@ -612,169 +620,113 @@
                         <input type="text" ref="dtp2" value="" data-name="dtp2-text" class="cursorPointer heightAll widthAll absolute dtp " readOnly style="top:0;left:50%;opacity: 0;width:0;z-index:1"
                         id="dtp2" style="width:100%">
                         <input class="d-none" data-name="dtp2-date" >
-                        <div class="cursorPointer heightAll d-inline-block grey--text text--darken-3 font-small-xs widthAll showPopup" style="z-index:22;padding: 10px 4px;">
+                        <div class="cursorPointer heightAll d-inline-block grey--text text--darken-3 font-small-xs widthAll showPopup2" style="z-index:22;padding: 10px 4px;">
                           <v-icon class="grey--text text--darken-2">
                             mdi-calendar-month
                           </v-icon>
                            {{allFlights[0].date ? allFlights[0].date : 'انتخاب تاریخ'}}
                         </div>
-                        
                       </div>
-                    </v-skeleton-loader>
-                  </v-col> -->
-                  <!-- <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
-                    <v-skeleton-loader class="inputLoader"
-                      type="card-heading"
-                      :loading="isLoading"
-                    >
-                    <div class="relative">
-                      <v-text-field readOnly v-model="allPeaples"
-                        readOnley prepend-inner-icon="mdi-account"  class="font-small-xs form-control headerBoxFields hideEventPeaple darkInput"
-                        ></v-text-field>
-                      <div id="showPeaple" class="allPeaplesAfter rounded-lg hideOver widthAll absolute white" style="z-index: 3;top: 40px;" >
-                        <div v-for="(room,i) in headerRooms" :key="i" class="my-3">
-                          <v-row align="center" v-if="selectedSection.title != 'پرواز' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار' && selectedSection.title != 'بیمه'">
-                            <v-col>                    
-                              <h3 class="pa-3 float-right">اتاق {{i == 0 ? 'اول' : i == 1 ? 'دوم' : i == 2 ? 'سوم' :'چهارم'  }}</h3>
-                            </v-col>
-                            <v-col>
-                              <v-icon class="pt-2 pl-3 float-left red--text cursorPointer" @click="headerRooms.length > 1 ? headerRooms.splice(i,1) : '';selectedRooms.length > 1 ? selectedRooms=[] : '';roomTab=null;changeRoomValue()">mdi-delete</v-icon>
-                              <span class="mt-3 float-left caption red--text cursorPointer" style="font-family:Byekan !important;" @click="headerRooms.length > 1 ? headerRooms.splice(i,1) : '';selectedRooms.length > 1 ? selectedRooms=[] : '';roomTab=null;changeRoomValue()">حذف</span>
-                            </v-col>
-                          </v-row>
-                          <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
-                            <v-col>
-                              <span>بزرگسال</span>
-                              <span class="caption grey--text " style="font-family: Byekan !important;">(12 سال به بالا)</span>
-                            </v-col>
-                            <v-col>
-                              <v-icon @click="room.peaple > 1 ? room.peaple-- : '';changeRoomValue()" class="green--text float-left" light>
-                                mdi-minus-circle
-                              </v-icon>
-                              <h4 class="float-left mx-3 ">{{room.peaple}}</h4>
-                              <v-icon @click="room.peaple++;changeRoomValue()" class="green--text float-left" light>
-                                mdi-plus-circle
-                              </v-icon>
-                            </v-col>
-                          </v-row>
-                          <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
-                            <v-col>
-                              کودک
-                              <span class="caption grey--text " style="font-family: Byekan !important;">(2-12 سال)</span>
-                            </v-col>
-                            <v-col>
-                              <v-icon @click="room.child > 0 ? room.child-- : '';changeRoomValue()" class="green--text float-left" light>
-                                mdi-minus-circle
-                              </v-icon>
-                              <h4 class="float-left mx-3">{{room.child}}</h4>
-                              <v-icon @click="(((room.peaple*2)-(room.child)-(room.baby)) > 0) && room.child++;changeRoomValue()"  class="green--text float-left" light>
-                                mdi-plus-circle
-                              </v-icon>
-                            </v-col>
-                          </v-row>
-                          <v-row class="my-4 my-sm-6 body-2 px-2" style="font-family: Byekan !important;">
-                            <v-col>
-                              <span>
-                                نوزاد
-                              </span>
-                              <span class="caption grey--text " style="font-family: Byekan !important;">(کمتر از 2 سال)</span>
-                            </v-col>
-                            <v-col>
-                              <v-icon @click="room.baby > 0 ? room.baby-- : '';changeRoomValue()" class="green--text float-left" light>
-                                mdi-minus-circle
-                              </v-icon>
-                              <h4 class="float-left mx-3">{{room.baby}}</h4>
-                              <v-icon @click="(((room.peaple*2)-(room.child)-(room.baby)) > 0) && room.baby++;changeRoomValue()" class="green--text float-left" light>
-                                mdi-plus-circle
-                              </v-icon>
-                            </v-col>
-                          </v-row>
-                          <v-divider v-if="i < headerRooms.length-1"></v-divider>
-                        </div>
-                        <div class="my-2" v-if="selectedSection.title != 'پرواز' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار' && selectedSection.title != 'بیمه'">
-                          <span v-if="headerRooms.length < 4" class="mr-4 caption cursorPointer red--text" @click="headerRooms.push({peaple:1,child:0,baby:0});changeRoomValue()" style="font-family:Byekan !important;">+افزودن اتاق</span>
-                        </div>
-                        <v-divider></v-divider>
-                        <div class="pa-3">
-                          <v-btn class="widthAll hideEventPeaple" color="red" dark>تایید - {{allPeaples}}</v-btn>
-                        </div>
-                      </div>
-                    </div>
                     </v-skeleton-loader>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4" :lg="selectedSection.title == 'پرواز' ? 2 : 3" :xl="selectedSection.title == 'پرواز' ? 2 : 3" class="px-2 py-1" :class="byReturn == 3 && 'd-none d-lg-block'">
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
                     <v-skeleton-loader class="inputLoader"
                       type="card-heading"
                       :loading="isLoading"
                     >
-                      <v-btn dark color="red" class="widthAll mt-md-4 mt-lg-0 pt-6 pb-5 ronded-xl searchInHeaderBox" @click="searchInHeaderBox" style="border-radius: 7px;" :class="byReturn == 3 && 'd-none d-lg-flex'">جستجو</v-btn>
+                      <v-btn color="white" outlined class="widthAll mt-sm-4 mt-md-0 pt-6 pb-5 ronded-xl red--text addFlightButton" 
+                      @click="addFlight(0,flightCityes.length > 1  ? 'delete' : 'add')" 
+                      style="border-radius: 7px;"
+                    >
+                      <v-icon
+                        right
+                        color="red"
+                      >
+                        mdi-plus
+                      </v-icon> 
+                      {{flightCityes.length > 1 ? 'حذف مسیر' : 'افزودن پرواز' }}
+                    </v-btn>
                     </v-skeleton-loader>
-                  </v-col> -->
+                  </v-col>
                 </v-row>
-                <!-- <div v-for="(flight,i) in allFlights" :key="i">
-                  <v-row align="center" class="justify-center justify-md-start borderFlight rounded-lg" :class="((i+1) <= flightCityes.length && (external == true && selectedSection.title == 'پرواز' && byReturn == 3)) ? 'd-flex' : 'd-none'">
-                    <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
-                      <v-skeleton-loader class="inputLoader"
-                        type="card-heading"
-                        :loading="isLoading"
-                      >
-                        <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
-                          <v-col cols="5">{{flight.searchOrigin}}
-                            <v-autocomplete
-                              v-model="flight.originCity"
-                              :id="'originCity' + i"
-                              :items="otherCityes"
-                              :search-input.sync="flight.searchOrigin"
-                              :label="'مبدا '+
-                              (i+2 == 2 ? 'دوم' : i+2 == 3 ? 'سوم'  : 'چهارم')
-                              "
-                              class="font-small-xs hideArrow "
-                              :class="flight.originCity.length ? 'pt-2' : 'pt-0'"
-                              prepend-inner-icon="mdi-map-marker"
-                              @click="hidePeaple"
-                              @change="changeHeaderInput('originCity'+i)"
-                            />
-                          </v-col>
-                          <v-col cols="2">
-                            <v-icon class="rounded-circle grey lighten-2 pa-1 mb-4" @click="exchangeCity(i)"> mdi-swap-horizontal </v-icon>
-                          </v-col>
-                          <v-col cols="5">
-                            <v-autocomplete
-                              v-model="flight.destinationInternal"
-                              :id="'destinationInternal'+i"
-                              class="font-small-xs hideArrow"
-                              :class="flight.destinationInternal.length ? 'pt-2' : 'pt-0'"
-                              :items="otherCityes"
-                              :search-input.sync="flight.searchDestination"
-                              :label="'مقصد ' + (i+2 == 2 ? 'دوم' : i+2 == 3 ? 'سوم'  : 'چهارم')"
-                              prepend-inner-icon="mdi-map-marker"
-                              @click="hidePeaple"
-                              @change="changeHeaderInput('destinationInternal'+i)"
-                            />
-                          </v-col>
-                        </v-row>
-                      </v-skeleton-loader>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
-                      <v-skeleton-loader class="inputLoader"
-                        type="card-heading"
-                        :loading="isLoading"
-                      >
-                        <div class="input-group" class="relative font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;height: 46px;border-radius: 10px;padding: 8px 4px;">
-                          <v-icon class="grey--text text--darken-2">mdi-calendar-month</v-icon>
-                          <div class="cursorPointer heightAll d-inline-block grey--text text--darken-3 pt-1 font-small-xs dtp"> {{flight.date ? flight.date : 'انتخاب تاریخ'}}</div>
-                          <input type="text" :ref="'dtp'+(i+2)" value="" :data-name="'dtp-text'+(i+2)" class="cursorPointer heightAll widthAll absolute dtp" readOnly style="top:0;left:0;opacity: 0;"
-                          :id="'dtp'+(i+2)" style="width:80%">
-                          <input class="d-none" :data-name="'dtp-date'+(i+2)" >
+                <v-row align="center" v-show="byReturn == 3 && flightCityes.length > 1" class="justify-center justify-lg-start borderFlight rounded-lg'">
+                  <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                     <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
+                        <v-col cols="5" class="originCityParent3 relative">
+                          <v-autocomplete
+                            v-model="allFlights[1].originCity"
+                            id="originCity3"
+                            :items="otherCityesOrigin5"
+                            :search-input.sync="originSearchInput3"
+                            label="مبدا سوم"
+                            class="font-small-xs hideArrow headerCityes"
+                            :class="allFlights[1].originCity && allFlights[1].originCity.length ? 'pt-2' : 'pt-0'"
+                            prepend-inner-icon="mdi-map-marker"
+                            @click="hidePeaple"
+                            @change="changeHeaderInput('originCity1')"
+                          />
+                        </v-col>
+                       <v-col cols="2">
+                          <v-icon class="rounded-circle grey lighten-2 pa-1" @click="exchangeCity(1)"> mdi-swap-horizontal </v-icon>
+                        </v-col>
+                        <v-col cols="5" class="destinationInternalParent3 relative">
+                          <v-autocomplete
+                            v-model="allFlights[1].destinationInternal"
+                            ref="destinationInternal3"
+                            id="destinationInternal3"
+                            class="font-small-xs hideArrow"
+                            :search-input.sync="destinationSearchInput3"
+                            :class="allFlights[1].destinationInternal && allFlights[1].destinationInternal.length ? 'pt-2' : 'pt-0'"
+                            :items="otherCityesOrigin6"
+                            label="مقصد سوم"
+                            prepend-inner-icon="mdi-map-marker"
+                            @click="hidePeaple"
+                            @change="changeHeaderInput('destinationInternal1')"
+                          /> 
+                        </v-col>
+                      </v-row>
+                    </v-skeleton-loader>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                      <div class="input-group" class="relative font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;border-radius: 10px;">
+                        <input type="text" ref="dtp3" value="" data-name="dtp3-text" class="cursorPointer heightAll widthAll absolute dtp " readOnly style="top:0;left:50%;opacity: 0;width:0;z-index:1"
+                        id="dtp3" style="width:100%">
+                        <input class="d-none" data-name="dtp3-date" >
+                        <div class="cursorPointer heightAll d-inline-block grey--text text--darken-3 font-small-xs widthAll showPopup3" style="z-index:22;padding: 10px 4px;">
+                          <v-icon class="grey--text text--darken-2">
+                            mdi-calendar-month
+                          </v-icon>
+                           {{allFlights[1].date ? allFlights[1].date : 'انتخاب تاریخ'}}
                         </div>
-                      </v-skeleton-loader>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
-                      <v-skeleton-loader class="inputLoader"
-                        type="card-heading"
-                        :loading="isLoading"
+                      </div>
+                    </v-skeleton-loader>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                      <v-btn color="white" outlined class="widthAll mt-sm-4 mt-md-0 pt-6 pb-5 ronded-xl red--text addFlightButton" 
+                        @click="addFlight(1,flightCityes.length > 2  ? 'delete' : 'add')" 
+                        style="border-radius: 7px;"
                       >
-                        <v-btn color="white" outlined class="widthAll mt-sm-4 mt-md-0 pt-6 pb-5 ronded-xl red--text addFlightButton" 
+                        <v-icon
+                          right
+                          color="red"
+                        >
+                          mdi-plus
+                        </v-icon> 
+                        {{flightCityes.length > 2 ? 'حذف مسیر' : 'افزودن پرواز' }}
+                      </v-btn>
+                      <!-- <v-btn color="white" outlined class="widthAll mt-sm-4 mt-md-0 pt-6 pb-5 ronded-xl red--text addFlightButton" 
                           @click="addFlight(i,(i < (flightCityes.length-1) || i == 2) ? 'delete' : 'add')" 
                           style="border-radius: 7px;"
                         >
@@ -785,14 +737,97 @@
                             {{(i < flightCityes.length-1 || i == 2) ? 'mdi-delete' : 'mdi-plus'}}
                           </v-icon> 
                             {{(i < flightCityes.length-1 || i == 2) ? 'حذف مسیر' : 'افزودن پرواز' }}
-                        </v-btn>
-                      </v-skeleton-loader>
-                    </v-col>
-                  </v-row>
-                </div> -->
+                        </v-btn> -->
+                    </v-skeleton-loader>
+                  </v-col>
+                </v-row>
+                <v-row align="center" v-show="byReturn == 3 && flightCityes.length > 2" class="justify-center justify-lg-start borderFlight rounded-lg'">
+                  <v-col cols="12" sm="6" md="4" lg="4" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                     <v-row class="grey lighten-4 rounded-lg relative" style="height: 45px;" justify="center" align="center">
+                        <v-col cols="5" class="originCityParent4 relative">
+                          <v-autocomplete
+                            v-model="allFlights[2].originCity"
+                            id="originCity4"
+                            :items="otherCityesOrigin7"
+                            :search-input.sync="originSearchInput4"
+                            label="مبدا چهارم"
+                            class="font-small-xs hideArrow headerCityes"
+                            :class="allFlights[2].originCity && allFlights[2].originCity.length ? 'pt-2' : 'pt-0'"
+                            prepend-inner-icon="mdi-map-marker"
+                            @click="hidePeaple"
+                            @change="changeHeaderInput('originCity2')"
+                          />
+                        </v-col>
+                       <v-col cols="2">
+                          <v-icon class="rounded-circle grey lighten-2 pa-1" @click="exchangeCity(2)"> mdi-swap-horizontal </v-icon>
+                        </v-col>
+                        <v-col cols="5" class="destinationInternalParent4 relative">
+                          <v-autocomplete
+                            v-model="allFlights[2].destinationInternal"
+                            ref="destinationInternal4"
+                            id="destinationInternal4"
+                            class="font-small-xs hideArrow"
+                            :search-input.sync="destinationSearchInput4"
+                            :class="allFlights[2].destinationInternal && allFlights[2].destinationInternal.length ? 'pt-2' : 'pt-0'"
+                            :items="otherCityesOrigin8"
+                            label="مقصد چهارم"
+                            prepend-inner-icon="mdi-map-marker"
+                            @click="hidePeaple"
+                            @change="changeHeaderInput('destinationInternal2')"
+                          /> 
+                        </v-col>
+                      </v-row>
+                    </v-skeleton-loader>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                      <div class="input-group" class="relative font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;border-radius: 10px;">
+                        <input type="text" ref="dtp4" value="" data-name="dtp4-text" class="cursorPointer heightAll widthAll absolute dtp " readOnly style="top:0;left:50%;opacity: 0;width:0;z-index:1"
+                        id="dtp4" style="width:100%">
+                        <input class="d-none" data-name="dtp4-date" >
+                        <div class="cursorPointer heightAll d-inline-block grey--text text--darken-3 font-small-xs widthAll showPopup4" style="z-index:22;padding: 10px 4px;">
+                          <v-icon class="grey--text text--darken-2">
+                            mdi-calendar-month
+                          </v-icon>
+                           {{allFlights[2].date ? allFlights[2].date : 'انتخاب تاریخ'}}
+                        </div>
+                      </div>
+                    </v-skeleton-loader>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1">
+                    <v-skeleton-loader class="inputLoader"
+                      type="card-heading"
+                      :loading="isLoading"
+                    >
+                    <v-btn color="white" outlined class="widthAll mt-sm-4 mt-md-0 pt-6 pb-5 ronded-xl red--text addFlightButton" 
+                    @click="addFlight(2,'delete')" 
+                    style="border-radius: 7px;"
+                  >
+                    <v-icon
+                      right
+                      color="red"
+                    >
+                      mdi-plus
+                    </v-icon> 
+                      حذف مسیر                   
+                  </v-btn>
+                    </v-skeleton-loader>
+                  </v-col>
+                </v-row>
                 <v-row justify="center">
                   <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 ? 'd-block d-lg-none' : 'd-none'">
-                    <a :href="selectedSection.title == 'پرواز'  && './flight.html'" class="text-decoration-none">
+                    <a :href="selectedSection.title == 'پرواز'  ? 
+                    'https://ahuan.ir/flight?path={ow,rt,mp}&from=IKA&to=IST&start=date&end=date&adl=...&chd=...&info=...' :
+                    selectedSection.title == 'آهوان' &&
+                    'https://ahuan.ir/iranhotels?hotel=%d9%87%d8%aa%d9%84+%d8%a2%d9%87%d9%88%d8%a7%d9%86+%da%86%d8%a7%d8%a8%da%a9%d8%b3%d8%b1&checkin=%db%b1%db%b9+%d8%af%db%8c+%db%b1%db%b4%db%b0%db%b1&checkout=%db%b2%db%b7+%d8%af%db%8c+%db%b1%db%b4%db%b0%db%b1&room=1&adl=1&chd=0&id=3'
+                    " class="text-decoration-none">
                       <v-btn v-if="byReturn == 3" dark color="red" class="mt-4 pt-6 pb-5 ronded-xl widthAll" @click="searchInHeaderBox" >جستجو</v-btn>
                     </a>
                   </v-col>
@@ -804,7 +839,14 @@
             </div> 
           </v-row>
           <!-- slider -->
-          <v-row class="my-2" justify="center">
+          <div v-show="windowWidth < 600" class="mt-6 type-wrap typeSliderMainPage">
+            <div id="typed-strings" :class="">
+              <span :class="!startTypeAnimation && 'red--text'">با آهوان به بعدش فکر نکن !</span>
+              <span :class="!startTypeAnimation && 'red--text'">رزرو آنلاین خدمات گردشگری آهوان</span>
+            </div>
+            <span id="typed" style="white-space:pre;"></span>
+          </div>
+          <v-row v-show="windowWidth >= 600" class="my-2" justify="center">
             <div class="indexDiv rounded-lg hideOver ltr">
               <v-skeleton-loader 
                 type="image"

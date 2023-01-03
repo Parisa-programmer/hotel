@@ -30,12 +30,23 @@ new Vue({
     showSection: true,
     originSearchInput: '',
     originSearchInput2: '',
+    originSearchInput3: '',
+    originSearchInput4: '',
     destinationSearchInput: '',
     destinationSearchInput2: '',
     destinationSearchInput3: '',
     destinationSearchInput4: '',
 
     persianCityes: [
+      { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+      { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+      { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+      { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+      { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+      { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+      { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+    ],
+    persianCityes2: [
       { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
       { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
       { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
@@ -108,6 +119,12 @@ new Vue({
     ],
     otherCityesOrigin: [],
     otherCityesOrigin2: [],
+    otherCityesOrigin3: [],
+    otherCityesOrigin4: [],
+    otherCityesOrigin5: [],
+    otherCityesOrigin6: [],
+    otherCityesOrigin7: [],
+    otherCityesOrigin8: [],
     // otherCityes2: [],
     AllotherCityes: [
       {
@@ -148,7 +165,7 @@ new Vue({
       }
     ],
     mostUseCityes: [],
-    hotels: ['هتل آهوان،چابکسر', 'شکوه ایمان،مشهد'],
+    hotels: ['هتل آهوان چابکسر', 'شکوه ایمان مشهد'],
     allFlights: [
       {
         originCity: '',
@@ -311,63 +328,63 @@ new Vue({
         text: 'هتل اسپیناس پالاس',
       },
     ],
-    tourItems:[
+    tourItems: [
       {
         image: './image/tourSlider/01.jpg',
-        city:'استانبول',
+        city: 'استانبول',
         text: 'هتل اسپیناس پالاس',
-        price:'6,800,000'
+        price: '6,800,000'
       },
       {
         image: './image/tourSlider/02.jpg',
-        city:'آنتالیا',
+        city: 'آنتالیا',
         text: 'هتل اسپیناس پالاس',
-        price:'12,400,000'
+        price: '12,400,000'
       },
       {
         image: './image/tourSlider/03.jpg',
-        city:'دبی',
+        city: 'دبی',
         text: 'هتل اسپیناس پالاس',
-        price:'16,000,000'
+        price: '16,000,000'
       },
       {
         image: './image/tourSlider/04.jpg',
-        city:'عمان',
+        city: 'عمان',
         text: 'هتل اسپیناس پالاس',
-        price:'13,890,000'
+        price: '13,890,000'
       },
       {
         image: './image/tourSlider/05.jpg',
-        city:'کوش آداسی',
+        city: 'کوش آداسی',
         text: 'هتل اسپیناس پالاس',
-        price:'8,200,000'
+        price: '8,200,000'
       },
     ],
-    newItems:[
+    newItems: [
       {
         image: './image/newesSlider/01.jpeg',
-        text:'اقساطی سفر کن!',
-        price:'6,800,000'
+        text: 'اقساطی سفر کن!',
+        price: '6,800,000'
       },
       {
         image: './image/newesSlider/02.jpeg',
-        text:'هزینه زندگی در لندن',
-        price:'12,400,000'
+        text: 'هزینه زندگی در لندن',
+        price: '12,400,000'
       },
       {
         image: './image/newesSlider/03.jpeg',
-        text:'ممنوعیت سفر تهرانی ها',
-        price:'16,000,000'
+        text: 'ممنوعیت سفر تهرانی ها',
+        price: '16,000,000'
       },
       {
         image: './image/newesSlider/04.jpeg',
         text: 'معافیت از عوارض خروج از کشور',
-        price:'13,890,000'
+        price: '13,890,000'
       },
       {
         image: './image/newesSlider/05.jpeg',
         text: 'اطلاعیه سفرهای نوروزی',
-        price:'8,200,000'
+        price: '8,200,000'
       },
     ],
     slides: [
@@ -447,9 +464,11 @@ new Vue({
     alertType: 'error',
     alertText: '',
     isLoadingAxios: false,
+    startTypeAnimation: false,
+    searchLink: ''
   },
   watch: {
-    test(term){
+    test(term) {
 
     },
     showAlert() {
@@ -501,52 +520,50 @@ new Vue({
         $('#showPeaple').show()
       }
     },
-    originCity(){
+    originCity() {
       // this.otherCityes = this.AllotherCityes
     },
     originSearchInput() {
       var self = this
-      // console.log(self.$refs.originCity.isFocused);
-      if (!!self.originSearchInput && self.selectedSection.title == 'پرواز') {
-        $('.v-select-list').removeClass("sugestCity")
+      if (!!self.originSearchInput && (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان')) {
         if (self.external) {
-          this.persianCityes = this.AllpersianCityes
           axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.originSearchInput)
-          .then(function (response) {
-            // handle success
-            var otherCityes = response.data.map((x) => {
-              return {
-                text: x.city,
-                IATA: x.IATA,
-                Id: x.Id,
-                country_code: x.country_code,
-                city_code: x.city_code,
-                airport: x.airport,
-                is_city: x.is_city,
-                unic_air: x.unic_air,
-                airport_fa: x.airport_fa,
-                city_fa: x.city_fa,
-                country_fa: x.country_fa,
-                latitude: x.latitude,
-                longitude: x.longitude,
-                CountryName: x.CountryName,
-                CountryNameFa: x.CountryNameFa,
-                OrderId: x.OrderId,
-              };
-            });
-            if (otherCityes.length) {
-              self.otherCityesOrigin = otherCityes
-            } 
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          })
-          
-        } else{
-          this.persianCityes = this.AllpersianCityes
+            .then(function (response) {
+              // handle success
+              var otherCityes = response.data.map((x) => {
+                return {
+                  text: x.city,
+                  IATA: x.IATA,
+                  Id: x.Id,
+                  country_code: x.country_code,
+                  city_code: x.city_code,
+                  airport: x.airport,
+                  is_city: x.is_city,
+                  unic_air: x.unic_air,
+                  airport_fa: x.airport_fa,
+                  city_fa: x.city_fa,
+                  country_fa: x.country_fa,
+                  latitude: x.latitude,
+                  longitude: x.longitude,
+                  CountryName: x.CountryName,
+                  CountryNameFa: x.CountryNameFa,
+                  OrderId: x.OrderId,
+                };
+              });
+              if (otherCityes.length) {
+                self.otherCityesOrigin = otherCityes
+              }
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+
+        } else {
+          self.persianCityes = self.AllpersianCityes
         }
       } else {
+        if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
           $('.v-select-list').addClass("sugestCity")
           self.persianCityes = [
             { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
@@ -559,14 +576,15 @@ new Vue({
           ]
           self.otherCityesOrigin = self.AllotherCityes
         }
-      
+        else {
+          $('.v-select-list').removeClass("sugestCity")
+        }
+      }
     },
-    destinationSearchInput() {
+    originSearchInput2() {
       var self = this
-      if (!!self.destinationSearchInput && self.selectedSection.title == 'پرواز') {
-        $('.v-select-list').removeClass("sugestCity")
-        if (self.external) {
-          axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.destinationSearchInput)
+      if (!!self.originSearchInput2) {
+        axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.originSearchInput2)
           .then(function (response) {
             // handle success
             var otherCityes = response.data.map((x) => {
@@ -590,143 +608,324 @@ new Vue({
               };
             });
             if (otherCityes.length) {
-              self.otherCityesOrigin2 = otherCityes
-            } 
+              self.otherCityesOrigin3 = otherCityes
+            }
           })
           .catch(function (error) {
             // handle error
             console.log(error);
           })
-        } else{
-          this.persianCityes = this.AllpersianCityes
-        }
-      }
-       else {
-          $('.v-select-list').addClass("sugestCity")
-          self.persianCityes = [
-            { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
-            { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
-            { label: "this.otherCityesShiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
-            { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
-            { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
-            { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
-            { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
-          ]
-          self.otherCityesOrigin2 = self.AllotherCityes
-        }
-    },
-    // flightCityes(){
 
-    // },
-    // destinationSearchInput2() {
-      
-    //   // if (this.destinationSearchInput2) {
-    //   //   this.wrightAutocomplate(this.destinationSearchInput2);
-    //   // } else {
-    //     // $('.v-select-list').addClass("sugestCity")
-    //     // this.otherCityes = this.AllotherCityes
-    //   // }
-    // },
-    // destinationSearchInput3() {
-    //   if (this.destinationSearchInput3) {
-    //     this.wrightAutocomplate(this.destinationSearchInput3);
-    //   } else {
-    //     $('.v-select-list').addClass("sugestCity")
-    //     // this.otherCityes = this.AllotherCityes
-    //   }
-    // },
-    // destinationSearchInput4() {
-    //   if (this.destinationSearchInput4) {
-    //     this.wrightAutocomplate(this.destinationSearchInput4);
-    //   } else {
-    //     $('.v-select-list').addClass("sugestCity")
-    //     // this.otherCityes = this.AllotherCityes
-    //   }
-    // },
+      } else if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
+        $('.v-select-list').addClass("sugestCity")
+        self.otherCityesOrigin3 = self.AllotherCityes
+      }
+    },
+    originSearchInput3() {
+      var self = this
+      if (!!self.originSearchInput3) {
+        axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.originSearchInput3)
+          .then(function (response) {
+            // handle success
+            var otherCityes = response.data.map((x) => {
+              return {
+                text: x.city,
+                IATA: x.IATA,
+                Id: x.Id,
+                country_code: x.country_code,
+                city_code: x.city_code,
+                airport: x.airport,
+                is_city: x.is_city,
+                unic_air: x.unic_air,
+                airport_fa: x.airport_fa,
+                city_fa: x.city_fa,
+                country_fa: x.country_fa,
+                latitude: x.latitude,
+                longitude: x.longitude,
+                CountryName: x.CountryName,
+                CountryNameFa: x.CountryNameFa,
+                OrderId: x.OrderId,
+              };
+            });
+            if (otherCityes.length) {
+              $('.v-select-list').removeClass("sugestCity")
+              self.otherCityesOrigin5 = otherCityes
+            }
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+
+      } else {
+        $('.v-select-list').addClass("sugestCity")
+        self.otherCityesOrigin3 = self.AllotherCityes
+      }
+    },
+    originSearchInput4() {
+      var self = this
+      if (!!self.originSearchInput4) {
+        axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.originSearchInput4)
+          .then(function (response) {
+            // handle success
+            var otherCityes = response.data.map((x) => {
+              return {
+                text: x.city,
+                IATA: x.IATA,
+                Id: x.Id,
+                country_code: x.country_code,
+                city_code: x.city_code,
+                airport: x.airport,
+                is_city: x.is_city,
+                unic_air: x.unic_air,
+                airport_fa: x.airport_fa,
+                city_fa: x.city_fa,
+                country_fa: x.country_fa,
+                latitude: x.latitude,
+                longitude: x.longitude,
+                CountryName: x.CountryName,
+                CountryNameFa: x.CountryNameFa,
+                OrderId: x.OrderId,
+              };
+            });
+            if (otherCityes.length) {
+              $('.v-select-list').removeClass("sugestCity")
+              self.otherCityesOrigin7 = otherCityes
+            }
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+
+      } else {
+        $('.v-select-list').addClass("sugestCity")
+        self.otherCityesOrigin7 = self.AllotherCityes
+      }
+    },
+    destinationSearchInput() {
+      var self = this
+      if (!!self.destinationSearchInput && (self.selectedSection.title != 'هتل' && self.selectedSection.title != 'آهوان')) {
+        $('.v-select-list').removeClass("sugestCity")
+        if (self.external) {
+          axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.destinationSearchInput)
+            .then(function (response) {
+              // handle success
+              var otherCityes = response.data.map((x) => {
+                return {
+                  text: x.city,
+                  IATA: x.IATA,
+                  Id: x.Id,
+                  country_code: x.country_code,
+                  city_code: x.city_code,
+                  airport: x.airport,
+                  is_city: x.is_city,
+                  unic_air: x.unic_air,
+                  airport_fa: x.airport_fa,
+                  city_fa: x.city_fa,
+                  country_fa: x.country_fa,
+                  latitude: x.latitude,
+                  longitude: x.longitude,
+                  CountryName: x.CountryName,
+                  CountryNameFa: x.CountryNameFa,
+                  OrderId: x.OrderId,
+                };
+              });
+              if (otherCityes.length) {
+                self.otherCityesOrigin2 = otherCityes
+              }
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+        } else {
+          this.persianCityes2 = this.AllpersianCityes
+        }
+      } else if (self.selectedSection.title != 'هتل' && self.selectedSection.title != 'آهوان') {
+        $('.v-select-list').addClass("sugestCity")
+        self.persianCityes2 = [
+          { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+          { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+          { label: "this.otherCityesShiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+          { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+          { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+          { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+          { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+        ]
+        self.otherCityesOrigin2 = self.AllotherCityes
+
+      }
+    },
+    destinationSearchInput2() {
+      var self = this
+      if (!!self.destinationSearchInput2) {
+        axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.destinationSearchInput2)
+          .then(function (response) {
+            // handle success
+            var otherCityes = response.data.map((x) => {
+              return {
+                text: x.city,
+                IATA: x.IATA,
+                Id: x.Id,
+                country_code: x.country_code,
+                city_code: x.city_code,
+                airport: x.airport,
+                is_city: x.is_city,
+                unic_air: x.unic_air,
+                airport_fa: x.airport_fa,
+                city_fa: x.city_fa,
+                country_fa: x.country_fa,
+                latitude: x.latitude,
+                longitude: x.longitude,
+                CountryName: x.CountryName,
+                CountryNameFa: x.CountryNameFa,
+                OrderId: x.OrderId,
+              };
+            });
+            if (otherCityes.length) {
+              $('.v-select-list').removeClass("sugestCity")
+              self.otherCityesOrigin4 = otherCityes
+            }
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+      } else {
+        $('.v-select-list').addClass("sugestCity")
+        self.otherCityesOrigin4 = self.AllotherCityes
+      }
+    },
+    destinationSearchInput3() {
+      var self = this
+      if (!!self.destinationSearchInput3) {
+        axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.destinationSearchInput3)
+          .then(function (response) {
+            // handle success
+            var otherCityes = response.data.map((x) => {
+              return {
+                text: x.city,
+                IATA: x.IATA,
+                Id: x.Id,
+                country_code: x.country_code,
+                city_code: x.city_code,
+                airport: x.airport,
+                is_city: x.is_city,
+                unic_air: x.unic_air,
+                airport_fa: x.airport_fa,
+                city_fa: x.city_fa,
+                country_fa: x.country_fa,
+                latitude: x.latitude,
+                longitude: x.longitude,
+                CountryName: x.CountryName,
+                CountryNameFa: x.CountryNameFa,
+                OrderId: x.OrderId,
+              };
+            });
+            if (otherCityes.length) {
+              $('.v-select-list').removeClass("sugestCity")
+              self.otherCityesOrigin6 = otherCityes
+            }
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+      } else {
+        $('.v-select-list').addClass("sugestCity")
+        self.otherCityesOrigin6 = self.AllotherCityes
+      }
+    },
+    destinationSearchInput4() {
+      var self = this
+      if (!!self.destinationSearchInput4) {
+        axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + self.destinationSearchInput4)
+          .then(function (response) {
+            // handle success
+            var otherCityes = response.data.map((x) => {
+              return {
+                text: x.city,
+                IATA: x.IATA,
+                Id: x.Id,
+                country_code: x.country_code,
+                city_code: x.city_code,
+                airport: x.airport,
+                is_city: x.is_city,
+                unic_air: x.unic_air,
+                airport_fa: x.airport_fa,
+                city_fa: x.city_fa,
+                country_fa: x.country_fa,
+                latitude: x.latitude,
+                longitude: x.longitude,
+                CountryName: x.CountryName,
+                CountryNameFa: x.CountryNameFa,
+                OrderId: x.OrderId,
+              };
+            });
+            if (otherCityes.length) {
+              $('.v-select-list').removeClass("sugestCity")
+              self.otherCityesOrigin8 = otherCityes
+            }
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+      } else {
+        // $('.v-select-list').addClass("sugestCity")
+        self.otherCityesOrigin8 = self.AllotherCityes
+      }
+    },
   },
   methods: {
-    test(){
-
-    },
     addChangeTypeButtonDate() {
       this.hidePeaple()
     },
     getWidth() {
       this.windowWidth = window.innerWidth
       if (window.innerWidth < 600) {
-        this.allSections = [
-          {
-            icon: 'mdi-airplane',
-            title: 'پرواز',
-            active: false,
-          },
-          {
-            icon: 'mdi-sofa-single',
-            title: 'هتل',
-            active: false,
-          },
-          {
-            icon: 'mdi-account-group',
-            title: 'تور',
-            active: false,
-          },
-          {
-            icon: 'mdi-hospital-building',
-            title: 'آهوان',
-            active: false,
-          },
-          {
-            icon: 'mdi-bus',
-            title: 'اتوبوس',
-            active: false,
-          },
-          {
-            icon: 'mdi-train-variant',
-            title: 'قطار',
-            active: false,
-          },
-          {
-            icon: 'mdi-checkbook',
-            title: 'بیمه',
-            active: false,
-          },
-        ]
+        // this.allSections = [
+        //   {
+        //     icon: 'mdi-airplane',
+        //     title: 'پرواز',
+        //     active: false,
+        //   },
+        //   {
+        //     icon: 'mdi-sofa-single',
+        //     title: 'هتل',
+        //     active: false,
+        //   },
+        //   {
+        //     icon: 'mdi-account-group',
+        //     title: 'تور',
+        //     active: false,
+        //   },
+        //   {
+        //     icon: 'mdi-hospital-building',
+        //     title: 'آهوان',
+        //     active: false,
+        //   },
+        //   {
+        //     icon: 'mdi-bus',
+        //     title: 'اتوبوس',
+        //     active: false,
+        //   },
+        //   {
+        //     icon: 'mdi-train-variant',
+        //     title: 'قطار',
+        //     active: false,
+        //   },
+        //   {
+        //     icon: 'mdi-checkbook',
+        //     title: 'بیمه',
+        //     active: false,
+        //   },
+        // ]
       }
     },
-    wrightAutocomplate(child){
-
-      // $('.v-select-list').removeClass("sugestCity")
-      // var self = this
-      // axios.get('https://ahuan.ir/api/IntAirport?airportCode=' + child)
-      // .then(function (response) {
-      //   // handle success
-      //   self.otherCityes = response.data.map((x) => {
-      //     return {
-      //       text: x.city,
-      //       value:x.city,
-      //       IATA: x.IATA,
-      //       Id: x.Id,
-      //       country_code: x.country_code,
-      //       city_code: x.city_code,
-      //       airport: x.airport,
-      //       is_city: x.is_city,
-      //       unic_air: x.unic_air,
-      //       airport_fa: x.airport_fa,
-      //       city_fa: x.city_fa,
-      //       country_fa: x.country_fa,
-      //       latitude: x.latitude,
-      //       longitude: x.longitude,
-      //       CountryName: x.CountryName,
-      //       CountryNameFa: x.CountryNameFa,
-      //       OrderId: x.OrderId,
-      //     };
-      //   });      
-      // })
-      // .catch(function (error) {
-      //   // handle error
-      //   console.log(error);
-      // })
-  },
+    wrightAutocomplate(child) {
+    },
     resetLoginForm() {
       this.loginForm = {
         name: '',
@@ -821,19 +1020,52 @@ new Vue({
       this.hidePeaple()
     },
     searchInHeaderBox() {
-      this.hidePeaple()
-      var selectedSection = this.selectedSection.title
-
-      switch (selectedSection) {
-        case '':
-
-          break;
-
-        default:
-          break;
+      var selectedDate = $('#dtp1').attr('value')
+      selectedDate = selectedDate.split(' - ')
+      let options = { day: 'numeric', month: 'long', year: 'numeric' };
+      let variabel = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+      variabel = variabel.split(' ')
+      let variabel2 = new Date(selectedDate[1]).toLocaleDateString('fa-IR', options);
+      variabel2 = variabel2.split(' ')
+      let rooms = this.headerRooms
+      let childs = 0;
+      let adl = 0
+      for (let i = 0; i < rooms.length; i++) {
+        childs = childs + rooms[i].child
+        adl = adl + rooms[i].peaple
       }
+      let self = this
+      this.hidePeaple()
+      console.log();
+      // switch (this.selectedSection.title) {
+      //   case 'آهوان':
+      //     self.searchLink = 'https://ahuan.ir/iranhotels?hotel=' + 
+      //     self.destinationInternal + 
+      //     '&checkin=' + variabel[0] + '+' + variabel[1] + '+' + variabel[2] + 
+      //     '&checkout='+ variabel2[0] + '+' + variabel2[1] + '+' + variabel2[2] +
+      //     '&room=' + rooms.length + 
+      //     '&adl=' + adl + 
+      //     '&chd=' + childs + 
+      //     '&id=' + (self.destinationInternal == 'هتل آهوان چابکسر' ? '3' : '1005')
+      //     window.location.href = self.searchLink
+      //     break;
+      //   case 'پرواز':
+      //     self.searchLink = 'https://ahuan.ir/flight?path='+''+
+      //     '&from='+'' +
+      //     '&to='+'' +
+      //     '&start=' + variabel[0] + '+' + variabel[1] + '+' + variabel[2] + 
+      //     '&end=' + variabel2[0] + '+' + variabel2[1] + '+' + variabel2[2] +
+      //     '&adl=' + adl + 
+      //     '&chd='+ childs + 
+      //     '&info=...'
+      //     window.location.href = self.searchLink;
+      //     break;
+      //   default:
+      //     break;
+      // }
     },
     exchangeCity(index) {
+      this.hidePeaple()
       if (isNaN(index)) {
         if (this.external) {
           var cityes = this.AllotherCityes
@@ -851,15 +1083,63 @@ new Vue({
           // distination
           this.otherCityesOrigin = cityes2
           this.originCity = firstCity
-        } else{
+        } else {
           let variable = this.originCity
           this.originCity = this.destinationInternal
           this.destinationInternal = variable
         }
       } else {
-        let variable = this.allFlights[index].originCity
-        this.allFlights[index].originCity = this.allFlights[index].destinationInternal
-        this.allFlights[index].destinationInternal = variable
+        if (index == 0) {
+          var cityes = this.AllotherCityes
+          var cityes2 = this.AllotherCityes
+          var firstCity = this.allFlights[0].destinationInternal
+          if (firstCity) {
+            cityes2.push(firstCity)
+          }
+          // origin
+          if (this.allFlights[0].originCity) {
+            cityes.push(this.allFlights[0].originCity)
+          }
+          this.otherCityesOrigin4 = cityes
+          this.allFlights[0].destinationInternal = this.allFlights[0].originCity
+          // distination
+          this.otherCityesOrigin3 = cityes2
+          this.allFlights[0].originCity = firstCity
+        }
+        if (index == 1) {
+          var cityes = this.AllotherCityes
+          var cityes2 = this.AllotherCityes
+          var firstCity = this.allFlights[1].destinationInternal
+          if (firstCity) {
+            cityes2.push(firstCity)
+          }
+          // origin
+          if (this.allFlights[1].originCity) {
+            cityes.push(this.allFlights[1].originCity)
+          }
+          this.otherCityesOrigin6 = cityes
+          this.allFlights[1].destinationInternal = this.allFlights[1].originCity
+          // distination
+          this.otherCityesOrigin5 = cityes2
+          this.allFlights[1].originCity = firstCity
+        }
+        if (index == 2) {
+          var cityes = this.AllotherCityes
+          var cityes2 = this.AllotherCityes
+          var firstCity = this.allFlights[2].destinationInternal
+          if (firstCity) {
+            cityes2.push(firstCity)
+          }
+          // origin
+          if (this.allFlights[2].originCity) {
+            cityes.push(this.allFlights[2].originCity)
+          }
+          this.otherCityesOrigin8 = cityes
+          this.allFlights[2].destinationInternal = this.allFlights[2].originCity
+          // distination
+          this.otherCityesOrigin7 = cityes2
+          this.allFlights[2].originCity = firstCity
+        }
       }
     },
     addFlight(index, type) {
@@ -924,31 +1204,18 @@ new Vue({
       var self = this
       switch (item) {
         case 'originCity':
-        if (self.originCity) {
-          this.$refs.destinationInternal.$refs.menu.isActive = true;
-      //     if (self.AllotherCityes.findIndex(x => x.text == self.originCity) == -1) {
-      //       let variable = self.AllotherCityes;
-      //       variable.push({text:self.originCity})
-      //       self.otherCityesOrigin = variable
-          } else{
-      //       self.otherCityesOrigin = self.AllotherCityes
+          if (self.external) {
+
+          } else {
+            await $('.destinationInternalParent').click()
+
           }
-      //     // let variable = 
-          
-      //     // 
-      //     // $('.v-select-list').addClass("sugestCity")
-      //   }
-          
+          self.$refs.destinationInternal.$refs.menu.isActive = true;
           break;
         case 'destinationInternal':
-      //     if (self.AllotherCityes.findIndex(x => x.text == self.destinationInternal) == -1) {
-      //       let variable = self.AllotherCityes;
-      //       variable.push({text:self.destinationInternal})
-      //       self.otherCityesOrigin = variable
-      //     } else{
-      //       self.otherCityesOrigin = self.AllotherCityes
-      //     }
-      //     $('.showPopup').click()
+          if (self.destinationInternal) {
+            $('.showPopup').click()
+          }
           break;
 
         default:
@@ -991,35 +1258,34 @@ new Vue({
           disableBeforeDate: new Date(),
         });
 
-        // const dtp2 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp2'), {
-        //   targetTextSelector: '[data-name="dtp2-text"]',
-        //   targetDateSelector: '[data-name="dtp2-date"]',
-        //   disableBeforeDate: new Date(),
-        // });
+        const dtp2 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp2'), {
+          targetTextSelector: '[data-name="dtp2-text"]',
+          targetDateSelector: '[data-name="dtp2-date"]',
+          disableBeforeDate: new Date(),
+        });
 
-        // const dtp3 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp3'), {
-        //   targetTextSelector: '[data-name="dtp3-text"]',
-        //   targetDateSelector: '[data-name="dtp3-date"]',
-        //   disableBeforeDate: new Date(),
-        //   // trigger: 'focus'
-        // });
+        const dtp3 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp3'), {
+          targetTextSelector: '[data-name="dtp3-text"]',
+          targetDateSelector: '[data-name="dtp3-date"]',
+          disableBeforeDate: new Date(),
+        });
 
-        // const dtp4 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp4'), {
-        //   targetTextSelector: '[data-name="dtp4-text"]',
-        //   targetDateSelector: '[data-name="dtp4-date"]',
-        //   disableBeforeDate: new Date(),
-        //   // trigger: 'focus'
-        // });
+        const dtp4 = new mds.MdsPersianDateTimePicker(document.getElementById('dtp4'), {
+          targetTextSelector: '[data-name="dtp4-text"]',
+          targetDateSelector: '[data-name="dtp4-date"]',
+          disableBeforeDate: new Date(),
+        });
 
-        function defultShowDatePicker(value) {
+        async function defultShowDatePicker(value) {
           if (value == 1 || value == 3) {
-            dtp1.updateOptions({
+            await dtp1.updateOptions({
               rangeSelector: false,
               rangeSelectorMonthsToShow: [0, 0],
               selectedDateToShow: new Date(),
             })
+
           } else {
-            dtp1.updateOptions({
+            await dtp1.updateOptions({
               rangeSelector: true,
               rangeSelectorMonthsToShow: [0, 1],
               selectedDateToShow: new Date(),
@@ -1033,88 +1299,6 @@ new Vue({
         var firstAppend3 = 0
         var firstAppend4 = 0
 
-        $('#dtp2').on('click', function () {
-          if (firstAppend2 == 0) {
-            var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
-            $(".popover").append(r);
-            firstAppend2 = 1
-          }
-          if (firstAppend2 == 2) {
-            var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
-            $(".popover").append(r);
-            firstAppend2 = 1
-          }
-        });
-
-        $('#dtp3').on('click', function () {
-          if (firstAppend3 == 0) {
-            var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
-            $(".popover").append(r);
-            firstAppend3 = 1
-          }
-          if (firstAppend3 == 2) {
-            var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
-            $(".popover").append(r);
-            firstAppend3 = 1
-          }
-        });
-
-        $('#dtp4').on('click', function () {
-          if (firstAppend4 == 0) {
-            var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
-            $(".popover").append(r);
-            firstAppend4 = 1
-          }
-          if (firstAppend4 == 2) {
-            var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
-            $(".popover").append(r);
-            firstAppend4 = 1
-          }
-        });
-
-        $(document).on('hide.bs.popover', '#dtp2', function () {
-          $('#dtp2').attr('value', dtp2.getText())
-          var selectedDate = $('#dtp2').attr('value')
-          if (selectedDate) {
-            selectedDate = selectedDate.split(' - ')
-            let options = { day: 'numeric', month: 'long' };
-            let fromDate = new Date(selectedDate[0]).toLocaleDateString('en-US', options);
-            let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-            self.allFlights[0].date = fromDate
-          } else {
-            self.allFlights[0].date = ''
-          }
-        })
-
-        $(document).on('hide.bs.popover', '#dtp3', function () {
-          $('#dtp3').attr('value', dtp3.getText())
-          var selectedDate = $('#dtp3').attr('value')
-          if (selectedDate) {
-            selectedDate = selectedDate.split(' - ')
-            let options = { day: 'numeric', month: 'long' };
-            let fromDate = new Date(selectedDate[0]).toLocaleDateString('en-US', options);
-            let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-            self.allFlights[1].date = fromDate
-          } else {
-            self.allFlights[1].date = ''
-          }
-        })
-
-        $(document).on('hide.bs.popover', '#dtp4', function () {
-          $('#dtp4').attr('value', dtp4.getText())
-          var selectedDate = $('#dtp4').attr('value')
-          if (selectedDate) {
-            selectedDate = selectedDate.split(' - ')
-            let options = { day: 'numeric', month: 'long' };
-            let fromDate = new Date(selectedDate[0]).toLocaleDateString('en-US', options);
-            let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
-            self.allFlights[2].date = fromDate
-          } else {
-            self.allFlights[2].date = ''
-          }
-
-        })
-
         $(document).on('hide.bs.popover', '#dtp1', function () {
           $('#dtp1').attr('value', dtp1.getText())
           var selectedDate = dtp1.getText()
@@ -1124,12 +1308,66 @@ new Vue({
           self.fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
           self.toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
           self.toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
-          
           if (dtp1.setting.isGregorian) {
             self.selectedDate = selectedDate[0] ? (self.fromDate + (self.toDate && ' to ' + self.toDate)) : '';
-          } else{
+          } else {
             self.selectedDate = selectedDate[0] ? (self.fromDatePersian + (self.toDatePersian && ' الی ' + self.toDatePersian)) : '';
           }
+          showDatePicker1 = false
+        })
+
+        $(document).on('hide.bs.popover', '#dtp2', function () {
+          $('#dtp2').attr('value', dtp2.getText())
+          var selectedDate = dtp2.getText()
+          selectedDate = selectedDate.split(' - ')
+          let options = { day: 'numeric', month: 'long' };
+          let fromDate = new Date(selectedDate[0]).toLocaleDateString('en-US', options);
+          let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          let toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
+          let toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
+
+          if (dtp2.setting.isGregorian) {
+            self.allFlights[0].date = selectedDate[0] ? (fromDate + (toDate && ' to ' + toDate)) : '';
+          } else {
+            self.allFlights[0].date = selectedDate[0] ? (fromDatePersian + (toDatePersian && ' الی ' + toDatePersian)) : '';
+          }
+          showDatePicker2 = false
+        })
+
+        $(document).on('hide.bs.popover', '#dtp3', function () {
+          $('#dtp3').attr('value', dtp3.getText())
+          var selectedDate = dtp3.getText()
+          selectedDate = selectedDate.split(' - ')
+          let options = { day: 'numeric', month: 'long' };
+          let fromDate = new Date(selectedDate[0]).toLocaleDateString('en-US', options);
+          let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          let toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
+          let toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
+
+          if (dtp3.setting.isGregorian) {
+            self.allFlights[1].date = selectedDate[0] ? (fromDate + (toDate && ' to ' + toDate)) : '';
+          } else {
+            self.allFlights[1].date = selectedDate[0] ? (fromDatePersian + (toDatePersian && ' الی ' + toDatePersian)) : '';
+          }
+          showDatePicker3 = false
+        })
+
+        $(document).on('hide.bs.popover', '#dtp4', function () {
+          $('#dtp4').attr('value', dtp4.getText())
+          var selectedDate = dtp4.getText()
+          selectedDate = selectedDate.split(' - ')
+          let options = { day: 'numeric', month: 'long' };
+          let fromDate = new Date(selectedDate[0]).toLocaleDateString('en-US', options);
+          let fromDatePersian = new Date(selectedDate[0]).toLocaleDateString('fa-IR', options);
+          let toDate = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('en-US', options) : '';
+          let toDatePersian = selectedDate[1] ? new Date(selectedDate[1]).toLocaleDateString('fa-IR', options) : '';
+
+          if (dtp4.setting.isGregorian) {
+            self.allFlights[2].date = selectedDate[0] ? (fromDate + (toDate && ' to ' + toDate)) : '';
+          } else {
+            self.allFlights[2].date = selectedDate[0] ? (fromDatePersian + (toDatePersian && ' الی ' + toDatePersian)) : '';
+          }
+          showDatePicker4 = false
         })
 
         async function showPopupFunction() {
@@ -1171,21 +1409,109 @@ new Vue({
           }
         }
 
+        $('.sections').click(function () {
+          $('.v-select-list').removeClass("sugestCity")
+        })
+
+        let showDatePicker1 = false
         $('.showPopup').click(function () {
           $('#showPeaple').hide();
-          showPopupFunction();
-          setTimeout(() => {
-            dtp1.show()
-            if (firstAppend == 0) {
-              var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
-              $(".popover").append(r);
-            }
-            if (firstAppend == 2) {
-              var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
-              $(".popover").append(r);
-            }
-            self.selectedDate = ''
-          }, 500);
+          if (showDatePicker1) {
+            dtp1.hide();
+            showDatePicker1 = false
+          } else {
+            showPopupFunction();
+            setTimeout(() => {
+              dtp1.show()
+              if (firstAppend == 0) {
+                var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+                $(".popover").append(r);
+              }
+              if (firstAppend == 2) {
+                var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+                $(".popover").append(r);
+              }
+              self.selectedDate = ''
+              showDatePicker1 = true
+            }, 500);
+          }
+
+        })
+
+        let showDatePicker2 = false
+        $('.showPopup2').click(function () {
+          $('#showPeaple').hide();
+          if (showDatePicker2) {
+            dtp2.hide()
+            showDatePicker2 = false
+          } else {
+            showPopupFunction(2);
+            setTimeout(() => {
+              dtp2.show()
+              if (firstAppend2 == 0) {
+                var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+                $(".popover").append(r);
+              }
+              if (firstAppend2 == 2) {
+                var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+                $(".popover").append(r);
+              }
+              self.allFlights[0].date = ''
+              showDatePicker2 = true
+            }, 500);
+          }
+
+        })
+
+        let showDatePicker3 = false
+        $('.showPopup3').click(function () {
+          $('#showPeaple').hide();
+          if (showDatePicker3) {
+            dtp3.hide()
+            showDatePicker3 = false
+          } else {
+            showPopupFunction(2);
+            setTimeout(() => {
+              dtp3.show()
+              if (firstAppend3 == 0) {
+                var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+                $(".popover").append(r);
+              }
+              if (firstAppend3 == 2) {
+                var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+                $(".popover").append(r);
+              }
+              self.allFlights[1].date = ''
+              showDatePicker3 = true
+            }, 500);
+
+          }
+
+        })
+
+        let showDatePicker4 = false
+        $('.showPopup4').click(function () {
+          $('#showPeaple').hide();
+          if (showDatePicker4) {
+            dtp4.hide()
+            showDatePicker4 = false
+          } else {
+            showPopupFunction(2);
+            setTimeout(() => {
+              dtp4.show()
+              if (firstAppend4 == 0) {
+                var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+                $(".popover").append(r);
+              }
+              if (firstAppend4 == 2) {
+                var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+                $(".popover").append(r);
+              }
+              self.allFlights[2].date = ''
+              showDatePicker4 = true
+            }, 500);
+          }
+
         })
 
         $(document).on('click', '#georgian', function () {
@@ -1234,12 +1560,143 @@ new Vue({
           $('#showPeaple').toggle()
         })
 
-        $(document).on('click', '.originCityParent , .destinationInternalParent', function () {
-          $('.v-select-list').addClass("sugestCity")
+        $(document).on('click', '.originCityParent', function () {
+          if (self.external) {
+            let index = self.AllotherCityes.findIndex(x => x.text == self.originCity)
+            if (!self.originCity || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
+          } else if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
+            let variabel = [
+              { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+              { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+              { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+              { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+              { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+              { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+              { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+            ]
+            if (self.originCity) {
+              let index = variabel.findIndex(x => x.text == self.originCity)
+              if (index == (-1)) {
+                self.persianCityes = self.AllpersianCityes
+                $('.v-select-list').removeClass("sugestCity")
+              } else {
+                $('.v-select-list').addClass("sugestCity")
+                self.persianCityes = variabel
+              }
+            } else {
+              $('.v-select-list').addClass("sugestCity")
+              self.persianCityes = variabel
+            }
+          }
+        })
+
+        $(document).on('click', '.originCityParent2', function () {
+          let variabel = self.allFlights[0].originCity
+          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+          if (!self.allFlights[0].originCity || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin3 = self.AllotherCityes
+          } else {
+            $('.v-select-list').removeClass("sugestCity")
+          }
+        })
+
+        $(document).on('click', '.originCityParent3', function () {
+          let variabel = self.allFlights[1].originCity
+          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+          if (!self.allFlights[1].originCity || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin5 = self.AllotherCityes
+          } else {
+            $('.v-select-list').removeClass("sugestCity")
+          }
+        })
+
+        $(document).on('click', '.originCityParent4', function () {
+          let variabel = self.allFlights[2].originCity
+          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+          if (!self.allFlights[2].originCity || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin7 = self.AllotherCityes
+          } else {
+            $('.v-select-list').removeClass("sugestCity")
+          }
+        })
+
+        $(document).on('click', '.destinationInternalParent', function () {
+          if (self.external) {
+            let index = self.AllotherCityes.findIndex(x => x.text == self.destinationInternal)
+            if (!self.destinationInternal || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin2 = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
+          } else if (self.selectedSection.title != 'هتل' && self.selectedSection.title != 'آهوان') {
+            let variabel = [
+              { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+              { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+              { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+              { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+              { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+              { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+              { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+            ]
+            if (self.destinationInternal) {
+              let index = variabel.findIndex(x => x.text == self.destinationInternal)
+              if (index == (-1)) {
+                self.persianCityes2 = self.AllpersianCityes
+                // $('.v-select-list').removeClass("sugestCity")
+              } else {
+                // $('.v-select-list').addClass("sugestCity")
+                self.persianCityes2 = variabel
+              }
+            } else {
+              $('.v-select-list').addClass("sugestCity")
+              self.persianCityes2 = variabel
+            }
+          } else {
+            $('.v-select-list').removeClass("sugestCity")
+          }
+        })
+
+        $(document).on('click', '.destinationInternalParent2', function () {
+          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[0].destinationInternal)
+          if (!self.allFlights[0].destinationInternal || index != (-1)) {
+            // $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin4 = self.AllotherCityes
+          } else {
+            // $('.v-select-list').removeClass("sugestCity")
+          }
+        })
+
+        $(document).on('click', '.destinationInternalParent3', function () {
+          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[1].destinationInternal)
+          if (!self.allFlights[1].destinationInternal || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin6 = self.AllotherCityes
+          } else {
+            $('.v-select-list').removeClass("sugestCity")
+          }
+        })
+
+        $(document).on('click', '.destinationInternalParent4', function () {
+          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[2].destinationInternal)
+          if (!self.allFlights[2].destinationInternal || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin8 = self.AllotherCityes
+          } else {
+            $('.v-select-list').removeClass("sugestCity")
+          }
         })
 
         $(".slick-tour").slick({
-          slidesToShow: this.windowWidth > 1400 ? 4 : (this.windowWidth <= 1400 && this.windowWidth > 960) ? 3 : (this.windowWidth <= 960 && this.windowWidth > 774) ? 3 : (this.windowWidth <= 774 && this.windowWidth > 599) ? 2 : 1,
+          slidesToShow: self.windowWidth > 1400 ? 4 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 774) ? 3 : (self.windowWidth <= 774 && self.windowWidth > 599) ? 2 : 1,
           slidesToScroll: 1,
           rtl: true,
           autoplay: true,
@@ -1247,56 +1704,52 @@ new Vue({
         });
 
         $(".slick-title").slick({
-          slidesToShow: this.windowWidth > 1400 ? 3 : (this.windowWidth <= 1400 && this.windowWidth > 960) ? 3 : (this.windowWidth <= 960 && this.windowWidth > 599) ? 2 : 1,
+          slidesToShow: self.windowWidth > 1400 ? 3 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 599) ? 2 : 1,
           slidesToScroll: 1,
           rtl: true,
           autoplay: true,
           autoplaySpeed: 2500,
         });
+        self.startTypeAnimation = true
+        var typed = new Typed('#typed', {
+          stringsElement: '#typed-strings',
+          typeSpeed: 200,
+          backSpeed: 80,
+          backDelay: 2000,
+          startDelay: 2000,
+          loop: true,
+        });
       }, 3000);
     },
     async getCityesExternal() {
-      // var self = this
-      // var otherCityes = [
-      //   {
-      //       Id: 0,
-      //       text: "Tehran",
-      //       IATA: "IKA",
-      //   },
-      //   {
-      //       Id: 0,
-      //       city: "Dubai",
-      //       IATA: "DXB",
-      //   },
-      //   {
-      //       Id: 0,
-      //       city: "Kuala Lumpur",
-      //       IATA: "KUL",
-      //   },
-      // ]
-      // self.mostUseCityes = otherCityes
-      // self.otherCityes = otherCityes
-      // var self = this
-      // axios.get('https://ahuan.ir/api/IntAirport?airportCode=0')
-      //   .then(function (response) {
-      //     // handle success
-
-      //     var otherCityes = response.data.map((x) => {
-      //       return {
-      //         text: x.city,
-      //         IATA: x.IATA
-      //       };
-      //     });
-      //     self.mostUseCityes = otherCityes
-      //     self.otherCityes = otherCityes
-        // })
-        // .catch(function (error) {
-        //   // handle error
-        //   console.log(error);
-        // })
+      var otherCityes = []
+      axios.get('https://ahuan.ir/api/IntAirport?airportCode=0')
+        .then(function (response) {
+          // handle success
+          var otherCityes = response.data.map((x) => {
+            return {
+              text: x.city,
+              IATA: x.IATA
+            };
+          });
+          this.mostUseCityes = otherCityes
+          this.AllotherCityes = otherCityes
+          this.otherCityesOrigin3 = otherCityes
+          this.otherCityesOrigin4 = otherCityes
+          this.otherCityesOrigin5 = otherCityes
+          this.otherCityesOrigin6 = otherCityes
+          this.otherCityesOrigin7 = otherCityes
+          this.otherCityesOrigin8 = otherCityes
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
     }
   },
   created() {
+    // window.location = 'https://ahuan.ir/flight'
+    // window.History.push({urlPath:'www.domain.com/page2.php'},"",'www.domain.com/page2.php')
     this.getCityesExternal();
     this.jquery()
     this.start()
@@ -1310,10 +1763,9 @@ new Vue({
     }, 1000);
   },
   mounted() {
-
-
   },
   beforeDestroy() {
+    window.removeEventListener('resize')
     clearInterval(this.interval)
   }
 })

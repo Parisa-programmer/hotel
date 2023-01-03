@@ -33,14 +33,12 @@
       <v-app>
         <v-row class="ma-12 pa-12" justify="center" style="height:2000px">
           <v-autocomplete
-              v-model="friends"
-              :items="people"
-              color="blue-grey lighten-2"
-              label="Select"
-              :search-input.sync="originSearchInput"
-              ref="originCity"
-            >
-            </v-autocomplete>
+          v-model="model"
+          :items="states"
+          prepend-icon="mdi-city"
+        >
+          
+        </v-autocomplete>
         </v-row>
       </v-app>
     </div>

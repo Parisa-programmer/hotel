@@ -18,33 +18,35 @@ new Vue({
   el: '#test-page',
   vuetify: new Vuetify(),
   data: {
-    friends: { name: 'Sandra Adams', group: 'Group 1',},
-    people: ['1','2','3'
-      // { name: 'Sandra Adams', group: 'Group 1',},
-      // { name: 'Ali Connors', group: 'Group 1',},
-      // { name: 'Trevor Hansen', group: 'Group 1',},
-      // { name: 'Tucker Smith', group: 'Group 1',},
-      // { name: 'Britta Holt', group: 'Group 2',},
-      // { name: 'Jane Smith ', group: 'Group 2',},
-      // { name: 'John Smith', group: 'Group 2',},
-      // { name: 'Sandra Williams', group: 'Group 2',},
-    ],
-    originSearchInput:''
+    isEditing: true,
+    model: null,
+    states: [
+      'Alabama', 'Alaska', 'American Samoa', 'Arizona',
+      'Arkansas', 'California', 'Colorado', 'Connecticut',
+      'Delaware', 'District of Columbia', 'Federated States of Micronesia',
+      'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
+      'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+      'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
+      'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+      'Missouri', 'Montana', 'Nebraska', 'Nevada',
+      'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
+      'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio',
+      'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
+      'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
+      'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
+      'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+    ]
   },
   watch: {
-    originSearchInput(){
-      this.$refs.originCity.isFocused = false
-    }
+
   },
   methods: {
-   
+
   },
   created() {
-    // setInterval(() => {
-    //   console.log( );
-    // }, 1000);
+
   },
-  
+
 })
 
 

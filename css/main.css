@@ -464,10 +464,35 @@ input::-webkit-inner-spin-button {
   background: #f6f6f6 !important;
 }
 
+/* ______________________________________________________________________________menu scrollbar */
+
 .v-menu__content {
   border-radius: 10px !important;
   border-top: 0 !important;
   margin-top: 37px !important;
+  overflow-x: hidden;
+}
+
+.v-menu__content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.v-menu__content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.v-menu__content::-webkit-scrollbar-thumb {
+  background: rgb(202, 201, 201);
+}
+
+.v-menu__content::-webkit-scrollbar-thumb:hover {
+  background: rgb(133, 133, 133);
+}
+
+/* ____________________________________________________________________________________________ */
+
+.v-input__icon--append{
+  display: none;
 }
 
 .v-autocomplete__content {
@@ -847,6 +872,21 @@ input::-webkit-inner-spin-button {
   color: #878787;
 }
 
+/* typeSlider */
+.typeSliderMainPage{
+  background-color: #f44336;
+  text-align: center;
+  padding: 20px 0;
+  height: 73px;
+  overflow: hidden;
+}
+
+.typeSliderMainPage span{
+  color:#fff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
 /* responsive */
 @media (min-width: 1264px) and (max-width: 1400px) {
   .v-expansion-panel-header {
@@ -870,7 +910,7 @@ input::-webkit-inner-spin-button {
   }
 
   .banerSlider,.banerSlider .v-image {
-    height: 342px !important;
+    height: 300px !important;
   }
 
   .downloadButton {
@@ -912,7 +952,7 @@ input::-webkit-inner-spin-button {
   }
 
   .banerSlider,.banerSlider .v-image {
-    height: 341px !important;
+    height: 270px !important;
   }
 
   .downloadButton {
@@ -1004,7 +1044,7 @@ input::-webkit-inner-spin-button {
     }
 
     .banerSlider,.banerSlider .v-image {
-      height: 285px !important;
+      height: 232px !important;
     }
 
     .downloadApp {
@@ -1095,7 +1135,7 @@ input::-webkit-inner-spin-button {
     }
 
     .banerSlider,.banerSlider .v-image {
-      height: 210px !important;
+      height: 180px !important;
     }
 
     .mobileImageMainPage {
@@ -1337,7 +1377,7 @@ input::-webkit-inner-spin-button {
     }
 
     .banerSlider,.banerSlider .v-image {
-      height: 190px !important;
+      height: 150px !important;
     }
 
     .flight-go-flesh {
@@ -1371,7 +1411,7 @@ input::-webkit-inner-spin-button {
     }
 
     .banerSlider,.banerSlider .v-image {
-      height: 165px !important;
+      height: 120px !important;
     }
 
     .flight-go-flesh {
@@ -1413,7 +1453,7 @@ input::-webkit-inner-spin-button {
     }
 
     .banerSlider,.banerSlider .v-image {
-      height: 160px !important;
+      height: 105px !important;
     }
 
     .sections {
@@ -1467,7 +1507,7 @@ input::-webkit-inner-spin-button {
     }
 
     .banerSlider,.banerSlider .v-image {
-      height: 155px !important;
+      height: 90px !important;
     }
 
     .flight-go-flesh {

@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="format-detection" content="telephone=no">
+    <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>خدمات گردشگری آهوان</title>
     <link rel="stylesheet" href="./folders/css/datepicker.css">
@@ -44,8 +44,7 @@
                   mdi-phone-in-talk
                 </v-icon>
                 <span class="ml-3 ml-sm-0 headerText float-left grey--text text--darken-3">
-                  <a href="tel:02141889"></a>
-                  021-41889
+                  <a href="tel:02141889" class="grey--text text--darken-3 text-decoration-none">021-41889</a>
                 </span>
               </div>
             </v-row>
@@ -423,6 +422,7 @@
                             <v-autocomplete top
                               v-model="originCity"
                               id="originCity"
+                              :menu-props="{ closeOnClick: true, }"
                               ref="originCity"
                               :rules="emptyRules2"
                               :items="external ? otherCityesOrigin : persianCityes"
@@ -447,6 +447,7 @@
                               v-model="destinationInternal"
                               ref="destinationInternal"
                               id="destinationInternal"
+                              :menu-props="{ closeOnClick: true, }"
                               :rules="emptyRules2"
                               class="font-small-xs hideArrow"
                               :search-input.sync="destinationSearchInput"
@@ -476,7 +477,7 @@
                         <div class="input-group" class="relative font-small-xs form-control headerBoxFields grey rounded-xl" style="background-color: #f5f5f5;border-radius: 10px;">
                           <input type="text" ref="dtp1" value="" data-name="dtp1-text" class="cursorPointer heightAll widthAll absolute dtp " readOnly style="top:0;left:50%;opacity: 0;width:0;z-index:1"
                           id="dtp1" style="width:100%">
-                          <input class="d-none" data-name="dtp1-date" >
+                          <input class="d-none showdp1" data-name="dtp1-date" >
                           <div class="cursorPointer heightAll d-inline-block font-small-xs widthAll showPopup" style="z-index:22;padding: 10px 4px;color:#424242">
                             <v-icon class="showPopup" style="color:#424242">
                               mdi-calendar-month
@@ -572,12 +573,7 @@
                         type="card-heading"
                         :loading="isLoading"
                       > 
-                        <!-- <a :href="searchLink"> -->
-                        <!-- <a :href="selectedSection.title == 'پرواز'  ? 
-                            'https://ahuan.ir/flight?path={ow,rt,mp}&from=IKA&to=IST&start=date&end=date&adl=...&chd=...&info=...' :
-                            selectedSection.title == 'آهوان' && searchLink" class="text-decoration-none"> -->
-                          <v-btn dark color="red" class="widthAll mt-md-4 mt-lg-0 pt-6 pb-5 ronded-xl searchInHeaderBox" @click="searchInHeaderBox" style="border-radius: 7px;" :class="byReturn == 3 && 'd-none d-lg-flex'">جستجو</v-btn>
-                        <!-- </a> -->
+                        <v-btn dark color="red" class="widthAll mt-md-4 mt-lg-0 pt-6 pb-5 ronded-xl searchInHeaderBox" @click="searchInHeaderBox" style="border-radius: 7px;" :class="byReturn == 3 && 'd-none d-lg-flex'">جستجو</v-btn>
                       </v-skeleton-loader>
                     </v-col>
                   </v-row>
@@ -868,13 +864,7 @@
                   </v-row>
                   <v-row justify="center">
                     <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 ? 'd-block d-lg-none' : 'd-none'">
-                      <a :href="selectedSection.title == 'پرواز'  ? 
-                      'https://ahuan.ir/flight?path={ow,rt,mp}&from=IKA&to=IST&start=date&end=date&adl=...&chd=...&info=...' :
-                      selectedSection.title == 'آهوان' &&
-                      'https://ahuan.ir/iranhotels?hotel=%d9%87%d8%aa%d9%84+%d8%a2%d9%87%d9%88%d8%a7%d9%86+%da%86%d8%a7%d8%a8%da%a9%d8%b3%d8%b1&checkin=%db%b1%db%b9+%d8%af%db%8c+%db%b1%db%b4%db%b0%db%b1&checkout=%db%b2%db%b7+%d8%af%db%8c+%db%b1%db%b4%db%b0%db%b1&room=1&adl=1&chd=0&id=3'
-                      " class="text-decoration-none">
                         <v-btn v-if="byReturn == 3" dark color="red" class="mt-4 pt-6 pb-5 ronded-xl widthAll" @click="searchInHeaderBox" >جستجو</v-btn>
-                      </a>
                     </v-col>
                   </v-row>
                 </v-card>
@@ -937,7 +927,7 @@
                       <v-row align="center">
                         <v-btn outlined color="red" class="ma-2 px-9">رزرو</v-btn>
                         <v-spacer></v-spacer>
-                        <h3 class="">{{item.price}}</h3>
+                        <h3 class="overlinePrice relative">{{item.price}}</h3>
                         <span class="caption mx-2" style="font-family:Byekan !important">تومان</span>
                       </v-row>
                     </v-card>
@@ -1029,7 +1019,7 @@
                 type="chip"
                 :loading="isLoading"
               >
-                <v-btn dark class=" px-12 red font-small-xs" disabled>دانلود</v-btn>
+                <v-btn dark class=" px-9 red font-small-xs" disabled>بزودی ...</v-btn>
               </v-skeleton-loader>
               <img v-if="!isLoading" src="./folders/image/mobile.png" class="mobileImageMainPage absolute d-none d-sm-block" alt="">
             </div>
@@ -1120,12 +1110,14 @@
                     :loading="isLoading"
                   >
                     <p class="body-2 text-justify" style="font-family: Byekan !important;">
-                      آژانس مسافرتی (انگلیسی: Travel Agency) یا شرکت خدمات مسافرتی، به شرکتی اطلاق می‌شود که در زمینه ارائه خدمات گردشگری، جهانگردی و هواپیمایی به صورت خرده‌فروشی و عمده‌فروشی و پیش‌فروش، فعالیت می‌نماید.
+                      شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.
+                      <!-- آژانس مسافرتی (انگلیسی: Travel Agency) یا شرکت خدمات مسافرتی، به شرکتی اطلاق می‌شود که در زمینه ارائه خدمات گردشگری، جهانگردی و هواپیمایی به صورت خرده‌فروشی و عمده‌فروشی و پیش‌فروش، فعالیت می‌نماید.
                       در ایران آژانس‌های مسافرتی بنا به نوع فعالیت خود از وزارت میراث فرهنگی،
-                      د.
+                      د. -->
                     </p>
                     <p class="body-2 text-justify" style="font-family: Byekan !important;">
-                      صنایع دستی و گردشگری همچنین از سازمان هواپیمایی کشوری و از سازمان حج و زیارت مجوز فعالیت دریافت می‌کنند و به نمایندگی از تأمین‌کنندگان، خدماتی چون اخذ ویزا، رزرو هتل و اماکن اقامتی، برگزاری تورهای مسافرتی گروهی و انفرادی، فروش بلیط هواپیما، قطار، و کشتی، انجام امور بیمه مسافرتی، صدور گواهینامه رانندگی بین‌المللی و… ارائه می‌نمای
+                      خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی واقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود.
+                      <!-- صنایع دستی و گردشگری همچنین از سازمان هواپیمایی کشوری و از سازمان حج و زیارت مجوز فعالیت دریافت می‌کنند و به نمایندگی از تأمین‌کنندگان، خدماتی چون اخذ ویزا، رزرو هتل و اماکن اقامتی، برگزاری تورهای مسافرتی گروهی و انفرادی، فروش بلیط هواپیما، قطار، و کشتی، انجام امور بیمه مسافرتی، صدور گواهینامه رانندگی بین‌المللی و… ارائه می‌نمای -->
                     </p>
                   </v-skeleton-loader>
                 </v-col>

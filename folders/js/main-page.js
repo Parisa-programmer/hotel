@@ -56,66 +56,66 @@ new Vue({
       { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
     ],
     AllpersianCityes: [
-      { label: "Tehran, THR - تهران", code: "THR", text: "تهران" },
-      { label: "Mashhad, MHD - مشهد", code: "MHD", text: "مشهد" },
-      { label: "Shiraz, SYZ - شیراز", code: "SYZ", text: "شیراز" },
-      { label: "Ahwaz, AWZ - اهواز", code: "AWZ", text: "اهواز" },
-      { label: "Isfahan, IFN - اصفهان", code: "IFN", text: "اصفهان" },
-      { label: "Tabriz, TBZ - تبریز", code: "TBZ", text: "تبریز" },
-      { label: "Kish, KIH - کیش", code: " KIH", text: "کیش" },
-      { label: "Bandar abbas, BND - بندر عباس", code: "BND", text: "بندر عباس" },
-      { label: "Qeshm, GSM - قشم", code: "GSM", text: "قشم" },
-      { label: "Gorgan, GBT - گرگان", code: "GBT", text: "گرگان" },
-      { label: "Ramsar, RZR - رامسر", code: "RZR", text: "رامسر" },
-      { label: "Bushehr, BUZ - بوشهر", code: "BUZ", text: "بوشهر" },
-      { label: "Lar, LRR - لار", code: "LRR", text: "لار" },
-      { label: "Zanjan, JWN - زنجان", code: "JWN", text: "زنجان" },
-      { label: "Bahregan, IAQ - بهرگان", code: "IAQ", text: "بهرگان" },
-      { label: "Lamard, LFM - لامرد", code: "LFM", text: "لامرد" },
-      { label: "Sari, SRY - ساری", code: "SRY", text: "ساری" },
-      { label: "Birjand, XBJ - بیرجند", code: "XBJ", text: "بیرجند" },
-      { label: "Lavan, LVP - لاوان", code: "LVP", text: "لاوان" },
-      { label: "Sabzevar, AFZ - سبزوار", code: "AFZ", text: "سبزوار" },
-      { label: "Abu Musa, AEU - جزیره ابوموسی", code: "AEU", text: "جزیره ابوموسی" },
-      { label: "Mahshahr, MRX - ماهشهر", code: "MRX", text: "ماهشهر" },
-      { label: "Sanandaj, SDG - سنندج", code: "SDG", text: "سنندج" },
-      { label: "Siri, SXI - جزیره سیری", code: "SXI", text: "جزیره سیری" },
-      { label: "Nowshahr, NSH - نوشهر", code: "NSH", text: "نوشهر" },
-      { label: "Sirjan, SYJ - سیرجان", code: "SYJ", text: "سیرجان" },
-      { label: "Jiroft, JYR - جیرفت", code: "JYR", text: "جیرفت" },
-      { label: "Hamedan, HDM - همدان", code: "HDM", text: "همدان" },
-      { label: "Shahrod, RUD - شاهرود", code: "RUD", text: "شاهرود" },
-      { label: "Chabahar, ZBR - چابهار", code: "ZBR", text: "چابهار" },
-      { label: "Yazd, AZD - یزد", code: "AZD", text: "یزد" },
-      { label: "Sharekord, CQD - شهر کرد", code: "CQD", text: "شهر کرد" },
-      { label: "Khark, KHK - خارک", code: "KHK", text: "خارک" },
-      { label: "Arak, AJK - اراک", code: "AJK", text: "اراک" },
-      { label: "Abadan, ABD - آبادان", code: "ABD", text: "آبادان" },
-      { label: "Tabas, TCX - طبس", code: "TCX", text: "طبس" },
-      { label: "Khoramabad, KHD - خرم آباد", code: "KHD", text: "خرم آباد" },
-      { label: "Maragheh, ACP - مراغه", code: "ACP", text: "مراغه" },
-      { label: "Ardabil, ADU - اردبیل", code: "ADU", text: "اردبیل" },
-      { label: "Asaluyeh, PGU - عسلویه", code: "PGU", text: "عسلویه" },
-      { label: "Khoy, KHY - خوی", code: "KHY", text: "خوی" },
-      { label: "Yasuj, YES - یاسوج", code: "YES", text: "یاسوج" },
-      { label: "Urmia, OMH - ارومیه", code: "OMH", text: "ارومیه" },
-      { label: "Dezful, DEF - دزفول", code: "DEF", text: "دزفول" },
-      { label: "Jahrom, JAR - جهرم", code: "JAR", text: "جهرم" },
-      { label: "Kashan, KSN - کاشان", code: "KSN", text: "کاشان" },
-      { label: "Kangan, KNR - کانگان", code: "KNR", text: "کانگان" },
-      { label: "Parsabad, PFQ - پارس آباد", code: "PFQ", text: "پارس آباد" },
-      { label: "Iranshahr, IHR - ایران شهر", code: "IHR", text: "ایران شهر" },
-      { label: "Kerman, KER - کرمان", code: "KER", text: "کرمان" },
-      { label: "Rasht, RAS - رشت", code: "RAS", text: "رشت" },
-      { label: "Ilam, IIL - ایلام", code: "IIL", text: "ایلام" },
-      { label: "Kermanshah, KSH - کرمانشاه", code: "KSH", text: "کرمانشاه" },
-      { label: "Rafsanjan, RJN - رفسنجان", code: "RJN", text: "رفسنجان" },
-      { label: "Bojnord, BJB - بجنورد", code: "BJB", text: "بجنورد" },
-      { label: "Gachsaran, GCH - گچساران", code: "GCH", text: "گچساران" },
-      { label: "zabol, ACZ - زابل", code: "ACZ", text: "زابل" },
-      { label: "Bam, BXR - بم", code: "BXR", text: "بم" },
-      { label: "Bandar lengeh, BDH - بندر لنگه", code: "BDH", text: "بندر لنگه" },
-      { label: "Zahedan, ZAH - زاهدان", code: "ZAH", text: "زاهدان" }
+      { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+      { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+      { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+      { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+      { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+      { label: "Tabriz, TBZ - تبریز", code: "Tabriz, TBZ", text: "تبریز" },
+      { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+      { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+      { label: "Qeshm, GSM - قشم", code: "Qeshm, GSM", text: "قشم" },
+      { label: "Gorgan, GBT - گرگان", code: "Gorgan, GBT", text: "گرگان" },
+      { label: "Ramsar, RZR - رامسر", code: "Ramsar, RZR", text: "رامسر" },
+      { label: "Bushehr, BUZ - بوشهر", code: "Bushehr, BUZ", text: "بوشهر" },
+      { label: "Lar, LRR - لار", code: "Lar, LRR", text: "لار" },
+      { label: "Zanjan, JWN - زنجان", code: "Zanjan, JWN", text: "زنجان" },
+      { label: "Bahregan, IAQ - بهرگان", code: "Bahregan, IAQ", text: "بهرگان" },
+      { label: "Lamard, LFM - لامرد", code: "Lamard, LFM", text: "لامرد" },
+      { label: "Sari, SRY - ساری", code: "Sari, SRY", text: "ساری" },
+      { label: "Birjand, XBJ - بیرجند", code: "Birjand, XBJ", text: "بیرجند" },
+      { label: "Lavan, LVP - لاوان", code: "Lavan, LVP", text: "لاوان" },
+      { label: "Sabzevar, AFZ - سبزوار", code: "Sabzevar, AFZ", text: "سبزوار" },
+      { label: "Abu Musa, AEU - جزیره ابوموسی", code: "Abu Musa, AEU", text: "جزیره ابوموسی" },
+      { label: "Mahshahr, MRX - ماهشهر", code: "Mahshahr, MRX", text: "ماهشهر" },
+      { label: "Sanandaj, SDG - سنندج", code: "Sanandaj, SDG", text: "سنندج" },
+      { label: "Siri, SXI - جزیره سیری", code: "Siri, SXI", text: "جزیره سیری" },
+      { label: "Nowshahr, NSH - نوشهر", code: "Nowshahr, NSH", text: "نوشهر" },
+      { label: "Sirjan, SYJ - سیرجان", code: "Sirjan, SYJ", text: "سیرجان" },
+      { label: "Jiroft, JYR - جیرفت", code: "Jiroft, JYR", text: "جیرفت" },
+      { label: "Hamedan, HDM - همدان", code: "Hamedan, HDM", text: "همدان" },
+      { label: "Shahrod, RUD - شاهرود", code: "Shahrod, RUD", text: "شاهرود" },
+      { label: "Chabahar, ZBR - چابهار", code: "Chabahar, ZBR", text: "چابهار" },
+      { label: "Yazd, AZD - یزد", code: "Yazd, AZD", text: "یزد" },
+      { label: "Sharekord, CQD - شهر کرد", code: "Sharekord, CQD", text: "شهر کرد" },
+      { label: "Khark, KHK - خارک", code: "Khark, KHK", text: "خارک" },
+      { label: "Arak, AJK - اراک", code: "Arak, AJK", text: "اراک" },
+      { label: "Abadan, ABD - آبادان", code: "Abadan, ABD", text: "آبادان" },
+      { label: "Tabas, TCX - طبس", code: "Tabas, TCX", text: "طبس" },
+      { label: "Khoramabad, KHD - خرم آباد", code: "Khoramabad, KHD", text: "خرم آباد" },
+      { label: "Maragheh, ACP - مراغه", code: "Maragheh, ACP", text: "مراغه" },
+      { label: "Ardabil, ADU - اردبیل", code: "Ardabil, ADU", text: "اردبیل" },
+      { label: "Asaluyeh, PGU - عسلویه", code: "Asaluyeh, PGU", text: "عسلویه" },
+      { label: "Khoy, KHY - خوی", code: "Khoy, KHY", text: "خوی" },
+      { label: "Yasuj, YES - یاسوج", code: "Yasuj, YES", text: "یاسوج" },
+      { label: "Urmia, OMH - ارومیه", code: "Urmia, OMH", text: "ارومیه" },
+      { label: "Dezful, DEF - دزفول", code: "Dezful, DEF", text: "دزفول" },
+      { label: "Jahrom, JAR - جهرم", code: "Jahrom, JAR", text: "جهرم" },
+      { label: "Kashan, KSN - کاشان", code: "Kashan, KSN", text: "کاشان" },
+      { label: "Kangan, KNR - کانگان", code: "Kangan, KNR", text: "کانگان" },
+      { label: "Parsabad, PFQ - پارس آباد", code: "Parsabad, PFQ", text: "پارس آباد" },
+      { label: "Iranshahr, IHR - ایران شهر", code: "Iranshahr, IHR", text: "ایران شهر" },
+      { label: "Kerman, KER - کرمان", code: "Kerman, KER", text: "کرمان" },
+      { label: "Rasht, RAS - رشت", code: "Rasht, RAS", text: "رشت" },
+      { label: "Ilam, IIL - ایلام", code: "Ilam, IIL", text: "ایلام" },
+      { label: "Kermanshah, KSH - کرمانشاه", code: "Kermanshah, KSH", text: "کرمانشاه" },
+      { label: "Rafsanjan, RJN - رفسنجان", code: "Rafsanjan, RJN", text: "رفسنجان" },
+      { label: "Bojnord, BJB - بجنورد", code: "Bojnord, BJB", text: "بجنورد" },
+      { label: "Gachsaran, GCH - گچساران", code: "Gachsaran, GCH", text: "گچساران" },
+      { label: "zabol, ACZ - زابل", code: "zabol, ACZ", text: "زابل" },
+      { label: "Bam, BXR - بم", code: "Bam, BXR", text: "بم" },
+      { label: "Bandar lengeh, BDH - بندر لنگه", text: "Bandar lengeh, BDH", text: "بندر لنگه" },
+      { label: "Zahedan, ZAH - زاهدان", code: "Zahedan, ZAH", text: "زاهدان" }
     ],
     otherCityesOrigin: [],
     otherCityesOrigin2: [],
@@ -591,7 +591,7 @@ new Vue({
             // handle error
             console.log(error);
           })
-
+        $('.v-select-list').removeClass("sugestCity")
       } else if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
         $('.v-select-list').addClass("sugestCity")
         self.otherCityesOrigin3 = self.AllotherCityes
@@ -917,44 +917,45 @@ new Vue({
       }
     },
     loginOrRegisterValidate() {
-      var self = this
-      if (self.loginStep == 1) {
-        if (self.$refs.loginForm.validate()) {
-          if ((self.loginForm.phone == '09054791374' && self.loginType == 'login') || self.loginType == 'register') {
-            if (self.UserType == 1) {
-              self.resendSeconds = 60
-              self.showAlert = true
-              self.alertText = 'کد تایید برای شما ارسال شد.'
-              self.alertType = 'success'
-              self.loginStep = 2
-            }
-            self.loginStep = 2
-          }
-          else {
+      console.log();
+      // var self = this
+      // if (self.loginStep == 1) {
+      //   if (self.$refs.loginForm.validate()) {
+      //     if ((self.loginForm.phone == '09054791374' && self.loginType == 'login') || self.loginType == 'register') {
+      //       if (self.UserType == 1) {
+      //         self.resendSeconds = 60
+      //         self.showAlert = true
+      //         self.alertText = 'کد تایید برای شما ارسال شد.'
+      //         self.alertType = 'success'
+      //         self.loginStep = 2
+      //       }
+      //       self.loginStep = 2
+      //     }
+      //     else {
 
-            self.loginType = 'register'
-            self.showAlert = true
-            self.alertText = 'برای ورود به سایت باید ابتدا ثبت نام کنید.'
-            self.alertType = 'error'
-            self.loginForm.password = ''
-          }
-          this.$refs.loginForm.resetValidation()
-        } else {
-          self.showAlert = true
-          self.alertText = 'لطفا فیلدها را بدرستی تکمیل کنید.'
-          self.alertType = 'error'
-        }
-      } else if (self.loginStep == 2) {
-        if (self.loginForm.otp == '1111') {
-          self.loginStep = 3
-          self.isLogin = true
-        } else {
-          self.loginForm.otp == ''
-          self.showAlert = true
-          self.alertText = 'کد وارد شده صحیح نیست.'
-          self.alertType = 'error'
-        }
-      }
+      //       self.loginType = 'register'
+      //       self.showAlert = true
+      //       self.alertText = 'برای ورود به سایت باید ابتدا ثبت نام کنید.'
+      //       self.alertType = 'error'
+      //       self.loginForm.password = ''
+      //     }
+      //     this.$refs.loginForm.resetValidation()
+      //   } else {
+      //     self.showAlert = true
+      //     self.alertText = 'لطفا فیلدها را بدرستی تکمیل کنید.'
+      //     self.alertType = 'error'
+      //   }
+      // } else if (self.loginStep == 2) {
+      //   if (self.loginForm.otp == '1111') {
+      //     self.loginStep = 3
+      //     self.isLogin = true
+      //   } else {
+      //     self.loginForm.otp == ''
+      //     self.showAlert = true
+      //     self.alertText = 'کد وارد شده صحیح نیست.'
+      //     self.alertType = 'error'
+      //   }
+      // }
 
     },
     georgian() {
@@ -1050,6 +1051,7 @@ new Vue({
         self.showAlert = true;
         console.log(self.allFlights);
       } else {
+        self.isLoadingAxios = true
         // validate is true _____________________________________________________________________
         // get date 1 ___________________________________________________________________________
         var selectedDate = $('#dtp1').attr('value')
@@ -1082,9 +1084,9 @@ new Vue({
           }
         } else if (this.selectedSection.title != 'آهوان' && this.selectedSection.title != 'تور' && this.selectedSection.title != 'هتل') {
           originIATA = self.AllpersianCityes.find(x => x.text == self.originCity)
-          originIATA = originIATA.code
+          originIATA = originIATA.label
           destinationIATA = self.AllpersianCityes.find(x => x.text == self.destinationInternal)
-          destinationIATA = destinationIATA.code
+          destinationIATA = destinationIATA.label
         }
         switch (this.selectedSection.title) {
           case 'آهوان':
@@ -1099,7 +1101,8 @@ new Vue({
             window.location.href = self.searchLink
             break;
           case 'پرواز':
-            self.searchLink = 'https://ahuan.ir/flight?' +
+            self.searchLink = self.byReturn == 2 ?
+              'https://ahuan.ir/flight?' +
               'path=' + (self.byReturn == 1 ? 'ow' : self.byReturn == 2 ? 'rt' : 'mp') +
               '&from=' + originIATA +
               '&to=' + destinationIATA +
@@ -1108,11 +1111,23 @@ new Vue({
               '&adl=' + adl +
               '&chd=' + childs +
               '&inf=' + inf
+              :
+              'https://ahuan.ir/flight?' +
+              'path=' + (self.byReturn == 1 ? 'ow' : self.byReturn == 2 ? 'rt' : 'mp') +
+              '&from=' + originIATA +
+              '&to=' + destinationIATA +
+              '&start=' + variabel[0] + '+' + variabel[1] + '+' + variabel[2] +
+              '&end=' + variabel[0] + '+' + variabel[1] + '+' + variabel[2] +
+              '&adl=' + adl +
+              '&chd=' + childs +
+              '&inf=' + inf
+
             window.location.href = self.searchLink;
             break;
           default:
             break;
         }
+        self.isLoadingAxios = false
       }
     },
     exchangeCity(index) {
@@ -1442,6 +1457,14 @@ new Vue({
             } else {
               dtp1.show()
               showDatePicker1 = true
+              if (firstAppend == 0) {
+                var r = $('<v-btn class="georgian cursorPointer" id="georgian" >میلادی</v-btn>');
+                $(".popover").append(r);
+              }
+              if (firstAppend == 2) {
+                var r = $('<v-btn class="georgian cursorPointer" id="solar" >solar</v-btn>');
+                $(".popover").append(r);
+              }
             }
           }, 500);
         })
@@ -1553,6 +1576,10 @@ new Vue({
           firstAppend2 = 2
           firstAppend3 = 2
           firstAppend4 = 2
+          showDatePicker1 = false
+          showDatePicker2 = false
+          showDatePicker3 = false
+          showDatePicker4 = false
         });
 
         $(document).on('click', '#solar', function () {
@@ -1574,209 +1601,153 @@ new Vue({
           firstAppend2 = 0
           firstAppend3 = 0
           firstAppend4 = 0
+          showDatePicker1 = false
+          showDatePicker2 = false
+          showDatePicker3 = false
+          showDatePicker4 = false
         });
 
         $('.hideEventPeaple').click(function () {
           $('#showPeaple').toggle()
         })
 
-        var openOrigin = false
-        var openOrigin2 = false
-        var openOrigin3 = false
-        var openOrigin4 = false
-        var openDestination = false
-        var openDestination2 = false
-        var openDestination3 = false
-        var openDestination4 = false
+
 
         $(document).on('click', '.originCityParent', function () {
-          if (openOrigin) {
-            self.$refs.originCity.$refs.menu.isActive = false
-            openOrigin = false
-          } else {
-            self.$refs.originCity.$refs.menu.isActive = true
-            openOrigin = true
-            if (self.external) {
-              let index = self.AllotherCityes.findIndex(x => x.text == self.originCity)
-              if (!self.originCity || index != (-1)) {
-                $('.v-select-list').addClass("sugestCity")
-                self.otherCityesOrigin = self.AllotherCityes
-              } else {
+          if (self.external) {
+            let index = self.AllotherCityes.findIndex(x => x.text == self.originCity)
+            if (!self.originCity || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin = self.AllotherCityes
+            } else {
+              $('.v-select-list').removeClass("sugestCity")
+            }
+          } else if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
+            let variabel = [
+              { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+              { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+              { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+              { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+              { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+              { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+              { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+            ]
+            if (self.originCity) {
+              let index = variabel.findIndex(x => x.text == self.originCity)
+              if (index == (-1)) {
+                self.persianCityes = self.AllpersianCityes
                 $('.v-select-list').removeClass("sugestCity")
-              }
-            } else if (self.selectedSection.title != 'هتل' || self.selectedSection.title != 'آهوان') {
-              let variabel = [
-                { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
-                { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
-                { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
-                { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
-                { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
-                { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
-                { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
-              ]
-              if (self.originCity) {
-                let index = variabel.findIndex(x => x.text == self.originCity)
-                if (index == (-1)) {
-                  self.persianCityes = self.AllpersianCityes
-                  $('.v-select-list').removeClass("sugestCity")
-                } else {
-                  $('.v-select-list').addClass("sugestCity")
-                  self.persianCityes = variabel
-                }
               } else {
                 $('.v-select-list').addClass("sugestCity")
                 self.persianCityes = variabel
               }
+            } else {
+              $('.v-select-list').addClass("sugestCity")
+              self.persianCityes = variabel
             }
           }
         })
 
         $(document).on('click', '.originCityParent2', function () {
-          if (openOrigin2) {
-            self.$refs.originCity2.$refs.menu.isActive = false
-            openOrigin2 = false
+          let variabel = self.allFlights[0].originCity
+          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+          if (!self.allFlights[0].originCity || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin3 = self.AllotherCityes
           } else {
-            self.$refs.originCity2.$refs.menu.isActive = true
-            openOrigin2 = true
-            let variabel = self.allFlights[0].originCity
-            let index = self.AllotherCityes.findIndex(x => x.text == variabel)
-            if (!self.allFlights[0].originCity || index != (-1)) {
-              $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin3 = self.AllotherCityes
-            } else {
-              $('.v-select-list').removeClass("sugestCity")
-            }
+            $('.v-select-list').removeClass("sugestCity")
           }
         })
 
         $(document).on('click', '.originCityParent3', function () {
-          if (openOrigin3) {
-            self.$refs.originCity3.$refs.menu.isActive = false
-            openOrigin3 = false
+
+          let variabel = self.allFlights[1].originCity
+          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+          if (!self.allFlights[1].originCity || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin5 = self.AllotherCityes
           } else {
-            self.$refs.originCity3.$refs.menu.isActive = true
-            openOrigin3 = true
-            let variabel = self.allFlights[1].originCity
-            let index = self.AllotherCityes.findIndex(x => x.text == variabel)
-            if (!self.allFlights[1].originCity || index != (-1)) {
-              $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin5 = self.AllotherCityes
-            } else {
-              $('.v-select-list').removeClass("sugestCity")
-            }
+            $('.v-select-list').removeClass("sugestCity")
           }
         })
 
         $(document).on('click', '.originCityParent4', function () {
-          if (openOrigin4) {
-            self.$refs.originCity4.$refs.menu.isActive = false
-            openOrigin4 = false
+
+          let variabel = self.allFlights[2].originCity
+          let index = self.AllotherCityes.findIndex(x => x.text == variabel)
+          if (!self.allFlights[2].originCity || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin7 = self.AllotherCityes
           } else {
-            self.$refs.originCity4.$refs.menu.isActive = true
-            openOrigin4 = true
-            let variabel = self.allFlights[2].originCity
-            let index = self.AllotherCityes.findIndex(x => x.text == variabel)
-            if (!self.allFlights[2].originCity || index != (-1)) {
-              $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin7 = self.AllotherCityes
-            } else {
-              $('.v-select-list').removeClass("sugestCity")
-            }
+            $('.v-select-list').removeClass("sugestCity")
           }
         })
 
         $(document).on('click', '.destinationInternalParent', function () {
-          if (openDestination) {
-            self.$refs.destinationInternal.$refs.menu.isActive = false
-            openDestination = false
-          } else {
-            self.$refs.destinationInternal.$refs.menu.isActive = true
-            openDestination = true
-            if (self.external) {
-              let index = self.AllotherCityes.findIndex(x => x.text == self.destinationInternal)
-              if (!self.destinationInternal || index != (-1)) {
-                $('.v-select-list').addClass("sugestCity")
-                self.otherCityesOrigin2 = self.AllotherCityes
-              } else {
-                $('.v-select-list').removeClass("sugestCity")
-              }
-            } else if (self.selectedSection.title != 'هتل' && self.selectedSection.title != 'آهوان') {
-              let variabel = [
-                { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
-                { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
-                { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
-                { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
-                { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
-                { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
-                { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
-              ]
-              if (self.destinationInternal) {
-                let index = variabel.findIndex(x => x.text == self.destinationInternal)
-                if (index == (-1)) {
-                  self.persianCityes2 = self.AllpersianCityes
-                  // $('.v-select-list').removeClass("sugestCity")
-                } else {
-                  // $('.v-select-list').addClass("sugestCity")
-                  self.persianCityes2 = variabel
-                }
-              } else {
-                $('.v-select-list').addClass("sugestCity")
-                self.persianCityes2 = variabel
-              }
+          if (self.external) {
+            let index = self.AllotherCityes.findIndex(x => x.text == self.destinationInternal)
+            if (!self.destinationInternal || index != (-1)) {
+              $('.v-select-list').addClass("sugestCity")
+              self.otherCityesOrigin2 = self.AllotherCityes
             } else {
               $('.v-select-list').removeClass("sugestCity")
             }
+          } else if (self.selectedSection.title != 'هتل' && self.selectedSection.title != 'آهوان') {
+            let variabel = [
+              { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
+              { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
+              { label: "Shiraz, SYZ - شیراز", code: "Shiraz, SYZ", text: "شیراز" },
+              { label: "Ahwaz, AWZ - اهواز", code: "Ahwaz, AWZ", text: "اهواز" },
+              { label: "Isfahan, IFN - اصفهان", code: "Isfahan, IFN", text: "اصفهان" },
+              { label: "Kish, KIH - کیش", code: "Kish, KIH", text: "کیش" },
+              { label: "Bandar abbas, BND - بندر عباس", code: "Bandar abbas, BND", text: "بندر عباس" },
+            ]
+            if (self.destinationInternal) {
+              let index = variabel.findIndex(x => x.text == self.destinationInternal)
+              if (index == (-1)) {
+                self.persianCityes2 = self.AllpersianCityes
+                // $('.v-select-list').removeClass("sugestCity")
+              } else {
+                // $('.v-select-list').addClass("sugestCity")
+                self.persianCityes2 = variabel
+              }
+            } else {
+              $('.v-select-list').addClass("sugestCity")
+              self.persianCityes2 = variabel
+            }
+          } else {
+            $('.v-select-list').removeClass("sugestCity")
           }
         })
 
         $(document).on('click', '.destinationInternalParent2', function () {
-          if (openDestination2) {
-            self.$refs.destinationInternal2.$refs.menu.isActive = false
-            openDestination2 = false
+          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[0].destinationInternal)
+          if (!self.allFlights[0].destinationInternal || index != (-1)) {
+            // $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin4 = self.AllotherCityes
           } else {
-            self.$refs.destinationInternal2.$refs.menu.isActive = true
-            openDestination2 = true
-            let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[0].destinationInternal)
-            if (!self.allFlights[0].destinationInternal || index != (-1)) {
-              // $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin4 = self.AllotherCityes
-            } else {
-              // $('.v-select-list').removeClass("sugestCity")
-            }
+            // $('.v-select-list').removeClass("sugestCity")
           }
         })
 
         $(document).on('click', '.destinationInternalParent3', function () {
-          if (openDestination3) {
-            self.$refs.destinationInternal3.$refs.menu.isActive = false
-            openDestination3 = false
+
+          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[1].destinationInternal)
+          if (!self.allFlights[1].destinationInternal || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin6 = self.AllotherCityes
           } else {
-            self.$refs.destinationInternal3.$refs.menu.isActive = true
-            openDestination3 = true
-            let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[1].destinationInternal)
-            if (!self.allFlights[1].destinationInternal || index != (-1)) {
-              $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin6 = self.AllotherCityes
-            } else {
-              $('.v-select-list').removeClass("sugestCity")
-            }
+            $('.v-select-list').removeClass("sugestCity")
           }
         })
 
         $(document).on('click', '.destinationInternalParent4', function () {
-          if (openDestination4) {
-            self.$refs.destinationInternal4.$refs.menu.isActive = false
-            openDestination4 = false
+          let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[2].destinationInternal)
+          if (!self.allFlights[2].destinationInternal || index != (-1)) {
+            $('.v-select-list').addClass("sugestCity")
+            self.otherCityesOrigin8 = self.AllotherCityes
           } else {
-            self.$refs.destinationInternal4.$refs.menu.isActive = true
-            openDestination4 = true
-            let index = self.AllotherCityes.findIndex(x => x.text == self.allFlights[2].destinationInternal)
-            if (!self.allFlights[2].destinationInternal || index != (-1)) {
-              $('.v-select-list').addClass("sugestCity")
-              self.otherCityesOrigin8 = self.AllotherCityes
-            } else {
-              $('.v-select-list').removeClass("sugestCity")
-            }
+            $('.v-select-list').removeClass("sugestCity")
           }
         })
 

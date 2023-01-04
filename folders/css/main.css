@@ -891,6 +891,16 @@ input::-webkit-inner-spin-button {
   font-weight: bold;
 }
 
+.overlinePrice::before{
+  content: '';
+  background-color: red;
+  height: 2px;
+  width: 79px;
+  position: absolute;
+  transform: rotate(-11deg);
+  top: 13px;
+}
+
 /* responsive */
 @media (min-width: 1264px) and (max-width: 1400px) {
   .v-expansion-panel-header {

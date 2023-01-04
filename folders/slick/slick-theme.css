@@ -192,6 +192,7 @@
 
   .slick-prev {
     right: 10px;
+    z-index: 2;
   }
   [dir="rtl"] .slick-prev {
     left: 10px;

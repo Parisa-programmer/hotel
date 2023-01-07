@@ -169,9 +169,9 @@
                         type="chip"
                         :loading="isLoading"
                       >
-                        <div v-if="isLogin" class="cursorPointer">
+                        <div v-if="isLogin" class="cursorPointer" @click="logOut">
                           <span class="font-14 grey--text d-inline-block ">
-                            پریسا قاسمی             
+                          {{userName}}         
                           </span>
                         </div>
                         <div v-else class="cursorPointer" @click="loginDialog = true;loginStep=1;resetLoginForm()">

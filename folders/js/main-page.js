@@ -1,4 +1,4 @@
-
+axios.defaults.headers.common['Client-Token'] = 'Ahuan-Wapi?123'
 const vuetify = new Vuetify({
   theme: {
     themes: {
@@ -12,6 +12,8 @@ const vuetify = new Vuetify({
   },
 })
 
+var codeSend = ''
+
 // import image1 from '../image/'
 
 new Vue({
@@ -19,6 +21,7 @@ new Vue({
   vuetify: new Vuetify(),
   data: {
     // header
+    userName: '',
     windowWidth: 0,
     showMenuSmall: false,
     activePage: null,
@@ -471,6 +474,7 @@ new Vue({
       if (this.loginStep == 3 || (this.loginStep == 2 && this.UserType == 2)) {
         setTimeout(() => {
           if (this.loginType == 'login') {
+            localStorage.setItem('isLoginAhuan', true)
             this.isLogin = true
           }
           this.loginDialog = false
@@ -917,46 +921,143 @@ new Vue({
       }
     },
     loginOrRegisterValidate() {
-      console.log();
+      var self = this
+      if (self.loginStep == 1) {
+        if (self.$refs.loginForm.validate()) {
+          // login section_________________________________________________
+          if (self.loginType == 'login') {
+            // user login__________________________________________________
+            if (self.UserType == 1) {
+              axios.post('https://ahuan.ir/api/login?mobile=' + self.loginForm.phone)
+                .then(function (response) {
+                  // handle success
+                  localStorage.setItem('user-name', response.data.result)
+                  if (response.data.sussecc) {
+                    axios.get('https://ahuan.ir/api/login?mobile=' + self.loginForm.phone)
+                      .then(function (response) {
+                        // handle success
+                        codeSend = response.data
+                        self.resendSeconds = 60
+                        self.alertText = 'کد تایید برای شما ارسال شد.'
+                        self.alertType = 'success'
+                        self.showAlert = true
+                        self.loginStep = 2
+                      })
+                      .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                      })
+
+                  } else {
+                    self.alertText = response.data.error
+                    self.alertType = 'error'
+                    self.showAlert = true
+                  }
+                })
+                .catch(function (error) {
+                  // handle error
+                  console.log(error);
+                })
+            }
+            // companey login______________________________________________
+            else {
+              let userInfo = {
+                email: self.loginForm.mail,
+                mobile: self.loginForm.phone,
+                password: self.loginForm.password,
+                rememberMe: true
+              }
+
+              axios.post('https://ahuan.ir/api/login', userInfo)
+                .then(function (response) {
+                  // handle success
+                  if (response.data.sussecc) {
+                    localStorage.setItem('user-name', response.data.result)
+                    localStorage.setItem('isLoginAhuan', true)
+                    self.userName = response.data.result
+                    self.alertText = 'عملیات ورود با موفقیت انجام شد.'
+                    self.alertType = 'success'
+                    self.showAlert = true
+                    self.loginStep = 2
+                  } else {
+                    self.alertText = response.data.error
+                    self.alertType = 'error'
+                    self.showAlert = true
+                  }
+                })
+                .catch(function (error) {
+                  // handle error
+                  console.log(error);
+                })
+            }
+          }
+          // register section_________________________________________________
+          else {
+            // user register__________________________________________________
+            if (self.UserType == 1) {
+
+            }
+            // companey register______________________________________________
+            else {
+
+            }
+          }
+          //     if ((self.loginForm.phone == '09054791374' && self.loginType == 'login') || self.loginType == 'register') {
+          //       if (self.UserType == 1) {
+          //         self.resendSeconds = 60
+          //         self.showAlert = true
+          //         self.alertText = 'کد تایید برای شما ارسال شد.'
+          //         self.alertType = 'success'
+          //         self.loginStep = 2
+          //       }
+          //       self.loginStep = 2
+          // }
+          //     else {
+
+          //       self.loginType = 'register'
+          //       self.showAlert = true
+          //       self.alertText = 'برای ورود به سایت باید ابتدا ثبت نام کنید.'
+          //       self.alertType = 'error'
+          //       self.loginForm.password = ''
+          //     }
+          //     this.$refs.loginForm.resetValidation()
+        }
+        else {
+          self.showAlert = true
+          self.alertText = 'لطفا فیلدها را بدرستی تکمیل کنید.'
+          self.alertType = 'error'
+        }
+      }
+      else if (self.loginStep == 2) {
+        if (self.loginForm.otp == codeSend) {
+          self.isLogin = true
+          self.userName = localStorage.getItem('user-name');
+          self.loginStep = 3
+        } else {
+          self.loginForm.otp == ''
+          self.showAlert = true
+          self.alertText = 'کد وارد شده صحیح نیست.'
+          self.alertType = 'error'
+        }
+      }
+    },
+    logOut() {
+      window.location.href = 'https://ahuan.ir/profile'
       // var self = this
-      // if (self.loginStep == 1) {
-      //   if (self.$refs.loginForm.validate()) {
-      //     if ((self.loginForm.phone == '09054791374' && self.loginType == 'login') || self.loginType == 'register') {
-      //       if (self.UserType == 1) {
-      //         self.resendSeconds = 60
-      //         self.showAlert = true
-      //         self.alertText = 'کد تایید برای شما ارسال شد.'
-      //         self.alertType = 'success'
-      //         self.loginStep = 2
-      //       }
-      //       self.loginStep = 2
-      //     }
-      //     else {
-
-      //       self.loginType = 'register'
-      //       self.showAlert = true
-      //       self.alertText = 'برای ورود به سایت باید ابتدا ثبت نام کنید.'
-      //       self.alertType = 'error'
-      //       self.loginForm.password = ''
-      //     }
-      //     this.$refs.loginForm.resetValidation()
-      //   } else {
+      // axios.put('https://ahuan.ir/api/login')
+      //   .then(function (response) {
+      //     // handle success
+      //     self.alertText = 'عملیات خروج از سایت انجام شد.'
+      //     self.alertType = 'success'
       //     self.showAlert = true
-      //     self.alertText = 'لطفا فیلدها را بدرستی تکمیل کنید.'
-      //     self.alertType = 'error'
-      //   }
-      // } else if (self.loginStep == 2) {
-      //   if (self.loginForm.otp == '1111') {
-      //     self.loginStep = 3
-      //     self.isLogin = true
-      //   } else {
-      //     self.loginForm.otp == ''
-      //     self.showAlert = true
-      //     self.alertText = 'کد وارد شده صحیح نیست.'
-      //     self.alertType = 'error'
-      //   }
-      // }
-
+      //     localStorage.setItem('isLoginAhuan', false)
+      //     localStorage.removeItem('user-name')
+      //     self.isLogin = false
+      //   })
+      //   .catch(function (error) {
+      //     // handle error
+      //     console.log(error);
+      //   })
     },
     georgian() {
       alert('hi')
@@ -1804,8 +1905,13 @@ new Vue({
     }
   },
   created() {
-    // window.location = 'https://ahuan.ir/flight'
-    // window.History.push({urlPath:'www.domain.com/page2.php'},"",'www.domain.com/page2.php')
+    if (localStorage.getItem('user-name')) {
+      this.userName = localStorage.getItem('user-name')
+    }
+    if (!!localStorage.getItem('isLoginAhuan')) {
+      this.isLogin = localStorage.getItem('isLoginAhuan')
+    }
+
     this.getCityesExternal();
     this.jquery()
     this.start()

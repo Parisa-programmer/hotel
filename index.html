@@ -170,7 +170,7 @@
                         :loading="isLoading"
                       >
                         <div v-if="isLogin" class="cursorPointer" @click="logOut">
-                          <span class="font-14 grey--text d-inline-block ">
+                          <span class="font-14 grey--text d-inline-block ml-4">
                           {{userName}}         
                           </span>
                         </div>
@@ -271,7 +271,7 @@
                 >
                   <span class="body-2 text-center d-block" style="font-family: Byekan !important;">کد 4 رقمی ارسال شده بر روی شماره موبایل را لطفا وارد نمایید.</span>
                   <div class="mb-2 mt-4 px-12">
-                    <v-otp-input pattern="\d*" v-model="loginForm.otp" class="mx-12"
+                    <v-otp-input pattern="\d*" v-model="loginForm.otp" class="mx-6 mx-md-12"
                       length="4"
                     ></v-otp-input>
                   </div>

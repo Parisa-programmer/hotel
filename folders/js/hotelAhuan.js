@@ -23,59 +23,59 @@ new Vue({
     // image slider
     items: [
       {
-        image: '../hotel/image/hotel1.jpeg',
+        image: '../image/hotel1.jpeg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel2.jpg',
+        image: '../image/hotel2.jpg',
         text: 'ارمنستان',
       },
       {
-        image: '../hotel/image/hotel3.jpeg',
+        image: '../image/hotel3.jpeg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel4.jpg',
+        image: '../image/hotel4.jpg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel5.jpg',
+        image: '../image/hotel5.jpg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel6.jpg',
+        image: '../image/hotel6.jpg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel7.jpg',
+        image: '../image/hotel7.jpg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel1.jpeg',
+        image: '../image/hotel1.jpeg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel2.jpg',
+        image: '../image/hotel2.jpg',
         text: 'ارمنستان',
       },
       {
-        image: '../hotel/image/hotel3.jpeg',
+        image: '../image/hotel3.jpeg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel4.jpg',
+        image: '../image/hotel4.jpg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel5.jpg',
+        image: '../image/hotel5.jpg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel6.jpg',
+        image: '../image/hotel6.jpg',
         text: 'هتل اسپیناس پالاس',
       },
       {
-        image: '../hotel/image/hotel7.jpg',
+        image: '../image/hotel7.jpg',
         text: 'هتل اسپیناس پالاس',
       },
     ],

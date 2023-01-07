@@ -5,12 +5,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/sass.sass">
-    <link rel="stylesheet" href="./css/isLoader.css">
-    <link rel="icon" href="./image/logoSite.png">
-    <link rel="icon" href="./image/logoSite.png" type="image/png" />
-    <link rel="icon" href="./image/logoSite.png" type="image/png" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/sass.sass">
+    <link rel="stylesheet" href="../css/isLoader.css">
+    <link rel="icon" href="../image/logoSite.png">
+    <link rel="icon" href="../image/logoSite.png" type="image/png" />
+    <link rel="icon" href="../image/logoSite.png" type="image/png" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"> -->
     <!-- disabel auto zoom -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>هتل آهوان چابکسر</title>
-    <link rel="stylesheet" href="./css/datepicker.css">
+    <link rel="stylesheet" href="../css/datepicker.css">
   </head>
   <body>
     <!-- header -->
@@ -30,7 +30,7 @@
         <v-app>
             <v-row class="header grey lighten-3" justify="center">
               <div class=" indexDiv pa-3">
-                <a href="https://ahuan.ir"><img height="20px" src="./image/logo-header.png" alt="صفحه اصلی" ></a>
+                <a href="https://ahuan.ir"><img height="20px" src="../image/logo-header.png" alt="صفحه اصلی" ></a>
                 <span class="headerSpan mb-1 .v-application .body-2">رزرو آنلاین خدمات گردشگری</span>
                 <v-icon class="mr-2 float-left">
                   mdi-phone-in-talk
@@ -144,14 +144,15 @@
                   type="card-heading"
                   :loading="isLoading"
                 >
-                  <v-select id="hotelName" ref="testRef"
+                  <v-autocomplete id="hotelName" ref="testRef"
+                    :menu-props="{ closeOnClick: true, }"
                     color="white"
                     prepend-icon="mdi-city"
                     class="headerBoxFields font-small-xs"
                     v-model="cityName"
                     :items="cityes"
                   ></v-select>
-                </v-skeleton-loader>
+                </v-autocomplete>
               </v-col>
               <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-0 mt-1 mt-sm-2 mt-md-4 mt-lg-6">
                 <v-skeleton-loader class="inputLoader"
@@ -482,7 +483,7 @@
                   >
                     <v-row class="pa-4 mb-0 pb-0">
                       <v-col cols="12" sm="12" md="4" lg="3" class="">
-                        <v-img class="rounded-lg" width="100%" src="./image/room1.jpg" alt="" />
+                        <v-img class="rounded-lg" width="100%" src="../image/room1.jpg" alt="" />
                       </v-col>
                       <v-col cols="12" sm="12" md="8" lg="6" class="pr-4 pb-0">
                         <h4 class="grey--text text--darken-3">{{room.name}}, {{room.room}} خوابه {{room.allPerson}} نفره</h4>
@@ -524,7 +525,7 @@
                             %20 تخفیف
                           </v-card-subtitle>
                         </v-row>
-                        <v-row class="mt-8 d-none d-lg-flex">
+                        <v-row class="mt-8 d-none d-lg-flex roomsExpansion">
                           <v-expansion-panels multiple v-model="room.room_facilities">
                             <v-expansion-panel @click="showRoomPanel('room_facilities',j)">
                               <v-expansion-panel-header >
@@ -637,7 +638,7 @@
               <!-- header -->
               <v-row class="header grey lighten-3" justify="center">
                 <div class="widthAll pa-3">
-                  <a href="https://ahuan.ir"><img height="20px" src="./image/logo-header.png" alt="صفحه اصلی" ></a>
+                  <a href="https://ahuan.ir"><img height="20px" src="../image/logo-header.png" alt="صفحه اصلی" ></a>
                   <span class="headerSpan mb-1 .v-application .body-2">رزرو آنلاین خدمات گردشگری</span>
                   <v-icon class="mr-2 float-left">
                     mdi-phone-in-talk
@@ -965,19 +966,19 @@
                       </v-row>
                       <v-row justify="center" class="footerImagesParent">
                         <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
-                          <img class="mx-2 mx-md-4" src="./image/logo (1).png"></img>
+                          <img class="mx-2 mx-md-4" src="../image/logo (1).png"></img>
                         </a>
                         <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
-                          <img class="mx-2 mx-md-4" src="./image/logo.png"></img>
+                          <img class="mx-2 mx-md-4" src="../image/logo.png"></img>
                         </a>
                         <a target="_blank" href="https://www.cao.ir/">
-                          <img class="mx-2 mx-md-4" src="./image/cao.png"></img>
+                          <img class="mx-2 mx-md-4" src="../image/cao.png"></img>
                         </a>
                         <a target="_blank" href="http://www.aira.ir/">
-                          <img class="mx-2 mx-md-4" src="./image/lohoaira.png"></img>
+                          <img class="mx-2 mx-md-4" src="../image/lohoaira.png"></img>
                         </a>
                         <a target="_blank" href="https://www.cao.ir/paxrights">
-                          <img class="mx-2 mx-md-4" src="./image/Passenger.png"></img>
+                          <img class="mx-2 mx-md-4" src="../image/Passenger.png"></img>
                         </a>
                       </v-row>
                       <v-row justify="center" class="mt-12">
@@ -988,10 +989,10 @@
                       </v-row>
                       <v-row justify="center" class="my-2">
                         <div class="px-3 py-1 mx-1 rounded-lg downloadButton" style="background-color: #56c59b;">
-                          <img class="mx-2 mx-md-4" src="./image/bazar-download.png"></img>
+                          <img class="mx-2 mx-md-4" src="../image/bazar-download.png"></img>
                         </div>
                         <div class="px-3 mr-x mt-sm-3 mt-md-0 py-1 rounded-lg downloadButton" style="background-color: #56c59b;">
-                          <img class="mx-2 mx-md-4" src="./image/google-download.png"></img>
+                          <img class="mx-2 mx-md-4" src="../image/google-download.png"></img>
                         </div>
                       </v-row>
                     </v-col>
@@ -1151,7 +1152,7 @@
         </v-row>
         <!-- loading -->
         <div v-if="isLoading" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9999 ;top:0;right:0;background:#00000048">
-          <img src="./image/logo-header.png" class="white pa-12 rounded-xl" alt="">
+          <img src="../image/logo-header.png" class="white pa-12 rounded-xl" alt="">
         </div>
         <!-- footer -->
         <v-row justify="center" class="grey lighten-3">
@@ -1204,19 +1205,19 @@
                 </v-row>
                 <v-row justify="center" class="footerImagesParent">
                   <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
-                    <img class="mx-2 mx-md-4" src="./image/logo (1).png"></img>
+                    <img class="mx-2 mx-md-4" src="../image/logo (1).png"></img>
                   </a>
                   <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
-                    <img class="mx-2 mx-md-4" src="./image/logo.png"></img>
+                    <img class="mx-2 mx-md-4" src="../image/logo.png"></img>
                   </a>
                   <a target="_blank" href="https://www.cao.ir/">
-                    <img class="mx-2 mx-md-4" src="./image/cao.png"></img>
+                    <img class="mx-2 mx-md-4" src="../image/cao.png"></img>
                   </a>
                   <a target="_blank" href="http://www.aira.ir/">
-                    <img class="mx-2 mx-md-4" src="./image/lohoaira.png"></img>
+                    <img class="mx-2 mx-md-4" src="../image/lohoaira.png"></img>
                   </a>
                   <a target="_blank" href="https://www.cao.ir/paxrights">
-                    <img class="mx-2 mx-md-4" src="./image/Passenger.png"></img>
+                    <img class="mx-2 mx-md-4" src="../image/Passenger.png"></img>
                   </a>
                 </v-row>
                 <v-row justify="center" class="mt-12">
@@ -1227,10 +1228,10 @@
                 </v-row>
                 <v-row justify="center" class="my-2">
                   <div class="px-3 py-1 mx-1 rounded-lg downloadButton" style="background-color: #56c59b;">
-                    <img class="mx-2 mx-md-4" src="./image/bazar-download.png"></img>
+                    <img class="mx-2 mx-md-4" src="../image/bazar-download.png"></img>
                   </div>
                   <div class="px-3 mr-x mt-sm-3 mt-md-0 py-1 rounded-lg downloadButton" style="background-color: #56c59b;">
-                    <img class="mx-2 mx-md-4" src="./image/google-download.png"></img>
+                    <img class="mx-2 mx-md-4" src="../image/google-download.png"></img>
                   </div>
                 </v-row>
               </v-col>
@@ -1242,12 +1243,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <!-- import component slides -->
-    <script src="./js/headerSite.js"></script>
+    <script src="../js/headerSite.js"></script>
 
-    <script src="./js/imageSlider.js"></script>
+    <script src="../js/hotelAhuan.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="./dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
-    <script src="./dist/mds.bs.datetimepicker.js"></script>
+    <link href="../dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
+    <script src="../dist/mds.bs.datetimepicker.js"></script>
     <script>
       $(document).ready(function(){
         

@@ -374,9 +374,8 @@ input::-webkit-inner-spin-button {
   box-shadow: 0 0 0;
 }
 
-.v-expansion-panels {
-  /* display: inline-grid !important;
-  width: auto; */
+.roomsExpansion .v-expansion-panels {
+  width: fit-content; 
 }
 
 .v-expansion-panel--active {

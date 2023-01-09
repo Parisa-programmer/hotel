@@ -924,11 +924,15 @@
                       <h3 class="ma-2 font-small-title-xs">{{item.city}}</h3>
                       <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">دو شب و سه روز</div>
                       <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">خدمات:پرواز ،هتل و ترانسفر فرودگاهی</div>
-                      <v-row align="center">
-                        <v-btn outlined color="red" class="ma-2 px-9">رزرو</v-btn>
-                        <v-spacer></v-spacer>
-                        <h3 class="overlinePrice relative">{{item.price}}</h3>
-                        <span class="caption mx-2" style="font-family:Byekan !important">تومان</span>
+                      <v-row align="center" justify="center">
+                        <a :href="item.link" class="text-decoration-none">
+                          <v-btn outlined color="red" dark class="my-2 ml-1 px-3">مشاهده پکیج</v-btn>
+                        </a>
+                        <a :href="item.download" class="text-decoration-none" download>
+                          <v-btn outlined color="red" class="my-2 ml-2 px-5">دانلود PDF</v-btn>
+                        </a>
+                        <!-- <h3 class="overlinePrice relative">{{item.price}}</h3>
+                        <span class="caption mx-2" style="font-family:Byekan !important">تومان</span> -->
                       </v-row>
                     </v-card>
                   </div>

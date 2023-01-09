@@ -304,31 +304,33 @@ new Vue({
         image: './folders/image/tourSlider/01.jpg',
         city: 'استانبول',
         text: 'هتل اسپیناس پالاس',
-        price: '6,800,000'
-      },
-      {
-        image: './folders/image/tourSlider/02.jpg',
-        city: 'آنتالیا',
-        text: 'هتل اسپیناس پالاس',
-        price: '12,400,000'
+        price: '6,800,000',
+        link:'/tour/Istanbul',
+        download:''
       },
       {
         image: './folders/image/tourSlider/03.jpg',
         city: 'دبی',
         text: 'هتل اسپیناس پالاس',
-        price: '16,000,000'
+        price: '16,000,000',
+        link:'/tour/Dubai',
+        download:''
       },
       {
         image: './folders/image/tourSlider/04.jpg',
-        city: 'عمان',
+        city: 'اروپا',
         text: 'هتل اسپیناس پالاس',
-        price: '13,890,000'
+        price: '13,890,000',
+        link:'/tour/Europe',
+        download:'/folders/image/tour/Europe-tour.jpg'
       },
       {
         image: './folders/image/tourSlider/05.jpg',
-        city: 'کوش آداسی',
+        city: 'تایلند',
         text: 'هتل اسپیناس پالاس',
-        price: '8,200,000'
+        price: '8,200,000',
+        link:'/tour/Thailand',
+        download:''
       },
     ],
     newItems: [

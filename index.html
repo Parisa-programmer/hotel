@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="./folders/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="./folders/slick/slick-theme.css" />
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css">
+    <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css">
+    <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script>
+    <script type="text/javascript" src="/folders/flipDown/js/main.js"></script>
   </head>
   <body>
     <!-- header -->
@@ -293,7 +297,7 @@
                   قبلا ثبت نام نکرده اید؟
                   <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
                 </span>
-                <span v-else-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                <span v-else-if="loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
                   {{loginForm.phone}}
                   <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
                 </span>
@@ -308,8 +312,9 @@
             </v-card>
           </v-dialog>
         </div>
-        <v-row class="d-none d-sm-flex">
-          <v-img src="./folders/image/flight-bg.jpg" height="260" alt="" />
+        <v-row class="d-none d-sm-flex mt-12 pt-12">
+          <img src="./folders/image/main-page-image.jpg" class="mt-2" width="100%" alt="" >
+          <!-- <v-img src="./folders/image/flight-bg.jpg" height="260" alt="" /> -->
         </v-row>
           <v-row justify="center">
             <div class="indexDiv">
@@ -334,7 +339,7 @@
             </div>
           </v-row>
           <!-- input box -->
-          <v-row class="mb-3" justify="center" v-show="(showSection && windowWidth < 600) || windowWidth >= 600">
+          <v-row class="mb-12" justify="center" v-show="(showSection && windowWidth < 600) || windowWidth >= 600">
             <div class="indexDiv">
               <v-form ref="headerInputForm" lazy-validation>
                 <v-card v-show="selectedSection.title != 'بیمه'" elevation="1" class=" rounded-lg px-sm-4 py-2 py-sm-4" :class="selectedSection.title == 'هتل' || selectedSection.title == 'تور' || selectedSection.title == 'اتوبوس' || selectedSection.title == 'قطار' ? '' : 'py-md-6'">
@@ -875,14 +880,31 @@
             </div> 
           </v-row>
           <!-- slider -->
-          <div v-show="windowWidth < 600" class="mt-6 type-wrap typeSliderMainPage">
+         <!-- <div v-show="windowWidth < 600" class="mt-6 type-wrap typeSliderMainPage">
             <div id="typed-strings" :class="">
               <span :class="!startTypeAnimation && 'red--text'">با آهوان به بعدش فکر نکن !</span>
               <span :class="!startTypeAnimation && 'red--text'">رزرو آنلاین خدمات گردشگری آهوان</span>
             </div>
             <span id="typed" style="white-space:pre;"></span>
-          </div>
-          <v-row v-show="windowWidth >= 600" class="my-2" justify="center">
+          </div> -->
+          <v-row class="mb-3 grey lighten-3 mt-sm-12" justify="center">
+            <div class="indexDiv mb-lg-12 relative">
+              <v-skeleton-loader class="my-6"
+                type="chip"
+                :loading="isLoading"
+              >
+                <h3 class="font-small-title-xs text-right text-sm-center text-md-right">زمان مانده تا 
+                  <span class="red--text">سال تحویل 1402</span>
+                </h3>
+                <div class="red mt-2 mb-4 d-block d-sm-none d-md-block" style="height:5px;width:85px"></div>
+              </v-skeleton-loader>
+              <v-row class="justify-center justify-sm-start">
+                <div v-show="!isLoading" id="flipdown" class="flipdown"></div>
+              </v-row>
+              <img v-if="!isLoading" src="/folders/image/1402.png" class="newYearImageMainPage absolute d-none d-sm-block" alt="">
+            </div>
+          </v-row>
+           <!-- <v-row v-show="windowWidth >= 600" class="my-2" justify="center">
             <div class="indexDiv rounded-lg hideOver ltr">
               <v-skeleton-loader 
                 type="image"
@@ -907,8 +929,24 @@
                 </v-carousel>
               </v-skeleton-loader>
             </div>
-          </v-row>
+          </v-row> -->
           <!-- sugest tour -->
+          <!-- flip down counter -->
+          <!-- <v-row v-show="windowWidth >= 600" justify="center" class="mb-6">
+            <h4 class="d-inline-block pa-2 " style="">
+              زمان مانده تا 
+              <span class="red--text">سال تحویل 1402</span>
+            </h4>
+          </v-row>
+          <v-row v-show="windowWidth >= 600" justify="center" class="mb-6">
+            <div class="indexDiv">
+              <v-row justify="center" class="relative" >
+                <img class="absolute" src="/folders/image/1402.png" height="100%" alt="" style="right:0;bottom:0;max-height:1100%">
+                <div id="flipdown" class="flipdown"></div>
+                <img class="absolute" src="/folders/image/1402.png" height="100%" alt="" style="left:0;bottom:0;max-height:1100%">
+              </v-row>
+            </div>
+          </v-row> -->
           <v-row class="my-6" justify="center">
             <v-sheet @mouseOver="clear()" @mouseLeave="start" max-width="100%" class="indexDiv transparent">
               <v-skeleton-loader class=" mt-4"
@@ -922,7 +960,9 @@
                     <v-card outlined class="ma-sm-4 cardSlider" >
                       <img width="100%" :src="item.image">
                       <h3 class="ma-2 font-small-title-xs">{{item.city}}</h3>
-                      <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">دو شب و سه روز</div>
+                      <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">شروع از: 
+                        {{item.startFrom}}
+                      </div>
                       <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">خدمات:پرواز ،هتل و ترانسفر فرودگاهی</div>
                       <v-row align="center" justify="center">
                         <a :href="item.link" class="text-decoration-none">
@@ -1028,6 +1068,20 @@
               <img v-if="!isLoading" src="./folders/image/mobile.png" class="mobileImageMainPage absolute d-none d-sm-block" alt="">
             </div>
           </v-row>
+          <!-- <v-row v-show="windowWidth >= 600" justify="center" class="mb-6">
+            <h4 class="d-inline-block pa-2 " style="">
+              
+            </h4>
+          </v-row> -->
+          <!-- <v-row v-show="windowWidth >= 600" justify="center" class="mb-6">
+            <div class="indexDiv">
+              <v-row justify="center" class="relative" >
+                <img class="absolute" src="/folders/image/1402.png" height="100%" alt="" style="right:0;bottom:0;max-height:1100%">
+                <div id="flipdown" class="flipdown"></div>
+                <img class="absolute" src="/folders/image/1402.png" height="100%" alt="" style="left:0;bottom:0;max-height:1100%">
+              </v-row>
+            </div>
+          </v-row> -->
           <!-- get knewes  -->
           <v-row class=" my-2 my-sm-12" justify="center">
             <div class="indexDiv ">

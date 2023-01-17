@@ -12,7 +12,7 @@ const vuetify = new Vuetify({
   },
 })
 
-var codeSend = ''
+var codeSend = null
 
 // import image1 from '../image/'
 
@@ -305,32 +305,33 @@ new Vue({
         city: 'استانبول',
         text: 'هتل اسپیناس پالاس',
         price: '6,800,000',
-        link:'/tour/Istanbul',
-        download:''
+        link: '/tour/Istanbul',
+        download: '',
       },
       {
         image: './folders/image/tourSlider/03.jpg',
         city: 'دبی',
         text: 'هتل اسپیناس پالاس',
         price: '16,000,000',
-        link:'/tour/Dubai',
-        download:''
+        link: '/tour/Dubai',
+        download: '/folders/image/tour/Dubai-tour.pdf'
       },
       {
         image: './folders/image/tourSlider/04.jpg',
         city: 'اروپا',
         text: 'هتل اسپیناس پالاس',
         price: '13,890,000',
-        link:'/tour/Europe',
-        download:'/folders/image/tour/Europe-tour.jpg'
+        link: '/tour/Europe',
+        download: '/folders/image/tour/Europe-tour.pdf',
+        startFrom: '4 اسفند'
       },
       {
         image: './folders/image/tourSlider/05.jpg',
         city: 'تایلند',
         text: 'هتل اسپیناس پالاس',
         price: '8,200,000',
-        link:'/tour/Thailand',
-        download:''
+        link: '/tour/Thailand',
+        download: ''
       },
     ],
     newItems: [
@@ -924,6 +925,7 @@ new Vue({
     },
     loginOrRegisterValidate() {
       var self = this
+
       if (self.loginStep == 1) {
         if (self.$refs.loginForm.validate()) {
           // login section_________________________________________________
@@ -997,7 +999,36 @@ new Vue({
           else {
             // user register__________________________________________________
             if (self.UserType == 1) {
-
+              axios.get('https://ahuan.ir/api/login?mobile=' + self.loginForm.phone)
+                .then(function (response) {
+                  // handle success
+                  codeSend = response.data
+                  self.resendSeconds = 60
+                  self.alertText = 'کد تایید برای شما ارسال شد.'
+                  self.alertType = 'success'
+                  self.showAlert = true
+                  self.loginStep = 2
+                  console.log(codeSend);
+                })
+                .catch(function (error) {
+                  // handle error
+                  console.log(error);
+                })
+              console.log(options);
+              // axios.post('https://ahuan.ir/api/register' , options)
+              //         .then(function (response) {
+              //           // handle success
+              //           // codeSend = response.data
+              //           // self.resendSeconds = 60
+              //           self.alertText = 'ثبت نام با موفقیت انجام شد.'
+              //           self.alertType = 'success'
+              //           self.showAlert = true
+              //           // self.loginStep = 2
+              //         })
+              //         .catch(function (error) {
+              //           // handle error
+              //           console.log(error);
+              //         })
             }
             // companey register______________________________________________
             else {
@@ -1031,10 +1062,46 @@ new Vue({
         }
       }
       else if (self.loginStep == 2) {
+        console.log(self.loginForm.otp, codeSend);
         if (self.loginForm.otp == codeSend) {
-          self.isLogin = true
-          self.userName = localStorage.getItem('user-name');
-          self.loginStep = 3
+          if (self.loginType == 'login') {
+            self.isLogin = true
+            self.userName = localStorage.getItem('user-name');
+            self.loginStep = 3
+          } else {
+            var options = {
+              displayname: self.loginForm.name + ' ' + self.loginForm.family,
+              email: self.loginForm.mail,
+              mobile: self.loginForm.phone,
+              password: "Test@123"
+            }
+            axios.post('https://ahuan.ir/api/register', options)
+              .then(function (response) {
+                // handle success
+                // codeSend = response.data
+                // self.resendSeconds = 60
+                if (response.data.sussecc) {
+                  self.alertText = 'ثبت نام با موفقیت انجام شد.'
+                  self.alertType = 'success'
+                  self.showAlert = true
+                  self.isLogin = true
+                  self.userName = options.displayname
+                  localStorage.setItem('user-name', options.displayname);
+                  localStorage.setItem('isLoginAhuan', true);
+                  self.loginStep = 3
+                } else{
+                  console.log(response.data.error);
+                  self.alertText = response.data.error
+                  self.alertType = 'error'
+                  self.showAlert = true
+                }
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+          }
+
         } else {
           self.loginForm.otp == ''
           self.showAlert = true
@@ -1911,7 +1978,7 @@ new Vue({
       this.userName = localStorage.getItem('user-name')
     }
     if (!!localStorage.getItem('isLoginAhuan')) {
-      this.isLogin = localStorage.getItem('isLoginAhuan')
+      // this.isLogin = localStorage.getItem('isLoginAhuan')
     }
 
     this.getCityesExternal();

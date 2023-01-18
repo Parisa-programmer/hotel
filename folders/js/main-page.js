@@ -323,7 +323,7 @@ new Vue({
         price: '13,890,000',
         link: '/tour/Europe',
         download: '/folders/image/tour/Europe-tour.pdf',
-        startFrom: '4 اسفند'
+        startFrom: '26 اسفند'
       },
       {
         image: './folders/image/tourSlider/05.jpg',
@@ -935,8 +935,9 @@ new Vue({
               axios.post('https://ahuan.ir/api/login?mobile=' + self.loginForm.phone)
                 .then(function (response) {
                   // handle success
-                  localStorage.setItem('user-name', response.data.result)
+                 
                   if (response.data.sussecc) {
+                    localStorage.setItem('user-name', response.data.result)
                     axios.get('https://ahuan.ir/api/login?mobile=' + self.loginForm.phone)
                       .then(function (response) {
                         // handle success

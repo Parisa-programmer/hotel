@@ -913,8 +913,8 @@ input::-webkit-inner-spin-button {
 }
 
 .even-odd-tabel th,.even-odd-tabel th span{
-  background-color: red !important;
-  color: #fff;
+  background-color: #e3c8af3d !important;
+  /* color: #fff; */
   font-size: 16px;
 }
 
@@ -924,7 +924,7 @@ input::-webkit-inner-spin-button {
 }
 
 .even-odd-tabel tbody tr:nth-child(even){
-  background-color: #ffe7e7 !important;
+  background-color: #e3c8af3d !important;
 }
 
 /* responsive */

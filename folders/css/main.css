@@ -912,19 +912,28 @@ input::-webkit-inner-spin-button {
   top: 13px;
 }
 
-.even-odd-tabel th,.even-odd-tabel th span{
+.even-odd-tabel th{
   background-color: #e3c8af3d !important;
-  /* color: #fff; */
+}
+
+.even-odd-tabel th span {
   font-size: 16px;
 }
 
 .even-odd-tabel tbody tr:nth-child(odd) {
   background-color: rgb(255, 255, 255) !important;
-  
 }
 
-.even-odd-tabel tbody tr:nth-child(even){
+.even-odd-tabel tbody tr:nth-child(even) {
   background-color: #e3c8af3d !important;
+}
+
+.cardButtonsTour {
+  min-width: 90% !important;
+}
+
+#animation-root,#root_raychat .raychat_chat_header {
+  background-color: #ff1500 !important;
 }
 
 /* responsive */

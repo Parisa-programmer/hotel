@@ -309,6 +309,15 @@ new Vue({
         download: '',
       },
       {
+        image: './folders/image/tourSlider/02.jpg',
+        city: 'ویتنام',
+        text: 'هتل اسپیناس پالاس',
+        price: '8,200,000',
+        link: '/tour/Vietnam/v-1/',
+        download: '/folders/image/tour/Vietnam-tour.jpg',
+        startFrom:'26 بهمن'
+      },
+      {
         image: './folders/image/tourSlider/03.jpg',
         city: 'دبی',
         text: 'هتل اسپیناس پالاس',

@@ -27,6 +27,37 @@
     <link rel="stylesheet" href="/folders/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" />
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-11034061729');
+    </script>
+    <script type="text/javascript">
+      window.RAYCHAT_TOKEN = '508e083e-4f49-4e50-a2d4-be92972eedac';
+        (function () {
+          d = document;
+          s = d.createElement("script");
+          s.src = "https://widget-react.raychat.io/install/widget.js";
+          s.async = 1;
+          d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
+    <style>
+      .hoverCard:hover{
+        box-shadow: 0 0 15px rgb(153, 153, 153);
+      }
+
+      .hoverCard .tourImage{
+        transition: all 500ms;
+      }
+      
+      .hoverCard:hover .tourImage{
+        width: 105%;
+        height: 105%;
+      }
+    </style>
   </head>
   <body>
     <!-- header -->
@@ -293,7 +324,7 @@
                   قبلا ثبت نام نکرده اید؟
                   <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
                 </span>
-                <span v-else-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                <span v-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
                   {{loginForm.phone}}
                   <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
                 </span>
@@ -309,133 +340,154 @@
           </v-dialog>
         </div>
         <div class="mt-12 pt-12" style="min-height: 80vh;">
+          <img width="100%" class="d-none d-sm-block" src="/folders/image/tour/استانبول 2000-250 (1).jpg" alt="">
           <v-row justify="center">
-            <div class="mt-6 indexDiv">
+            <div class="my-sm-6 indexDiv">
               <v-row justify="center">
                 <div class="mx-12 widthAll">
-                  <h3>تور های استانبول نوروز <span class="red--text">1402</span></h3>
+                  <!-- <h3>تور های استانبول ویژه نوروز <span class="red--text">1402</span></h3> -->
                 </div>
-                <!-- <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block">
+                <div class="mx-12 mt-sm-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard">
                   <v-row >
-                    <v-col cols="3">
-                      <v-img class="rounded-lg" src="/folders/image/hotel1.jpeg" height="100" width="250"></v-img>
-                    </v-col>
-                    <v-col cols="3">
-                      <v-row>
-                        <h4 class="" style="font-family:Byekan !important" >فرانسه و ترکیه</h4>
-                      </v-row>
-                      <v-row class="mt-3">
-                        <img src="/folders/image/tour/Turkish_Airlines_logo.png" width='150' alt="">
-                      </v-row>
-                      <v-row>
-                        <span class="body-2 mt-3" style="font-family:Byekan !important">تاریخ رفت: 27 اسفند و 4 اسفند</span>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center" class="rounded-lg hideOver">
+                        <div style="height:100px;width:250px">
+                          <img class="rounded-lg tourImage" src="/folders/image/tour/istanbul-1.jpg" height="100%" width="100%">
+                        </div>
                       </v-row>
                     </v-col>
-                    <v-divider class="" vertical></v-divider>
-                    <v-col cols="3">
-                      <v-row justify="center" class="mt-4">
-                        هتل 4 و 5 ستاره
-                      </v-row>
+                    <v-col cols="12" sm="6" lg="3">
                       <v-row justify="center">
-                        <span class="caption grey--text text--darken-3 mt-4" style="font-family:Byekan !important">6 شب پاریس + 2 شب استانبول</span>
+                        <h4 class="mt-2" style="font-family:Byekan !important" >استانبول - 3 شب و 4 روز</h4>
                       </v-row>
-                      <v-row justify="center">
-                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important"></span>
+                      <v-row justify="center" class="mt-1 mt-sm-4">
+                        <img src="/folders/image/tour/airtour-logo.jpg" class="mx-2" width='40' alt="">
+                        <img src="/folders/image/tour/gheshm-logo.jpg" class="mx-2" width='80' alt="">
+                        <img src="/folders/image/tour/mahan-logo.jpg" class="mx-2" width='60' alt="">
                       </v-row>
                     </v-col>
-                    <v-divider class="" vertical></v-divider>
-                    <v-col cols="3">
-                      <v-row justify='center' class="mb-2" align=center>
-                        کد تور:
-                        <img src="/folders/image/tour/n-001.png" alt="">
+                    <div class="d-block d-sm-none widthAll px-12 mx-1">
+                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
+                    </div>
+                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center" class="mt-sm-4">
+                        هتل های 3 و 4 و 5 ستاره
                       </v-row>
-                      <v-row justify='center'>
-                        <v-btn color="red" dark>مشاهده جزئیات</v-btn>
+                      <v-row justify="center" class="mt-1 mt-sm-4">
+                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  5.550.000 تومان</span>
+                      </v-row>
+                    </v-col>
+                    <div class="d-block d-sm-none widthAll px-12 mx-1">
+                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
+                    </div>
+                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center">
+                        <h4 class="mt-2 mt-sm-3">روزهای پرواز: همه روزه</h4>
+                      </v-row>
+                      <v-row justify='center' class="mt-4">
+                        <a href="./003-4" class="text-decoration-none">
+                          <v-btn color="red" class="px-9" dark>مشاهده جزئیات</v-btn>
+                        </a>
                       </v-row>
                     </v-col>
                   </v-row>
                 </div>
-                <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block">
+                <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard">
                   <v-row >
-                    <v-col cols="3">
-                      <v-img class="rounded-lg" src="/folders/image/hotel1.jpeg" height="100" width="250"></v-img>
-                    </v-col>
-                    <v-col cols="3">
-                      <v-row>
-                        <h4 class="" style="font-family:Byekan !important" >فرانسه - ایتالیا - ترکیه</h4>
-                      </v-row>
-                      <v-row class="mt-3">
-                        <img src="/folders/image/tour/Turkish_Airlines_logo.png" width='150' alt="">
-                      </v-row>
-                      <v-row>
-                        <span class="body-2 mt-3" style="font-family:Byekan !important">تاریخ رفت: 28 اسفند</span>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center" class="rounded-lg hideOver">
+                        <div style="height:100px;width:250px">
+                          <img class="rounded-lg tourImage" src="/folders/image/tour/istanbul-2.jpg" height="100%" width="100%">
+                        </div>
                       </v-row>
                     </v-col>
-                    <v-divider class="" vertical></v-divider>
-                    <v-col cols="3">
-                      <v-row justify="center" class="mt-4">
-                        هتل 4 و 5 ستاره
-                      </v-row>
+                    <v-col cols="12" sm="6" lg="3">
                       <v-row justify="center">
-                        <span class="caption grey--text text--darken-3 mt-2" style="font-family:Byekan !important">4 شب پاریس+2 شب ونیز-فلورانس +</span>
+                        <h4 class="mt-2" style="font-family:Byekan !important" >استانبول - 4 شب و 5 روز</h4>
                       </v-row>
-                      <v-row justify="center">
-                        <span class="caption grey--text text--darken-3" style="font-family:Byekan !important">2 شب رم + 2 شب استانبول</span>
+                      <v-row justify="center" class="mt-1 mt-sm-4">
+                        <img src="/folders/image/tour/airtour-logo.jpg" class="mx-2" width='40' alt="">
+                        <img src="/folders/image/tour/gheshm-logo.jpg" class="mx-2" width='80' alt="">
+                        <img src="/folders/image/tour/mahan-logo.jpg" class="mx-2" width='60' alt="">
                       </v-row>
                     </v-col>
-                    <v-divider class="" vertical></v-divider>
-                    <v-col cols="3">
-                      <v-row justify='center' class="mb-2" align=center>
-                        کد تور:
-                        <img src="/folders/image/tour/n-002.png" alt="">
+                    <div class="d-block d-sm-none widthAll px-12 mx-1">
+                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
+                    </div>
+                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center" class="mt-sm-4">
+                        هتل های 3 و 4 و 5 ستاره
                       </v-row>
-                      <v-row justify='center'>
-                        <v-btn color="red" dark>مشاهده جزئیات</v-btn>
+                      <v-row justify="center" class="mt-1 mt-sm-4">
+                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  6.100.000 تومان</span>
+                      </v-row>
+                    </v-col>
+                    <div class="d-block d-sm-none widthAll px-12 mx-1">
+                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
+                    </div>
+                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center">
+                        <h4 class="mt-2 mt-sm-3">روزهای پرواز: همه روزه</h4>
+                      </v-row>
+                      <v-row justify='center' class="mt-4">
+                        <a href="./004-5" class="text-decoration-none">
+                          <v-btn color="red" class="px-9" dark>مشاهده جزئیات</v-btn>
+                        </a>
                       </v-row>
                     </v-col>
                   </v-row>
                 </div>
-                <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block">
+                <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard">
                   <v-row >
-                    <v-col cols="3">
-                      <v-img class="rounded-lg" src="/folders/image/hotel1.jpeg" height="100" width="250"></v-img>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center" class="rounded-lg hideOver">
+                        <div style="height:100px;width:250px">
+                          <img class="rounded-lg tourImage" src="/folders/image/tour/istanbul-3.jpg" height="100%" width="100%">
+                        </div>
+                      </v-row>
                     </v-col>
-                    <v-col cols="3">
-                      <v-row>
-                        <h4 class="" style="font-family:Byekan !important" >فرانسه - اسپانیا - ایتالیا - ترکیه</h4>
-                      </v-row>
-                      <v-row class="mt-3">
-                        <img src="/folders/image/tour/Turkish_Airlines_logo.png" width='150' alt="">
-                      </v-row>
-                      <v-row>
-                        <span class="body-2 mt-3" style="font-family:Byekan !important">تاریخ رفت: 26 اسفند</span>
-                      </v-row>
-                      
-                    </v-col>
-                    <v-divider class="" vertical></v-divider>
-                    <v-col cols="3">
-                      <v-row justify="center" class="mt-4">
-                        هتل 4 و 5 ستاره
-                      </v-row>
+                    <v-col cols="12" sm="6" lg="3">
                       <v-row justify="center">
-                        <span class="caption grey--text text--darken-3 mt-2" style="font-family:Byekan !important">5 شب پاریس + 4 شب بارسلون +</span>
+                        <h4 class="mt-2" style="font-family:Byekan !important" >استانبول - 5 شب و 6 روز</h4>
                       </v-row>
-                      <v-row justify="center">
-                        <span class="caption grey--text text--darken-3" style="font-family:Byekan !important">4 شب رم + 2 شب استانبول</span>
+                      <v-row justify="center" class="mt-1 mt-sm-4">
+                        <img src="/folders/image/tour/airtour-logo.jpg" class="mx-2" width='40' alt="">
+                        <img src="/folders/image/tour/gheshm-logo.jpg" class="mx-2" width='80' alt="">
+                        <img src="/folders/image/tour/mahan-logo.jpg" class="mx-2" width='60' alt="">
                       </v-row>
                     </v-col>
-                    <v-divider class="" vertical></v-divider>
-                    <v-col cols="3">
-                      <v-row justify='center' class="mb-2" align=center>
-                        کد تور:
-                        <img src="/folders/image/tour/n-003.png" alt="">
+                    <div class="d-block d-sm-none widthAll px-12 mx-1">
+                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
+                    </div>
+                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center" class="mt-sm-4">
+                        هتل های 3 و 4 و 5 ستاره
                       </v-row>
-                      <v-row justify='center'>
-                        <v-btn color="red" dark>مشاهده جزئیات</v-btn>
+                      <v-row justify="center" class="mt-1 mt-sm-4">
+                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  6.790.000 تومان</span>
+                      </v-row>
+                    </v-col>
+                    <div class="d-block d-sm-none widthAll px-12 mx-1">
+                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
+                    </div>
+                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
+                    <v-col cols="12" sm="6" lg="3">
+                      <v-row justify="center">
+                        <h4 class="mt-2 mt-sm-3">روزهای پرواز: همه روزه</h4>
+                      </v-row>
+                      <v-row justify='center' class="mt-4">
+                        <a href="./005-6" class="text-decoration-none">
+                          <v-btn color="red" class="px-9" dark>مشاهده جزئیات</v-btn>
+                        </a>
                       </v-row>
                     </v-col>
                   </v-row>
-                </div> -->
+                </div>
               </v-row>
             </div>
           </v-row>
@@ -524,7 +576,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <!-- import component slides -->
-    <script src="/folders/js/tour/istanbul.js"></script>
+    <script src="/folders/js/tour/europ.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="/folders/dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
     <script src="/folders/dist/mds.bs.datetimepicker.js"></script>

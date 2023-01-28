@@ -124,6 +124,96 @@ new Vue({
         calories: '78.000.000 تومان',
       },
     ],
+    prices3: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '2,890 یورو + 25,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '3,890 یورو + 25,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '2,090 یورو + 21,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '1,290 یورو + 21,990,000 تومان',
+      },
+    ],
+    prices4: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '3,890 یورو + 23,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '5,590 یورو + 23,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '2,890 یورو + 19,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '1,690 یورو + 19,990,000 تومان',
+      },
+    ],
+    prices5: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '1,890 یورو + 28,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '2,890 یورو + 28,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '1,490 یورو + 22,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '890 یورو + 22,990,000 تومان',
+      },
+    ],
+    prices6: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '2,990 یورو + 23,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '4,090 یورو + 28,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '2,190 یورو + 19,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '1,190 یورو + 19,990,000 تومان',
+      },
+    ],
+    prices6: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '2,490 یورو + 27,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '3,590 یورو + 27,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '1,890 یورو + 24,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '990 یورو + 24,990,000 تومان',
+      },
+    ],
     flightHeaders: [
       // { text: '', sortable: false, value: 'image', align: 'center', },
       { text: '', align: 'center', sortable: false, value: 'from' },
@@ -168,6 +258,126 @@ new Vue({
         time2: '03:35',
         // text1: 'ISTIKA',
         // text2: 'TK874'
+      },
+    ],
+    flights2: [
+      {
+        from: 'پرواز از تهران به استانبول',
+        time1: '10:30',
+        time2: '07:30',
+        text1: 'IKAIST',
+        text2: 'TK879'
+      },
+      {
+        from: 'پرواز از استانبول به بارسلون',
+        time1: '14:10',
+        time2: '12:30',
+        text1: 'ISTBCN',
+        text2: 'TK1467'
+      },
+      {
+        from: 'پرواز از زوریخ به استانبول)',
+        time1: '18:50',
+        time2: '15:00',
+        text1: 'ZRHIST',
+        text2: 'TK1914'
+      },
+      {
+        from: 'پرواز از استانبول به تهران',
+        time1: '23:55',
+        time2: '19:20',
+        text1: 'ISTIKA',
+        text2: 'TK874'
+      },
+    ],
+    flights3: [
+      {
+        from: 'پرواز از تهران به استانبول',
+        time1: '01:55',
+        time2: '04:55',
+        text1: 'IKAIST',
+        text2: 'TK875'
+      },
+      {
+        from: 'پرواز از استانبول به پاریس',
+        time1: '08:25',
+        time2: '10:05',
+        text1: 'ISTCDG',
+        text2: 'TK1821'
+      },
+      {
+        from: 'پرواز از رم به استانبول',
+        time1: '15:30',
+        time2: '19:05',
+        text1: 'FCOIST',
+        text2: 'TK1866'
+      },
+      {
+        from: 'پرواز از استانبول به تهران',
+        time1: '19:20',
+        time2: '23:55',
+        text1: 'ISTIKA',
+        text2: 'TK872'
+      },
+    ],
+    flights4: [
+      {
+        from: 'پرواز از تهران به استانبول',
+        time1: '01:55',
+        time2: '04:55',
+        text1: 'IKAIST',
+        text2: 'TK875'
+      },
+      {
+        from: 'پرواز از استانبول به پاریس',
+        time1: '08:25',
+        time2: '10:05',
+        text1: 'ISTCDG',
+        text2: 'TK1821'
+      },
+      {
+        from: 'پرواز از پاریس به استانبول',
+        time1: '13:15',
+        time2: '18:45',
+        text1: 'CDGIST',
+        text2: 'TK1824'
+      },
+      {
+        from: 'پرواز از استانبول به تهران',
+        time1: '19:20',
+        time2: '23:55',
+        text1: 'ISTIKA',
+        text2: 'TK874'
+      },
+    ],
+    flights5: [
+      {
+        from: 'پرواز از تهران به استانبول',
+        time1: '04:55',
+        time2: '01:55',
+        text1: 'IKAIST',
+        text2: 'TK875'
+      },
+      {
+        from: 'پرواز از استانبول به ژنو',
+        time1: '10:35',
+        time2: '09:20',
+        text1: 'ISTGVA',
+        text2: 'TK1917'
+      },
+      {
+        from: 'پرواز از زوریخ به استانبول',
+        time1: '18:50',
+        time2: '15:00',
+        text1: 'CDGIST',
+        text2: 'TK1824'
+      },
+      {
+        from: 'پرواز از استانبول به تهران',
+        time1: '23:55',
+        time2: '19:20',
+        text1: 'ISTIKA',
+        text2: 'TK874'
       },
     ],
     pricesHeaderIstanbul: [
@@ -223,6 +433,59 @@ new Vue({
       // '/folders/image/tour/دبی-5.jpg',
       // '/folders/image/tour/دبی-6.jpg',
       // '/folders/image/tour/دبی-7.jpg',
+    ],
+    urope001Images: [
+      '/folders/image/tour/اروپا001-1.jpg',
+      '/folders/image/tour/اروپا001-2.jpg',
+      '/folders/image/tour/اروپا001-3.jpg',
+      '/folders/image/tour/اروپا001-4.jpg',
+      '/folders/image/tour/اروپا001-5.jpg',
+      '/folders/image/tour/استانبول-1.jpg',
+      '/folders/image/tour/استانبول-2.jpg',
+      '/folders/image/tour/استانبول-3.jpg',
+      '/folders/image/tour/استانبول-4.jpg',
+      '/folders/image/tour/استانبول-5.jpg',
+      '/folders/image/tour/استانبول-6.jpg',
+    ],
+    urope002Images: [
+      '/folders/image/tour/اروپا002-1.jpg',
+      '/folders/image/tour/اروپا002-2.jpg',
+      '/folders/image/tour/اروپا002-3.jpg',
+      '/folders/image/tour/اروپا002-4.jpg',
+      '/folders/image/tour/اروپا002-5.jpg',
+      '/folders/image/tour/استانبول-1.jpg',
+      '/folders/image/tour/استانبول-2.jpg',
+      '/folders/image/tour/استانبول-3.jpg',
+      '/folders/image/tour/استانبول-4.jpg',
+      '/folders/image/tour/استانبول-5.jpg',
+      '/folders/image/tour/استانبول-6.jpg',
+    ],
+    urope004Images: [
+      '/folders/image/tour/اروپا004-1.jpg',
+      '/folders/image/tour/اروپا004-2.jpg',
+      '/folders/image/tour/اروپا004-3.jpg',
+      '/folders/image/tour/اروپا004-4.jpg',
+      '/folders/image/tour/اروپا004-5.jpg',
+      '/folders/image/tour/استانبول-1.jpg',
+      '/folders/image/tour/استانبول-2.jpg',
+      '/folders/image/tour/استانبول-3.jpg',
+      '/folders/image/tour/استانبول-4.jpg',
+      '/folders/image/tour/استانبول-5.jpg',
+      '/folders/image/tour/استانبول-6.jpg',
+    ],
+    urope006Images: [
+      '/folders/image/tour/اروپا006-1.jpg',
+      '/folders/image/tour/اروپا006-2.jpg',
+      '/folders/image/tour/اروپا006-3.jpg',
+      '/folders/image/tour/اروپا006-4.jpg',
+      '/folders/image/tour/اروپا006-5.jpg',
+      '/folders/image/tour/اروپا006-6.jpg',
+      '/folders/image/tour/استانبول-1.jpg',
+      '/folders/image/tour/استانبول-2.jpg',
+      '/folders/image/tour/استانبول-3.jpg',
+      '/folders/image/tour/استانبول-4.jpg',
+      '/folders/image/tour/استانبول-5.jpg',
+      '/folders/image/tour/استانبول-6.jpg',
     ],
     showMore1: false,
     showMore2: false,
@@ -1768,10 +2031,10 @@ new Vue({
       {
         نام: 'Hilton jumeirah',
         درجه: 5,
-        موقعیت: 'شیخ زاید',
-        دوتخته: '35900000',
-        تکنفره: '62500000',
-        کودک: '19800000',
+        موقعیت: 'جمیرا',
+        دوتخته: '42400000',
+        تکنفره: '75700000',
+        کودک: '23200000',
       },
       {
         نام: 'conrad',

@@ -1424,6 +1424,13 @@ input::-webkit-inner-spin-button {
     margin: 0;
   }
 
+  .tabelTourId.even-odd-tabel td:nth-child(1){
+    border-top: 1px solid #666666 !important;
+    border-bottom: 1px solid #757575 !important;
+  }
+  
+  .tabelTourId.even-odd-tabel .v-select__slot
+
   @media (min-width: 500px) and (max-width: 599px) {
     .indexDiv {
       width: 500px !important;

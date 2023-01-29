@@ -101,13 +101,13 @@
       color: #fff;
     }
 
-    .activeTab {
+    .active {
       color: rgb(44, 44, 44) !important;
       background: #fff;
       z-index: 1;
     }
 
-    .activeTab::before {
+    .active::before {
       content: "";
       position: absolute;
       height: 15px;
@@ -119,15 +119,13 @@
     }
 
     .countryNmae{
-      margin-right:-52px;
-      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
+      margin-right:-52px;background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
       font-size: 62px;
       font-weight: bold;
     }
 
     .tour-date {
-      margin-right:-52px;
-      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
+      margin-right:-52px;background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
     }
 
     .main-div{
@@ -142,32 +140,6 @@
       font-weight: normal;
       font-size: small;
       text-decoration: underline;
-    }
-
-    .even-odd-tabel tbody tr:nth-child(even) {
-      background-color: #e3c8af98 !important;
-    }
-
-    .even-odd-tabel th {
-      background-color: #e3c8afe0 !important;
-    } 
-
-    .theme--light.v-data-table .v-data-footer,.v-application--is-ltr .v-data-footer__pagination{
-      direction: ltr !important;
-    }
-
-    .v-application--is-ltr .v-data-footer__select {
-      margin-left: 14px;
-      margin-right: auto;
-    }
-
-    .even-odd-tabel{
-      width: 100% !important;
-    }
-
-    .v-data-table,.v-data-table>.v-data-table__wrapper>table>tbody>tr>td,.theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>thead>tr:last-child>th {
-      border: 1px solid #9d9d9d;
-      font-weight: bold;
     }
 
     .galeryImageParent{
@@ -196,14 +168,10 @@
     .galeryImage:hover{
       box-shadow: 0 0 5px rgb(59, 59, 59);
     }
-
-    .halfLi{
-      width:49%
-    }
     
     @media (min-width:960px) and (max-width:1263px){
       .main-div{
-        margin-top:-245px;
+        margin-top:-265px;
       }
       
       .countryNmae{
@@ -217,7 +185,7 @@
     
     @media (min-width:600px) and (max-width:959px) {
       .main-div{
-        margin-top:-205px;
+        margin-top:-210px;
       }      
       
       .tourImageBackground {
@@ -255,14 +223,10 @@
       .galeryImageParent{
         width: 45%;
       }
-
-      .halfLi{
-        width:100%
-      }
       
       @media (max-width:774px) {
         .main-div{
-          margin-top:-155px;
+          margin-top:-164px;
         }
 
         .tourImageBackground {
@@ -293,7 +257,7 @@
       }
 
       .main-div{
-        margin-top:-170px;
+        margin-top:-200px;
       }
 
       .backgroundImageTour{
@@ -392,17 +356,15 @@
       .tourPageTitle {
         width: 500px;
       }
-      
-      .v-data-table>.v-data-table__wrapper>table>tbody>tr>td,.theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>thead>tr:last-child>th {
-        border: unset;
-      }
 
       .galeryImageParent{
         width: 95%;
       }
 
-      .halfLi{
-        width:100%
+      @media (max-width:400px){
+        .main-div {
+          margin-top: -185px;
+        }
       }
     }
   </style>
@@ -492,7 +454,7 @@
                           dense
                         >
                           <v-list-item-group v-model="activePage"
-                            activeTab-class="red--text text--accent-4 "
+                            active-class="red--text text--accent-4 "
                           >
                             <a href="" class="text-decoration-none">
                             <v-list-item @click="showMenuSmall = false">
@@ -689,33 +651,31 @@
         <div class="mt-9 mt-sm-12 pt-12">
           <v-row justify="center">
             <div class="widthAll relative">
-              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background8.jpg" alt="">
+              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background19.jpg" alt="">
               <div class="tourImageBackground"></div>
             </div>
             <div class="mb-12 indexDiv main-div" style="z-index: 3">
-              <div>
-                <span class="white--text countryNmae px-12">استانبول _ 5 شب و 6 روز</span>
+              <div class="mb-1"><span class="white--text countryNmae px-12">دور اروپا</span></div>
+              <div class="mb-md-4">
+                <b class="white--text px-12 tour-date">(فرانسه - بلژیک - هلند - آلمان - سوئیس - ایتالیا)</b>
               </div>
-              <div>
-                <b class="white--text px-12 tour-date">تاریخ پرواز : همه روزه (اعتبار پکیج 
-                  تا <span class="white--text text-decoration-underline">9 اسفند</span>)</b>
-              </div>
-              <v-row class='mt-9 mt-sm-0 mt-lg-12 pt-6 pt-md-12' style="">
-                <v-slide-group ltr v-model="tab" class="ltr" hide-arrows center-activeTab>
-                  <v-slide-item v-slot="{ activeTab }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 0 && 'activeTab'" @click="tab = 0">لیست قیمت</h3>
-                  </v-slide-item>
-                  <v-slide-item v-slot="{ activeTab }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 1 && 'activeTab'" @click="tab = 1">خدمات تور</h3>
-                  </v-slide-item>
-                  <v-slide-item v-slot="{ activeTab }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 2 && 'activeTab'" @click="tab = 2">مدارک مورد نیاز</h3>
+              <b class="white--text px-12 tour-date ">حرکت : 25 اسفند</b>
+              <v-row class='mt-6 mt-sm-0 pt-6 pt-md-12'>
+                <v-slide-group ltr v-model="tab" class="ltr" hide-arrows center-active>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 0 && 'active'" @click="tab = 0">خدمات تور</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ active }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'activeTab'" @click="tab = 3">نکات ضروری</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 1 && 'active'" @click="tab = 1">برنامه سفر</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ active }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'activeTab'" @click="tab = 4">گالری تصاویر</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 2 && 'active'" @click="tab = 2">مدارک مورد نیاز</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'active'" @click="tab = 3">مسیر تور</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'active'" @click="tab = 4">گالری تصاویر</h3>
                   </v-slide-item>
                 </v-slide-group>
               </v-row>
@@ -723,96 +683,239 @@
               <v-row class="white py-md-9 px-6">
                 <div class="widthAll" v-if="tab == 0">
                   <v-row>
-                    <v-col cols="12" lg="12">
-                      <h4 class="mb-4 mt-4 mt-md-0">
-                        <v-icon size="5" color="red" class="ml-2">mdi-circle</v-icon>
-                        قیمت های اعلام شده بر حسب تومان می باشد.
-                      </h4>
+                    <v-col cols="12" md="6">
+                      <ul class="mt-md-9 mr-md-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">بيمه ي مسافرتي</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">هزینه اخذ ويزاي دبی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">هزینه اخذ ويزاي شنگن</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">ترانسفرفرودگاهی با اتوبوس هاي توريستي</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">بلیط رفت و برگشت هواپیمادر مسیرهای بین المللی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">اقامت در هتل هاي چهار ستاره وپنج ستاره همراه با صبحانه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">گشت شهری با اتوبوسهای توریستی به همراه تورلیدرفارسی زبان</li>
+                      </ul>
+                    </v-col>
+                    <div class="d-md-none widthAll my-sm-4 px-12">
+                      <hr class=" mx-12 my-4">
+                    </div>
+                    <v-col cols="12" md="6" class="mb-6 mb-md-0">
+                      <!-- <v-row class="" justify="center">
+                        هتل های 5 ستاره
+                      </v-row> -->
                       <v-row class="mb-2" justify="center">
-                        <v-data-table 
-                          :headers="pricesHeaderIstanbul"
-                          hide-default-footer
-                          :items="pricesItemsIstanbul3"
-                          disable-pagination
-                          class=" rounded-lg even-odd-tabel tabelTourId"
-                          style="border: 2px solid #9d9d9b !important;"
+                        <h2 class="tabel-tour-title">اقامت در هتل های<span class="red--text"> 3 و 4 و 5 ستاره</span></h2>
+                        <!-- <img src="/folders/image/tour/Turkish_Airlines_logo.png" height="35" class="mr-3" alt=""> -->
+                      </v-row>
+                      <v-row class="mt-3" justify="center">
+                        <v-data-table hide-default-footer hide-default-header style="box-shadow: 0 0 21px #dbdbdb !important;"
+                          :headers="priceHeaders"
+                          :items="prices10"
+                          class="even-odd-tabel rounded-lg hideOver tabelTour"
                         >
-                        </v-data-table>
+                        <template
+                          v-slot:footer
+                        >
+                          <div>
+                            <v-row class="py-4 body-2 text-center" justify="center" style="font-family: Byekan !important;border-top:1px solid rgb(212, 212, 212)">
+                              
+                              نرخ INF (زیر 2 سال) 10% ریالی + 10% ارزی نرخ بزرگسال
+                            </v-row>
+                          </div>
+                        </template>
+                      </v-data-table>
                       </v-row>
                     </v-col>
                   </v-row>
                 </div>
                 <div class="widthAll" v-else-if="tab == 1">
                   <v-row>
-                    <v-col cols="12" md="12">
-                      <ul class=" mr-md-6">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بلیت رفت و برگشت هواپیما</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">اقامت به همراه صبحانه</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر فرودگاهی رفت و برگشت</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">به همراه تور لیدر فارسی زبان</li>   
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه مسافرتی تا سقف 10.000 یورو با پوشش کرونا</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">هدیه ویژه آهوان گشت رایگان خرید به همراه ناهار</li>                    
-                      </ul>
+                    <v-col cols="12" lg="6">
+                      <p class="mt-4 mt-lg-0 mb-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز اول :</b>
+                        حضور در فرودگاه امام خمینی جهت پرواز به پاریس و انتقال به هتل,گشت منطقه لدفنس
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دوم :</b>
+                        گشت شهری پاریس ,قایق سواری بر روی رود سن و بازدید از موزه عطر
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز سوم :</b>
+                        گشت شهری پاریس وبازدید از موزه لوور
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز چهارم :</b>
+                        تور اختیاری دیزنی لند
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز پنجم :</b>
+                        ترانسفر زمینی به آمستردام ، انتقال به هتل
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز ششم :</b>
+                        گشت شهری آمستردام وقایق سواری در کانالهای شهر آمستردام
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هفتم :</b>
+                        ترانسفر به کلن ،گشت شهری کلن ،انتقال به هتل
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هشتم :</b>
+                        ترانسفر زمینی به فرانکفورت ،انتقال به هتل
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز نهم :</b>
+                        گشت شهری فرانکفورت
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دهم :</b>
+                        ترانسفر زمینی به مونیخ ،انتقال به هتل
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز یازدهم :</b>
+                        گشت شهری مونیخ
+                      </p>
+                      <p class="mt-4 mt-lg-0 mb-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دوازدهم :</b>
+                        ترانسفر زمینی به اینسبروک و گشت شهری اینسبروک ،انتقال به هتل
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز سیزدهم :</b>
+                        ترانسفر زمینی به زوریخ و در مسیر بازدید از لیختن اشتاین ،انتقال به هتل
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز چهاردهم :</b>
+                        گشت شهری زوریخ همراه با قایق سواری وبازدید از آبشار راین
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز پانزدهم :</b>
+                        گشت شهری لوسرن وبازدید از کوه ریگی
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز شانزدهم :</b>
+                        ترانسفر زمینی به میلان ،انتقال به هتل ،گشت شهری میلان
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هفدهم :</b>
+                        گشت شهری ونیز
+                      </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هجدهم :</b>
+                        ترانسفر زمینی رم ، انتقال به هتل و در مسیربازدید از فلورانس
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز نوزدهم :</b>
+                        گشت شهری رم شامل بازدید از بنای کولوسئوم
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز بیست :</b>
+                        وقت آزاد
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز بیست و یکم :</b>
+                        انتقال به فرودگاه جهت پرواز به دبی و انتقال به هتل
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز بیست و دوم :</b>
+                        گشت شهری دبی همراه با صرف شام
+                      </p>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز بیست و سوم :</b>
+                        انتقال به فرودگاه جهت پرواز به تهران
+                      </p>
+                    </v-col>
+                    <div class="d-lg-none widthAll my-sm-4 px-12">
+                      <hr class=" mx-12 my-4">
+                    </div>
+                    <v-col cols="12" lg="6">
+                      <v-row class="mb-7" justify="center">
+                        <h2 class="tabel-tour-title"> حرکت 25 اسفند هواپیمایی</h2>
+                        <img src="/folders/image/tour/Turkish_Airlines_logo.png" class="mr-3 logo-tour-title" alt="">
+                      </v-row>
+                      <v-row justify="center">
+                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                          hide-default-footer
+                          hide-default-header
+                          :headers="flightHeaders"
+                          :items="flights9"
+                          class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan"
+                        >
+                        </v-data-table>
+                      </v-row>
                     </v-col>
                   </v-row>
                 </div>
                 <div class="widthAll" v-else-if="tab == 2">
                   <v-row>
                     <v-col cols="12" md="12">
-                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای استانبول</h3>
-                      <ul class="my-6 mr-9">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل گذرنامه به همراه حداقل 7 ماه اعتبار</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارت واکسن و یا تست پی سی آر منفی</li>
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز سفارت سوئیس</h3>
+                      <ul class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">وقت سفارت اعلام شده از جانب شرکت آهوان غیر قابل تغییر می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای متقاضیان بالای 12 سال انگشت نگاری الزامی
+                          <span v-if="!showMore1"> ...</span>
+                          <span v-if="!showMore1" class=" mx-3 cursorPointer see-more" @click="showMore1 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore1">است.</span>
+                        </li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسافرینی که در 24 ماه اخیر ویزای شنگن دریافت نموده اند، پرونده ایشان
+                          بدون انگشت نگاری و به صورت غیرحضوری پذیرفته می شود (بجز شنگن صادره از سفارت یونان)
+                        </li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام مدارک فارسی جهت ارائه به سفارت فرانسه باید به زبان انگلیسی ترجمه شوند. (مدارک صادر شده به انگلیسی پذیرفته می شوند.)</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام کپی ها در سایز A4  و یک رو گرفته شوند.</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت امضا شده با حداقل 6 ماه اعتبار از تاریخ سفر و 2 صفحه خالی رو به روی هم + کپی از تمام صفحات ویزاهای لیبل دار موجود در پاسپورت</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت های قدیمی + کپی از تمام صفحات ویزاهای لیبل دار موجود در آنها</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل شناسنامه ها + اصل کارت ملی</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify"> قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.</li>
+                      </ul>
+                      <h3 class="tabel-tour-title red--text">مدارک شغلی</h3>
+                      <ul class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پزشکان، مهندسین، وکلا: پروانه مطب، نظام مهندسی، وکالت+ کارتهای صنفی مربوطه
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + آخرین فیش حقوقی آخر با مهر 
+                          <span v-if="!showMore2"> ...</span>
+                          <span v-if="!showMore2" class="see-more mx-3 cursorPointer" @click="showMore2 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore2">+ گواهی اشتغال به کار</span>
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو آخرین فیش حقوقی (در صورت وجود)
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + آخرین فیش حقوقی</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
+                        </li>
+                      </ul>
+                      <h3 class="tabel-tour-title red--text">مدارک مالی</h3>
+                      <ul class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
+                          <span v-if="!showMore3"> ...</span>
+                          <span v-if="!showMore3" class="see-more mx-3 cursorPointer" @click="showMore3 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore3">محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)</span>
+                        </li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
+                        </li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید سوئیس: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون،سینوفارم،سینواک
+                        </li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت آهوان الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
+                        </li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.</li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.
+                        </li>
+                        <!-- <li class="my-3 grey--text text--darken-3 bold text-tour"></li> -->
                       </ul>
                     </v-col>
-                  </v-row>
-                </div>
-                <div class="widthAll" v-else-if="tab == 3">
-                  <v-row>
-                    <v-col cols="12" md="12">
-                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">نکات ضروری تورهای استانبول</h3>
-                      <ul class="my-6 mr-9">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بار مجاز مسافر 30 کیلوگرم می باشد.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">حداقل اعتبار پاسپورت 7 ماه می باشد.</li>
-                        
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          نرخ نوزاد زیر 2 سال 850.000 تومان می‌باشد.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify"> به نفر سوم در اتاق سرویس اضافه تعلق میگیرد.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          پرداخت حداقل 50% مبلغ تور هنگام رزرو الزامی است.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          مسئولیت کنترل ممنوعیت خروج بعهده مسافر می باشد.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          بیمه افراد بالای 60 سال الزامی و هزینه آن جداگانه محاسبه می‌گردد.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اطلاعات ترانسفر و گیت مربوطه در فرودگاه استانبول در معرفی نامه هتل درج شده است.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          قیمتهای موجود در پکیج با نرخ دلار 45.000 تومان
-
-                          محاسبه شده است در صورت هرگونه افزایش
-                          نرخ مابه التفاوت محاسبه خواهد شد.
-                        </li>
-                      </ul>
+                    <v-col cols="12" md="12" >
+                      <v-row justify="center" class="heightAll mb-9 align-center">
+                        <a href="/folders/image/tour/Documents-the-Swiss-Embassy.jpg" download class="text-decoration-none">
+                          <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت سوئیس</v-btn>
+                        </a>
+                      </v-row>
                     </v-col>
                   </v-row>
                 </div>
                 <div class="widthAll" v-else-if="tab == 4">
                   <v-row justify="center">
-                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in istanbulImages" :keys="i">
+                  
+                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in urope009Images" :keys="i">
                       <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item"></v-img>
                     </div>
                   </v-row>
+                  
                   <v-dialog
                     v-model="imageDialog"
                     width="1000"
                   >
                     <div class="relative">
+                      
                       <v-carousel v-model="imageNumber">
                         <v-carousel-item
-                          v-for="(item,i) in istanbulImages" 
+                          v-for="(item,i) in urope009Images" 
                           :keys="i"
                         >
                           <img :src="item" alt="">
@@ -825,7 +928,7 @@
               </v-row>
               <v-row class="white px-3 px-sm-9 py-5 mb-2 mb-sm-12 mt-2 mt-sm-6 rounded-xl justify-center">
                 <b class="d-inline-block grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;">جهت اخذ اطلاعات بیشتر با کارشناسان ما تماس حاصل فرمایید.</b>
-                <b class="d-inline-block  grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;"><a class="widthAll red--text mx-2" href="tel:02141889" style="text-decoration:none">تلفن: 41889 - 021</a></b>
+                <b class="d-inline-block  grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;"><a class="widthAll red--text mx-2" href="tel:02141889" style="text-decoration:none">تلفن: 41889-021</a></b>
               </v-row>
             </div>
           </v-row>

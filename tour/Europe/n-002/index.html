@@ -684,17 +684,16 @@
                   </v-slide-item>
                 </v-slide-group>
               </v-row>
-              
               <v-row class="white py-md-9 px-6">
                 <div class="widthAll" v-if="tab == 0">
                   <v-row>
                     <v-col cols="12" md="6">
                       <ul class="mt-md-9 mr-md-6">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">هزینه اخذ ويزاي شنگن</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">بيمه ي مسافرتي</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">اقامت در هتل هاي چهار ستاره وپنج ستاره همراه با صبحانه</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">بلیط رفت و برگشت هواپیمادر مسیرهای بین المللی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">هزینه اخذ ويزاي شنگن</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">ترانسفرفرودگاهی با اتوبوس هاي توريستي</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">بلیط رفت و برگشت هواپیمادر مسیرهای بین المللی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">اقامت در هتل هاي چهار ستاره وپنج ستاره همراه با صبحانه</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">گشت شهری با اتوبوسهای توریستی به همراه تورلیدرفارسی زبان</li>
                       </ul>
                     </v-col>
@@ -715,17 +714,16 @@
                           :items="prices6"
                           class="even-odd-tabel rounded-lg hideOver tabelTour"
                         >
-                        <template
-                          v-slot:footer
-                        >
-                          <div>
-                            <v-row class="pb-2 pt-2 body-2 text-center" justify="center" style="font-family: Byekan !important;border-top:1px solid rgb(212, 212, 212)">
-                              
-                              نرخ INF (زیر 2 سال) 10% ریالی + 10% ارزی نرخ بزرگسال
-                            </v-row>
-                          </div>
-                        </template>
-                      </v-data-table>
+                          <template
+                            v-slot:footer
+                          >
+                            <div>
+                              <v-row class="py-4 body-2 text-center" justify="center" style="font-family: Byekan !important;border-top:1px solid rgb(212, 212, 212)">
+                                نرخ INF (زیر 2 سال) 10% ریالی + 10% ارزی نرخ بزرگسال
+                              </v-row>
+                            </div>
+                          </template>
+                        </v-data-table>
                       </v-row>
                     </v-col>
                   </v-row>
@@ -734,7 +732,8 @@
                   <v-row>
                     <v-col cols="12" lg="6">
                       <p class="mt-4 mt-lg-0 mb-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز اول :</b>
-                        ﺣﻀﻮﺭ ﺩﺭ ﻓﺮﻭﺩﮔﺎﻩ ﺍﻣﺎﻡ ﺧﻤﯿﻨﯽ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ پاریس ﻭ ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻫﺘﻞ-گشت منطقه لرفانس
+                        ﺣﻀﻮﺭ ﺩﺭ ﻓﺮﻭﺩﮔﺎﻩ ﺍﻣﺎﻡ ﺧﻤﯿﻨﯽ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ پاریس ﻭ ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻫﺘﻞ و <br class="d-none d-lg-block">
+                        گشت منطقه لرفانس
                       </p>
                       <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دوم :</b>
                         ﮔﺸﺖ ﺷﻬﺮﯼ پاریس،قایق سواری بر روی رودخانه سن و بازدید از موزه عطر
@@ -797,7 +796,7 @@
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای متقاضیان بالای 12 سال انگشت نگاری الزامی
                           <span v-if="!showMore1"> ...</span>
                           <span v-if="!showMore1" class=" mx-3 cursorPointer see-more" @click="showMore1 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore1">است.</span>
+                          <span v-if="showMore1" class="grey--text text--darken-3">است.</span>
                         </li>
                         <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                           تمام مدارک فارسی جهت ارائه به سفارت فرانسه باید به زبان انگلیسی ترجمه شوند. (مدارک صادر شده به انگلیسی پذیرفته می شوند.)                         
@@ -815,69 +814,61 @@
                           3 قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.
                         </li>
                       </ul>
-                      <h3 v-if="showMore1" class="tabel-tour-title red--text">مدارک شغلی</h3>
-                      <ul v-if="showMore1" class="my-6">
+                      <h3  class="tabel-tour-title red--text">مدارک شغلی</h3>
+                      <ul class="my-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پزشکان، مهندسین، وکلا: پروانه مطب، نظام مهندسی، وکالت+ کارتهای صنفی مربوطه
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر + گواهی اشتغال به کار
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر 
+                          <span v-if="!showMore2"> ...</span>
+                          <span v-if="!showMore2" class="see-more mx-3 cursorPointer" @click="showMore2 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore2" class="grey--text text--darken-3">+ گواهی اشتغال به کار</span>
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو 3 فیش حقوقی آخر (در صورت وجود)
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو 3 فیش حقوقی آخر (در صورت وجود)
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + 3 فیش حقوقی آخر
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + 3 فیش حقوقی آخر
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
                         </li>
                       </ul>
-                      <h3 v-if="showMore1" class="tabel-tour-title red--text">مدارک مالی</h3>
-                      <ul v-if="showMore1" class="my-6">
+                      <h3 class="tabel-tour-title red--text">مدارک مالی</h3>
+                      <ul class="my-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
-                          <span> ...</span>
-                          <span class="see-more mx-3 cursorPointer">مشاهده بیشتر</span>
-                          <span>محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)</span>
+                          <span v-if="!showMore3"> ...</span>
+                          <span v-if="!showMore3" class="see-more mx-3 cursorPointer" @click="showMore3 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore3" class="grey--text text--darken-3">محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)</span>
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید فرانسه: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت رزآبی الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید فرانسه: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون</li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت رزآبی الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">با توجه به این نکته که کلیه مدارک ارائه شده توسط شرکت مجری و سفارت مورد استعلام قرار می گیرد، توصیه می گردد، کلیه مدارک مستند و قابل استعلام باشند.</li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.</li>
+                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">با توجه به این نکته که کلیه مدارک ارائه شده توسط شرکت مجری و سفارت مورد استعلام قرار می گیرد، توصیه می گردد، کلیه مدارک مستند و قابل استعلام باشند.</li>
                       </ul>
                     </v-col>
                     <v-col cols="12" md="12" >
                       <v-row justify="center" class="heightAll mb-9 align-center">
-                        <!-- <v-col cols="12" sm="6" class="pa-0">
-                          <v-row class="justify-center justify-sm-end"> -->
-                            <!-- <a href="/folders/image/tour/Documents-the-Swiss-Embassy.jpg" download class="text-decoration-none"> -->
-                              <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت فرانسه</v-btn>
-                            <!-- </a> -->
-                          <!-- </v-row>
-                        </v-col> -->
-                        <!-- <v-col cols="12" sm="6" class="pa-0">
-                          <v-row class="justify-center justify-sm-start"> -->
-                            <!-- <a href="/folders/image/tour/Documents-the-Spain-Embassy.jpg" download class="text-decoration-none mr-sm-2"> -->
-                              <!-- <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت اسپانیا</v-btn> -->
-                            <!-- </a> -->
-                          <!-- </v-row> -->
-                        <!-- </v-col>               -->
+                        <a download href="/folders/image/tour/Documents-the-France-Embassy.jpg" class="text-decoration-none mr-sm-2">
+                          <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت فرانسه</v-btn>
+                        </a>
                       </v-row>
                     </v-col>
                   </v-row>
@@ -898,7 +889,7 @@
                       
                       <v-carousel v-model="imageNumber">
                         <v-carousel-item
-                          v-for="(item,i) in urope004Images" 
+                          v-for="(item,i) in urope002Images" 
                           :keys="i"
                         >
                           <img :src="item" alt="">

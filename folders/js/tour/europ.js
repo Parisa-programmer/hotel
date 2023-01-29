@@ -214,6 +214,74 @@ new Vue({
         calories: '990 یورو + 24,990,000 تومان',
       },
     ],
+    prices7: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '2,390 یورو + 23,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '3,390 یورو + 23,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '1,790 یورو + 19,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '890 یورو + 19,990,000 تومان',
+      },
+    ],
+    prices8: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '2,790 یورو + 25,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '3,990 یورو + 25,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '1,990 یورو + 21,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '1,190 یورو + 21,990,000 تومان',
+      },
+    ],
+    prices9: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '1,690 یورو + 24,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '2,490 یورو + 24,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '1,190 یورو + 20,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-2 ساله بدون تخت',
+        calories: '690 یورو + 20,990,000 تومان',
+      },
+    ],
+    prices10: [
+      {
+        name: 'هرنفر در اتاق 2 تخته',
+        calories: '3,690 یورو + 29,990,000 تومان',
+      },
+      {
+        name: 'هرنفر در اتاق 1 تخته',
+        calories: '5,990 یورو + 29,990,000 تومان',
+      },
+      {
+        name: 'کودک 4-11 ساله با تخت',
+        calories: '2,890 یورو + 26,990,000 تومان',
+      },
+    ],
     flightHeaders: [
       // { text: '', sortable: false, value: 'image', align: 'center', },
       { text: '', align: 'center', sortable: false, value: 'from' },
@@ -380,6 +448,126 @@ new Vue({
         text2: 'TK874'
       },
     ],
+    flights6: [
+      {
+        from: 'پرواز از تهران به استانبول',
+        time1: '01:55',
+        time2: '04:55',
+        text1: 'IKAIST',
+        text2: 'TK875'
+      },
+      {
+        from: 'پرواز از استانبول به مادرید',
+        time1: '07:55',
+        time2: '10:25',
+        text1: 'ISTAMAD',
+        text2: 'TK1857'
+      },
+      {
+        from: 'پرواز از بارسلون به استانبول',
+        time1: '19:10',
+        time2: '23:35',
+        text1: 'BCNIST',
+        text2: 'TK1856'
+      },
+      {
+        from: 'پرواز از استانبول به تهران',
+        time1: '19:20',
+        time2: '23:55',
+        text1: 'ISTIKA',
+        text2: 'TK874'
+      },
+    ],
+    flights7: [
+      {
+        from: 'پرواز از تهران به استانبول',
+        time1: '08:30',
+        time2: '10:30',
+        text1: 'IKAIST',
+        text2: 'TK879'
+      },
+      {
+        from: 'پرواز از استانبول به بارسلون',
+        time1: '12:30',
+        time2: '14:10',
+        text1: 'ISTBCN',
+        text2: 'TK1467'
+      },
+      {
+        from: 'پرواز از پاریس به استانبول',
+        time1: '14:10',
+        time2: '18:45',
+        text1: 'CDGIST',
+        text2: 'TK1824'
+      },
+      {
+        from: 'پرواز از استانبول به تهران',
+        time1: '19:20',
+        time2: '23:55',
+        text1: 'ISTIKA',
+        text2: 'TK874'
+      },
+    ],
+    flights8: [
+      {
+        from: 'پرواز از تهران به استانبول',
+        time1: '08:35',
+        time2: '10:25',
+        text1: 'IKAIST',
+        text2: 'TK879'
+      },
+      {
+        from: 'پرواز از استانبول به زوریخ',
+        time1: '12:15',
+        time2: '14:10',
+        text1: 'ISTZRH',
+        text2: 'TK1913'
+      },
+      {
+        from: 'پرواز از پاریس به استانبول',
+        time1: '15:00',
+        time2: '18:50',
+        text1: 'ZRHIST',
+        text2: 'TK1914'
+      },
+      {
+        from: 'پرواز از استانبول به تهران',
+        time1: '19:20',
+        time2: '23:55',
+        text1: 'ISTIKA',
+        text2: 'TK874'
+      },
+    ],
+    flights9: [
+      {
+        from: 'پرواز از تهران به دبی',
+        time1: '18:40',
+        time2: '21:20',
+        text1: 'IKADXB',
+        text2: 'EK980'
+      },
+      {
+        from: 'پرواز از دبی به پاریس',
+        time1: '03:20',
+        time2: '08:00',
+        text1: 'DXBCDG',
+        text2: 'EK71'
+      },
+      {
+        from: 'پرواز از رم به دبی',
+        time1: '22:05',
+        time2: '05:45',
+        text1: 'FCODXB',
+        text2: 'EK96'
+      },
+      {
+        from: 'پرواز از دبی به تهران',
+        time1: '15:00',
+        time2: '17:40',
+        text1: 'DXBIKA',
+        text2: 'EK979'
+      },
+    ],
     pricesHeaderIstanbul: [
       // { text: '', sortable: false, value: 'image', align: 'center', },
       { text: 'ردیف', align: 'center', sortable: true, value: 'id', width: '90px' },
@@ -460,6 +648,19 @@ new Vue({
       '/folders/image/tour/استانبول-5.jpg',
       '/folders/image/tour/استانبول-6.jpg',
     ],
+    urope003Images: [
+      '/folders/image/tour/اروپا003-1.jpg',
+      '/folders/image/tour/اروپا003-2.jpg',
+      '/folders/image/tour/اروپا003-3.jpg',
+      '/folders/image/tour/اروپا003-4.jpg',
+      '/folders/image/tour/اروپا003-5.jpg',
+      '/folders/image/tour/اروپا003-6.jpg',
+      '/folders/image/tour/اروپا003-7.jpg',
+      '/folders/image/tour/اروپا003-8.jpg',
+      '/folders/image/tour/اروپا003-9.jpg',
+      '/folders/image/tour/اروپا003-10.jpg',
+      '/folders/image/tour/اروپا003-11.jpg',
+    ],
     urope004Images: [
       '/folders/image/tour/اروپا004-1.jpg',
       '/folders/image/tour/اروپا004-2.jpg',
@@ -472,6 +673,14 @@ new Vue({
       '/folders/image/tour/استانبول-4.jpg',
       '/folders/image/tour/استانبول-5.jpg',
       '/folders/image/tour/استانبول-6.jpg',
+    ],
+    urope005Images: [
+      '/folders/image/tour/اروپا005-1.jpg',
+      '/folders/image/tour/اروپا005-2.jpg',
+      '/folders/image/tour/اروپا005-3.jpg',
+      '/folders/image/tour/اروپا005-4.jpg',
+      '/folders/image/tour/اروپا005-5.jpg',
+      '/folders/image/tour/اروپا005-6.jpg',
     ],
     urope006Images: [
       '/folders/image/tour/اروپا006-1.jpg',
@@ -486,6 +695,36 @@ new Vue({
       '/folders/image/tour/استانبول-4.jpg',
       '/folders/image/tour/استانبول-5.jpg',
       '/folders/image/tour/استانبول-6.jpg',
+    ],
+    urope007Images: [
+      '/folders/image/tour/اروپا007-1.jpg',
+      '/folders/image/tour/اروپا007-2.jpg',
+      '/folders/image/tour/اروپا007-3.jpg',
+      '/folders/image/tour/اروپا007-4.jpg',
+      '/folders/image/tour/اروپا007-5.jpg',
+      '/folders/image/tour/اروپا007-6.jpg',
+    ],
+    urope008Images: [
+      '/folders/image/tour/اروپا008-1.jpg',
+      '/folders/image/tour/اروپا008-2.jpg',
+      '/folders/image/tour/اروپا008-3.jpg',
+      '/folders/image/tour/اروپا008-4.jpg',
+      '/folders/image/tour/اروپا008-5.jpg',
+      '/folders/image/tour/استانبول-1.jpg',
+      '/folders/image/tour/استانبول-2.jpg',
+      '/folders/image/tour/استانبول-3.jpg',
+      '/folders/image/tour/استانبول-4.jpg',
+      '/folders/image/tour/استانبول-5.jpg',
+      '/folders/image/tour/استانبول-6.jpg',
+    ],
+    urope009Images: [
+      '/folders/image/tour/اروپا009-1.jpg',
+      '/folders/image/tour/اروپا009-2.jpg',
+      '/folders/image/tour/اروپا009-3.jpg',
+      '/folders/image/tour/اروپا009-4.jpg',
+      '/folders/image/tour/اروپا009-5.jpg',
+      '/folders/image/tour/اروپا009-6.jpg',
+      '/folders/image/tour/اروپا009-7.jpg',
     ],
     showMore1: false,
     showMore2: false,

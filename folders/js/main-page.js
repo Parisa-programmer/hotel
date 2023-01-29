@@ -39,7 +39,7 @@ new Vue({
     destinationSearchInput2: '',
     destinationSearchInput3: '',
     destinationSearchInput4: '',
-
+    showSlider:false,
     persianCityes: [
       { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
       { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
@@ -1946,6 +1946,7 @@ new Vue({
           autoplay: true,
           autoplaySpeed: 2500,
         });
+        self.showSlider = true;
         self.startTypeAnimation = true
         var typed = new Typed('#typed', {
           stringsElement: '#typed-strings',

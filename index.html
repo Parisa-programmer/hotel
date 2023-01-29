@@ -964,7 +964,7 @@
               </v-row>
             </div>
           </v-row> -->
-          <v-row class="my-6" justify="center">
+          <v-row v-show="showSlider" class="my-6" justify="center">
             <v-sheet @mouseOver="clear()" @mouseLeave="start" max-width="100%" class="indexDiv transparent">
               <v-skeleton-loader class=" mt-4"
                 type="image"
@@ -999,7 +999,7 @@
             </v-sheet>
           </v-row>
           <!-- new articles -->
-          <v-row class="my-6" justify="center">
+          <v-row v-show="showSlider" class="my-6" justify="center">
             <v-sheet @mouseOver="clear()" @mouseLeave="start" max-width="100%" class="indexDiv transparent">
               <v-skeleton-loader class=" mt-4"
                 type="image"

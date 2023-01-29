@@ -690,11 +690,11 @@
                   <v-row>
                     <v-col cols="12" md="6">
                       <ul class="mt-md-9 mr-md-6">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">هزینه اخذ ويزاي شنگن</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">بيمه ي مسافرتي</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">اقامت در هتل هاي چهار ستاره وپنج ستاره همراه با صبحانه</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">بلیط رفت و برگشت هواپیمادر مسیرهای بین المللی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">هزینه اخذ ويزاي شنگن</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">ترانسفرفرودگاهی با اتوبوس هاي توريستي</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">بلیط رفت و برگشت هواپیمادر مسیرهای بین المللی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">اقامت در هتل هاي چهار ستاره وپنج ستاره همراه با صبحانه</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">گشت شهری با اتوبوسهای توریستی به همراه تورلیدرفارسی زبان</li>
                       </ul>
                     </v-col>
@@ -719,7 +719,7 @@
                           v-slot:footer
                         >
                           <div>
-                            <v-row class="pb-2 pt-2 body-2 text-center" justify="center" style="font-family: Byekan !important;border-top:1px solid rgb(212, 212, 212)">
+                            <v-row class="py-4 body-2 text-center" justify="center" style="font-family: Byekan !important;border-top:1px solid rgb(212, 212, 212)">
                               
                               نرخ INF (زیر 2 سال) 10% ریالی + 10% ارزی نرخ بزرگسال
                             </v-row>
@@ -800,7 +800,7 @@
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای متقاضیان بالای 12 سال انگشت نگاری الزامی
                           <span v-if="!showMore1"> ...</span>
                           <span v-if="!showMore1" class=" mx-3 cursorPointer see-more" @click="showMore1 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore1">است.</span>
+                          <span v-if="showMore1"  class="grey--text text--darken-3">است.</span>
                         </li>
                         <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسافرینی که در 24 ماه اخیر ویزای شنگن دریافت نموده اند، پرونده ایشان
                           بدون انگشت نگاری و به صورت غیرحضوری پذیرفته می شود (بجز شنگن صادره از سفارت یونان)
@@ -817,9 +817,7 @@
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پزشکان، مهندسین، وکلا: پروانه مطب، نظام مهندسی، وکالت+ کارتهای صنفی مربوطه
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + آخرین فیش حقوقی آخر با مهر 
-                          <span> ...</span>
-                          <span class="see-more mx-3 cursorPointer">مشاهده بیشتر</span>
-                          <span>+ گواهی اشتغال به کار</span>
+                          + گواهی اشتغال به کار
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو آخرین فیش حقوقی (در صورت وجود)
                         </li>
@@ -845,9 +843,7 @@
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
-                          <span> ...</span>
-                          <span class="see-more mx-3 cursorPointer">مشاهده بیشتر</span>
-                          <span>محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)</span>
+                          محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
                         </li>
@@ -868,7 +864,7 @@
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت های قدیمی + کپی از تمام صفحات استفاده شده
                           <span v-if="!showMore2"> ...</span>
                           <span v-if="!showMore2" class=" mx-3 cursorPointer see-more" @click="showMore2 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore2">پاسپورتهای قدیمی (ویزا و مهرهای ورود و خروج)</span>
+                          <span v-if="showMore2" class="grey--text text--darken-3">پاسپورتهای قدیمی (ویزا و مهرهای ورود و خروج)</span>
                         </li>
                         <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام مدارک فارسی جهت ارائه به سفارت اسپانیا باید به زبان انگلیسی ترجمه شوند. تمکن و گواهی اشتغال صادر شده به زبان انگلیسی پذیرفته می شوند.</li>
                         <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">3 قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.</li>

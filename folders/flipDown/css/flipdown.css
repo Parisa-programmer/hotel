@@ -142,13 +142,14 @@
 .flipdown .rotor {
   position: relative;
   float: left;
-  width: 50px;
+  width: 63px;
   height: 80px;
   margin: 0px 5px 0px 10px;
   border-radius: 4px;
   font-size: 4rem;
   text-align: center;
   perspective: 200px;
+  border: 1px solid red;
 }
 
 .flipdown .rotor:last-child {

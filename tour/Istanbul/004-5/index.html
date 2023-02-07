@@ -112,7 +112,7 @@
       position: absolute;
       height: 15px;
       width: 67%;
-      background:#ffeb3b;
+      background:#ffa69a66;
       top: 47%;
       right: 16%;
       z-index: -1;
@@ -200,6 +200,12 @@
     .halfLi{
         width:49%
       }
+
+    .even-odd-tabel td:nth-child(2) .bold{
+      font-size: 15px;
+      /* color: #ff6062 !important;
+      text-shadow: 0 0 3px #ff7765; */
+    }
     
     @media (min-width:960px) and (max-width:1263px){
       .main-div{
@@ -737,6 +743,9 @@
                           class=" rounded-lg even-odd-tabel tabelTourId"
                           style="border: 2px solid #9d9d9b !important;"
                         >
+                        <template v-slot:item.name="{ item }">
+                          <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>
+                         </template>
                         </v-data-table>
                       </v-row>
                     </v-col>

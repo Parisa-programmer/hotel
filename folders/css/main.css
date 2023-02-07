@@ -553,19 +553,23 @@ input::-webkit-inner-spin-button {
 
 .footerImagesParent a:nth-child(1) > img,
 .footerImagesParent a:nth-child(2) > img {
-  height: 100px;
+  height: 80px;
 }
 
 .footerImagesParent a:nth-child(3) > img {
-  height: 110px;
+  height: 90px;
 }
 
 .footerImagesParent a:nth-child(4) > img {
-  height: 130px;
+  height: 75px;
 }
 
 .footerImagesParent a:nth-child(5) > img {
-  height: 130px;
+  height: 75px;
+}
+
+.footerImagesParent a:nth-child(6) > img {
+  height: 75px;
 }
 
 .downloadButton {
@@ -696,7 +700,7 @@ input::-webkit-inner-spin-button {
 }
 
 .sections-card {
-  bottom: 70px;
+  bottom: 80px;
   margin-bottom: -50px;
 }
 
@@ -1428,8 +1432,6 @@ input::-webkit-inner-spin-button {
     border-top: 1px solid #666666 !important;
     border-bottom: 1px solid #757575 !important;
   }
-  
-  .tabelTourId.even-odd-tabel .v-select__slot
 
   @media (min-width: 500px) and (max-width: 599px) {
     .indexDiv {

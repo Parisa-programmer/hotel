@@ -112,7 +112,7 @@
       position: absolute;
       height: 15px;
       width: 67%;
-      background:#ffeb3b;
+      background:#74c0f53d;
       top: 47%;
       right: 16%;
       z-index: -1;
@@ -199,6 +199,12 @@
 
     .halfLi{
       width:49%
+    }
+
+    .even-odd-tabel td:nth-child(2) .bold{
+      font-size: 15px;
+      /* color: #0356a6 !important;
+      text-shadow: 0 0 3px #41b0ff; */
     }
     
     @media (min-width:960px) and (max-width:1263px){
@@ -404,6 +410,7 @@
       .halfLi{
         width:100%
       }
+
     }
   </style>
   <body>
@@ -701,11 +708,12 @@
               </div>
               <v-row class='mt-9 mt-sm-0 mt-lg-12 pt-6 pt-md-12' style="">
                 <v-slide-group ltr v-model="tab" class="ltr" hide-arrows center-activeTab>
+
                   <v-slide-item v-slot="{ activeTab }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 0 && 'activeTab'" @click="tab = 0">خدمات تور</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 0 && 'activeTab'" @click="tab = 0">لیست قیمت</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ activeTab }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 1 && 'activeTab'" @click="tab = 1">لیست قیمت</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 1 && 'activeTab'" @click="tab = 1">خدمات تور</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ activeTab }">
                     <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 2 && 'activeTab'" @click="tab = 2">مدارک مورد نیاز</h3>
@@ -721,6 +729,36 @@
               <v-row class="white py-md-9 px-6">
                 <div class="widthAll" v-if="tab == 0">
                   <v-row>
+                    <v-col cols="12" lg="12">
+                      <v-row class="mb-2" justify="center">
+                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                          :headers="pricesHeaderDubai"
+                          hide-default-footer
+                          :items="pricesItemsDubai"
+                          :items-per-page="50"
+                          class="tabelTourId rounded-lg even-odd-tabel "
+                          style="border: 2px solid #9d9d9b !important;"
+                        >
+                          <!-- <template #item="{ item }">
+                            div
+                            <tr>      
+                              <td class="bold text-center" v-for="(col,key) in item" :key="key">
+                                  {{ col }}
+                              </td>
+                            </tr>
+                        </template> -->
+                        <template v-slot:item.name="{ item }">
+                         <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>
+                                  
+                             
+                        </template>
+                        </v-data-table>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 1">
+                  <v-row>
                     <v-col cols="12" md="12">
                       <ul class=" mr-md-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر فرودگاهی</li>
@@ -733,42 +771,13 @@
                     </v-col>
                   </v-row>
                 </div>
-                <div class="widthAll" v-else-if="tab == 1">
-                  <v-row>
-                    <v-col cols="12" lg="12">
-                      <v-row class="mb-2" justify="center">
-                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
-                          :headers="pricesHeaderDubai"
-                          hide-default-footer
-                          :items="pricesItemsDubai"
-                          :items-per-page="50"
-                          class=" rounded-lg even-odd-tabel"
-                          style="border: 2px solid #9d9d9b !important;"
-                        >
-                          <!-- <template #item="{ item }">
-                            div
-                            <tr>      
-                              <td class="bold text-center" v-for="(col,key) in item" :key="key">
-                                  {{ col }}
-                              </td>
-                            </tr>
-                        </template> -->
-                        <template v-slot:item.name="{ item }">
-                         <div class="bold">{{ item.name }}</div>
-                                  
-                             
-                        </template>
-                        </v-data-table>
-                      </v-row>
-                    </v-col>
-                  </v-row>
-                </div>
+                
                 <div class="widthAll" v-else-if="tab == 2">
                   <v-row>
                     <v-col cols="12" md="12">
                       <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای دبی</h3>
                       <ul class="my-6 mr-9">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارت واکسن بهمراه qrcode</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارت واکسن یا تست پی سی آر منفی</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل گذرنامه به همراه حداقل 7 ماه اعتبار</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اسکن پاسپورت - شناسنامه - کارت ملی - یک قطعه عکس</li>
                       </ul>

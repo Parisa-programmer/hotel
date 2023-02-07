@@ -112,7 +112,7 @@
       position: absolute;
       height: 15px;
       width: 67%;
-      background:#ffeb3b;
+      background:#ffa69a66;
       top: 47%;
       right: 16%;
       z-index: -1;
@@ -199,6 +199,12 @@
 
     .halfLi{
       width:49%
+    }
+
+    .even-odd-tabel td:nth-child(2) .bold{
+      font-size: 15px;
+      /* color: #ff6062 !important;
+      text-shadow: 0 0 3px #ff7765; */
     }
     
     @media (min-width:960px) and (max-width:1263px){
@@ -745,7 +751,7 @@
                             </tr>
                         </template> -->
                         <template v-slot:item.name="{ item }">
-                         <div class="bold">{{ item.name }}</div>
+                         <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>
                                   
                              
                         </template>

@@ -1946,16 +1946,24 @@ new Vue({
           autoplay: true,
           autoplaySpeed: 2500,
         });
+        
+        $(".slick-logo").slick({
+          slidesToShow: self.windowWidth > 1400 ? 5 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 599) ? 2 : 1,
+          slidesToScroll: 1,
+          rtl: true,
+          autoplay: true,
+          autoplaySpeed: 2500,
+        });
         self.showSlider = true;
         self.startTypeAnimation = true
-        var typed = new Typed('#typed', {
-          stringsElement: '#typed-strings',
-          typeSpeed: 200,
-          backSpeed: 80,
-          backDelay: 2000,
-          startDelay: 2000,
-          loop: true,
-        });
+        // var typed = new Typed('#typed', {
+        //   stringsElement: '#typed-strings',
+        //   typeSpeed: 200,
+        //   backSpeed: 80,
+        //   backDelay: 2000,
+        //   startDelay: 2000,
+        //   loop: true,
+        // });
       }, 3000);
     },
     getCityesExternal() {

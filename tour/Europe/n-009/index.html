@@ -112,7 +112,7 @@
       position: absolute;
       height: 15px;
       width: 67%;
-      background:#ffeb3b;
+      background:#4973c03a;
       top: 47%;
       right: 16%;
       z-index: -1;
@@ -169,6 +169,10 @@
       box-shadow: 0 0 5px rgb(59, 59, 59);
     }
     
+    .even-odd-tabel tbody tr:nth-child(even) {
+      background-color: #4972c017 !important;
+    }
+
     @media (min-width:960px) and (max-width:1263px){
       .main-div{
         margin-top:-265px;
@@ -714,7 +718,7 @@
                         <template
                           v-slot:footer
                         >
-                          <div>
+                          <div style="background: #eff2f7;">
                             <v-row class="py-4 body-2 text-center" justify="center" style="font-family: Byekan !important;border-top:1px solid rgb(212, 212, 212)">
                               
                               نرخ INF (زیر 2 سال) 10% ریالی + 10% ارزی نرخ بزرگسال
@@ -823,78 +827,154 @@
                 <div class="widthAll" v-else-if="tab == 2">
                   <v-row>
                     <v-col cols="12" md="12">
-                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز سفارت سوئیس</h3>
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز سفارت فرانسه</h3>
                       <ul class="my-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">وقت سفارت اعلام شده از جانب شرکت آهوان غیر قابل تغییر می باشد.</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای متقاضیان بالای 12 سال انگشت نگاری الزامی
                           <span v-if="!showMore1"> ...</span>
                           <span v-if="!showMore1" class=" mx-3 cursorPointer see-more" @click="showMore1 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore1">است.</span>
+                          <span v-if="showMore1" class="grey--text text--darken-3">است.</span>
                         </li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسافرینی که در 24 ماه اخیر ویزای شنگن دریافت نموده اند، پرونده ایشان
-                          بدون انگشت نگاری و به صورت غیرحضوری پذیرفته می شود (بجز شنگن صادره از سفارت یونان)
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          تمام مدارک فارسی جهت ارائه به سفارت فرانسه باید به زبان انگلیسی ترجمه شوند. (مدارک صادر شده به انگلیسی پذیرفته می شوند.)                         
                         </li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام مدارک فارسی جهت ارائه به سفارت فرانسه باید به زبان انگلیسی ترجمه شوند. (مدارک صادر شده به انگلیسی پذیرفته می شوند.)</li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام کپی ها در سایز A4  و یک رو گرفته شوند.</li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت امضا شده با حداقل 6 ماه اعتبار از تاریخ سفر و 2 صفحه خالی رو به روی هم + کپی از تمام صفحات ویزاهای لیبل دار موجود در پاسپورت</li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت های قدیمی + کپی از تمام صفحات ویزاهای لیبل دار موجود در آنها</li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل شناسنامه ها + اصل کارت ملی</li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify"> قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          اصل پاسپورت امضا شده با حداقل 6 ماه اعتبار از تاریخ سفر و 2 صفحه خالی رو به روی هم + کپی از تمام صفحات ویزاهای شنگن، کانادا، آمریکا و انگلیس موجود در پاسپورت 
+                        </li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          اصل پاسپورت های قدیمی + کپی از ویزاهای شنگن، کانادا، آمریکا و انگلیس موجود در آنها 
+                        </li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          اصل شناسنامه ها + اصل کارت ملی
+                        </li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          3 قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.
+                        </li>
                       </ul>
-                      <h3 class="tabel-tour-title red--text">مدارک شغلی</h3>
-                      <ul class="my-6">
+                      <h3  v-if="showMore1" class="tabel-tour-title red--text">مدارک شغلی</h3>
+                      <ul v-if="showMore1" class="my-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پزشکان، مهندسین، وکلا: پروانه مطب، نظام مهندسی، وکالت+ کارتهای صنفی مربوطه
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + آخرین فیش حقوقی آخر با مهر 
-                          <span v-if="!showMore2"> ...</span>
-                          <span v-if="!showMore2" class="see-more mx-3 cursorPointer" @click="showMore2 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore2">+ گواهی اشتغال به کار</span>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر 
+                          + گواهی اشتغال به کار
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو آخرین فیش حقوقی (در صورت وجود)
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو 3 فیش حقوقی آخر (در صورت وجود)
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)</li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + آخرین فیش حقوقی</li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + 3 فیش حقوقی آخر
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
                         </li>
                       </ul>
-                      <h3 class="tabel-tour-title red--text">مدارک مالی</h3>
-                      <ul class="my-6">
+                      <h3 v-if="showMore1" class="tabel-tour-title red--text">مدارک مالی</h3>
+                      <ul v-if="showMore1" class="my-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
-                          <span v-if="!showMore3"> ...</span>
-                          <span v-if="!showMore3" class="see-more mx-3 cursorPointer" @click="showMore3 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore3">محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)</span>
+                          محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید سوئیس: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون،سینوفارم،سینواک
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید فرانسه: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت رزآبی الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت آهوان الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.</li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">با توجه به این نکته که کلیه مدارک ارائه شده توسط شرکت مجری و سفارت مورد استعلام قرار می گیرد، توصیه می گردد، کلیه مدارک مستند و قابل استعلام باشند.</li>
+                      </ul>
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز سفارت سوئیس</h3>
+                      <ul class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">وقت سفارت اعلام شده از جانب شرکت آهوان غیر قابل تغییر می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای متقاضیان بالای 12 سال انگشت نگاری الزامی
+                          <span v-if="!showMore2"> ...</span>
+                          <span v-if="!showMore2" class=" mx-3 cursorPointer see-more" @click="showMore2 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore2">است.</span>
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسافرینی که در 24 ماه اخیر ویزای شنگن دریافت نموده اند، پرونده ایشان
+                          بدون انگشت نگاری و به صورت غیرحضوری پذیرفته می شود (بجز شنگن صادره از سفارت یونان)
+                        </li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام مدارک فارسی جهت ارائه به سفارت فرانسه باید به زبان انگلیسی ترجمه شوند. (مدارک صادر شده به انگلیسی پذیرفته می شوند.)</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام کپی ها در سایز A4  و یک رو گرفته شوند.</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت امضا شده با حداقل 6 ماه اعتبار از تاریخ سفر و 2 صفحه خالی رو به روی هم + کپی از تمام صفحات ویزاهای لیبل دار موجود در پاسپورت</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت های قدیمی + کپی از تمام صفحات ویزاهای لیبل دار موجود در آنها</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل شناسنامه ها + اصل کارت ملی</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify"> قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.</li>
+                      </ul>
+                      <h3 v-if="showMore2" class="tabel-tour-title red--text">مدارک شغلی</h3>
+                      <ul v-if="showMore2" class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پزشکان، مهندسین، وکلا: پروانه مطب، نظام مهندسی، وکالت+ کارتهای صنفی مربوطه
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + آخرین فیش حقوقی آخر با مهر 
+                          + گواهی اشتغال به کار
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو آخرین فیش حقوقی (در صورت وجود)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + آخرین فیش حقوقی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
+                        </li>
+                      </ul>
+                      <h3 v-if="showMore2" class="tabel-tour-title red--text">مدارک مالی</h3>
+                      <ul v-if="showMore2" class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
+                          محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید سوئیس: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون،سینوفارم،سینواک
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت آهوان الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.
                         </li>
                         <!-- <li class="my-3 grey--text text--darken-3 bold text-tour"></li> -->
                       </ul>
                     </v-col>
                     <v-col cols="12" md="12" >
                       <v-row justify="center" class="heightAll mb-9 align-center">
-                        <a href="/folders/image/tour/Documents-the-Swiss-Embassy.jpg" download class="text-decoration-none">
-                          <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت سوئیس</v-btn>
-                        </a>
+                        <v-col cols="12" sm="6" class="pa-0">
+                          <v-row class="justify-center justify-sm-end">
+                            <a href="/folders/image/tour/Documents-the-France-Embassy.jpg" download class="text-decoration-none">
+                              <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت فرانسه</v-btn>
+                            </a>
+                          </v-row>
+                        </v-col>
+                        <v-col cols="12" sm="6" class="pa-0">
+                          <v-row class="justify-center justify-sm-start">
+                            <a href="/folders/image/tour/Documents-the-Swiss-Embassy.jpg" download class="text-decoration-none mr-sm-2">
+                              <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت سوئیس</v-btn>
+                            </a>
+                          </v-row>
+                        </v-col>              
                       </v-row>
                     </v-col>
                   </v-row>

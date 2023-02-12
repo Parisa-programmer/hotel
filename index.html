@@ -32,6 +32,7 @@
     <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script>
     <script type="text/javascript" src="/folders/flipDown/js/main.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script>
+    <link rel="stylesheet" href="/folders/css/scrollAnimation.css">
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -48,6 +49,7 @@
           d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
+    
     <style>
       #flipdownParent {
         top: 16%;
@@ -62,6 +64,51 @@
         opacity: 1; 
         background: linear-gradient(0deg, rgba(0,0,0,0.7231267507002801) 0%, rgba(0,0,0,0.08727240896358546) 100%);
       } 
+      .whatsup-footer,.email-footer,.instagram-footer,.twitter-footer,.send-footer{
+        color:#616161
+      }
+      
+      .instagram-footer:hover{
+        color:rgb(255, 136, 0)
+      }
+      
+      .twitter-footer:hover{
+        color:rgb(182, 234, 255)
+      }
+      
+      .send-footer:hover{
+        color:rgb(125, 166, 255)
+      }
+
+      .whatsup-footer:hover{
+        color:green
+      }
+      
+      .email-footer:hover{
+        color:rgb(255, 0, 0)
+      }
+
+      .main-page-sectionImage{
+        height: 350px;
+      }
+
+      @media (max-width: 960px){
+        .maintourImages {
+          opacity: 1; 
+          background: linear-gradient(0deg, rgba(0,0,0,0.7231267507002801) 0%, rgba(0,0,0,0.08727240896358546) 100%);
+        }
+      }
+      
+      @media (max-width: 599px){
+        .main-page-sectionImage{
+          height: 250px;
+        }
+      }
+
+      /* whatsup-email
+      whatsup-instagram
+      whatsup-twitter
+      whatsup-send  */
     </style>
   </head>
   <body>
@@ -240,125 +287,134 @@
           </v-row> 
         </div>
         <v-dialog v-if="loginDialog" class="rounded-lg loginDialog"
-            v-model="loginDialog"
-            style="z-index: 9999999999998"
-            width="450"
-          >
-            <v-card class="pa-2 hideOver relative" style="border-radius: 10px;">
-              <div class="rounded-xl absolute grey lighten-4" style="height: 50px;width:50px;bottom:20px;right: -20px;"></div>
-              <div class="rounded-circle absolute red lighten-5" style="height: 50px;width:50px;top:-20px;left: -20px;"></div>
-              <div class="rounded-xl absolute grey lighten-4" style="height: 45px;width: 106px;bottom: -38px;right: 50%;"></div>
-              <v-icon class="absolute black--text" @click="loginDialog = false" style="top: 5px;right: 5px;">mdi-close</v-icon>
-              <div class="my-6">
-                <h3 v-if="loginStep == 2 && UserType == 1 " class="text-center ">
-                  تایید شماره موبایل
-                </h3>
-                <h3 v-else-if="(loginType == 'login' && loginStep != 3) && (UserType == 1 && loginStep == 1 && loginType == 'login')  || (UserType == 2 && loginStep == 1 && loginType == 'login')" class="text-center mt-6">
-                  ورود به حساب کاربری
-                </h3>
-                <h4 v-else-if="loginStep != 3 && UserType == 1 || (UserType == 2 && loginStep == 1 && loginType == 'register')" class="text-center mt-6">
-                  ثبت نام در سایت گردشگری آهوان
-                </h4>
-                <span v-if="showAlert" class="widthAll text-center d-block caption mt-2" :class="alertType == 'error' ? 'red--text' : 'green--text'" style="font-family: Byekan !important;">{{ alertText }}</span>
+          v-model="loginDialog"
+          style="z-index: 9999999999998"
+          width="450"
+        >
+          <v-card class="pa-2 hideOver relative" style="border-radius: 10px;">
+            <div class="rounded-xl absolute grey lighten-4" style="height: 50px;width:50px;bottom:20px;right: -20px;"></div>
+            <div class="rounded-circle absolute red lighten-5" style="height: 50px;width:50px;top:-20px;left: -20px;"></div>
+            <div class="rounded-xl absolute grey lighten-4" style="height: 45px;width: 106px;bottom: -38px;right: 50%;"></div>
+            <v-icon class="absolute black--text" @click="loginDialog = false" style="top: 5px;right: 5px;">mdi-close</v-icon>
+            <div class="my-6">
+              <h3 v-if="loginStep == 2 && UserType == 1 " class="text-center ">
+                تایید شماره موبایل
+              </h3>
+              <h3 v-else-if="(loginType == 'login' && loginStep != 3) && (UserType == 1 && loginStep == 1 && loginType == 'login')  || (UserType == 2 && loginStep == 1 && loginType == 'login')" class="text-center mt-6">
+                ورود به حساب کاربری
+              </h3>
+              <h4 v-else-if="loginStep != 3 && UserType == 1 || (UserType == 2 && loginStep == 1 && loginType == 'register')" class="text-center mt-6">
+                ثبت نام در سایت گردشگری آهوان
+              </h4>
+              <span v-if="showAlert" class="widthAll text-center d-block caption mt-2" :class="alertType == 'error' ? 'red--text' : 'green--text'" style="font-family: Byekan !important;">{{ alertText }}</span>
+            </div>
+            <v-row v-if="loginStep == 1" justify="center">
+              <div class="grey lighten-4 my-6 rounded-lg hideOver body-2" style="width:240px;font-family: Byekan !important;">
+                <v-row>
+                  <v-col class="py-3 text-center cursorPointer text-center " @click="UserType = 1" :class="UserType == 1 && 'red lighten-5'">
+                    <h4 :class="UserType == 1 ? 'red--text' : 'grey--text text--darken-1' ">
+                      مسافر
+                    </h4>
+                  </v-col>
+                  <v-col class="py-3 text-center cursorPointer " @click="UserType = 2" :class="UserType == 2 && 'red lighten-5'">
+                    <h4 :class="UserType == 2 ? 'red--text' : 'grey--text text--darken-1' ">
+                      شرکت
+                    </h4>
+                  </v-col>
+                </v-row>
               </div>
-              <v-row v-if="loginStep == 1" justify="center">
-                <div class="grey lighten-4 my-6 rounded-lg hideOver body-2" style="width:240px;font-family: Byekan !important;">
-                  <v-row>
-                    <v-col class="py-3 text-center cursorPointer text-center " @click="UserType = 1" :class="UserType == 1 && 'red lighten-5'">
-                      <h4 :class="UserType == 1 ? 'red--text' : 'grey--text text--darken-1' ">
-                        مسافر
-                      </h4>
-                    </v-col>
-                    <v-col class="py-3 text-center cursorPointer " @click="UserType = 2" :class="UserType == 2 && 'red lighten-5'">
-                      <h4 :class="UserType == 2 ? 'red--text' : 'grey--text text--darken-1' ">
-                        شرکت
-                      </h4>
-                    </v-col>
-                  </v-row>
+            </v-row>
+            <v-row v-if="loginStep == 1" justify="center">
+              <v-form
+                ref="loginForm"
+                lazy-validation
+              >
+              <div v-if="UserType == 1">
+                <v-text-field v-if="loginType == 'register'" outlined class="mt-2 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.name' label="نام" :rules="nameRules"></v-text-field>
+                <v-text-field v-if="loginType == 'register'" outlined class="mt-1 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.family' label="نام خانوادگی" :rules="familyRules"></v-text-field>
+                <v-text-field outlined  class="mt-1 rounded-xl" label="موبایل" pattern="\d*" type="number" append-icon="mdi-phone" v-model='loginForm.phone' :rules="phoneRules"></v-text-field>
+              </div>
+              <div v-if="UserType == 2 && loginType == 'login'"  style="width:240px;">
+                <v-row>
+                  <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' label="ایمیل" :rules="emailRules"></v-text-field>
+                  <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" pattern="\d*" v-model='loginForm.phone' label="موبایل" :rules="phoneRules"></v-text-field>
+                  <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' label="رمزعبور" :rules="emptyRules"></v-text-field>
+                </v-row>
+              </div>
+              <div v-if="UserType == 2 && loginType == 'register'" style="width:240px;">
+                <v-row>
+                  <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.name' label="نام نماینده" :rules="nameRules"></v-text-field>
+                  <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.family' label="نام خانوادگی نماینده" :rules="familyRules"></v-text-field>
+                  <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-group" v-model='loginForm.companeyName' label="نام شرکت یا آژانس" :rules="emptyRules"></v-text-field>
+                  <v-select
+                    v-model="loginForm.companeyWork"
+                    :items="companeyWorkItems"
+                    :rules="emptyRules" outlined
+                    class="mt-2 rounded-xl" append-icon="mdi-semantic-web"
+                    label="حوضه فعالیت شرکت"
+                  ></v-select>
+                  <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-numeric" v-model='loginForm.code' pattern="\d*" label="کد ثبت شرکت" :rules="emptyRules"></v-text-field>
+                  <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" v-model='loginForm.phone' pattern="\d*" label="شماره موبایل نماینده" :rules="phoneRules"></v-text-field>
+                  <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' label="آدرس ایمیل شرکت" :rules="emailRules"></v-text-field>
+                  <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' label="رمزعبور" :rules="emptyRules"></v-text-field>
+                </v-row>
+              </div>
+              </v-form>
+            </v-row>
+            <v-row v-if="loginStep == 2 && UserType != 2 " justify="center">
+              <v-form
+                ref="loginOtpForm"
+                lazy-validation
+              >
+                <span class="body-2 text-center d-block" style="font-family: Byekan !important;">کد 4 رقمی ارسال شده بر روی شماره موبایل را لطفا وارد نمایید.</span>
+                <div class="mb-2 mt-4 px-12">
+                  <v-otp-input pattern="\d*" v-model="loginForm.otp" class="mx-6 mx-md-12"
+                    length="4"
+                  ></v-otp-input>
                 </div>
-              </v-row>
-              <v-row v-if="loginStep == 1" justify="center">
-                <v-form
-                  ref="loginForm"
-                  lazy-validation
-                >
-                <div v-if="UserType == 1">
-                  <v-text-field v-if="loginType == 'register'" outlined class="mt-2 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.name' label="نام" :rules="nameRules"></v-text-field>
-                  <v-text-field v-if="loginType == 'register'" outlined class="mt-1 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.family' label="نام خانوادگی" :rules="familyRules"></v-text-field>
-                  <v-text-field outlined  class="mt-1 rounded-xl" label="موبایل" pattern="\d*" type="number" append-icon="mdi-phone" v-model='loginForm.phone' :rules="phoneRules"></v-text-field>
-                </div>
-                <div v-if="UserType == 2 && loginType == 'login'"  style="width:240px;">
-                  <v-row>
-                    <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' label="ایمیل" :rules="emailRules"></v-text-field>
-                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" pattern="\d*" v-model='loginForm.phone' label="موبایل" :rules="phoneRules"></v-text-field>
-                    <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' label="رمزعبور" :rules="emptyRules"></v-text-field>
-                  </v-row>
-                </div>
-                <div v-if="UserType == 2 && loginType == 'register'" style="width:240px;">
-                  <v-row>
-                    <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.name' label="نام نماینده" :rules="nameRules"></v-text-field>
-                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.family' label="نام خانوادگی نماینده" :rules="familyRules"></v-text-field>
-                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-group" v-model='loginForm.companeyName' label="نام شرکت یا آژانس" :rules="emptyRules"></v-text-field>
-                    <v-select
-                      v-model="loginForm.companeyWork"
-                      :items="companeyWorkItems"
-                      :rules="emptyRules" outlined
-                      class="mt-2 rounded-xl" append-icon="mdi-semantic-web"
-                      label="حوضه فعالیت شرکت"
-                    ></v-select>
-                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-numeric" v-model='loginForm.code' pattern="\d*" label="کد ثبت شرکت" :rules="emptyRules"></v-text-field>
-                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" v-model='loginForm.phone' pattern="\d*" label="شماره موبایل نماینده" :rules="phoneRules"></v-text-field>
-                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' label="آدرس ایمیل شرکت" :rules="emailRules"></v-text-field>
-                    <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' label="رمزعبور" :rules="emptyRules"></v-text-field>
-                  </v-row>
-                </div>
-                </v-form>
-              </v-row>
-              <v-row v-if="loginStep == 2 && UserType != 2 " justify="center">
-                <v-form
-                  ref="loginOtpForm"
-                  lazy-validation
-                >
-                  <span class="body-2 text-center d-block" style="font-family: Byekan !important;">کد 4 رقمی ارسال شده بر روی شماره موبایل را لطفا وارد نمایید.</span>
-                  <div class="mb-2 mt-4 px-12">
-                    <v-otp-input pattern="\d*" v-model="loginForm.otp" class="mx-6 mx-md-12"
-                      length="4"
-                    ></v-otp-input>
-                  </div>
-                </v-form>
-              </v-row>
-              <v-row v-if="loginStep == 3 || (UserType == 2 && loginType == 'register' && loginStep == 2) || (UserType == 2 && loginStep == 2)" justify="center">
-                <img class="my-6" src="/folders/image/success.png" alt="" width="130px">
-                <h5 v-if="UserType == 2 && loginType == 'register'" class="green--text text--darken-2 my-3 text-center d-block">اطلاعات شما با موفقیت دریافت شد.لطفا منتظر تایید باشید.</h5>
-                <h4 v-else class="green--text text--darken-2 my-3 widthAll text-center">عملیات ورود با موفقیت انجام شد.</h4>
-              </v-row>
-              <v-row justify="center">
-                <span v-if="resendSeconds != 0 && loginStep == 2 && UserType == 1" class="body-2 text-center mb-2 widthAll text-center" style="font-family: Byekan !important;">امکان ارسال مجدد تا {{resendSeconds}} ثانیه دیگر</span>
-                <div class="widthAll">
-                  <v-row justify="center">
-                    <div v-if="resendSeconds == 0 && loginStep == 2 && UserType == 1" @click="resendSeconds = 60" class="body-2 blue--text text--darken-2 text-decoration-underline mb-3 cursorPointer d-inline-block mx-auto" style="font-family: Byekan !important;" >ارسال مجدد کد</div>
-                  </v-row>
-                </div>
-                <span v-if="loginType == 'login' && loginStep == 1" class="body-2 text-center widthAll my-4" style="font-family: Byekan !important;">
-                  قبلا ثبت نام نکرده اید؟
-                  <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
-                </span>
-                <span v-else-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
-                  {{loginForm.phone}}
-                  <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
-                </span>
-                <span v-else-if="loginType != 'login' && loginStep == 1" class="body-2 text-center widthAll my-4" style="font-family: Byekan !important;">
-                  قبلا ثبت نام کرده اید؟
-                  <span @click="loginType = 'login'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">وارد شوید</span>
-                </span>
-                <v-btn v-if="loginStep == 1 || ( loginStep ==2 && UserType == 1)" :disabled="loginStep == 2 && loginForm.otp.length < 4 " @click="loginOrRegisterValidate()" dark class="widthAll red my-4 rounded-xl py-7 mt-1" style="width: 55%;">
-                  {{(UserType == 2 && loginType == 'login' ||( loginStep == 2 && UserType == 1)) ? 'ورود' : 'مرحله بعدی'}}
-                </v-btn>
-              </v-row>
-            </v-card>
-          </v-dialog>
+              </v-form>
+            </v-row>
+            <v-row v-if="loginStep == 3 || (UserType == 2 && loginType == 'register' && loginStep == 2) || (UserType == 2 && loginStep == 2)" justify="center">
+              <img class="my-6" src="/folders/image/success.png" alt="" width="130px">
+              <h5 v-if="UserType == 2 && loginType == 'register'" class="green--text text--darken-2 my-3 text-center d-block">اطلاعات شما با موفقیت دریافت شد.لطفا منتظر تایید باشید.</h5>
+              <h4 v-else class="green--text text--darken-2 my-3 widthAll text-center">عملیات ورود با موفقیت انجام شد.</h4>
+            </v-row>
+            <v-row justify="center">
+              <span v-if="resendSeconds != 0 && loginStep == 2 && UserType == 1" class="body-2 text-center mb-2 widthAll text-center" style="font-family: Byekan !important;">امکان ارسال مجدد تا {{resendSeconds}} ثانیه دیگر</span>
+              <div class="widthAll">
+                <v-row justify="center">
+                  <div v-if="resendSeconds == 0 && loginStep == 2 && UserType == 1" @click="resendSeconds = 60" class="body-2 blue--text text--darken-2 text-decoration-underline mb-3 cursorPointer d-inline-block mx-auto" style="font-family: Byekan !important;" >ارسال مجدد کد</div>
+                </v-row>
+              </div>
+              <span v-if="loginType == 'login' && loginStep == 1" class="body-2 text-center widthAll my-4" style="font-family: Byekan !important;">
+                قبلا ثبت نام نکرده اید؟
+                <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
+              </span>
+              <span v-else-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                {{loginForm.phone}}
+                <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
+              </span>
+              <span v-else-if="loginType != 'login' && loginStep == 1" class="body-2 text-center widthAll my-4" style="font-family: Byekan !important;">
+                قبلا ثبت نام کرده اید؟
+                <span @click="loginType = 'login'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">وارد شوید</span>
+              </span>
+              <v-btn v-if="loginStep == 1 || ( loginStep ==2 && UserType == 1)" :disabled="loginStep == 2 && loginForm.otp.length < 4 " @click="loginOrRegisterValidate()" dark class="widthAll red my-4 rounded-xl py-7 mt-1" style="width: 55%;">
+                {{(UserType == 2 && loginType == 'login' ||( loginStep == 2 && UserType == 1)) ? 'ورود' : 'مرحله بعدی'}}
+              </v-btn>
+            </v-row>
+          </v-card>
+        </v-dialog>
         <v-row justify="center" class="d-none d-sm-flex mt-12 pt-12 relative grey lighten-3">
           <img src="./folders/image/main-page-image.jpg" class="mt-1" width="100%" alt="" >
+          <!-- <div class="absolute widthAll pt-6">
+            <v-row justify="center">
+              <div class="indexDiv my-12">
+                <b class="red--text text-left pl-9 experience-title widthAll d-block" style="text-shadow: 1px 1px 0px black;">52 سال</b>
+                <b class="white--text text-left widthAll d-block experience-title2" style="text-shadow: 1px 1px 0px black;">تجربه با افتخار</b>
+              </div>
+            </v-row>
+          </div> -->
+          
           <div id="flipdownParent" class="absolute">
             <v-skeleton-loader class="my-6"
                 type="chip"
@@ -400,10 +456,9 @@
         <v-row class="mb-12" justify="center" v-show="(showSection && windowWidth < 600) || windowWidth >= 600">
           <div class="indexDiv">
             <v-form ref="headerInputForm" lazy-validation>
-              <v-card v-show="selectedSection.title != 'بیمه'" elevation="1" class=" rounded-lg px-sm-4 py-2 py-sm-4" :class="selectedSection.title == 'هتل' || selectedSection.title == 'تور' || selectedSection.title == 'اتوبوس' || selectedSection.title == 'قطار' ? '' : 'py-md-6'">
+              <v-card v-show="selectedSection.title != 'بیمه'" elevation="1" class=" rounded-lg px-sm-4 py-2 py-sm-4 py-md-6" >
                 <v-row >
-                  <v-col cols="12" sm="5" md="4" lg="3" v-if="selectedSection.title != 'آهوان' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'"
-                    :class="(selectedSection.title == 'هتل' || selectedSection.title == 'تور') && 'pa-sm-0'">
+                  <v-col cols="12" sm="5" md="4" lg="3" v-if="selectedSection.title != 'آهوان' && selectedSection.title != 'اتوبوس' && selectedSection.title != 'قطار'">
                     <v-skeleton-loader class="inputLoader mx-0 mx-sm-4"
                       :class="selectedSection.title == 'هتل' || selectedSection.title == 'تور' ? 'mb-sm-2' : 'mb-sm-4'"
                       type="card-heading"
@@ -988,150 +1043,153 @@
             </v-row>
           </div>
         </v-row> -->
-        <v-row class="my-6" justify="center">
+        <v-row justify="center" align="center" class="mb-6">
+          <div class="red mt-1 ml-4 " style="height:3px;width:60px"></div>
+          <h3 class="font-small-title-xs">تور های ویژه آهوان</h3>
+          <div class="red mt-1 mr-4 " style="height:3px;width:60px"></div>
+        </v-row>
+        <v-row justify="center" class="">
+          <div class="indexDiv">
+            <v-row>
+              <v-col cols="12" sm="6" md="4" class="scroll-reveal box right pa-0">
+                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver">
+                  <a href="/tour/Istanbul/">
+                    <v-img height="220" src="/folders/image/tourSlider/0001.jpg" alt=""></v-img>
+                    <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
+                      <div>
+                        <v-row justify="center">
+                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور ترکیه</h1>
+                        </v-row>
+                        <v-row>
+                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 5.550 میلیون</span>
+                        </v-row>
+                      </div>
+                    </v-row>
+                  </a>
+                </div>
+              </v-col>
+              <v-col cols="12" sm="6" md="8" class="scroll-reveal box left pa-0">
+                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver">
+                  <a href="/tour/Europe/">
+                    <v-img height="220" src="/folders/image/tourSlider/0004.jpg" alt=""></v-img>
+                    <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
+                      <div>
+                        <v-row justify="center">
+                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور اروپا</h1>
+                        </v-row>
+                        <v-row>
+                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 36 میلیون</span>
+                        </v-row>
+                      </div>
+                    </v-row>
+                  </a>
+                </div>
+              </v-col>
+              <v-col cols="12" sm="6" md="4" class="scroll-reveal box right pa-0">
+                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver">
+                  <a href="/tour/Dubai/">
+                    <v-img height="220" src="/folders/image/tourSlider/0003.jpg" alt=""></v-img>
+                    <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
+                      <div>
+                        <v-row justify="center">
+                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور دبی</h1>
+                        </v-row>
+                        <v-row>
+                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 12.200 میلیون</span>
+                        </v-row>
+                      </div>
+                    </v-row>
+                  </a>  
+                </div>
+              </v-col>
+              <v-col cols="12" sm="6" md="4" class="scroll-reveal box right pa-0">
+                <div class="relative cursorPointer my-2 mr-2 ml-md-2 rounded-lg hideOver">
+                  <a href="/tour/Vietnam/" class="" >
+                    <v-img height="220" src="/folders/image/tourSlider/0002.jpg" alt=""></v-img>
+                    <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
+                      <div>
+                        <v-row justify="center">
+                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور ویتنام</h1>
+                        </v-row>
+                        <v-row>
+                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 99 میلیون</span>
+                        </v-row>
+                      </div>
+                    </v-row>
+                  </a>  
+                </div>
+              </v-col>
+              <v-col cols="12" sm="12" md="4" class="scroll-reveal box left pa-0">
+                <div class="relative cursorPointer my-2 mr-md-2 rounded-lg hideOver">
+                  <a href="/tour/Moscow/">
+                    <v-img height="220" src="/folders/image/tourSlider/0005.jpg" alt=""></v-img>
+                    <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
+                      <div>
+                        <v-row justify="center">
+                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور روسیه</h1>
+                        </v-row>
+                        <v-row>
+                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 19.800 میلیون</span>
+                        </v-row>
+                      </div>
+                    </v-row>
+                  </a>  
+                </div>
+              </v-col>
+            </v-row>
+          </div>
+        </v-row>
+        <!-- <v-row class="my-6 " justify="center">
           <v-sheet max-width="100%" class="indexDiv transparent">
             <v-skeleton-loader class=" mt-4"
               type="image"
               :loading="isLoading"
-            >
-            <v-row justify="center" align="center" class="mb-6">
-              <div class="red mt-1 ml-4 " style="height:3px;width:75px"></div>
-              <h3 class="font-small-title-xs">تور های ویژه آهوان</h3>
-              <div class="red mt-1 mr-4 " style="height:3px;width:75px"></div>
-            </v-row>
-              <v-row class="">
-                <v-col cols="4">
-                  <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver">
-                    <a href="/tour/Istanbul/">
-                      <v-img height="220" src="/folders/image/tourSlider/0001.jpg" alt=""></v-img>
-                      <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
-                        <div>
-                          <v-row justify="center">
-                            <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور ترکیه</h1>
-                          </v-row>
-                          <v-row>
-                            <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 12 میلیون</span>
-                          </v-row>
-                        </div>
-                      </v-row>
-                    </a>
-                  </div>
-                </v-col>
-                <v-col cols="8">
-                  <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver">
-                    <a href="/tour/Europe/">
-                      <v-img height="220" src="/folders/image/tourSlider/0004.jpg" alt=""></v-img>
-                      <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
-                        <div>
-                          <v-row justify="center">
-                            <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور اروپا</h1>
-                          </v-row>
-                          <v-row>
-                            <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 36 میلیون</span>
-                          </v-row>
-                        </div>
-                      </v-row>
-                    </a>
-                  </div>
-                </v-col>
-                <v-col cols="4">
-                  <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver">
-                    <a href="/tour/Dubai/">
-                      <v-img height="220" src="/folders/image/tourSlider/0003.jpg" alt=""></v-img>
-                      <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
-                        <div>
-                          <v-row justify="center">
-                            <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور دبی</h1>
-                          </v-row>
-                          <v-row>
-                            <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 5 میلیون</span>
-                          </v-row>
-                        </div>
-                      </v-row>
-                    </a>  
-                  </div>
-                </v-col>
-                <v-col cols="4">
-                  <div class="relative cursorPointer my-2 mx-2 rounded-lg hideOver">
-                    <a href="/tour/Vietnam/">
-                      <v-img height="220" src="/folders/image/tourSlider/0002.jpg" alt=""></v-img>
-                      <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
-                        <div>
-                          <v-row justify="center">
-                            <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور ویتنام</h1>
-                          </v-row>
-                          <v-row>
-                            <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 18 میلیون</span>
-                          </v-row>
-                        </div>
-                      </v-row>
-                    </a>  
-                  </div>
-                </v-col>
-                <v-col cols="4">
-                  <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver">
-                    <a href="/tour/Moscow/">
-                      <v-img height="220" src="/folders/image/tourSlider/0005.jpg" alt=""></v-img>
-                      <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
-                        <div>
-                          <v-row justify="center">
-                            <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور روسیه</h1>
-                          </v-row>
-                          <v-row>
-                            <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 11 میلیون</span>
-                          </v-row>
-                        </div>
-                      </v-row>
-                    </a>  
-                  </div>
-                  
-                  
-                </v-col>
-                
+            > -->
+        <!-- <div class="widthAll slick-tour slick-parent relative">
+          <div v-for="(item, i) in tourItems" :key="i">
+            <v-card outlined class="ma-sm-4 cardSlider" >
+              <img width="100%" :src="item.image">
+              <h3 class="ma-2 font-small-title-xs">{{item.city}}</h3>
+              <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">شروع از: 
+                {{item.startFrom}}
+              </div>
+              <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">خدمات:پرواز ،هتل و ترانسفر فرودگاهی</div>
+              <v-row align="center" justify="center">
+                <a :href="item.link" class="text-decoration-none" style="width:50%">
+                  <v-btn outlined color="red" dark class="my-2 mr-2 px-3 cardButtonsTour">مشاهده پکیج</v-btn>
+                </a>
+                <v-spacer></v-spacer>
+                <a :href="item.download" class="text-decoration-none" style="width:50%" download>
+                  <v-btn outlined color="red" class="my-2 px-5 cardButtonsTour">دانلود PDF</v-btn>
+                </a>
               </v-row>
-              <!-- <div class="widthAll slick-tour slick-parent relative">
-                <div v-for="(item, i) in tourItems" :key="i">
-                  <v-card outlined class="ma-sm-4 cardSlider" >
-                    <img width="100%" :src="item.image">
-                    <h3 class="ma-2 font-small-title-xs">{{item.city}}</h3>
-                    <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">شروع از: 
-                      {{item.startFrom}}
-                    </div>
-                    <div class="caption mb-1 mr-2 grey--text text--darken-1" style="font-family:Byekan !important">خدمات:پرواز ،هتل و ترانسفر فرودگاهی</div>
-                    <v-row align="center" justify="center">
-                      <a :href="item.link" class="text-decoration-none" style="width:50%">
-                        <v-btn outlined color="red" dark class="my-2 mr-2 px-3 cardButtonsTour">مشاهده پکیج</v-btn>
-                      </a>
-                      <v-spacer></v-spacer>
-                      <a :href="item.download" class="text-decoration-none" style="width:50%" download>
-                        <v-btn outlined color="red" class="my-2 px-5 cardButtonsTour">دانلود PDF</v-btn>
-                      </a>
-                    </v-row>
-                  </v-card>
-                </div>
-              </div> -->
-            </v-skeleton-loader>  
-          </v-sheet>
-        </v-row>
-        <v-row justify="center" align="center" class="my-6">
+            </v-card>
+          </div>
+        </div> -->
+        <!-- </v-skeleton-loader>  
+        </v-sheet>
+        </v-row> -->
+        <v-row justify="center" align="center" class="my-2 my-sm-6">
           <div class="indexDiv">
             <v-row>
-              <v-col> 
-                <div class="d-inline-block red mt-1 ml-4 " style="height:3px;width:75px"></div>
+              <v-col cols="12" md="6" class="order-2 order-md-1"> 
+                <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
                 <h3 class="d-inline-block font-small-title-xs">درباره ما</h3>
-                <div class="d-inline-block red mt-1 mr-4 " style="height:3px;width:75px"></div>
-                  <p class="text-justify mt-6" style="line-height:35px">
+                <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
+                <div paragraph>
+                  <p class="text-justify mt-3 mt-sm-6 font-small-xs paragraph">
                     شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.
                   </p>
-                  <p class="text-justify" style="line-height:35px">
+                  <p class="text-justify font-small-xs paragraph">
                     خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی واقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
                       <!-- سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود. -->
                   </p>
-                  <v-btn color="red"  class="px-9 mt-4 float-left" dark>مشاهده بیشتر</v-btn>
+                </div>
+                  <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
               </v-col>
-              <v-col>
+              <v-col cols="12" md="6" class="order-1 order-md-2">
                 <v-row justify="center">
-                  <img height="350" src="/folders/image/درباره-ما.png" alt="">
+                  <img class="main-page-sectionImage" src="/folders/image/درباره-ما.png" alt="">
                 </v-row>
               </v-col>
             </v-row>
@@ -1199,10 +1257,9 @@
               type="chip"
               :loading="isLoading"
             >
-              <div class="d-inline-block red mt-1 ml-4 " style="height:3px;width:75px"></div>
-                <h3 class="d-inline-block font-small-title-xs">سوالات متداول</h3>
-                <div class="d-inline-block red mt-1 mr-4 " style="height:3px;width:75px"></div>
-              <!-- <h3 class="font-small-title-xs">سوالات متداول:</h3> -->
+              <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px"></div>
+              <h3 class="d-inline-block font-small-title-xs">پرسش و پاسخ</h3>
+              <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px"></div>
             </v-skeleton-loader>
             <v-expansion-panels multiple class="ltr questionPanell" >
               <v-expansion-panel class="white"
@@ -1225,6 +1282,14 @@
                         <span class="answerText grey--text text--darken-2 font-small-xs">
                           {{item.answer}}
                         </span>
+                        <br v-if="item.answer2">
+                        <span v-if="item.answer2" class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer2}}
+                        </span>
+                        <br v-if="item.answer3">
+                        <span v-if="item.answer3" class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer3}}
+                        </span>
                       </v-expansion-panel-content>
                     </v-row>
                   </v-card>
@@ -1233,49 +1298,55 @@
             </v-expansion-panels>
           </div>
         </v-row>
-        <v-row justify="center" align="center" class="my-6">
+        <v-row justify="center" align="center" class="my-2 my-sm-6">
           <div class="indexDiv">
             <v-row>
-              <v-col>
+              <v-col cols="12" md="6">
                 <v-row justify="center">
-                  <img height="350" src="/folders/image/باشگاه-مشتریان.png" alt="">
+                  <img class="main-page-sectionImage" src="/folders/image/باشگاه-مشتریان.png" alt="">
                 </v-row>
               </v-col>
-              <v-col> 
-                <div class="d-inline-block red mt-1 ml-4 " style="height:3px;width:75px"></div>
-                <h3 class="d-inline-block font-small-title-xs">باشگاه مشتریان</h3>
-                <div class="d-inline-block red mt-1 mr-4 " style="height:3px;width:75px"></div>
-                  <p class="text-justify mt-6" style="line-height:35px">
-                    شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.
+              <v-col cols="12" md="6"> 
+                <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
+                <h3 class="d-inline-block font-small-title-xs">باشگاه مشتریان آهوان</h3>
+                <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
+                <div paragraph>
+                  <p class="text-justify mt-3 mt-sm-6 font-small-xs paragraph">
+                    ما به خرید شما احترام می‌گذاریم و آن را ارج می‌نهیم.
+                    جایگاه ویژه خریداران و مشتریان وفادار ما اینجاست.
+                    تمامی اعضای این باشگاه با توجه به خریدشان، امتیازات نقره‌ای/ برنز و طلایی را اخذ می‌کنند و به خدمات بیشتر با نرخ ویژه‌تر و جایگاه بهتر دست می‌یابند.
                   </p>
-                  <p class="text-justify" style="line-height:35px">
-                    خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی واقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                  <p class="text-justify font-small-xs paragraph">
+                    به محض ثبت نام شما در سایت آهوان به مرحله نقره‌ای دست پیدا خواهید کرد و هرچه پروفایل خود را تکمیل‌تر نمایید به درجات بیشتری دسترسی پیدا خواهید کرد و دست یافتن به سایر درجات برنز و طلایی راحت‌تر می‌شود.
                       <!-- سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود. -->
                   </p>
-                  <v-btn color="red" class="px-9 mt-4 float-left" dark>مشاهده بیشتر</v-btn>
+                </div>
+                  <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
               </v-col>
             </v-row>
           </div>
         </v-row>
-        <v-row justify="center" align="center" class="my-6">
+        <v-row justify="center" align="center" class="my-2 my-sm-6">
           <div class="indexDiv">
             <v-row>
-              <v-col> 
-                <div class="d-inline-block red mt-1 ml-4 " style="height:3px;width:75px"></div>
+              <v-col cols="12" md="6"  class="order-2 order-md-1"> 
+                <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
                 <h3 class="d-inline-block font-small-title-xs">دفتر حافظ منافع مشتری</h3>
-                <div class="d-inline-block red mt-1 mr-4 " style="height:3px;width:75px"></div>
-                  <p class="text-justify mt-6" style="line-height:35px">
-                    شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.
+                <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
+                <div paragraph>
+                  <p class="text-justify mt-3 mt-sm-6 font-small-xs paragraph">
+                    دفتر حافظ منافع مشتریان به مسافرین اطمینان خاطر می دهد که صدای آنان توسط برگزارکنندگان تور جام جهانی 2022 قطر شنیده می شود و دغدغه های آنان در طراحی و اجرای پکیج ها لحاظ می گردد.
                   </p>
-                  <p class="text-justify" style="line-height:35px">
-                    خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی واقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                  <p class="text-justify font-small-xs paragraph">
+                    شما در هر لحظه از شبانه ­روز می توانید نظران، انتقادات و پیشنهادات خود را از طریق فرم ذیل به اطلاع تصمیم گیران پروژه برسانید و در حین لذت بردن از تورهای جام جهانی در کشور قطر نیز نمایندگان تام الختیار این برند را همگام و همراه در کنار خود داشته باشید.
                       <!-- سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود. -->
                   </p>
-                  <v-btn color="red" class="px-9 mt-4 float-left" dark>مشاهده بیشتر</v-btn>
+                </div>
+                  <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
               </v-col>
-              <v-col>
+              <v-col cols="12" md="6"  class="order-1 order-md-2">
                 <v-row justify="center">
-                  <img height="350" src="/folders/image/حافظ-منافع-مشتری.png" alt="">
+                  <img class="main-page-sectionImage" src="/folders/image/حافظ-منافع-مشتری.png" alt="">
                 </v-row>
               </v-col>
             </v-row>
@@ -1284,61 +1355,81 @@
         <v-row justify="center" align="center" class="mt-6 grey darken-3">
           <div class="indexDiv my-4">
             <v-row justify="center" class="mt-4">
-              <div class="d-inline-block red mt-4 ml-4 " style="height:3px;width:75px"></div>
+              <div class="d-inline-block red mt-4 ml-4 " style="height:3px;width:60px"></div>
               <h3 class="d-inline-block font-small-title-xs white--text">مجله گردشگری</h3>
-              <div class="d-inline-block red mt-4 mr-4 " style="height:3px;width:75px"></div>
+              <div class="d-inline-block red mt-4 mr-4 " style="height:3px;width:60px"></div>
               <div class="widthAll d-block">
                 <v-row justify="center" class="mt-6">
                   <p class="white--text text-center" style="max-width:600px">شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.</p>
                 </v-row>
               </div>
             </v-row>
-            <v-row justify="center" class="mt-6">
-              <v-col cols="6" class="my-8"> 
+            <v-row justify="center" class="mt-6 main-magazine">
+              <v-col cols="12" md="6" class="my-3 my-md-8"> 
                 <v-row class="pl-4">
                   <div style="width:25%" >
-                    <v-img height="120" width="120" class="rounded-circle ml-2" src="/folders/image/tour/europ-008.jpg" alt="" style="border:5px solid #fff"></v-img>
+                    <v-row justify="center">
+                      <div>
+                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-008.jpg" alt="" style="border:5px solid #fff"></v-img>
+                      </div>
+                    </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <span class="white--text text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...</span>
-                    <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    </p>
                   </div>
                 </v-row>
               </v-col>
-              <v-col cols="6" class="my-8"> 
+              <v-col cols="12" md="6" class="my-3 my-md-8"> 
                 <v-row class="">
                   <div style="width:25%" >
-                    <v-img height="120" width="120" class="rounded-circle ml-2" src="/folders/image/tour/europ-003.jpg" alt="" style="border:5px solid #fff"></v-img>
+                    <v-row justify="center">
+                      <div>
+                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-003.jpg" alt="" style="border:5px solid #fff"></v-img>
+                      </div>
+                    </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <span class="white--text text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...</span>
-                    <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    </p>
                   </div>
                 </v-row>
               </v-col>
-              <v-col cols="6" class="my-8"> 
-                <v-row class="pl-4">
+              <v-col cols="12" md="6" class="my-3 my-md-8"> 
+                <v-row class="pl-md-4">
                   <div style="width:25%" >
-                    <v-img height="120" width="120" class="rounded-circle ml-2" src="/folders/image/tour/europ-006.jpg" alt="" style="border:5px solid #fff"></v-img>
+                    <v-row justify="center">
+                      <div>
+                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-006.jpg" alt="" style="border:5px solid #fff"></v-img>
+                      </div>
+                    </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <span class="white--text text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...</span>
-                    <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    </p>
                   </div>
                 </v-row>
               </v-col>
-              <v-col cols="6" class="my-8"> 
+              <v-col cols="12" md="6" class="my-3 my-md-8"> 
                 <v-row class="">
                   <div style="width:25%" >
-                    <v-img height="120" width="120" class="rounded-circle ml-2" src="/folders/image/tour/europ-007.jpg" alt="" style="border:5px solid #fff"></v-img>
+                    <v-row justify="center">
+                      <div>
+                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-007.jpg" alt="" style="border:5px solid #fff"></v-img>
+                      </div>
+                    </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <span class="white--text text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...</span>
-                    <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                    </p>
                   </div>
                 </v-row>
               </v-col>
@@ -1346,7 +1437,7 @@
           </div>
         </v-row>
         <v-row v-show="showSlider" class="pb-6 pt-12 white" justify="center">
-          <v-sheet @mouseOver="clear()" @mouseLeave="start" max-width="100%" class="indexDiv transparent">
+          <v-sheet max-width="100%" class="indexDiv transparent">
             <v-skeleton-loader class=" mt-4"
               type="image"
               :loading="isLoading"
@@ -1354,32 +1445,44 @@
               <div class="widthAll slick-logo slick-parent relative my-6">
                 <div>
                   <v-row justify="center">
-                    <img src="/folders/image/header logo 1.jpg" alt="">
+                    <a href="https://www.holidayvillahotels.com/">
+                      <img src="/folders/image/header logo 1.jpg" alt="">
+                    </a>
                   </v-row>
                 </div>
                 <div>
                   <v-row justify="center">
-                    <img src="/folders/image/header logo 2.jpg" alt="">
+                    <a href="https://all.accor.com">
+                      <img src="/folders/image/header logo 2.jpg" alt="">
+                    </a>
                   </v-row>
                 </div>
                 <div>
                   <v-row justify="center">
-                    <img src="/folders/image/header logo 3.jpg" alt="">
+                    <a href="https://www.tejaratbank.ir/">
+                      <img src="/folders/image/header logo 3.jpg" alt="">
+                    </a>
                   </v-row>
                 </div>
                 <div>
                   <v-row justify="center">
-                    <img src="/folders/image/header logo 4.jpg" alt="">
+                    <a href="https://alemadi.com.qa/">
+                      <img src="/folders/image/header logo 4.jpg" alt="">
+                    </a>
                   </v-row>
                 </div>
                 <div>
                   <v-row justify="center">
-                    <img src="/folders/image/header logo 5.jpg" alt="">
+                    <a href="https://www.mcth.ir/">
+                      <img src="/folders/image/header logo 5.jpg" alt="">
+                    </a>
                   </v-row>
                 </div>
                 <div>
                   <v-row justify="center">
-                    <img src="/folders/image/header logo 6.jpg" alt="">
+                    <a href="/">
+                      <img src="/folders/image/header logo 6.jpg" alt="">
+                    </a>
                   </v-row>
                 </div>
               </div>
@@ -1538,9 +1641,9 @@
         <v-row justify="center" class="grey lighten-3">
           <div class=" indexDiv px-sm-6 pb-sm-0 pt-2 pt-sm-0  rounded-lg">
             <v-row>
-              <v-col cols="12" sm="6" class="pa-0 pa-sm-3">
+              <v-col cols="12" md="6" class="pa-0 pa-sm-3 order-2 order-md-1">
                 <v-row class=" mt-2">
-                  <v-col cols="5" sm="12" md="6" class="pa-0 pa-sm-3 pb-sm-0">
+                  <v-col cols="5" md="6" class="pa-0 pa-sm-3 pb-sm-0">
                     <h4>درباره هتل آهوان</h4>
                     <ul class="mr-4 mr-md-2 my-2">
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تماس با ما</li>
@@ -1551,7 +1654,7 @@
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">حقوق مسافرین</li>
                     </ul>
                   </v-col>
-                  <v-col cols="7" sm="12" md="6" class="pa-0 pa-sm-3">
+                  <v-col cols="7" md="6" class="pa-0 pa-sm-3">
                     <h4>پیشنهادات آهوان</h4>
                     <ul class="mr-4 mr-md-2 my-2">
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تورهای ویژه آهوان</li>
@@ -1565,7 +1668,7 @@
                   </v-col>
                 </v-row>
               </v-col>
-              <v-col cols="12" sm="6">
+              <v-col cols="12" md="6" class=" order-1 order-md-2">
                 <v-row>
                   <p class="body-2 text-justify grey--text text--darken-3 my-6" style="font-family: Byekan !important;line-height:25px">
                     آهوان با ارائه بهترین و با کیفیت ترین خدمات گردشگری به صورت آنلاین 
@@ -1573,11 +1676,11 @@
                     اینترنتی را برایتان تداعی کند.
                   </p>
                 </v-row>
-                <v-row justify="space-between" class="footerImagesParent mt-2">
-                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
+                <v-row justify="" class="footerImagesParent mt-2 justify-center justify-md-space-between">
+                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
                     <img class="ml-2 mx-md-1" src="./folders/image/logo (1).png"></img>
                   </a>
-                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
+                  <a referrerpolicy="origin" target="_blank" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
                     <img class="mx-2 mx-md-1" src="./folders/image/logo.png"></img>
                   </a>
                   <a target="_blank" href="https://www.cao.ir/">
@@ -1594,14 +1697,14 @@
                 <v-row class="grey--text text--darken-3 mt-3" style="font-family: Byekan !important;">
                   <v-col>شماره تماس:41889-021</v-col>
                   <v-col>
-                    <v-icon class="mx-1" color="grey darken-2">mdi-whatsapp</v-icon>
-                    <v-icon class="mx-1" color="grey darken-2">mdi-email-outline</v-icon>
-                    <v-icon class="mx-1" color="grey darken-2">mdi-instagram</v-icon>
-                    <v-icon class="mx-1" color="grey darken-2">mdi-twitter</v-icon>
-                    <v-icon class="mx-1" color="grey darken-2" style="transform: rotate(-36deg);">mdi-send</v-icon>
+                    <v-icon class="mx-1 cursorPointer whatsup-footer">mdi-whatsapp</v-icon>
+                    <v-icon class="mx-1 cursorPointer email-footer">mdi-email-outline</v-icon>
+                    <v-icon class="mx-1 cursorPointer instagram-footer">mdi-instagram</v-icon>
+                    <v-icon class="mx-1 cursorPointer twitter-footer">mdi-twitter</v-icon>
+                    <v-icon class="mx-1 cursorPointer send-footer" style="transform: rotate(-36deg);">mdi-send</v-icon>
                   </v-col>
                 </v-row>
-                <v-row class="body-2 grey--text text--darken-3 mt-4" style="font-family: Byekan !important;">
+                <v-row class="body-2 justify-center justify-sm-start grey--text text--darken-3 mt-4" style="font-family: Byekan !important;">
                   کلیه حقوق این وب سایت متعلق به شرکت خدمات مسافرتی آهوان می‌باشد.
                 </v-row>
               </v-col>
@@ -1623,6 +1726,6 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="./folders/slick/slick.min.js"></script>
-
+    <script src="/folders//js/scrollAnimation.js"></script>
   </body>
 </html>

@@ -401,6 +401,27 @@ new Vue({
         answer: 'در پرواز داخلی یا خارجی، امکان تغییر نام و نام خانوادگی در بلیط سیستمی وجود ندارد. اما در بلیط چارتر، برخی از چارترکننده‌ها این تغییر را می‌پذیرند.'
       },
     ],
+    // questions: [
+    //   {
+    //     question: 'باشگاه مسافران آهوان چه کاری انجام می‌دهد؟',
+    //     answer: 'ما به خرید شما احترام می‌گذاریم و آن را ارج می‌نهیم.جایگاه ویژه خریداران و مشتریان وفادار ما اینجاست.تمامی اعضای این باشگاه با توجه به خریدشان، امتیازات نقره‌ای/ برنز و طلایی را اخذ می‌کنند و به خدمات بیشتر با نرخ ویژه‌تر و جایگاه بهتر دست می‌یابند.'
+    //   },
+    //   {
+    //     question: 'امتیازات در آهوان چگونه است؟',
+    //     answer: 'امکانات ویژه باشگاه مسافران:نقره‌ای /برنز / طلایی  .به محض ثبت نام شما در سایت آهوان به مرحله نقره‌ای دست پیدا خواهید کرد و هرچه پروفایل خود را تکمیل‌تر نمایید به درجات بیشتری دسترسی پیدا خواهید کرد و دست یافتن به سایر درجات برنز و طلایی راحت‌تر می‌شود.'
+    //   },
+    //   {
+    //     question: 'هریک از کارت‌های نقره‌ای، برنز و طلایی چه ویژگی‌هایی دارد؟',
+    //     answer: 'امکانات کارت نقره‌ای: در کلیه مراحل پاسخگویی/ ثبت نام/ اخذ کارت پرواز/ check in هتل‌ها شما در اولویت هستید. تخفیفات ویژه در اکثر محصولات شرکت آهوان مثل هتل اختصاصی چهار ستاره مشهد و تهران انتقال امتیاز ویژه برای شما میهمان وفادار در ایام خاص شخصی شما و شرکت.',
+    //     answer2: 'امکانات کارت برنز: بیش از 2% تخفیف در کلیه پکیج‌های سفر خدمات رسانی رایگان درب منازل-تخفیف بالای 30% در هتل ‌های اختصاصی اهوان در مشهد و شمال(رامسر)',
+    //     answer3: 'امکانات کارت طلایی:استفاده از خدمات ترانسفر رایگان یکطرفه از منزل به هتل-جایگاه رایگان CIP در پروازهای چارتر آهوان(خارجی)-ارسال آخرین تعرفه تخفیفات ویژه در کلیه مسیرها-خدمات رسانی درب منزل',
+    //   },
+    //   {
+    //     question: 'چطور از وضعیت امتیازات خود در باشگاه آهوان مطلع شویم؟',
+    //     answer: ''
+    //   },
+
+    // ],
     // Knewes
     getKnewesDialog: false,
     getKnewesType: 'mail',
@@ -1948,7 +1969,7 @@ new Vue({
         });
         
         $(".slick-logo").slick({
-          slidesToShow: self.windowWidth > 1400 ? 5 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 599) ? 2 : 1,
+          slidesToShow: self.windowWidth > 1400 ? 5 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 4 : (self.windowWidth <= 960 && self.windowWidth > 775) ? 3 : (self.windowWidth <= 775 && self.windowWidth > 599) ? 2 : 1,
           slidesToScroll: 1,
           rtl: true,
           autoplay: true,
@@ -1964,7 +1985,10 @@ new Vue({
         //   startDelay: 2000,
         //   loop: true,
         // });
-      }, 3000);
+
+        
+      }, 1000);
+    self.isLoading = false
     },
     getCityesExternal() {
       let self = this
@@ -1993,6 +2017,8 @@ new Vue({
     }
   },
   created() {
+    // 
+    
     if (localStorage.getItem('user-name')) {
       this.userName = localStorage.getItem('user-name')
     }
@@ -2001,18 +2027,17 @@ new Vue({
     }
 
     this.getCityesExternal();
-    this.jquery()
+    
     this.start()
     this.getWidth()
     window.addEventListener('resize', this.getWidth());
-    setTimeout(() => {
-      this.isLoading = false
-    }, 2000);
+
     this.loginSecondsInterval = setInterval(() => {
       this.resendSeconds > 0 && this.resendSeconds--
     }, 1000);
   },
   mounted() {
+    this.jquery()
   },
   beforeDestroy() {
     window.removeEventListener('resize')

@@ -940,6 +940,23 @@ input::-webkit-inner-spin-button {
   background-color: #ff1500 !important;
 }
 
+.experience-title{
+  font-size:60px
+}
+
+.experience-title2{
+  font-size:50px
+}
+
+.paragraph{
+  line-height: 35px;
+}
+
+.main-magazine .v-image{
+  height: 120px;
+  width: 120px;
+}
+
 /* responsive */
 @media (min-width: 1264px) and (max-width: 1400px) {
   .v-expansion-panel-header {
@@ -981,6 +998,29 @@ input::-webkit-inner-spin-button {
 
   .dateTicket {
     right: 38%;
+  }
+
+  .main-magazine .v-image{
+    height: 100px;
+    width: 100px;
+  }
+
+  .footerImagesParent a:nth-child(1) > img, .footerImagesParent a:nth-child(2) > img {
+    height: 75px;
+  }
+
+  .footerImagesParent a:nth-child(3) > img {
+    height: 85px;
+  }
+
+  .footerImagesParent a:nth-child(4) > img {
+    height: 65px;
+    margin-top: 7px;
+  }
+
+  .footerImagesParent a:nth-child(5) > img {
+    height: 67px;
+    margin-top: 7px;
   }
 }
 
@@ -1044,9 +1084,36 @@ input::-webkit-inner-spin-button {
   .dateTicket {
     right: 38%;
   }
+
+  .main-magazine .v-image{
+    height: 90px;
+    width: 90px;
+  }
+
+  .footerImagesParent a:nth-child(1) > img, .footerImagesParent a:nth-child(2) > img {
+    height: 65px;
+  }
+
+  .footerImagesParent a:nth-child(3) > img {
+    height: 75px;
+  }
+
+  .footerImagesParent a:nth-child(4) > img {
+    height: 55px;
+    margin-top: 8px;
+  }
+
+  .footerImagesParent a:nth-child(5) > img {
+    height: 58px;
+    margin-top: 8px;
+  }
 }
 
 @media (min-width: 600px) and (max-width: 959px) {
+  .paragraph{
+    line-height: 29px;
+  }
+
   .headerButtons span {
     width: 25%;
     font-size: 12px;
@@ -1062,6 +1129,11 @@ input::-webkit-inner-spin-button {
 
   .borderFlight:hover {
     border: 1px solid #b9b9b9;
+  }
+
+  .main-magazine .v-image{
+    height: 100px;
+    width: 100px;
   }
 
   @media (min-width: 775px) and (max-width: 959px) {
@@ -1088,11 +1160,11 @@ input::-webkit-inner-spin-button {
     }
 
     .footerImagesParent a:nth-child(4) > img {
-      height: 90px;
+      height: 70px;
     }
 
     .footerImagesParent a:nth-child(5) > img {
-      height: 92px;
+      height: 72px;
     }
 
     .cardSlider {
@@ -1133,6 +1205,11 @@ input::-webkit-inner-spin-button {
 
     .next-page-ticket .flight-go-flesh {
       width: 310px;
+    }
+
+    .main-magazine .v-image{
+      height: 120px;
+      width: 120px;
     }
   }
 
@@ -1227,10 +1304,19 @@ input::-webkit-inner-spin-button {
     .next-page-ticket .flight-go-flesh {
       width: 185px;
     }
+
+    .main-magazine .v-image{
+      height: 100px;
+      width: 100px;
+    }
   }
 }
 
 @media (max-width: 599px) {
+  .paragraph{
+    line-height: 20px;
+  }
+
   .ticketButtons button {
     width: 110px !important;
   }
@@ -1298,15 +1384,17 @@ input::-webkit-inner-spin-button {
   .footerImagesParent a:nth-child(1) > img,
   .footerImagesParent a:nth-child(2) > img,
   .footerImagesParent a:nth-child(3) > img {
-    height: 80px;
+    height: 115px;
   }
 
   .footerImagesParent a:nth-child(4) > img {
-    height: 75px;
+    height: 90px;
+    margin-top: 15px;
   }
 
   .footerImagesParent a:nth-child(5) > img {
-    height: 78px;
+    height: 93px;
+    margin-top: 15px;
   }
 
   .downloadButton {
@@ -1470,6 +1558,11 @@ input::-webkit-inner-spin-button {
     .slick-tour .slick-track {
       margin-right: 106px !important;
     }
+
+    .main-magazine .v-image{
+      height: 100px;
+      width: 100px;
+    }
   }
 
   @media (min-width: 400px) and (max-width: 499px) {
@@ -1516,6 +1609,11 @@ input::-webkit-inner-spin-button {
 
     .slick-tour .slick-track {
       margin-right: 52px !important;
+    }
+
+    .main-magazine .v-image{
+      height: 80px;
+      width: 80px;
     }
   }
 
@@ -1571,6 +1669,11 @@ input::-webkit-inner-spin-button {
 
     .slick-tour .slick-track {
       margin-right: 40px !important;
+    }
+
+    .main-magazine .v-image{
+      height: 70px;
+      width: 70px;
     }
   }
 
@@ -1630,6 +1733,14 @@ input::-webkit-inner-spin-button {
 
     .slick-tour .slick-track {
       margin-right: 0 !important;
+    }
+
+    .main-magazine>div>.row>div:nth-child(1){
+      display: none !important;
+    }
+
+    .main-magazine>div>.row>div:nth-child(2){
+      width: 100% !important;
     }
   }
 }

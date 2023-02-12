@@ -1,0 +1,46 @@
+/* .intro-text {
+          text-align: center;
+          font-size: 3em;
+          width: 0ch;
+          overflow: hidden;
+          margin: 0 auto;
+          white-space: nowrap;
+          background-image: linear-gradient(155deg, #fb7419, #bc1429, #319197);
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+      }
+      .intro-text.active{
+          animation: typeIn 2s steps(28) forwards;
+      } */
+/* @keyframes typeIn {
+          to { width: 28ch; }
+      } */
+
+.scroll-reveal.box {
+  transition: transform 1s, opacity 1s;
+}
+.scroll-reveal.box.left {
+  transform: translateX(-200px);
+  opacity: 0;
+}
+.scroll-reveal.box.right {
+  transform: translateX(200px);
+  opacity: 0;
+}
+.scroll-reveal.box.top {
+  transform: translateY(-200px) rotate(360deg);
+  opacity: 0;
+}
+.scroll-reveal.box.bottom {
+  transform: translateY(200px) scaleX(3);
+  opacity: 0;
+}
+.scroll-reveal.box.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.scroll-reveal.loader {
+  text-align: center;
+}

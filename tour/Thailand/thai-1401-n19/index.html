@@ -27,10 +27,6 @@
     <link rel="stylesheet" href="/folders/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" />
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css">
-    <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css">
-    <!-- <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script> -->
-    <!-- <script type="text/javascript" src="/folders/flipDown/js/main.js"></script> -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -49,6 +45,378 @@
         })();
     </script>
   </head>
+  <style>
+    *{
+      letter-spacing: -0.7px !important;
+    } 
+
+    .tourImageBackground {
+      position: absolute;
+      width: 100%;
+      height: 98.5%;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.55) 0,
+        rgba(0, 0, 0, 0.55) 1%,
+        transparent 56%,
+        transparent 74%
+      );
+    }
+    
+    .tourPageTitle h3, .tourPageTitle span{
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tourPageTitle h3:hover {
+      color: rgb(44, 44, 44);
+      background: #fff;
+    }
+    
+    .tourPageTitle h3:hover .lighter{
+      /* content: ""; */
+      /* position: absolute; */
+      /* height: 15px;
+      width: 67%; */
+      background:#ffeb3b !important;
+      /* top: 47%;
+      right: 16%;
+      z-index: -1; */
+    }
+    
+    .tourPageTitle span{
+      color: rgb(44, 44, 44);
+    }
+
+    .v-slide-group__wrapper .v-slide-group__content {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .tabTitles{
+      color: #fff;
+    }
+
+    .activeTab {
+      color: rgb(44, 44, 44) !important;
+      background: #fff;
+      z-index: 1;
+    }
+
+    .activeTab::before {
+      content: "";
+      position: absolute;
+      height: 15px;
+      width: 67%;
+      background:#ffa69a66;
+      top: 47%;
+      right: 16%;
+      z-index: -1;
+    }
+
+    .countryNmae{
+      margin-right:-52px;
+      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
+      font-size: 62px;
+      font-weight: bold;
+    }
+
+    .tour-date {
+      margin-right:-52px;
+      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .main-div{
+      margin-top:-300px;
+    }
+
+    .logo-tour-title{
+      height: 35px;
+    }
+
+    .see-more{
+      font-weight: normal;
+      font-size: small;
+      text-decoration: underline;
+    }
+
+    .even-odd-tabel tbody tr:nth-child(even) {
+      background-color: #ff636d49 !important;
+    }
+
+    .even-odd-tabel th {
+      background-color: #ff636e91 !important;
+    }
+
+    .theme--light.v-data-table .v-data-footer,.v-application--is-ltr .v-data-footer__pagination{
+      direction: ltr !important;
+    }
+
+    .v-application--is-ltr .v-data-footer__select {
+      margin-left: 14px;
+      margin-right: auto;
+    }
+
+    .even-odd-tabel{
+      width: 100% !important;
+    }
+
+    .v-data-table,.v-data-table>.v-data-table__wrapper>table>tbody>tr>td,.theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>thead>tr:last-child>th {
+      border: 1px solid #9d9d9d;
+      font-weight: bold;
+    }
+
+    .galeryImageParent{
+      width: 24%;
+    }
+
+    .galeryImage{
+      position: relative;
+    }
+    
+    .galeryImage::after{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      /* background-color: #0000006e; */
+      z-index: 2222;
+      top: 0;
+      opacity: 1;
+    }
+    
+    .galeryImage:hover.galeryImage::after{
+      opacity: 0;
+    }
+    
+    .galeryImage:hover{
+      box-shadow: 0 0 5px rgb(59, 59, 59);
+    }
+
+    .halfLi{
+      width:49%
+    }
+
+    .even-odd-tabel td:nth-child(2) .bold{
+      font-size: 15px;
+      /* color: #ff6062 !important;
+      text-shadow: 0 0 3px #ff7765; */
+    }
+    
+    @media (min-width:960px) and (max-width:1263px){
+      .main-div{
+        margin-top:-245px;
+      }
+      
+      .countryNmae{
+        font-size: 46px;
+      }
+
+      .tourImageBackground {
+        height: 97.5%;
+      }
+    }
+    
+    @media (min-width:600px) and (max-width:959px) {
+
+      .main-div{
+        margin-top:-205px;
+      }      
+      
+      .tourImageBackground {
+        height: 96.5%;
+      }
+
+      .countryNmae{
+        font-size: 40px;
+      }
+
+      .tour-date{
+        font-size: 16px;
+      }
+
+      .tabTitles {
+        font-size: 15px !important;
+      }
+
+      .tabelTour{
+        width:100% !important
+      }
+      
+      .text-tour{
+        font-size: 14px;
+      }
+
+      .tabel-tour-title {
+        font-size: 18px !important;
+      }
+
+      .text-tour-call-us{
+        font-size: 16px ;
+      }
+
+      .galeryImageParent{
+        width: 45%;
+      }
+
+      .halfLi{
+        width:100%
+      }
+      
+      @media (max-width:774px) {
+        .main-div{
+          margin-top:-155px;
+        }
+
+        .tourImageBackground {
+          height: 96.5%;
+        }
+
+        .countryNmae{
+          font-size: 24px;
+          margin-right: -35px;
+          padding-right: 35px!important;
+        }
+
+        .tour-date{
+          font-size: 12px;
+          margin-right: -35px;
+          padding-right: 35px!important;
+        }
+
+        .tabTitles {
+          font-size: 13px !important;
+        }
+      }
+    }
+
+    @media (max-width:599px) {
+      .indexDiv{
+        width: 95% !important;
+      }
+
+      .main-div{
+        margin-top:-170px;
+      }
+
+      .backgroundImageTour{
+        width: 200%;
+      }
+
+      .countryNmae{
+        font-size: 26px;
+        margin-right: -35px;
+        padding-right: 35px!important;
+      }
+
+      .tour-date{
+        font-size: 14px;
+        margin-right: -35px;
+        padding-right: 35px!important;
+      }
+
+      .tabTitles{
+        font-size: 14px;
+        /* background: #fff; */
+        /* border: 1px solid #b37b63; */
+      }
+      
+      .tabelTour{
+        width:100% !important
+      }
+      
+      .tabelTour>.v-data-table__wrapper .v-data-table__mobile-row{
+        min-height: 35px !important;
+        justify-content: center;
+      }
+
+      .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row{
+        display: inline-block;
+        width: 50%;
+        position: relative;
+      }
+
+      .v-application--is-ltr .v-data-table__mobile-row__cell{
+        text-align: center;
+      }
+      
+      .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row:nth-child(1){
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row:nth-child(2)::before{
+        content: '<-----------------------------------------------';
+        position: absolute;
+        width: 46%;
+        right: 80%;
+        text-align: right;
+        overflow: hidden;
+        white-space: nowrap;
+        direction: ltr;
+        display: flex;
+        justify-content: start;
+      }
+      
+      .tabelTour *{
+        font-size: 13px;
+      }
+
+      .text-tour{
+        font-size: 14px;
+      }
+
+      .tabel-tour-title {
+        font-size: 16px !important;
+      }
+      
+      .text-tour-call-us{
+        font-size: 14px ;
+      }
+
+      .tourPageTitle h3, .tourPageTitle span{
+        /* color:black !important */
+      }
+
+      .tourImageBackground {
+        height: 97.5%;
+      }
+
+      .logo-tour-title{
+        height: 30px;
+      }
+
+      .tourPageTitle{
+        /* background-color: #fff; */
+      }
+
+      .tourPageTitle {
+        width: 500px;
+      }
+      
+      .v-data-table>.v-data-table__wrapper>table>tbody>tr>td,.theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>thead>tr:last-child>th {
+        border: unset;
+      }
+
+      .galeryImageParent{
+        width: 95%;
+      }
+
+      .halfLi{
+        width:100%
+      }
+
+      .v-data-table{
+        width:100%
+      }
+    }
+  </style>
   <body>
     <!-- header -->
     <!-- main page -->
@@ -323,7 +691,7 @@
                   قبلا ثبت نام نکرده اید؟
                   <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
                 </span>
-                <span v-else-if="loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                <span v-else-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
                   {{loginForm.phone}}
                   <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
                 </span>
@@ -338,45 +706,178 @@
             </v-card>
           </v-dialog>
         </div>
-        <v-row class="d-none d-sm-flex mt-12 pt-12">
-          <img src="/folders/image/main-page-image.jpg" class="mt-2" style="min-width:100%" height="250" alt="" >
-          <!-- <v-img src="/folders/image/flight-bg.jpg" height="260" alt="" /> -->
-        </v-row>
-        <v-row justify="center">
-          <div class="indexDiv my-6" style="min-height:500px">
-            <v-row justify="center" class="relative">
-              <v-col cols="12" sm="7" class="py-0">
-                <v-skeleton-loader class="my-6"
-                  type="chip"
-                  :loading="isLoading"
-                >
-                  <h4 class="font-small-title-xs">درباره شرکت آهوان</h4>
-                  <div class="red mt-1 mb-2 mb-6" style="height:3px;width:55px"></div>
-                </v-skeleton-loader>
-                <v-skeleton-loader class="my-6"
-                  type="image"
-                  :loading="isLoading"
-                >
-                  <p class="body-2 text-justify" style="font-family: Byekan !important;">
-                    شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.
-                    <!-- آژانس مسافرتی (انگلیسی: Travel Agency) یا شرکت خدمات مسافرتی، به شرکتی اطلاق می‌شود که در زمینه ارائه خدمات گردشگری، جهانگردی و هواپیمایی به صورت خرده‌فروشی و عمده‌فروشی و پیش‌فروش، فعالیت می‌نماید.
-                    در ایران آژانس‌های مسافرتی بنا به نوع فعالیت خود از وزارت میراث فرهنگی،
-                    د. -->
-                  </p>
-                  <p class="body-2 text-justify" style="font-family: Byekan !important;">
-                    خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی واقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود.
-                    <!-- صنایع دستی و گردشگری همچنین از سازمان هواپیمایی کشوری و از سازمان حج و زیارت مجوز فعالیت دریافت می‌کنند و به نمایندگی از تأمین‌کنندگان، خدماتی چون اخذ ویزا، رزرو هتل و اماکن اقامتی، برگزاری تورهای مسافرتی گروهی و انفرادی، فروش بلیط هواپیما، قطار، و کشتی، انجام امور بیمه مسافرتی، صدور گواهینامه رانندگی بین‌المللی و… ارائه می‌نمای -->
-                  </p>
-                </v-skeleton-loader>
-              </v-col>
-              <!-- <v-col cols="12" sm="5" class="py-0">
-                <img  v-if="!isLoading" src="/folders/image/3image.png" alt="" class="relative" style="left: 0;bottom:32px;width:90%">
-              </v-col> -->
-            </v-row>
-          </div>    
-        </v-row>
-              
-          
+        <div class="mt-9 mt-sm-12 pt-12">
+          <v-row justify="center">
+            <div class="widthAll relative">
+              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background6.jpg" alt="">
+              <div class="tourImageBackground"></div>
+            </div>
+            <div class="mb-12 indexDiv main-div" style="z-index: 3">
+              <div>
+                <span class="white--text countryNmae px-12">بانکوک - پاتایا - پوکت</span>
+              </div>
+              <div>
+                <b class="white--text px-12 tour-date">
+                  تاریخ حرکت : 3 فروردین
+                </b>
+              </div>
+              <v-row class='mt-9 mt-sm-0 mt-lg-12 pt-6 pt-md-12' style="">
+                <v-slide-group ltr v-model="tab" class="ltr" hide-arrows center-activeTab>
+                  <v-slide-item v-slot="{ activeTab }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 0 && 'activeTab'" @click="tab = 0">لیست قیمت</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ activeTab }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 1 && 'activeTab'" @click="tab = 1">خدمات تور</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ activeTab }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 2 && 'activeTab'" @click="tab = 2">مدارک مورد نیاز</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'activeTab'" @click="tab = 3">نکات ضروری</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'activeTab'" @click="tab = 4">گالری تصاویر</h3>
+                  </v-slide-item>
+                </v-slide-group>
+              </v-row>
+              <v-row class="white py-md-9 px-6">
+                <div class="widthAll" v-if="tab == 0">
+                  <ul class=" mr-md-6">
+                    <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">
+                      قیمت های اعلام شده بر حسب تومان می‌باشد.
+                    </li>
+                    
+                  </ul>
+                  <v-row>
+                    <v-col cols="12" lg="12">
+                      <v-row class="mb-2" justify="center">
+                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                          :headers="pricesHeaderThailand"
+                          hide-default-footer
+                          :items="pricesItemsThailand"
+                          :items-per-page="50"
+                          class=" rounded-lg even-odd-tabel tabelTourId"
+                          style="border: 2px solid #9d9d9b !important;"
+                        >
+                          <!-- <template #item="{ item }">
+                            div
+                            <tr>      
+                              <td class="bold text-center" v-for="(col,key) in item" :key="key">
+                                  {{ col }}
+                              </td>
+                            </tr>
+                        </template> -->
+                        <template v-slot:item.name="{ item }">
+                         <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>
+                                  
+                             
+                        </template>
+                        </v-data-table>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                  
+                </div>
+                <div class="widthAll" v-else-if="tab == 1">
+                  <v-row>
+                    <v-col cols="12" md="12">
+                      <ul class=" mr-md-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ویزای توریستی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">سیم کارت به هر خانواده</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">11 شب اقامت به‌همراه صبحانه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه سفر تا سقف 10.000 یورو</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر فرودگاهی و بین شهری</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">مدت اقامت به‌همراه صبحانه 11 شب</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">گشت شهری 4 ساعته در تمامی شهرها</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">پرواز های داخلی (بانکوک - پوکت - بانکوک )</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">پرواز کویتی بهمراه اقامت در هتل 5 ستاره فرودگاه کویتدر رفت و برگشت</li>
+                      </ul>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 2">
+                  <v-row>
+                    <v-col cols="12" md="12">
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای تایلند</h3>
+                      <ul class="my-6 mr-9">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">همراه داشتن تست PCR تا 72 ساعت قبل از پرواز(از واکسن مرحله 2 حداقل 15 روز گذشته باشد)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمکن مالی 6 ماهه با موجودی حداقل 50.000.000 تومان</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کپی کارت ملی و تمام صفحات شناسنامه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت با 7 ماه اعتبار</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">انجام واکسیناسیون هر 2 دوز</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">یک قطعه عکس 4 * 6</li>
+                      </ul>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 3">
+                  <v-row>
+                    <v-col cols="12" md="6">
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">نکات ضروری تورهای تایلند</h3>
+                      <ul class="my-6 mr-9">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کلیه نرخ ها به تومان می‌باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن‌های مورد تائید تایلند(سینوفارم - آستارزینکا - و ...)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسئول کنترل پاسپورت به‌عهده آژانس همکار است.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نرخ کودک زیر 2 سال (INF) 9.900.000 تومان می‌باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پرداخت 70% کل مبلغ تور الزامیست در غیر این صورت چنانچه نوسانات دلار بالای 50% باشد شامل مسافرین محترم می‌شود.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پکیج چارتر و غیر قابل استرداد می‌باشد و با جایگزینی اسامی و پرداخت 20% مبلغ کل تور تا 10 روز قبل از پرواز امکان پذیر است.</li>
+                      </ul>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <v-row justify="center">
+                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                          hide-default-footer
+                          hide-default-header
+                          :headers="flightHeaders"
+                          :items="flights10"
+                          class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan mt-md-12"
+                        >
+                        </v-data-table>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </div>
+                <!-- <div class="widthAll" v-else-if="tab == 4">
+                  <v-row justify="center">
+                  
+                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in istanbulImages" :keys="i">
+                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item"></v-img>
+                    </div>
+                  </v-row>
+                  
+                  <v-dialog
+                    v-model="imageDialog"
+                    width="1000"
+                  >
+                    <div class="relative">
+                      
+                      <v-carousel v-model="imageNumber">
+                        <v-carousel-item
+                          v-for="(item,i) in istanbulImages" 
+                          :keys="i"
+                        >
+                          <img :src="item" alt="">
+                        </v-carousel-item>
+                      </v-carousel>
+                      <v-icon class="absolute cursorPointer" color="white" @click="imageDialog=false" style="top:5px;right:5px">mdi-close</v-icon>
+                    </div>
+                  </v-dialog>
+                </div> -->
+              </v-row>
+              <v-row class="white px-3 px-sm-9 py-5 mb-2 mb-sm-12 mt-2 mt-sm-6 rounded-xl justify-center d-none d-sm-flex">
+                <b class="d-inline-block grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;">
+                  جهت اخذ اطلاعات بیشتر با کارشناسان ما تماس حاصل فرمایید.
+                </b>
+                <b class="d-inline-block  grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;"><a class="widthAll red--text mx-2" href="tel:02141889" style="text-decoration:none">تلفن: 41889-021</a></b>
+              </v-row>
+              <v-row class="px-3 px-sm-9 py-5 justify-center d-sm-none" style="background: #c1c1c1;position: fixed;bottom: 0;width: 100%;right: 0;">
+                <b class="d-inline-block text-center text-tour-call-us" style="font-family: Byekan !important;text-decoration: underline;letter-spacing: 0px !important;">
+                  <a href="tel:02141889" class="bold" style="color:#0a30ff">تماس با کارشناسان ما </a> 
+                </b>
+              </v-row>
+            </div>
+          </v-row>
+        </div>
         <!-- loading -->
         <div v-if="isLoading || isLoadingAxios" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9998 ;top:0;right:0;background:#00000048">
           <img src="/folders/image/logo-header.png" class="white pa-12 rounded-xl" alt="">
@@ -464,10 +965,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <!-- import component slides -->
+    <script src="/folders/js/tour/europ.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="/folders/dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
     <script src="/folders/dist/mds.bs.datetimepicker.js"></script>
-    <script src="/folders/js/tour/europ.js"></script>
     <script
       src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
       integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="

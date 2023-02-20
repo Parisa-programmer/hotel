@@ -71,6 +71,9 @@ new Vue({
     emailRules: [
       v => /.+@.+\..+/.test(v) || 'ایمیل نادرست میباشد.',
     ],
+    emailRules2: [
+      v => !v || /.+@.+\..+/.test(v) || 'ایمیل نادرست میباشد.',
+    ],
     emptyRules: [
       v => !!v || 'پر کردن این فیلد اجباریست.'
     ],
@@ -569,6 +572,36 @@ new Vue({
         text2: 'EK979'
       },
     ],
+    flights10: [
+      {
+        from: 'پرواز از تهران به کویت',
+        time1: '03:00',
+        time2: '03:30',
+        text1: 'IKA-KU',
+        text2: 'KU 516'
+      },
+      {
+        from: 'پرواز از کویت به بانکوک',
+        time1: '02:10',
+        time2: '15:30',
+        text1: 'KU-BKK',
+        text2: 'KU 413'
+      },
+      {
+        from: 'پرواز از بانکوک به کویت',
+        time1: '14:40',
+        time2: '11:40',
+        text1: 'BKK-KU',
+        text2: 'KU 412'
+      },
+      {
+        from: 'پرواز از کویت به تهران',
+        time1: '02:15',
+        time2: '22:50',
+        text1: 'KU-TKA',
+        text2: 'KU413'
+      },
+    ],
     pricesHeaderIstanbul: [
       // { text: '', sortable: false, value: 'image', align: 'center', },
       { text: 'ردیف', align: 'center', sortable: true, value: 'id', width: '90px' },
@@ -592,6 +625,15 @@ new Vue({
       { text: 'کمیسیون', sortable: true, value: 'coosion', align: 'center', },
 
     ],
+    pricesHeaderThailand: [
+      { text: 'ردیف', align: 'center', sortable: true, value: 'id', width: '90px' },
+      { text: 'هتل', filterable: true, align: 'center', sortable: true, value: 'name' },
+      { text: 'درجه', sortable: true, value: 'star', align: 'center', width: '100px', },
+      { text: 'دو‌تخته', filterable: true, align: 'center', sortable: true, value: 'duble' },
+      { text: 'یک تخته', filterable: true, align: 'center', sortable: true, value: 'single' },
+      { text: 'کودک با تخت', sortable: true, value: 'baby', align: 'center', },
+      { text: 'کودک بدون تخت', sortable: false, value: 'baby2', align: 'center', },
+    ],
     pricesHeaderDubai: [
       // { text: '', sortable: false, value: 'image', align: 'center', },
       { text: 'ردیف', align: 'center', sortable: true, value: 'id', width: '90px' },
@@ -610,6 +652,35 @@ new Vue({
     pricesItemsDubai2: [],
     pricesItemsDubai3: [],
     pricesItemsMoskow: [],
+    pricesItemsThailand: [
+      {
+        id: 1,
+        name: 'MOVENPICK SUKHVMVIT',
+        star: 5,
+        duble: '96.000.000',
+        single: '118.000.000',
+        baby: '88.000.000',
+        baby2: '76.000.000'
+      },
+      {
+        id: 2,
+        name: 'AVINI RESORT PATTAYA',
+        star: '5LUX',
+        duble: '96.000.000',
+        single: '118.000.000',
+        baby: '88.000.000',
+        baby2: '76.000.000'
+      },
+      {
+        id: 3,
+        name: 'KALIMA RESOIT',
+        star: '5LUX',
+        duble: '96.000.000',
+        single: '118.000.000',
+        baby: '88.000.000',
+        baby2: '76.000.000'
+      },
+    ],
     page_text: {
       pageStart: 'number',
       pageStop: 'number',
@@ -636,119 +707,380 @@ new Vue({
       // '/folders/image/tour/دبی-7.jpg',
     ],
     urope001Images: [
-      '/folders/image/tour/اروپا001-1.jpg',
-      '/folders/image/tour/اروپا001-2.jpg',
-      '/folders/image/tour/اروپا001-3.jpg',
-      '/folders/image/tour/اروپا001-4.jpg',
-      '/folders/image/tour/اروپا001-5.jpg',
-      '/folders/image/tour/استانبول-1.jpg',
-      '/folders/image/tour/استانبول-2.jpg',
-      '/folders/image/tour/استانبول-3.jpg',
-      '/folders/image/tour/استانبول-4.jpg',
-      '/folders/image/tour/استانبول-5.jpg',
-      '/folders/image/tour/استانبول-6.jpg',
+      {
+        src: '/folders/image/tour/اروپا001-1.jpg',
+        title: 'موزه لوور فرانسه'
+      },
+      {
+        src:'/folders/image/tour/اروپا001-2.jpg',
+        title: 'کاخ ورسای'
+      },
+      {
+        src:'/folders/image/tour/اروپا001-3.jpg',
+        title: 'قصر پاپال'
+      },
+      {
+        src:'/folders/image/tour/اروپا001-4.jpg',
+        title: 'صومعه مون سن میشل'
+      },
+      {
+        src:'/folders/image/tour/اروپا001-5.jpg',
+        title: 'پل سن بنزت'
+      },
+      {
+        src:'/folders/image/tour/استانبول-1.jpg',
+        title: 'قصر توپ کاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-2.jpg',
+        title: 'قصر توکاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-3.jpg',
+        title: 'کاخ دلما باغچه استانبول'
+      },
+      {
+        src:'/folders/image/tour/استانبول-4.jpg',
+        title: 'آب انبار باسیلاکا'
+      },
+      {
+        src:'/folders/image/tour/استانبول-5.jpg',
+        title: 'جزایر پرنس'
+      },
+      {
+        src:'/folders/image/tour/استانبول-6.jpg',
+        title: 'روملی حصار'
+      },
     ],
     urope002Images: [
-      '/folders/image/tour/اروپا002-1.jpg',
-      '/folders/image/tour/اروپا002-2.jpg',
-      '/folders/image/tour/اروپا002-3.jpg',
-      '/folders/image/tour/اروپا002-4.jpg',
-      '/folders/image/tour/اروپا002-5.jpg',
-      '/folders/image/tour/استانبول-1.jpg',
-      '/folders/image/tour/استانبول-2.jpg',
-      '/folders/image/tour/استانبول-3.jpg',
-      '/folders/image/tour/استانبول-4.jpg',
-      '/folders/image/tour/استانبول-5.jpg',
-      '/folders/image/tour/استانبول-6.jpg',
+      {
+        src:'/folders/image/tour/اروپا002-1.jpg',
+        title: 'کاخ ریولی'
+      },
+      {
+        src:'/folders/image/tour/اروپا002-2.jpg',
+        title: 'برج پیتزا'
+      },
+      {
+        src:'/folders/image/tour/اروپا002-3.jpg',
+        title: 'دولومیت ایتالیا'
+      },
+      {
+        src:'/folders/image/tour/اروپا002-4.jpg',
+        title: 'سینکو تره'
+      },
+      {
+        src:'/folders/image/tour/اروپا002-5.jpg',
+        title: 'فواره تروی ایتالیا'
+      },
+      {
+        src:'/folders/image/tour/استانبول-1.jpg',
+        title: 'قصر توپ کاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-2.jpg',
+        title: 'قصر توکاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-3.jpg',
+        title: 'کاخ دلما باغچه استانبول'
+      },
+      {
+        src:'/folders/image/tour/استانبول-4.jpg',
+        title: 'آب انبار باسیلاکا'
+      },
+      {
+        src:'/folders/image/tour/استانبول-5.jpg',
+        title: 'جزایر پرنس'
+      },
+      {
+        src:'/folders/image/tour/استانبول-6.jpg',
+        title: 'روملی حصار'
+      },
     ],
     urope003Images: [
-      '/folders/image/tour/اروپا003-1.jpg',
-      '/folders/image/tour/اروپا003-2.jpg',
-      '/folders/image/tour/اروپا003-3.jpg',
-      '/folders/image/tour/اروپا003-4.jpg',
-      '/folders/image/tour/اروپا003-5.jpg',
-      '/folders/image/tour/اروپا003-6.jpg',
-      '/folders/image/tour/اروپا003-7.jpg',
-      '/folders/image/tour/اروپا003-8.jpg',
-      '/folders/image/tour/اروپا003-9.jpg',
-      '/folders/image/tour/اروپا003-10.jpg',
-      '/folders/image/tour/اروپا003-11.jpg',
+      {
+        src:'/folders/image/tour/اروپا003-1.jpg',
+        title: 'ونیز'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-2.jpg',
+        title: 'ورونا'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-3.jpg',
+        title: 'میلان'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-4.jpg',
+        title: 'میدان سالاملنکا'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-5.jpg',
+        title: 'موزه لوور'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-6.jpg',
+        title: 'معبد پانتئون پاریس'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-7.jpg',
+        title: 'کلیسای نوتردام پاریس'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-8.jpg',
+        title: 'سن سباستین'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-9.jpg',
+        title: 'فلورانس'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-10.jpg',
+        title: 'تم پارک های اسپانیا'
+      },
+      {
+        src:'/folders/image/tour/اروپا003-11.jpg',
+        title: 'باغ های لوگزامبورگ'
+      },
     ],
     urope004Images: [
-      '/folders/image/tour/اروپا004-1.jpg',
-      '/folders/image/tour/اروپا004-2.jpg',
-      '/folders/image/tour/اروپا004-3.jpg',
-      '/folders/image/tour/اروپا004-4.jpg',
-      '/folders/image/tour/اروپا004-5.jpg',
-      '/folders/image/tour/استانبول-1.jpg',
-      '/folders/image/tour/استانبول-2.jpg',
-      '/folders/image/tour/استانبول-3.jpg',
-      '/folders/image/tour/استانبول-4.jpg',
-      '/folders/image/tour/استانبول-5.jpg',
-      '/folders/image/tour/استانبول-6.jpg',
+      {
+        src:'/folders/image/tour/اروپا004-1.jpg',
+        title: 'شهر های سفید اندلس'
+      },
+      {
+        src:'/folders/image/tour/اروپا004-2.jpg',
+        title: 'کلیسای جامع سانتیاگو ده کامپوستلا'
+      },
+      {
+        src:'/folders/image/tour/اروپا004-3.jpg',
+        title: 'پارک گوئل'
+      },
+      {
+        src:'/folders/image/tour/اروپا004-4.jpg',
+        title: 'ایبیزا'
+      },
+      {
+        src:'/folders/image/tour/اروپا004-5.jpg',
+        title: 'موزه گوگنهایم'
+      },
+      {
+        src:'/folders/image/tour/استانبول-1.jpg',
+        title: 'قصر توپ کاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-2.jpg',
+        title: 'قصر توکاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-3.jpg',
+        title: 'کاخ دلما باغچه استانبول'
+      },
+      {
+        src:'/folders/image/tour/استانبول-4.jpg',
+        title: 'آب انبار باسیلاکا'
+      },
+      {
+        src:'/folders/image/tour/استانبول-5.jpg',
+        title: 'جزایر پرنس'
+      },
+      {
+        src:'/folders/image/tour/استانبول-6.jpg',
+        title: 'روملی حصار'
+      },
     ],
     urope005Images: [
-      '/folders/image/tour/اروپا005-1.jpg',
-      '/folders/image/tour/اروپا005-2.jpg',
-      '/folders/image/tour/اروپا005-3.jpg',
-      '/folders/image/tour/اروپا005-4.jpg',
-      '/folders/image/tour/اروپا005-5.jpg',
-      '/folders/image/tour/اروپا005-6.jpg',
+      {
+        src:'/folders/image/tour/اروپا005-1.jpg',
+        title: 'جزایر پرنس'
+      },
+      {
+        src:'/folders/image/tour/اروپا005-2.jpg',
+        title: 'کاخ دلماباغچه استانبول'
+      },
+      {
+        src:'/folders/image/tour/اروپا005-3.jpg',
+        title: 'قصر توپ کتپی'
+      },
+      {
+        src:'/folders/image/tour/اروپا005-4.jpg',
+        title: 'موزه گوگنهایم بیلبائو'
+      },
+      {
+        src:'/folders/image/tour/اروپا005-5.jpg',
+        title: 'موزه پیکاسو'
+      },
+      {
+        src:'/folders/image/tour/اروپا005-6.jpg',
+        title: 'شهر قدیمی خیرونا اسپانیا'
+      },
     ],
     urope006Images: [
-      '/folders/image/tour/اروپا006-1.jpg',
-      '/folders/image/tour/اروپا006-2.jpg',
-      '/folders/image/tour/اروپا006-3.jpg',
-      '/folders/image/tour/اروپا006-4.jpg',
-      '/folders/image/tour/اروپا006-5.jpg',
-      '/folders/image/tour/اروپا006-6.jpg',
-      '/folders/image/tour/استانبول-1.jpg',
-      '/folders/image/tour/استانبول-2.jpg',
-      '/folders/image/tour/استانبول-3.jpg',
-      '/folders/image/tour/استانبول-4.jpg',
-      '/folders/image/tour/استانبول-5.jpg',
-      '/folders/image/tour/استانبول-6.jpg',
+      {
+        src:'/folders/image/tour/اروپا006-1.jpg',
+        title: 'زرمات'
+      },
+      {
+        src:'/folders/image/tour/اروپا006-2.jpg',
+        title: 'لوسرن'
+      },
+      {
+        src:'/folders/image/tour/اروپا006-3.jpg',
+        title: 'آپنزل'
+      },
+      {
+        src:'/folders/image/tour/اروپا006-4.jpg',
+        title: 'Interlaken'
+      },
+      {
+        src:'/folders/image/tour/اروپا006-5.jpg',
+        title: 'ژنو'
+      },
+      {
+        src:'/folders/image/tour/اروپا006-6.jpg',
+        title: 'تیچینو'
+      },
+      {
+        src:'/folders/image/tour/استانبول-1.jpg',
+        title: 'قصر توپ کاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-2.jpg',
+        title: 'قصر توکاپی'
+      },
+      {
+        src:'/folders/image/tour/استانبول-3.jpg',
+        title: 'کاخ دلما باغچه استانبول'
+      },
+      {
+        src:'/folders/image/tour/استانبول-4.jpg',
+        title: 'آب انبار باسیلاکا'
+      },
+      {
+        src:'/folders/image/tour/استانبول-5.jpg',
+        title: 'جزایر پرنس'
+      },
+      {
+        src:'/folders/image/tour/استانبول-6.jpg',
+        title: 'روملی حصار'
+      },
     ],
     urope007Images: [
-      '/folders/image/tour/اروپا007-1.jpg',
-      '/folders/image/tour/اروپا007-2.jpg',
-      '/folders/image/tour/اروپا007-3.jpg',
-      '/folders/image/tour/اروپا007-4.jpg',
-      '/folders/image/tour/اروپا007-5.jpg',
-      '/folders/image/tour/اروپا007-6.jpg',
+      {
+        src:'/folders/image/tour/اروپا007-1.jpg',
+        title: 'باغ گیاهان پاریس'
+      },
+      {
+        src:'/folders/image/tour/اروپا007-2.jpg',
+        title: 'شهر سویا'
+      },
+      {
+        src:'/folders/image/tour/اروپا007-3.jpg',
+        title: 'کاخ اوپرا گارنیه'
+      },
+      {
+        src:'/folders/image/tour/اروپا007-4.jpg',
+        title: 'کلیسای نوتردام پاریس'
+      },
+      {
+        src:'/folders/image/tour/اروپا007-5.jpg',
+        title: 'معماری آنتونی گائودی'
+      },
+      {
+        src:'/folders/image/tour/اروپا007-6.jpg',
+        title: 'میدان کنکورد پاریس'
+      },
     ],
     urope008Images: [
-      '/folders/image/tour/اروپا008-1.jpg',
-      '/folders/image/tour/اروپا008-2.jpg',
-      '/folders/image/tour/اروپا008-3.jpg',
-      '/folders/image/tour/اروپا008-4.jpg',
-      '/folders/image/tour/اروپا008-5.jpg',
-      '/folders/image/tour/استانبول-1.jpg',
-      '/folders/image/tour/استانبول-2.jpg',
-      '/folders/image/tour/استانبول-3.jpg',
-      '/folders/image/tour/استانبول-4.jpg',
-      '/folders/image/tour/استانبول-5.jpg',
-      '/folders/image/tour/استانبول-6.jpg',
+      {
+        src:'/folders/image/tour/اروپا008-1.jpg',
+        title: 'آبشار راین'
+      },
+      {
+        src:'/folders/image/tour/اروپا008-2.jpg',
+        title: 'باغ وحش زوریخ'
+      },
+      {
+        src:'/folders/image/tour/اروپا008-3.jpg',
+        title: 'قلعه شیلون'
+      },
+      {
+        src:'/folders/image/tour/اروپا008-4.jpg',
+        title: 'کوه ماترهورن'
+      },
+      {
+        src:'/folders/image/tour/اروپا008-5.jpg',
+        title: 'مرکز پل کله'
+      },
     ],
     urope009Images: [
-      '/folders/image/tour/اروپا009-1.jpg',
-      '/folders/image/tour/اروپا009-2.jpg',
-      '/folders/image/tour/اروپا009-3.jpg',
-      '/folders/image/tour/اروپا009-4.jpg',
-      '/folders/image/tour/اروپا009-5.jpg',
-      '/folders/image/tour/اروپا009-6.jpg',
-      '/folders/image/tour/اروپا009-7.jpg',
+      {
+        src:'/folders/image/tour/اروپا009-1.jpg',
+        title: 'باغ کوکنهاف'
+      },
+      {
+        src:'/folders/image/tour/اروپا009-2.jpg',
+        title: 'بروکسل'
+      },
+      {
+        src:'/folders/image/tour/اروپا009-3.jpg',
+        title: 'دره‌ی سنوا'
+      },
+      {
+        src:'/folders/image/tour/اروپا009-4.jpg',
+        title: 'روتنبرگ و جاده رمانتیک'
+      },
+      {
+        src:'/folders/image/tour/اروپا009-5.jpg',
+        title: 'قلعه ویتنبرگ'
+      },
+      {
+        src:'/folders/image/tour/اروپا009-6.jpg',
+        title: 'کانال های آمستردام'
+      },
     ],
     showMore1: false,
     showMore2: false,
     showMore3: false,
     search: '',
+    theUser: {
+      name: '',
+      phone: '',
+      mail: '',
+      about: {
+        first: false,
+        twice: false,
+        Third: false,
+        Fourth: false,
+      },
+      title: {
+        first: false,
+        twice: false,
+        Third: false,
+        Fourth: false,
+        fifth: false,
+        sixth: false,
+        seventh: false,
+        Eighth: false,
+      },
+      contractNumber: '',
+      text: ''
+    },
+    sendTextDialog: false
   },
-  watch: {},
+  watch: {
+    showAlert() {
+      if (this.showAlert) {
+        setTimeout(() => {
+          this.showAlert = false
+        }, 3000);
+      }
+    },
+  },
   methods: {
     loginOrRegisterValidate() {
       var self = this
-
       if (self.loginStep == 1) {
         if (self.$refs.loginForm.validate()) {
           self.isLoadingAxios = true
@@ -969,20 +1301,68 @@ new Vue({
         otp: ''
       }
     },
+    sendFormOpinion() {
+      this.showAlert = false
+      let self = this
+      this.$refs.sendTextForm.validate()
+      if (
+        (this.theUser.about.first == false && this.theUser.about.twice == false && this.theUser.about.Third == false && this.theUser.about.Fourth == false) ||
+        (self.theUser.title.first == false && self.theUser.title.twice == false && self.theUser.title.Third == false && self.theUser.title.Fourth == false && self.theUser.title.fifth == false && self.theUser.title.sixth == false && self.theUser.title.seventh == false && self.theUser.title.Eighth == false) ||
+        (!self.$refs.sendTextForm.validate())
+      ) {
+        self.alertType = 'error'
+        self.alertText = 'لطفا فیلدهای اجباری را بدرستی تکمیل کنید.'
+        self.showAlert = true
+      } else {
+        self.isLoadingAxios = true
+        setTimeout(() => {
+          self.isLoadingAxios = false
+          self.theUser = {
+            name: '',
+            phone: '',
+            mail: '',
+            about: {
+              first: false,
+              twice: false,
+              Third: false,
+              Fourth: false,
+            },
+            title: {
+              first: false,
+              twice: false,
+              Third: false,
+              Fourth: false,
+              fifth: false,
+              sixth: false,
+              seventh: false,
+              Eighth: false,
+            },
+            contractNumber: '',
+            text: ''
+          }
+          self.sendTextDialog = true
+          self.$refs.sendTextForm.resetValidation()
+          setTimeout(() => {
+            self.sendTextDialog = false
+          }, 3000);
+        }, 500);
+      }
+
+    }
   },
   created() {
     setTimeout(() => {
       this.isLoading = false
     }, 200);
     axios.get('https://api.neshan.org/v1/map-matching?path=36.299394,59.606211|36.297950,59.604258|36.297206,59.603507')
-                      .then(function (response) {
-                        // handle success
-                        console.log(response);
-                      })
-                      .catch(function (error) {
-                        // handle error
-                        console.log(error);
-                      })
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
     let newObjectDate = [
       {
         نام: 'Fideh hotel',
@@ -2167,8 +2547,8 @@ new Vue({
         کودک: 8400000,
       },
       {
-        نام: 'IBIS STYLES DEIRA',	
-         درجه: 3,
+        نام: 'IBIS STYLES DEIRA',
+        درجه: 3,
         موقعیت: ' دیره',
         دوتخته: 13300000,
         تکنفره: 17500000,
@@ -2701,7 +3081,7 @@ new Vue({
         تکنفره: 23900000,
         کودک: 13000000,
         کودک2: 12000000,
-        کمیسیون:1000000
+        کمیسیون: 1000000
       },
       {
         نام: 'HOLIDAY INN SOKOLNIKI',
@@ -2710,7 +3090,7 @@ new Vue({
         تکنفره: 27500000,
         کودک: 14000000,
         کودک2: 12000000,
-        کمیسیون:1200000
+        کمیسیون: 1200000
       },
       {
         نام: 'GOLDEN RING HOTEL MOSCOW',
@@ -2719,7 +3099,7 @@ new Vue({
         تکنفره: 43000000,
         کودک: 28500000,
         کودک2: 12000000,
-        کمیسیون:1500000
+        کمیسیون: 1500000
       },
     ]
     var pricesItemsMoskow = []
@@ -2736,6 +3116,7 @@ new Vue({
       })
       this.pricesItemsMoskow = pricesItemsMoskow;
     }
+    // __________________________________________
   },
   mounted() { },
   beforeDestroy() { }

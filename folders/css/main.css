@@ -957,6 +957,10 @@ input::-webkit-inner-spin-button {
   width: 120px;
 }
 
+.menue-list{
+  top:102px !important;
+}
+
 /* responsive */
 @media (min-width: 1264px) and (max-width: 1400px) {
   .v-expansion-panel-header {
@@ -1021,6 +1025,11 @@ input::-webkit-inner-spin-button {
   .footerImagesParent a:nth-child(5) > img {
     height: 67px;
     margin-top: 7px;
+  }
+
+  .sections-card {
+    bottom: 69px;
+    margin-bottom: -50px;
   }
 }
 
@@ -1106,6 +1115,11 @@ input::-webkit-inner-spin-button {
   .footerImagesParent a:nth-child(5) > img {
     height: 58px;
     margin-top: 8px;
+  }
+
+  .sections-card {
+    bottom: 40px;
+    margin-bottom: -20px;
   }
 }
 
@@ -1211,6 +1225,11 @@ input::-webkit-inner-spin-button {
       height: 120px;
       width: 120px;
     }
+
+    .sections-card {
+      bottom: 40px;
+      margin-bottom: -20px;
+    }
   }
 
   @media (min-width: 600px) and (max-width: 774px) {
@@ -1309,10 +1328,23 @@ input::-webkit-inner-spin-button {
       height: 100px;
       width: 100px;
     }
+
+    .sections-card {
+      bottom: 18px;
+      margin-bottom: 0;
+    }
   }
 }
 
 @media (max-width: 599px) {
+  .checkboxFormOpinian{
+    width:100%
+  }
+
+  .menue-list{
+    top:82px !important;
+  }
+
   .paragraph{
     line-height: 20px;
   }
@@ -1384,17 +1416,15 @@ input::-webkit-inner-spin-button {
   .footerImagesParent a:nth-child(1) > img,
   .footerImagesParent a:nth-child(2) > img,
   .footerImagesParent a:nth-child(3) > img {
-    height: 115px;
+    height: 80px;
   }
 
   .footerImagesParent a:nth-child(4) > img {
-    height: 90px;
-    margin-top: 15px;
+    height: 75px;
   }
 
   .footerImagesParent a:nth-child(5) > img {
-    height: 93px;
-    margin-top: 15px;
+    height: 78px;
   }
 
   .downloadButton {

@@ -119,8 +119,8 @@
       <v-app>
         <div id="header" v-cloak class="widthAll fixed" style="top: 0;right:0;z-index: 99;">
           <v-row class="header grey lighten-3" justify="center">
-            <div class=" indexDiv pa-1 pa-sm-3 pb-0">
-              <a href="/"><img height="20px" src="./folders/image/logo-header.png" alt="صفحه اصلی" ></a>
+            <div class=" indexDiv py-1 py-sm-3 pb-0">
+              <a href="/"><img height="20px" src="/folders/image/logo-header.png" alt="صفحه اصلی" ></a>
               <span class="headerSpan .v-application .body-2 d-none d-sm-inline-block">رزرو آنلاین خدمات گردشگری</span>
               <v-icon color="grey darken-2" class="mr-2 float-left d-none d-sm-inline-block">
                 mdi-phone-in-talk
@@ -132,7 +132,7 @@
           </v-row>
           <v-row class="white top-bar " justify="center" align="center">
             <div class="indexDiv headerButtons">
-              <v-row align="center" justify="space-between" class="d-none d-sm-flex">
+              <v-row align="center" justify="space-between" class="d-none d-md-flex">
                 <v-skeleton-loader class="textLoader d-inline-block"
                   type="chip"
                   :loading="isLoading"
@@ -203,13 +203,14 @@
                   </div>
                 </v-skeleton-loader>   
               </v-row>
-              <v-row class="d-flex d-sm-none humberger-header-menue">
+              <v-row class="d-flex d-md-none humberger-header-menue">
                 <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
                 <v-navigation-drawer
                   v-model="showMenuSmall"
                   fixed
                   right
-                  temporary style="z-index:2;top: 82px ;"
+                  class="menue-list"
+                  temporary style="z-index:2;"
                 >
                   <v-list
                     nav
@@ -225,40 +226,33 @@
                           پرواز
                         </v-list-item-title>
                       </v-list-item></a>
-            
                       <v-list-item @click="showMenuSmall = false">
-                        <v-icon class="ml-2">mdi-sofa-single</v-icon>
-                        <v-list-item-title>هتل</v-list-item-title>
-                      </v-list-item>
-            
-                      <v-list-item @click="showMenuSmall = false">
-                        <v-icon class="ml-2">mdi-account-group</v-icon>
+                        <v-icon class="ml-2">mdi-train-car</v-icon>
                         <v-list-item-title>تور</v-list-item-title>
                       </v-list-item>
-            
+                      <v-list-item @click="showMenuSmall = false">
+                        <v-icon class="ml-2">mdi-account-group</v-icon>
+                        <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                      </v-list-item>
                       <v-list-item @click="showMenuSmall = false">
                         <v-icon class="ml-2">mdi-hospital-building</v-icon>
                         <v-list-item-title>هتل آهوان</v-list-item-title>
                       </v-list-item>
                       <v-list-item @click="showMenuSmall = false">
-                        <v-icon class="ml-2">mdi-bus</v-icon>
-                        <v-list-item-title>اتوبوس</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item @click="showMenuSmall = false">
-                        <v-icon class="ml-2">mdi-train-variant</v-icon>
-                        <v-list-item-title>قطار</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item @click="showMenuSmall = false">
-                        <v-icon class="ml-2">mdi-checkbook</v-icon>
-                        <v-list-item-title>بیمه</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item @click="showMenuSmall = false">
-                        <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                        <v-icon class="ml-2">mdi-book-open-page-variant-outline</v-icon>
                         <v-list-item-title>مجله گردشگری</v-list-item-title>
                       </v-list-item>
                       <v-list-item @click="showMenuSmall = false">
-                        <v-icon class="ml-2">mdi-sitemap</v-icon>
-                        <v-list-item-title>شرکت ها</v-list-item-title>
+                        <v-icon class="ml-2">mdi-newspaper-variant-outline</v-icon>
+                        <v-list-item-title>اخبار روز</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item @click="showMenuSmall = false">
+                        <v-icon class="ml-2">mdi-checkbook</v-icon>
+                        <v-list-item-title>خدمات ویزا</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item @click="showMenuSmall = false">
+                        <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                        <v-list-item-title>دفتر حافظ منافع مشتری</v-list-item-title>
                       </v-list-item>
                     </v-list-item-group>
                   </v-list>
@@ -274,10 +268,10 @@
                     </span>
                   </div>
                   <div v-else class="cursorPointer" @click="loginDialog = true;loginStep=1;resetLoginForm()">
-                    <v-icon color="red" large class="icon-small-xs ml-3 ml-sm-0">
+                    <v-icon color="grey darken-2" large class="icon-small-xs ml-3 ml-sm-0">
                       mdi-account-outline
                     </v-icon>
-                    <span class="font-14 grey--text d-none d-sm-inline-block ">
+                    <span class="font-14 grey--text d-none d-sm-inline-block " style="white-space: nowrap;">
                       ورود - ثبت نام      
                     </span>
                   </div>
@@ -415,15 +409,15 @@
             </v-row>
           </div> -->
           
-          <div id="flipdownParent" class="absolute">
+          <div id="flipdownParent" class=" absolute">
             <v-skeleton-loader class="my-6"
                 type="chip"
                 :loading="isLoading"
               >
-                <h3 class="font-small-title-xs text-right text-sm-center text-md-right">زمان مانده تا 
+                <h3>زمان مانده تا 
                   <span class="red--text">سال تحویل 1402</span>
                 </h3>
-                <div class="red mt-2 mb-4 d-block d-sm-none d-md-block" style="height:5px;width:85px"></div>
+                <div class="red mt-2 mb-md-4 d-block" style="height:5px;width:85px"></div>
               </v-skeleton-loader>
             <div class="indexDiv" >
               <div v-show="!isLoading" id="flipdown" class="flipdown"></div>
@@ -1070,7 +1064,7 @@
               </v-col>
               <v-col cols="12" sm="6" md="8" class="scroll-reveal box left pa-0">
                 <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver">
-                  <a href="/tour/Europe/">
+                  <a href="/tour/Europe">
                     <v-img height="220" src="/folders/image/tourSlider/0004.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
                       <div>
@@ -1078,7 +1072,7 @@
                           <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور اروپا</h1>
                         </v-row>
                         <v-row>
-                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 36 میلیون</span>
+                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 1.890 یورو</span>
                         </v-row>
                       </div>
                     </v-row>
@@ -1122,7 +1116,7 @@
               <v-col cols="12" sm="12" md="4" class="scroll-reveal box left pa-0">
                 <div class="relative cursorPointer my-2 mr-md-2 rounded-lg hideOver">
                   <a href="/tour/Moscow/">
-                    <v-img height="220" src="/folders/image/tourSlider/0005.jpg" alt=""></v-img>
+                    <v-img height="220" src="/folders/image/tourSlider/0006.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
                       <div>
                         <v-row justify="center">
@@ -1130,6 +1124,23 @@
                         </v-row>
                         <v-row>
                           <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 19.800 میلیون</span>
+                        </v-row>
+                      </div>
+                    </v-row>
+                  </a>  
+                </div>
+              </v-col>
+              <v-col cols="12" class="scroll-reveal box left pa-0">
+                <div class="relative cursorPointer my-2 rounded-lg hideOver">
+                  <a href="/tour/Thailand/">
+                    <v-img height="220" src="/folders/image/tourSlider/0007.jpg" alt=""></v-img>
+                    <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
+                      <div>
+                        <v-row justify="center">
+                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور تایلند</h1>
+                        </v-row>
+                        <v-row>
+                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 96.000 میلیون</span>
                         </v-row>
                       </div>
                     </v-row>
@@ -1172,7 +1183,7 @@
         <v-row justify="center" align="center" class="my-2 my-sm-6">
           <div class="indexDiv">
             <v-row>
-              <v-col cols="12" md="6" class="order-2 order-md-1"> 
+              <v-col cols="12" md="6" class=""> 
                 <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
                 <h3 class="d-inline-block font-small-title-xs">درباره ما</h3>
                 <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
@@ -1187,7 +1198,7 @@
                 </div>
                   <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
               </v-col>
-              <v-col cols="12" md="6" class="order-1 order-md-2">
+              <v-col cols="12" md="6" class="">
                 <v-row justify="center">
                   <img class="main-page-sectionImage" src="/folders/image/درباره-ما.png" alt="">
                 </v-row>
@@ -1301,12 +1312,12 @@
         <v-row justify="center" align="center" class="my-2 my-sm-6">
           <div class="indexDiv">
             <v-row>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="6" class="order-2 order-md-1">
                 <v-row justify="center">
                   <img class="main-page-sectionImage" src="/folders/image/باشگاه-مشتریان.png" alt="">
                 </v-row>
               </v-col>
-              <v-col cols="12" md="6"> 
+              <v-col cols="12" md="6" class="order-1 order-md-2"> 
                 <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
                 <h3 class="d-inline-block font-small-title-xs">باشگاه مشتریان آهوان</h3>
                 <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
@@ -1329,7 +1340,7 @@
         <v-row justify="center" align="center" class="my-2 my-sm-6">
           <div class="indexDiv">
             <v-row>
-              <v-col cols="12" md="6"  class="order-2 order-md-1"> 
+              <v-col cols="12" md="6"> 
                 <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
                 <h3 class="d-inline-block font-small-title-xs">دفتر حافظ منافع مشتری</h3>
                 <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
@@ -1342,9 +1353,11 @@
                       <!-- سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود. -->
                   </p>
                 </div>
+                <a href="/office-protector-customer-interests">
                   <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
+                </a>
               </v-col>
-              <v-col cols="12" md="6"  class="order-1 order-md-2">
+              <v-col cols="12" md="6">
                 <v-row justify="center">
                   <img class="main-page-sectionImage" src="/folders/image/حافظ-منافع-مشتری.png" alt="">
                 </v-row>
@@ -1360,7 +1373,7 @@
               <div class="d-inline-block red mt-4 mr-4 " style="height:3px;width:60px"></div>
               <div class="widthAll d-block">
                 <v-row justify="center" class="mt-6">
-                  <p class="white--text text-center" style="max-width:600px">شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.</p>
+                  <p class="white--text text-center font-small-xs" style="max-width:600px">شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.</p>
                 </v-row>
               </div>
             </v-row>
@@ -1641,7 +1654,7 @@
         <v-row justify="center" class="grey lighten-3">
           <div class=" indexDiv px-sm-6 pb-sm-0 pt-2 pt-sm-0  rounded-lg">
             <v-row>
-              <v-col cols="12" md="6" class="pa-0 pa-sm-3 order-2 order-md-1">
+              <v-col cols="12" md="6" class="pa-0 pa-sm-3">
                 <v-row class=" mt-2">
                   <v-col cols="5" md="6" class="pa-0 pa-sm-3 pb-sm-0">
                     <h4>درباره هتل آهوان</h4>
@@ -1668,7 +1681,7 @@
                   </v-col>
                 </v-row>
               </v-col>
-              <v-col cols="12" md="6" class=" order-1 order-md-2">
+              <v-col cols="12" md="6" class=" ">
                 <v-row>
                   <p class="body-2 text-justify grey--text text--darken-3 my-6" style="font-family: Byekan !important;line-height:25px">
                     آهوان با ارائه بهترین و با کیفیت ترین خدمات گردشگری به صورت آنلاین 
@@ -1678,24 +1691,24 @@
                 </v-row>
                 <v-row justify="" class="footerImagesParent mt-2 justify-center justify-md-space-between">
                   <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
-                    <img class="ml-2 mx-md-1" src="./folders/image/logo (1).png"></img>
+                    <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
                   </a>
                   <a referrerpolicy="origin" target="_blank" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
-                    <img class="mx-2 mx-md-1" src="./folders/image/logo.png"></img>
+                    <img class="mx-2 mx-md-1" src="/folders/image/logo.png"></img>
                   </a>
                   <a target="_blank" href="https://www.cao.ir/">
-                    <img class="mx-2 mx-md-1" src="./folders/image/cao.png"></img>
+                    <img class="mx-2 mx-md-1" src="/folders/image/cao.png"></img>
                   </a>
                   <a target="_blank" href="http://www.aira.ir/">
-                    <img class="mx-2 mx-md-1" src="./folders/image/lohoaira.png"></img>
+                    <img class="mx-2 mx-md-1" src="/folders/image/lohoaira.png"></img>
                   </a>
                   <a target="_blank" href="https://www.cao.ir/paxrights">
-                    <img class="mx-2 mr-md-1" src="./folders/image/Passenger.png"></img>
+                    <img class="mx-2 mr-md-1" src="/folders/image/Passenger.png"></img>
                   </a>
                 </v-row>
-                <v-row class="grey--text text--darken-3 mt-4" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
+                <v-row class="grey--text text--darken-3 mt-4 font-small-xs" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
                 <v-row class="grey--text text--darken-3 mt-3" style="font-family: Byekan !important;">
-                  <v-col>شماره تماس:41889-021</v-col>
+                  <v-col class="grey--text text--darken-3 mt-1 mt-sm-4 font-small-xs">شماره تماس:41889-021</v-col>
                   <v-col>
                     <v-icon class="mx-1 cursorPointer whatsup-footer">mdi-whatsapp</v-icon>
                     <v-icon class="mx-1 cursorPointer email-footer">mdi-email-outline</v-icon>

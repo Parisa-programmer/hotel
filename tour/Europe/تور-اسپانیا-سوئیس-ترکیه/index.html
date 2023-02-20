@@ -20,9 +20,10 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="description" content="تور ترکیبی اسپانیا و سوئیس  و ترکیه شرکت آهوان یک تور خاص برای افراد خاص است. جهت خرید این تور می‌توانید با شماره تلفن 021-41889 تماس بگیرید.">
     <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <title>خدمات گردشگری آهوان</title>
+    <title>تور ترکیبی اسپانیا و سوئیس و ترکیه</title>
     <link rel="stylesheet" href="/folders/css/datepicker.css">
     <link rel="stylesheet" href="/folders/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" />
@@ -112,7 +113,7 @@
       position: absolute;
       height: 15px;
       width: 67%;
-      background:#ff51013a;
+      background:#ff510144;
       top: 47%;
       right: 16%;
       z-index: -1;
@@ -172,7 +173,7 @@
     .even-odd-tabel tbody tr:nth-child(even) {
       background-color: #ff500117 !important;
     }
-
+    
     @media (min-width:960px) and (max-width:1263px){
       .main-div{
         margin-top:-245px;
@@ -376,10 +377,10 @@
         <div class="headerDiv " v-cloak style="top: 0;right:0">
           <div id="header" v-cloak class="widthAll fixed" style="top: 0;right:0;z-index: 99;">
             <v-row class="header grey lighten-3" justify="center">
-              <div class=" indexDiv pa-1 pa-sm-3 pb-0">
-                <a href="https://ahuan.ir"><img height="20px" src="/folders/image/logo-header.png" alt="صفحه اصلی" ></a>
+              <div class=" indexDiv py-1 py-sm-3 pb-0">
+                <a href="/"><img height="20px" src="/folders/image/logo-header.png" alt="صفحه اصلی" ></a>
                 <span class="headerSpan .v-application .body-2 d-none d-sm-inline-block">رزرو آنلاین خدمات گردشگری</span>
-                <v-icon class="mr-2 float-left d-none d-sm-inline-block">
+                <v-icon color="grey darken-2" class="mr-2 float-left d-none d-sm-inline-block">
                   mdi-phone-in-talk
                 </v-icon>
                 <span class="ml-3 ml-sm-0 headerText float-left grey--text text--darken-3">
@@ -388,142 +389,151 @@
               </div>
             </v-row>
             <v-row class="white top-bar " justify="center" align="center">
-              <div class="indexDiv">
-                <v-row align="center">
-                  <v-col cols="6" sm="9" md="8" class="py-0 pt-sm-3 px-2 px-sm-0 headerButtons ">
-                    <v-row class="d-none d-sm-block pr-4">
-                      <v-skeleton-loader class="textLoader d-inline-block"
-                        type="chip"
-                        :loading="isLoading"
+              <div class="indexDiv headerButtons">
+                <v-row align="center" justify="space-between" class="d-none d-md-flex">
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a class="text-decoration-none" >
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
+                    </a>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور نوروز 1402</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل آهوان</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">مجله گردشگری</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">اخبار روز</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">خدمات ویزا</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">دفتر حافظ منافع مشتری</span>
+                  </v-skeleton-loader>
+                  <span></span>
+                  <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <div v-if="isLogin" class="cursorPointer" @click="logOut">
+                      <span class="font-14 grey--text d-inline-block ml-4">
+                      {{userName}}         
+                      </span>
+                    </div>
+                    <div v-else class="cursorPointer" @click="loginDialog = true;loginStep=1;resetLoginForm()">
+                      <v-icon color="grey darken-2" large class="icon-small-xs ml-3 ml-sm-0">
+                        mdi-account-outline
+                      </v-icon>
+                      <span class="font-14 grey--text d-none d-sm-inline-block ">
+                        ورود - ثبت نام      
+                      </span>
+                    </div>
+                  </v-skeleton-loader>   
+                </v-row>
+                <v-row class="d-flex d-md-none humberger-header-menue">
+                  <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
+                  <v-navigation-drawer
+                    v-model="showMenuSmall"
+                    fixed
+                    right
+                    class="menue-list"
+                    temporary style="z-index:2;"
+                  >
+                    <v-list
+                      nav
+                      dense
+                    >
+                      <v-list-item-group v-model="activePage"
+                        active-class="red--text text--accent-4 "
                       >
-                        <!-- <a class="text-decoration-none" href="/folders/flight.html"> -->
-                        <a class="text-decoration-none" >
-                          <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
-                        </a>
-                      </v-skeleton-loader>
-                      <v-skeleton-loader class="textLoader d-inline-block"
-                        type="chip"
-                        :loading="isLoading"
-                      >
-                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل</span>
-                      </v-skeleton-loader>
-                      <v-skeleton-loader class="textLoader d-inline-block"
-                        type="chip"
-                        :loading="isLoading"
-                      >
-                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور</span>
-                      </v-skeleton-loader>
-                      <v-skeleton-loader class="textLoader d-inline-block"
-                        type="chip"
-                        :loading="isLoading"
-                      >
-                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل آهوان</span>
-                      </v-skeleton-loader>
-                      <v-skeleton-loader class="textLoader d-inline-block"
-                        type="chip"
-                        :loading="isLoading"
-                      >
-                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">اتوبوس</span>
-                      </v-skeleton-loader>
-                      <v-skeleton-loader class="textLoader d-inline-block"
-                        type="chip"
-                        :loading="isLoading"
-                      >
-                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">قطار</span>
-                      </v-skeleton-loader>
-                      <v-skeleton-loader class="textLoader d-inline-block"
-                        type="chip"
-                        :loading="isLoading"
-                      >
-                        <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">بیمه</span>
-                      </v-skeleton-loader>
-                        <span v-if="!isLoading" class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">مجله گردشگری</span>
-                        <span v-if="!isLoading" class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">شرکت ها</span>
-                    </v-row>
-                    <v-row class="d-block d-sm-none humberger-header-menue">
-                      <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
-                      <v-navigation-drawer
-                        v-model="showMenuSmall"
-                        fixed
-                        right
-                        temporary style="z-index:2;top: 82px ;"
-                      >
-                        <v-list
-                          nav
-                          dense
-                        >
-                          <v-list-item-group v-model="activePage"
-                            active-class="red--text text--accent-4 "
-                          >
-                            <a href="" class="text-decoration-none">
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-airplane</v-icon>
-                              <v-list-item-title>
-                                پرواز
-                              </v-list-item-title>
-                            </v-list-item></a>
-                  
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-sofa-single</v-icon>
-                              <v-list-item-title>هتل</v-list-item-title>
-                            </v-list-item>
-                  
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-account-group</v-icon>
-                              <v-list-item-title>تور</v-list-item-title>
-                            </v-list-item>
-                  
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-hospital-building</v-icon>
-                              <v-list-item-title>هتل آهوان</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-bus</v-icon>
-                              <v-list-item-title>اتوبوس</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-train-variant</v-icon>
-                              <v-list-item-title>قطار</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-checkbook</v-icon>
-                              <v-list-item-title>بیمه</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
-                              <v-list-item-title>مجله گردشگری</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item @click="showMenuSmall = false">
-                              <v-icon class="ml-2">mdi-sitemap</v-icon>
-                              <v-list-item-title>شرکت ها</v-list-item-title>
-                            </v-list-item>
-                          </v-list-item-group>
-                        </v-list>
-                      </v-navigation-drawer>
-                    </v-row>
-                  </v-col>
-                  <v-col cols="6" sm="3" md="4" class="pa-1">
-                    <v-row justify="end" align="center">
-                      <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
-                        type="chip"
-                        :loading="isLoading"
-                      >
-                        <div v-if="isLogin" class="cursorPointer" @click="logOut">
-                          <span class="font-14 grey--text d-inline-block ml-4">
-                          {{userName}}         
-                          </span>
-                        </div>
-                        <div v-else class="cursorPointer" @click="loginDialog = true;loginStep=1;resetLoginForm()">
-                          <v-icon large class="icon-small-xs ml-3 ml-sm-0">
-                            mdi-account-outline
-                          </v-icon>
-                          <span class="font-14 grey--text d-none d-sm-inline-block ">
-                            ورود - ثبت نام      
-                          </span>
-                        </div>
-                      </v-skeleton-loader>       
-                    </v-row>
-                  </v-col>
+                        <a href="" class="text-decoration-none">
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-airplane</v-icon>
+                          <v-list-item-title>
+                            پرواز
+                          </v-list-item-title>
+                        </v-list-item></a>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-train-car</v-icon>
+                          <v-list-item-title>تور</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-account-group</v-icon>
+                          <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-hospital-building</v-icon>
+                          <v-list-item-title>هتل آهوان</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-book-open-page-variant-outline</v-icon>
+                          <v-list-item-title>مجله گردشگری</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-newspaper-variant-outline</v-icon>
+                          <v-list-item-title>اخبار روز</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-checkbook</v-icon>
+                          <v-list-item-title>خدمات ویزا</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                          <v-list-item-title>دفتر حافظ منافع مشتری</v-list-item-title>
+                        </v-list-item>
+                      </v-list-item-group>
+                    </v-list>
+                  </v-navigation-drawer>
+                  <v-spacer></v-spacer>
+                  <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <div v-if="isLogin" class="cursorPointer" @click="logOut">
+                      <span class="font-14 grey--text d-inline-block ml-4">
+                      {{userName}}         
+                      </span>
+                    </div>
+                    <div v-else class="cursorPointer" @click="loginDialog = true;loginStep=1;resetLoginForm()">
+                      <v-icon color="grey darken-2" large class="icon-small-xs ml-3 ml-sm-0">
+                        mdi-account-outline
+                      </v-icon>
+                      <span class="font-14 grey--text d-none d-sm-inline-block " style="white-space: nowrap;">
+                        ورود - ثبت نام      
+                      </span>
+                    </div>
+                  </v-skeleton-loader>   
                 </v-row>
               </div>
             </v-row> 
@@ -650,13 +660,13 @@
         <div class="mt-9 mt-sm-12 pt-12">
           <v-row justify="center">
             <div class="widthAll relative">
-              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background16.jpg" alt="">
+              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background13.jpg" alt="">
               <div class="tourImageBackground"></div>
             </div>
             <div class="mb-12 indexDiv main-div" style="z-index: 3">
-              <span class="white--text countryNmae px-12">اسپانیا - ترکیه</span>
+              <h1 class="white--text countryNmae px-12 d-inline-block">اسپانیا - سوئیس - ترکیه</h1>
               <br>
-              <b class="white--text px-12 tour-date">تاریخ حرکت : 28 اسفند</b>
+              <b class="white--text px-12 tour-date">تاریخ حرکت : 27 اسفند</b>
               <!-- <v-row style="overflow-x: scroll;">
                 <div>
                   <v-row class="tourPageTitle mt-12 mt-sm-0 mt-lg-12 pt-sm-6 pt-md-12">
@@ -709,13 +719,13 @@
                         هتل های 5 ستاره
                       </v-row> -->
                       <v-row class="mb-2" justify="center">
-                        <h2 class="tabel-tour-title">اقامت در هتل های<span class="red--text"> 5 ستاره</span></h2>
+                        <h2 class="tabel-tour-title">اقامت در هتل های<span class="red--text"> 4 و 5 ستاره</span></h2>
                         <!-- <img src="/folders/image/tour/Turkish_Airlines_logo.png" height="35" class="mr-3" alt=""> -->
                       </v-row>
                       <v-row class="mt-3" justify="center">
                         <v-data-table hide-default-footer hide-default-header style="box-shadow: 0 0 21px #dbdbdb !important;"
                           :headers="priceHeaders"
-                          :items="prices7"
+                          :items="prices3"
                           class="even-odd-tabel rounded-lg hideOver tabelTour"
                         >
                         <template
@@ -737,42 +747,39 @@
                   <v-row>
                     <v-col cols="12" lg="6">
                       <p class="mt-4 mt-lg-0 mb-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز اول :</b>
-                        ﺣﻀﻮﺭ ﺩﺭ ﻓﺮﻭﺩﮔﺎﻩ ﺍﻣﺎﻡ ﺧﻤﯿﻨﯽ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ مادرید ﻭ ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻫﺘﻞ
+                        ﺣﻀﻮﺭ ﺩﺭ ﻓﺮﻭﺩﮔﺎﻩ ﺍﻣﺎﻡ ﺧﻤﯿﻨﯽ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ ﺑﺎﺭﺳﻠﻮﻥ ﻭ ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻫﺘﻞ
                       </p>
                       <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دوم :</b>
-                        ﮔﺸﺖ ﺷﻬﺮﯼ مادرید شامل ﺑﺎﺯﺩﯾﺪ ﺍﺯ خیابان گرنویا،میدان شهرداری،میدان گاو بازی،بازار سن میگل و ...
+                        ﮔﺸﺖ ﺷﻬﺮﯼ ﺑﺎﺭﺳﻠﻮﻥ ﻭ ﺑﺎﺯﺩﯾﺪ ﺍﺯ ﮐﻠﯿﺴﺎﯼ ﺳﺎﮔﺮﺍﺩﺍﻓﺎﻣﯿﻠﯿﺎ
                       </p>
                       <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز سوم :</b>
-                        ﮔﺸﺖ ﺷﻬﺮﯼ و ﺑﺎﺯﺩﯾﺪ ﺍﺯ شهر قرون وسطایی Toledo
+                        ﮔﺸﺖ ﺷﻬﺮﯼ ﺑﺎﺭﺳﻠﻮﻥ ﻭ ﺑﺎﺯﺩﯾﺪ ﺍﺯ ﺗﭙﻪ ciujtnoM ﻭﺗﻠﻪ ﮐﺎﺑﯿﻦ 
                       </p>
                       <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز چهارم :</b>
-                        ترانسفر به والنسیا و انتقال به هتل
+                        تور اختیاری مونسرات
                       </p>
                       <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز پنجم :</b>
-                        گشت شهری والنسیا
+                        وقت آزاد
                       </p>
                       <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز ششم :</b>
-                        ترانسفر به بارسلون و انتقال به هتل 
+                        ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻓﺮﻭﺩﮔﺎﻩ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ ﮊﻧﻮ ﻭ ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻫﺘﻞ 
                       </p>
-                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هفتم :</b>
-                        ﮔﺸﺖ ﺷﻬﺮﯼ بارسلون و بازدید از کلیسای ساگرادافامیلیا 
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هفتم :</b>
+                        ﮔﺸﺖ ﺷﻬﺮﯼ ﮊﻧﻮ ﻭ ﻟﻮﺯﺍﻥ 
                       </p>
-                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هشتم :</b>
-                        ﮔﺸﺖ ﺷﻬﺮﯼ بارسلون و بازدید از تپه Montjuic و تله کابین 
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هشتم :</b>
+                        ﺗﺮﺍﻧﺴﻔﺮ ﺯﻣﯿﻨﯽ ﺑﻪ ﺯﻭﺭﯾﺦ ﻭ ﺩﺭ ﻣﺴﯿﺮ ﺑﺎﺯﺩﯾﺪ ﺍﺯ ﺷﻬﺮ ﺑﺮﻥ ﻭ ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻫﺘﻞ 
                       </p>
                       <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز نهم :</b>
-                        وقت آزاد
+                        ﮔﺸﺖ ﺷﻬﺮﯼ ﺯﻭﺭﯾﺦ ﺑﻪ ﻫﻤﺮﺍﻩ ﻗﺎﯾﻖ ﺳﻮﺍﺭﯼ ﻭ ﺑﺎﺯﺩﯾﺪ ﺍﺯ ﺁﺑﺸﺎﺭ ﺭﺍﯾﻦ 
                       </p>
                       <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دهم :</b>
-                        وقت آزاد
+                        ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻓﺮﻭﺩﮔﺎﻩ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ ﺍﺳﺘﺎﻧﺒﻮﻝ ﻭ ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻫﺘﻞ
                       </p>
                       <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز یازدهم :</b>
-                        ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻓﺮﻭﺩﮔﺎﻩ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪاستانبول و انتقال به هتل
+                        ﮔﺸﺖ ﺷﻬﺮﯼ ﺍﺳﺘﺎﻧﺒﻮﻝ ﺑﺎ ﺻﺮﻑ ﺷﺎﻡ 
                       </p>
                       <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دوازدهم :</b>
-                        گشت شهری استانبول همراه با صرف شام
-                      </p>
-                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز سیزدهم :</b>
                         ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻓﺮﻭﺩﮔﺎﻩ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ ﺗﻬﺮﺍﻥ
                       </p>
                     </v-col>
@@ -781,7 +788,7 @@
                     </div>
                     <v-col cols="12" lg="6">
                       <v-row class="mb-7" justify="center">
-                        <h2 class="tabel-tour-title"> حرکت 28 اسفند هواپیمایی</h2>
+                        <h2 class="tabel-tour-title"> حرکت 27 اسفند هواپیمایی</h2>
                         <img src="/folders/image/tour/Turkish_Airlines_logo.png" class="mr-3 logo-tour-title" alt="">
                       </v-row>
                       <v-row justify="center">
@@ -789,7 +796,7 @@
                           hide-default-footer
                           hide-default-header
                           :headers="flightHeaders"
-                          :items="flights6"
+                          :items="flights2"
                           class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan"
                         >
                         </v-data-table>
@@ -800,80 +807,145 @@
                 <div class="widthAll" v-else-if="tab == 2">
                   <v-row>
                     <v-col cols="12" md="12">
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز سفارت سوئیس</h3>
+                      <ul class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">وقت سفارت اعلام شده از جانب شرکت آهوان غیر قابل تغییر می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای متقاضیان بالای 12 سال انگشت نگاری الزامی
+                          <span v-if="!showMore1"> ...</span>
+                          <span v-if="!showMore1" class=" mx-3 cursorPointer see-more" @click="showMore1 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore1"  class="grey--text text--darken-3">است.</span>
+                        </li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسافرینی که در 24 ماه اخیر ویزای شنگن دریافت نموده اند، پرونده ایشان
+                          بدون انگشت نگاری و به صورت غیرحضوری پذیرفته می شود (بجز شنگن صادره از سفارت یونان)
+                        </li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام مدارک فارسی جهت ارائه به سفارت فرانسه باید به زبان انگلیسی ترجمه شوند. (مدارک صادر شده به انگلیسی پذیرفته می شوند.)</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام کپی ها در سایز A4  و یک رو گرفته شوند.</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت امضا شده با حداقل 6 ماه اعتبار از تاریخ سفر و 2 صفحه خالی رو به روی هم + کپی از تمام صفحات ویزاهای لیبل دار موجود در پاسپورت</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت های قدیمی + کپی از تمام صفحات ویزاهای لیبل دار موجود در آنها</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل شناسنامه ها + اصل کارت ملی</li>
+                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify"> قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.</li>
+                      </ul>
+                      <h3 v-if="showMore1" class="tabel-tour-title red--text">مدارک شغلی</h3>
+                      <ul v-if="showMore1" class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پزشکان، مهندسین، وکلا: پروانه مطب، نظام مهندسی، وکالت+ کارتهای صنفی مربوطه
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + آخرین فیش حقوقی آخر با مهر 
+                          + گواهی اشتغال به کار
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کارو آخرین فیش حقوقی (در صورت وجود)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + آخرین فیش حقوقی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
+                        </li>
+                      </ul>
+                      <h3 v-if="showMore1" class="tabel-tour-title red--text">مدارک مالی</h3>
+                      <ul v-if="showMore1" class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
+                          محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید سوئیس: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون،سینوفارم،سینواک
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت آهوان الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.
+                        </li>
+                        <!-- <li class="my-3 grey--text text--darken-3 bold text-tour"></li> -->
+                      </ul>
                       <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز سفارت اسپانیا</h3>
                       <ul class="my-6">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل شناسنامه ها + اصل کارت ملی</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل شناسنامه ها + اصل کارت ملی</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام کپی ها در سایز A4 و یک رو گرفته شوند. 
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت های قدیمی + کپی از تمام صفحات استفاده شده
-                          <span v-if="!showMore1"> ...</span>
-                          <span v-if="!showMore1" class=" mx-3 cursorPointer see-more" @click="showMore1 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore1" class="grey--text text--darken-3">پاسپورتهای قدیمی (ویزا و مهرهای ورود و خروج)</span>
+                          <span v-if="!showMore2"> ...</span>
+                          <span v-if="!showMore2" class=" mx-3 cursorPointer see-more" @click="showMore2 = true">مشاهده بیشتر</span>
+                          <span v-if="showMore2" class="grey--text text--darken-3">پاسپورتهای قدیمی (ویزا و مهرهای ورود و خروج)</span>
                         </li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام مدارک فارسی جهت ارائه به سفارت اسپانیا باید به زبان انگلیسی ترجمه شوند. تمکن و گواهی اشتغال صادر شده به زبان انگلیسی پذیرفته می شوند.</li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">3 قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.</li>
-                        <li v-if="showMore1" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام مدارک فارسی جهت ارائه به سفارت اسپانیا باید به زبان انگلیسی ترجمه شوند. تمکن و گواهی اشتغال صادر شده به زبان انگلیسی پذیرفته می شوند.</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">3 قطعه عکس جدید 5/4*5/3 (3 ماه اخیر) رنگی با زمینه سفید، مستقیم رو به دوربین، 80 درصد عکس صورت باشد و در هیچ پاسپورت یا ویزای قبلی استفاده نشده باشد.</li>
+                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                           اصل پاسپورت امضا شده با حداقل 7 ماه اعتبار از پایان سفر و 2 صفحه خالی رو به روی هم + کپی از صفحه اطلاعات و تمام صفحات استفاده شده ( ویزا و مهرهای ورود و خروج)
                         </li>
                       </ul>
-                      <h3 class="tabel-tour-title red--text">مدارک شغلی</h3>
-                      <ul class="my-6">
+                      <h3 v-if="showMore2" class="tabel-tour-title red--text">مدارک شغلی</h3>
+                      <ul v-if="showMore2" class="my-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پزشکان، مهندسین، وکلا: پروانه مطب، نظام مهندسی، وکالت+ کارتهای صنفی مربوطه
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر 
-                          <span v-if="!showMore2"> ...</span>
-                          <span v-if="!showMore2" class=" mx-3 cursorPointer see-more" @click="showMore2 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore2" class="grey--text text--darken-3">+ گواهی اشتغال به کار</span>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان دولتی: حکم کارگزینی با مهر + 3 فیش حقوقی آخر با مهر + گواهی اشتغال به کار</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کار و فیش حقوقی (در صورت وجود)
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارمندان شرکت های خصوصی: گواهی اشتغال به کار + لیست سوابق بیمه با مهر سازمان تامین اجتماعی + قرارداد کار و فیش حقوقی (در صورت وجود)
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">کسبه: جواز کسب یا کارت مباشرت(در صورت داشتن کارت مباشرت اصل جواز کسب الزامی است)
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اعضای هیئت مدیره شرکت ها: گواهی اشتغال به کار + روزنامه رسمی  (آگهی تاسیس و آخرین تغییرات)</li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سازندگان ساختمان: پروانه ساختمان یا پایان کار
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">موجر: اجاره نامه معتبر با کد رهگیری + سند املاک مربوطه
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + آخرین فیش حقوقی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + فیش حقوقی آخر با مهر
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">بازنشستگان: حکم بازنشستگی یا آخرین حکم افزایش حقوق + آخرین فیش حقوقی</li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">اساتید و اعضا هیات علمی دانشگاه: گواهی اشتغال به کار + حکم کارگزینی با مهر + فیش حقوقی آخر با مهر
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">سند ملک (در صورت عدم وجود سند ملک، جهت دریافت اطلاعات برای شرایط گرفتن ویزا با کارشناسان فروش تماس حاصل فرمایید.)
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
                         </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمام گواهی ها باید حتما خطاب به سفارت مربوطه و در یکماه اخیر صادر شده باشند و در خصوص اشتغال، باید نام و مشخصات و شماره پاسپورت و سمت و تاریخ شروع به کار و میزان حقوق و تاریخ مرخصی بر اساس زمان سفر ذکر شود.
-                        </li>
-                        <li v-if="showMore2" class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">دانشجویان و دانش آموزان: گواهی اشتغال به تحصیل در سال تحصیلی جاری یا ثبت نام سال آینده
                         </li>
                       </ul>
-                      <h3 class="tabel-tour-title red--text">مدارک مالی</h3>
-                      <ul class="my-6">
+                      <h3 v-if="showMore2" class="tabel-tour-title red--text">مدارک مالی</h3>
+                      <ul v-if="showMore2" class="my-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)
+                        </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                           برای فرزندان بالای 18 سال ارائه تمکن بانکی مجزا به نام خودشان الزامی می باشد. (حداقل 10 تا 15 میلیون تومان)
                         </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نامه تمکن به انگلیسی + گردش 3 ماه آخر همان حساب به انگلیسی با مهر و امضاء بانک صادر شده در کمتر از 
-                          <span v-if="!showMore3"> ...</span>
-                          <span v-if="!showMore3" class=" mx-3 cursorPointer see-more" @click="showMore3 = true">مشاهده بیشتر</span>
-                          <span v-if="showMore3" class="grey--text text--darken-3">10 روز قبل از تاریخ انگشت نگاری (به ازای هر نفرحداقل 100 میلیون تومان)</span>
-                          
-                        </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورتیکه فرزند زیر 18 سال بدون یکی از والدین سفر می کند، رضایت نامه
                           محضری از هر کدام از والدین که در سفر نیستند، الزامی است .(ترجمه رضایت نامه با تاییدیه دادگستری و امور خارجه مورد قبول است.)
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">برای تایید رضایت نامه، علاوه بر اصل رضایت نامه، اصل شناسنامه کسانی که اسامی آنها در رضایت نامه ذکر شده، الزامی است.
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید سوئیس: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون،سینوفارم،سینواک
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن های مورد تایید سوئیس: فایزر، مدرنا، آسترازنکا، جانسون اند جانسون،سینوفارم،سینواک
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت آهوان الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">ارائه اصل تمامی مدارک به شرکت آهوان الزامیست، تمام مدارک ارائه شده تا پایان سفر نزد شرکت رزآبی باقی می ماند.
                         </li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.</li>
-                        <li v-if="showMore3" class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت صلاحدید کارشناسان و یا سفارت مربوطه، مسافر موظف به ارائه مدارک تکمیلی می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">لزوم ارائه ضمانت نامه بانکی جهت بازگشت از سفر و مبلغ آن به ازای هر نفر پس از بررسی مدارک متقاضی به ایشان اعلام می گردد.
                         </li>
                       </ul>
                     </v-col>
                     <v-col cols="12" md="12" >
                       <v-row justify="center" class="heightAll mb-9 align-center">
-                        <a href="/folders/image/tour/Documents-the-Spain-Embassy.jpg" download class="text-decoration-none mr-sm-2">
-                          <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت اسپانیا</v-btn>
-                        </a>
+                        <v-col cols="12" sm="6" class="pa-0">
+                          <v-row class="justify-center justify-sm-end">
+                            <a href="/folders/image/tour/Documents-the-Swiss-Embassy.jpg" download class="text-decoration-none">
+                              <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت سوئیس</v-btn>
+                            </a>
+                          </v-row>
+                        </v-col>
+                        <v-col cols="12" sm="6" class="pa-0">
+                          <v-row class="justify-center justify-sm-start">
+                            <a href="/folders/image/tour/Documents-the-Spain-Embassy.jpg" download class="text-decoration-none mr-sm-2">
+                              <v-btn color="red " outlined dark >دانلود مدارک مورد نیاز سفارت اسپانیا</v-btn>
+                            </a>
+                          </v-row>
+                        </v-col>              
                       </v-row>
                     </v-col>
                   </v-row>
@@ -881,8 +953,8 @@
                 <div class="widthAll" v-else-if="tab == 4">
                   <v-row justify="center">
                   
-                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in urope005Images" :keys="i">
-                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item"></v-img>
+                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in urope004Images" :keys="i">
+                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item.src" :alt="item.title"></v-img>
                     </div>
                   </v-row>
                   
@@ -894,10 +966,10 @@
                       
                       <v-carousel v-model="imageNumber">
                         <v-carousel-item
-                          v-for="(item,i) in urope005Images" 
+                          v-for="(item,i) in urope004Images" 
                           :keys="i"
                         >
-                          <img :src="item" alt="">
+                          <img :src="item.src" :alt="item.title" alt="">
                         </v-carousel-item>
                       </v-carousel>
                       <v-icon class="absolute cursorPointer" color="white" @click="imageDialog=false" style="top:5px;right:5px">mdi-close</v-icon>
@@ -905,9 +977,16 @@
                   </v-dialog>
                 </div>
               </v-row>
-              <v-row class="white px-3 px-sm-9 py-5 mb-2 mb-sm-12 mt-2 mt-sm-6 rounded-xl justify-center">
-                <b class="d-inline-block grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;">جهت اخذ اطلاعات بیشتر با کارشناسان ما تماس حاصل فرمایید.</b>
+              <v-row class="white px-3 px-sm-9 py-5 mb-2 mb-sm-12 mt-2 mt-sm-6 rounded-xl justify-center d-none d-sm-flex">
+                <b class="d-inline-block grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;">
+                  جهت اخذ اطلاعات بیشتر با کارشناسان ما تماس حاصل فرمایید.
+                </b>
                 <b class="d-inline-block  grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;"><a class="widthAll red--text mx-2" href="tel:02141889" style="text-decoration:none">تلفن: 41889-021</a></b>
+              </v-row>
+              <v-row class="px-3 px-sm-9 py-5 justify-center d-sm-none" style="background: #c1c1c1;position: fixed;bottom: 0;width: 100%;right: 0;">
+                <b class="d-inline-block text-center text-tour-call-us" style="font-family: Byekan !important;text-decoration: underline;letter-spacing: 0px !important;">
+                  <a href="tel:02141889" class="bold" style="color:#0a30ff">تماس با کارشناسان ما </a> 
+                </b>
               </v-row>
             </div>
           </v-row>
@@ -924,11 +1003,9 @@
         <v-row justify="center" class="grey lighten-3">
           <div class=" indexDiv px-sm-6 pb-sm-0 pt-2 pt-sm-0  rounded-lg">
             <v-row>
-              <v-col cols="12" sm="6" class="pa-0 pa-sm-3">
-                <v-row class="caption grey--text text--darken-3" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
-                <v-row class="caption grey--text text--darken-3" style="font-family: Byekan !important;">شماره تماس:41889-021</v-row>
-                <v-row class=" mt-2 mt-md-12">
-                  <v-col cols="5" sm="12" md="6" class="pa-0 pa-sm-3 pb-sm-0">
+              <v-col cols="12" md="6" class="pa-0 pa-sm-3">
+                <v-row class=" mt-2">
+                  <v-col cols="5" md="6" class="pa-0 pa-sm-3 pb-sm-0">
                     <h4>درباره هتل آهوان</h4>
                     <ul class="mr-4 mr-md-2 my-2">
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تماس با ما</li>
@@ -939,7 +1016,7 @@
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">حقوق مسافرین</li>
                     </ul>
                   </v-col>
-                  <v-col cols="7" sm="12" md="6" class="pa-0 pa-sm-3">
+                  <v-col cols="7" md="6" class="pa-0 pa-sm-3">
                     <h4>پیشنهادات آهوان</h4>
                     <ul class="mr-4 mr-md-2 my-2">
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تورهای ویژه آهوان</li>
@@ -953,40 +1030,45 @@
                   </v-col>
                 </v-row>
               </v-col>
-              <v-col cols="12" sm="6">
-                <v-row class="justify-center justify-sm-end">
-                  <v-icon class="mx-1" color="grey">mdi-whatsapp</v-icon>
-                  <v-icon class="mx-1" color="grey">mdi-email-outline</v-icon>
-                  <v-icon class="mx-1" color="grey">mdi-instagram</v-icon>
-                  <v-icon class="mx-1" color="grey">mdi-twitter</v-icon>
-                  <v-icon class="mx-1" color="grey" style="transform: rotate(-36deg);">mdi-send</v-icon>
-                </v-row>
-                <div class="widthAll mt-3" style="height:1px;background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(208,208,208,0.6026785714285714) 63%, rgba(205,205,205,1) 100%)"></div>
+              <v-col cols="12" md="6" class=" ">
                 <v-row>
-                  <p class="body-2 text-justify grey--text text--darken-1 my-6" style="font-family: Byekan !important;line-height:25px">
+                  <p class="body-2 text-justify grey--text text--darken-3 my-6" style="font-family: Byekan !important;line-height:25px">
                     آهوان با ارائه بهترین و با کیفیت ترین خدمات گردشگری به صورت آنلاین 
                     میکوشد تا بعنوان معتبرترین شرکت گردشگری در ایران تجربه لذت بخش یک رزرو 
                     اینترنتی را برایتان تداعی کند.
                   </p>
                 </v-row>
-                <v-row justify="center" class="footerImagesParent">
-                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
-                    <img class="mx-2 mx-md-4" src="/folders/image/logo (1).png"></img>
+                <v-row justify="" class="footerImagesParent mt-2 justify-center justify-md-space-between">
+                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
+                    <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
                   </a>
-                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&amp;Code=v3MxZxRYBX3uIkiwT158">
-                    <img class="mx-2 mx-md-4" src="/folders/image/logo.png"></img>
+                  <a referrerpolicy="origin" target="_blank" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
+                    <img class="mx-2 mx-md-1" src="/folders/image/logo.png"></img>
                   </a>
                   <a target="_blank" href="https://www.cao.ir/">
-                    <img class="mx-2 mx-md-4" src="/folders/image/cao.png"></img>
+                    <img class="mx-2 mx-md-1" src="/folders/image/cao.png"></img>
                   </a>
                   <a target="_blank" href="http://www.aira.ir/">
-                    <img class="mx-2 mx-md-4" src="/folders/image/lohoaira.png"></img>
+                    <img class="mx-2 mx-md-1" src="/folders/image/lohoaira.png"></img>
                   </a>
                   <a target="_blank" href="https://www.cao.ir/paxrights">
-                    <img class="mx-2 mx-md-4" src="/folders/image/Passenger.png"></img>
+                    <img class="mx-2 mr-md-1" src="/folders/image/Passenger.png"></img>
                   </a>
                 </v-row>
-                
+                <v-row class="grey--text text--darken-3 mt-4 font-small-xs" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
+                <v-row class="grey--text text--darken-3 mt-3" style="font-family: Byekan !important;">
+                  <v-col class="grey--text text--darken-3 mt-1 mt-sm-4 font-small-xs">شماره تماس:41889-021</v-col>
+                  <v-col>
+                    <v-icon class="mx-1 cursorPointer whatsup-footer">mdi-whatsapp</v-icon>
+                    <v-icon class="mx-1 cursorPointer email-footer">mdi-email-outline</v-icon>
+                    <v-icon class="mx-1 cursorPointer instagram-footer">mdi-instagram</v-icon>
+                    <v-icon class="mx-1 cursorPointer twitter-footer">mdi-twitter</v-icon>
+                    <v-icon class="mx-1 cursorPointer send-footer" style="transform: rotate(-36deg);">mdi-send</v-icon>
+                  </v-col>
+                </v-row>
+                <v-row class="body-2 justify-center justify-sm-start grey--text text--darken-3 mt-4" style="font-family: Byekan !important;">
+                  کلیه حقوق این وب سایت متعلق به شرکت خدمات مسافرتی آهوان می‌باشد.
+                </v-row>
               </v-col>
             </v-row>
           </div>

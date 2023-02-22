@@ -29,10 +29,11 @@
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css">
     <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script>
     <script type="text/javascript" src="/folders/flipDown/js/main.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script>
-    <link rel="stylesheet" href="/folders/css/scrollAnimation.css">
+    <!-- <link rel="stylesheet" href="/folders/css/scrollAnimation.css"> -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -49,7 +50,7 @@
           d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
-    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
       #flipdownParent {
         top: 16%;
@@ -1045,8 +1046,8 @@
         <v-row justify="center" class="">
           <div class="indexDiv">
             <v-row>
-              <v-col cols="12" sm="6" md="4" class="scroll-reveal box right pa-0">
-                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver">
+              <v-col cols="12" sm="6" md="4" class="pa-0">
+                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-left">
                   <a href="/tour/Istanbul/">
                     <v-img height="220" src="/folders/image/tourSlider/0001.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1055,15 +1056,15 @@
                           <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور ترکیه</h1>
                         </v-row>
                         <v-row>
-                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 5.550 میلیون</span>
+                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 5.550 میلیون</span>
                         </v-row>
                       </div>
                     </v-row>
                   </a>
                 </div>
               </v-col>
-              <v-col cols="12" sm="6" md="8" class="scroll-reveal box left pa-0">
-                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver">
+              <v-col cols="12" sm="6" md="8" class="pa-0">
+                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver" data-aos="fade-right">
                   <a href="/tour/Europe">
                     <v-img height="220" src="/folders/image/tourSlider/0004.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1072,15 +1073,15 @@
                           <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور اروپا</h1>
                         </v-row>
                         <v-row>
-                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 1.890 یورو</span>
+                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 1.890 یورو</span>
                         </v-row>
                       </div>
                     </v-row>
                   </a>
                 </div>
               </v-col>
-              <v-col cols="12" sm="6" md="4" class="scroll-reveal box right pa-0">
-                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver">
+              <v-col cols="12" sm="6" md="4" class="pa-0">
+                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-left">
                   <a href="/tour/Dubai/">
                     <v-img height="220" src="/folders/image/tourSlider/0003.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1089,32 +1090,32 @@
                           <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور دبی</h1>
                         </v-row>
                         <v-row>
-                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 12.200 میلیون</span>
+                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 12.200 میلیون</span>
                         </v-row>
                       </div>
                     </v-row>
                   </a>  
                 </div>
               </v-col>
-              <v-col cols="12" sm="6" md="4" class="scroll-reveal box right pa-0">
-                <div class="relative cursorPointer my-2 mr-2 ml-md-2 rounded-lg hideOver">
-                  <a href="/tour/Vietnam/" class="" >
+              <v-col cols="12" sm="6" md="4" class="pa-0">
+                <div class="relative cursorPointer my-2 mr-2 ml-md-2 rounded-lg hideOver" data-aos="fade-right">
+                  <a href="/tour/Srilanka/" class="" >
                     <v-img height="220" src="/folders/image/tourSlider/0002.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
                       <div>
                         <v-row justify="center">
-                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور ویتنام</h1>
+                          <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور سریلانکا</h1>
                         </v-row>
                         <v-row>
-                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 99 میلیون</span>
+                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 39.900 میلیون</span>
                         </v-row>
                       </div>
                     </v-row>
                   </a>  
                 </div>
               </v-col>
-              <v-col cols="12" sm="12" md="4" class="scroll-reveal box left pa-0">
-                <div class="relative cursorPointer my-2 mr-md-2 rounded-lg hideOver">
+              <v-col cols="12" sm="12" md="4" class="pa-0">
+                <div class="relative cursorPointer my-2 mr-md-2 rounded-lg hideOver" data-aos="fade-right">
                   <a href="/tour/Moscow/">
                     <v-img height="220" src="/folders/image/tourSlider/0006.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1123,7 +1124,7 @@
                           <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور روسیه</h1>
                         </v-row>
                         <v-row>
-                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 19.800 میلیون</span>
+                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 19.800 میلیون</span>
                         </v-row>
                       </div>
                     </v-row>
@@ -1131,7 +1132,7 @@
                 </div>
               </v-col>
               <v-col cols="12" class="scroll-reveal box left pa-0">
-                <div class="relative cursorPointer my-2 rounded-lg hideOver">
+                <div class="relative cursorPointer my-2 rounded-lg hideOver" data-aos="fade-top" data-aos-duration="1000">
                   <a href="/tour/Thailand/">
                     <v-img height="220" src="/folders/image/tourSlider/0007.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1140,7 +1141,7 @@
                           <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور تایلند</h1>
                         </v-row>
                         <v-row>
-                          <span justify="center" class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 96.000 میلیون</span>
+                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 96.000 میلیون</span>
                         </v-row>
                       </div>
                     </v-row>
@@ -1389,7 +1390,7 @@
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                    <p class="white--text text-justify font-small-xs">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
                       <v-btn text color="white">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
@@ -1406,7 +1407,7 @@
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                    <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
                       <v-btn text color="white">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
@@ -1423,7 +1424,7 @@
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                    <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
                       <v-btn text color="white">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
@@ -1440,7 +1441,7 @@
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
-                    <p class="white--text text-justify font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                    <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
                       <v-btn text color="white">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
@@ -1689,7 +1690,7 @@
                     اینترنتی را برایتان تداعی کند.
                   </p>
                 </v-row>
-                <v-row justify="" class="footerImagesParent mt-2 justify-center justify-md-space-between">
+                <v-row class="footerImagesParent mt-2 justify-center justify-md-space-between">
                   <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
                     <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
                   </a>
@@ -1726,6 +1727,7 @@
         </v-row>
       </v-app>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <!-- import component slides -->
@@ -1738,7 +1740,11 @@
       integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="./folders/slick/slick.min.js"></script>
-    <script src="/folders//js/scrollAnimation.js"></script>
+    <!-- <script type="text/javascript" src="./folders/slick/slick.min.js"></script> -->
+    <script>
+      AOS.init({
+        easing: 'ease-in-out-sine'
+      });
+    </script>
   </body>
 </html>

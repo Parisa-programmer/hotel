@@ -697,14 +697,93 @@ new Vue({
       '/folders/image/tour/استانبول-6.jpg',
       // '/folders/image/tour/استانبول-7.jpg',
     ],
+    moscowImages: [
+      {
+        src:'/folders/image/tour/moscow-001.jpg',
+        title:'کاخ کرملین مسکو'
+      },
+      {
+        src:'/folders/image/tour/moscow-002.jpg',
+        title:'کلیسای معراج کولومنسکویه'
+      },
+      {
+        src:'/folders/image/tour/moscow-003.jpg',
+        title:'مرکز خرید ماننایا پلوشاد'
+      },
+      {
+        src:'/folders/image/tour/moscow-004.jpg',
+        title:'میدان سرخ'
+      },
+      {
+        src:'/folders/image/tour/moscow-005.jpg',
+        title:'آسمن خراش های هفت خواهران مسکو'
+      },
+    ],
+    thilandImages: [
+      {
+        src:'/folders/image/tour/تایلند-1.jpg',
+        title:'پارک پادشاهی ببر ها'
+      },
+      {
+        src:'/folders/image/tour/تایلند-2.jpg',
+        title:'پناهگاه حقیقت'
+      },
+      {
+        src:'/folders/image/tour/تایلند-3.jpg',
+        title:'جزیره پوکت'
+      },
+      {
+        src:'/folders/image/tour/تایلند-4.jpg',
+        title:'گرند پالاس تایلند'
+      },
+      {
+        src:'/folders/image/tour/تایلند-5.jpg',
+        title:'معبد بودای بزرگ'
+      },
+      {
+        src:'/folders/image/tour/تایلند-6.jpg',
+        title:'معبد سپیده دم'
+      },
+    ],
+    srilankaImages: [
+      {
+        src:'/folders/image/tour/سریلانکا-1.jpg',
+        title:'پارک ویهارامادوی کلمبیا سریلانکا'
+      },
+      {
+        src:'/folders/image/tour/سریلانکا-2.jpg',
+        title:'شهر ساحلی هیکادوآ'
+      },
+      {
+        src:'/folders/image/tour/سریلانکا-3.jpg',
+        title:'باغ گیاه شناسی سلطنتی پرادنیا'
+      },
+      {
+        src:'/folders/image/tour/سریلانکا-4.jpg',
+        title:'مزرعه چای درنووارا الیا'
+      },
+      {
+        src:'/folders/image/tour/سریلانکا-5.jpg',
+        title:'قلعه سیگیریا'
+      },
+    ],
     dubaiImages: [
-      '/folders/image/tour/دبی-1.jpg',
-      '/folders/image/tour/دبی-2.jpg',
-      '/folders/image/tour/دبی-3.jpg',
-      '/folders/image/tour/دبی-4.jpg',
-      // '/folders/image/tour/دبی-5.jpg',
-      // '/folders/image/tour/دبی-6.jpg',
-      // '/folders/image/tour/دبی-7.jpg',
+      {
+        src:'/folders/image/tour/دبی-1.jpg',
+        title:'اوت لت مال دبی'
+      },
+      {
+        src:'/folders/image/tour/دبی-2.jpg',
+        title:'برج خلیفه'
+      },
+      {
+        src:'/folders/image/tour/دبی-3.jpg',
+        title:'دهکده جهانی دبی'
+      },
+      {
+        src:'/folders/image/tour/دبی-4.jpg',
+        title:'مرکز خرید مرکاتو'
+      },
     ],
     urope001Images: [
       {
@@ -1354,15 +1433,7 @@ new Vue({
     setTimeout(() => {
       this.isLoading = false
     }, 200);
-    axios.get('https://api.neshan.org/v1/map-matching?path=36.299394,59.606211|36.297950,59.604258|36.297206,59.603507')
-      .then(function (response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
+    
     let newObjectDate = [
       {
         نام: 'Fideh hotel',

@@ -1952,21 +1952,21 @@ new Vue({
           }
         })
 
-        $(".slick-tour").slick({
-          slidesToShow: self.windowWidth > 1400 ? 4 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 774) ? 3 : (self.windowWidth <= 774 && self.windowWidth > 599) ? 2 : 1,
-          slidesToScroll: 1,
-          rtl: true,
-          autoplay: true,
-          autoplaySpeed: 2000,
-        });
+        // $(".slick-tour").slick({
+        //   slidesToShow: self.windowWidth > 1400 ? 4 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 774) ? 3 : (self.windowWidth <= 774 && self.windowWidth > 599) ? 2 : 1,
+        //   slidesToScroll: 1,
+        //   rtl: true,
+        //   autoplay: true,
+        //   autoplaySpeed: 2000,
+        // });
 
-        $(".slick-title").slick({
-          slidesToShow: self.windowWidth > 1400 ? 3 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 599) ? 2 : 1,
-          slidesToScroll: 1,
-          rtl: true,
-          autoplay: true,
-          autoplaySpeed: 2500,
-        });
+        // $(".slick-title").slick({
+        //   slidesToShow: self.windowWidth > 1400 ? 3 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 599) ? 2 : 1,
+        //   slidesToScroll: 1,
+        //   rtl: true,
+        //   autoplay: true,
+        //   autoplaySpeed: 2500,
+        // });
         
         $(".slick-logo").slick({
           slidesToShow: self.windowWidth > 1400 ? 5 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 4 : (self.windowWidth <= 960 && self.windowWidth > 775) ? 3 : (self.windowWidth <= 775 && self.windowWidth > 599) ? 2 : 1,

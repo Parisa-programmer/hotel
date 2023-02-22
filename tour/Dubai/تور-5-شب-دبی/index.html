@@ -20,9 +20,10 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="description" content="شرکت آهوان با بیش از 50 سال سابقه مجری مستقیم انواع تورهای دبی است. تورهای ارزان تا لوکس دبی به همراه لیست قیمت هتل‌ها از تهران و سایر شهرها    ">
     <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <title>خدمات گردشگری آهوان</title>
+    <title>تور 5 شب دبی|تور لحظه آخری دبی</title>
     <link rel="stylesheet" href="/folders/css/datepicker.css">
     <link rel="stylesheet" href="/folders/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" />
@@ -112,7 +113,7 @@
       position: absolute;
       height: 15px;
       width: 67%;
-      background:#ffd0a170;
+      background:#74c0f53d;
       top: 47%;
       right: 16%;
       z-index: -1;
@@ -145,11 +146,11 @@
     }
 
     .even-odd-tabel tbody tr:nth-child(even) {
-      background-color: #ffd0a130 !important;
+      background-color: #74c0f524 !important;
     }
 
     .even-odd-tabel th {
-      background-color: #ff832461 !important;
+      background-color: #007cd77a !important;
     }
 
     .theme--light.v-data-table .v-data-footer,.v-application--is-ltr .v-data-footer__pagination{
@@ -202,10 +203,10 @@
     }
 
     .even-odd-tabel td:nth-child(2) .bold{
-        font-size: 15px;
-        /* color: #ff8252 !important;
-        text-shadow: 0 0 3px #ffb99f; */
-      }
+      font-size: 15px;
+      /* color: #0356a6 !important;
+      text-shadow: 0 0 3px #41b0ff; */
+    }
     
     @media (min-width:960px) and (max-width:1263px){
       .main-div{
@@ -265,7 +266,7 @@
       .halfLi{
         width:100%
       }
-
+      
       @media (max-width:774px) {
         .main-div{
           margin-top:-155px;
@@ -704,12 +705,12 @@
         <div class="mt-9 mt-sm-12 pt-12">
           <v-row justify="center">
             <div class="widthAll relative">
-              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background10.jpg" alt="">
+              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background11.jpg" alt="">
               <div class="tourImageBackground"></div>
             </div>
             <div class="mb-12 indexDiv main-div" style="z-index: 3">
               <div>
-                <span class="white--text countryNmae px-12">دبی _ 4 شب و 5 روز</span>
+                <h1 class="white--text countryNmae px-12 d-inline-block">دبی _ 5 شب و 6 روز</h1>
               </div>
               <div>
                 <b class="white--text px-12 tour-date">تاریخ پرواز : همه روزه</b>
@@ -734,6 +735,7 @@
                 </v-slide-group>
               </v-row>
               <v-row class="white py-md-9 px-6">
+                
                 <div class="widthAll" v-if="tab == 0">
                   <v-row>
                     <v-col cols="12" lg="12">
@@ -741,9 +743,9 @@
                         <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
                           :headers="pricesHeaderDubai"
                           hide-default-footer
-                          :items="pricesItemsDubai2"
+                          :items="pricesItemsDubai3"
                           :items-per-page="50"
-                          class="tabelTourId rounded-lg even-odd-tabel"
+                          class="tabelTourId even-odd-tabel rounded-lg"
                           style="border: 2px solid #9d9d9b !important;"
                         >
                           <!-- <template #item="{ item }">
@@ -756,6 +758,8 @@
                         </template> -->
                         <template v-slot:item.name="{ item }">
                          <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>
+                                  
+                             
                         </template>
                         </v-data-table>
                       </v-row>
@@ -794,7 +798,7 @@
                       <ul class="my-6 mr-9">
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                           زمان لازم برای صدور ویزا 2 روز کاری میباشد.
-                        </li>  
+                        </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                           پرداخت حداقل 70% مبلغ تور هنگام رزرو الزامی است. 
                         </li>
@@ -810,7 +814,7 @@
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                           نرخ های موجود در پکیج بر اساس بلیط با نرخ
                           <b class="red--text">5200000</b>
-                           تومان محاسبه شده است و با توجه به تاریخ سفر باید مجددا چک شود
+                           تومان محاسبه شده است و با توجه به تاریخ سفر باید مجددا چک شود.
                         </li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                           قیمت های موجود در پکیج با نرخ درهم 
@@ -827,7 +831,7 @@
                 <div class="widthAll" v-else-if="tab == 4">
                   <v-row justify="center">
                     <div class="d-inline-block galeryImageParent" v-for="(item,i) in dubaiImages" :keys="i">
-                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item"></v-img>
+                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item.src" :alt="item.title"></v-img>
                     </div>
                   </v-row>
                   
@@ -842,7 +846,7 @@
                           v-for="(item,i) in dubaiImages" 
                           :keys="i"
                         >
-                          <img :src="item" alt="">
+                          <img :src="item.src" :alt="item.title">
                         </v-carousel-item>
                       </v-carousel>
                       <v-icon class="absolute cursorPointer" color="white" @click="imageDialog=false" style="top:5px;right:5px">mdi-close</v-icon>

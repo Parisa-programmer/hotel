@@ -7,10 +7,12 @@
       }
 
       function addObserver(el, options){
+        
           if(!('IntersectionObserver' in window)){
+            
               if(options.cb){
                   options.cb(el)
-              }else{
+              }else{console.log(el,options);
                   entry.target.classList.add('active')
               }
               return

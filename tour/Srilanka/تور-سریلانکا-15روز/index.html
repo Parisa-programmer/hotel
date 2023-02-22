@@ -112,7 +112,7 @@
       position: absolute;
       height: 15px;
       width: 67%;
-      background:#74c0f53d;
+      background:#ffa69a66;
       top: 47%;
       right: 16%;
       z-index: -1;
@@ -120,14 +120,14 @@
 
     .countryNmae{
       margin-right:-52px;
-      /* background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%); */
+      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
       font-size: 62px;
       font-weight: bold;
     }
 
     .tour-date {
       margin-right:-52px;
-      /* background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%); */
+      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
     }
 
     .main-div{
@@ -145,11 +145,11 @@
     }
 
     .even-odd-tabel tbody tr:nth-child(even) {
-      background-color: #74c0f524 !important;
+      background-color: #ff636d49 !important;
     }
 
     .even-odd-tabel th {
-      background-color: #007cd77a !important;
+      background-color: #ff636e91 !important;
     }
 
     .theme--light.v-data-table .v-data-footer,.v-application--is-ltr .v-data-footer__pagination{
@@ -166,7 +166,7 @@
     }
 
     .v-data-table,.v-data-table>.v-data-table__wrapper>table>tbody>tr>td,.theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>thead>tr:last-child>th {
-      border: 1px solid #050505;
+      border: 1px solid #9d9d9d;
       font-weight: bold;
     }
 
@@ -203,8 +203,8 @@
 
     .even-odd-tabel td:nth-child(2) .bold{
       font-size: 15px;
-      /* color: #0356a6 !important;
-      text-shadow: 0 0 3px #41b0ff; */
+      /* color: #ff6062 !important;
+      text-shadow: 0 0 3px #ff7765; */
     }
     
     @media (min-width:960px) and (max-width:1263px){
@@ -222,6 +222,7 @@
     }
     
     @media (min-width:600px) and (max-width:959px) {
+
       .main-div{
         margin-top:-205px;
       }      
@@ -243,7 +244,7 @@
       }
 
       .tabelTour{
-        width:80% !important
+        width:100% !important
       }
       
       .text-tour{
@@ -411,6 +412,9 @@
         width:100%
       }
 
+      .v-data-table{
+        width:100%
+      }
     }
   </style>
   <body>
@@ -705,19 +709,20 @@
         <div class="mt-9 mt-sm-12 pt-12">
           <v-row justify="center">
             <div class="widthAll relative">
-              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background9.jpg" alt="">
+              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background21.jpg" alt="">
               <div class="tourImageBackground"></div>
             </div>
             <div class="mb-12 indexDiv main-div" style="z-index: 3">
               <div>
-                <span class="white--text countryNmae px-12">دبی _ 3 شب و 4 روز</span>
+                <span class="white--text countryNmae px-12">پرواز مستقیم به سریلانکا</span>
               </div>
               <div>
-                <b class="white--text px-12 tour-date">تاریخ پرواز : همه روزه</b>
+                <b class="white--text px-12 tour-date">
+                  روزهای پرواز : 27 و 29 اسفند - 5 و 7 فروردین
+                </b>
               </div>
               <v-row class='mt-9 mt-sm-0 mt-lg-12 pt-6 pt-md-12' style="">
                 <v-slide-group ltr v-model="tab" class="ltr" hide-arrows center-activeTab>
-
                   <v-slide-item v-slot="{ activeTab }">
                     <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 0 && 'activeTab'" @click="tab = 0">لیست قیمت</h3>
                   </v-slide-item>
@@ -737,15 +742,21 @@
               </v-row>
               <v-row class="white py-md-9 px-6">
                 <div class="widthAll" v-if="tab == 0">
+                  <ul class=" mr-md-6">
+                    <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">
+                      قیمت های اعلام شده بر حسب تومان می‌باشد.
+                    </li>
+                    
+                  </ul>
                   <v-row>
                     <v-col cols="12" lg="12">
                       <v-row class="mb-2" justify="center">
                         <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
-                          :headers="pricesHeaderDubai"
+                          :headers="pricesHeaderThailand"
                           hide-default-footer
-                          :items="pricesItemsDubai"
+                          :items="pricesItemsThailand"
                           :items-per-page="50"
-                          class="tabelTourId rounded-lg even-odd-tabel "
+                          class=" rounded-lg even-odd-tabel tabelTourId"
                           style="border: 2px solid #9d9d9b !important;"
                         >
                           <!-- <template #item="{ item }">
@@ -765,75 +776,72 @@
                       </v-row>
                     </v-col>
                   </v-row>
+                  
                 </div>
                 <div class="widthAll" v-else-if="tab == 1">
                   <v-row>
                     <v-col cols="12" md="12">
                       <ul class=" mr-md-6">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر فرودگاهی</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">اقامت به همراه صبحانه</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بلیت رفت و برگشت با ایرباس 300 - 600</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ویزای نرمال توریستی دبی</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه مسافرتی تا سقف 10.000 یورو برای زیر 60 سال</li>
-                                              
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ویزای توریستی</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">سیم کارت به هر خانواده</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">11 شب اقامت به‌همراه صبحانه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه سفر تا سقف 10.000 یورو</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر فرودگاهی و بین شهری</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">مدت اقامت به‌همراه صبحانه 11 شب</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">گشت شهری 4 ساعته در تمامی شهرها</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">پرواز های داخلی (بانکوک - پوکت - بانکوک )</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">پرواز کویتی بهمراه اقامت در هتل 5 ستاره فرودگاه کویتدر رفت و برگشت</li>
                       </ul>
                     </v-col>
                   </v-row>
                 </div>
-                
                 <div class="widthAll" v-else-if="tab == 2">
                   <v-row>
                     <v-col cols="12" md="12">
-                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای دبی</h3>
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای تایلند</h3>
                       <ul class="my-6 mr-9">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارت واکسن یا تست پی سی آر منفی</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل گذرنامه به همراه حداقل 7 ماه اعتبار</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اسکن پاسپورت - شناسنامه - کارت ملی - یک قطعه عکس</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">یک قطعه عکس 4 * 6</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت با 7 ماه اعتبار</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">انجام واکسیناسیون هر 2 دوز</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کپی کارت ملی و تمام صفحات شناسنامه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمکن مالی 6 ماهه با موجودی حداقل 50.000.000 تومان</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">همراه داشتن تست PCR تا 72 ساعت قبل از پرواز(از واکسن مرحله 2 حداقل 15 روز گذشته باشد)</li>
                       </ul>
                     </v-col>
                   </v-row>
                 </div>
                 <div class="widthAll" v-else-if="tab == 3">
                   <v-row>
-                    <v-col cols="12" md="12">
-                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">نکات ضروری تورهای دبی</h3>
+                    <v-col cols="12" md="6">
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">نکات ضروری تورهای تایلند</h3>
                       <ul class="my-6 mr-9">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          زمان لازم برای صدور ویزا 2 روز کاری میباشد.
-                        </li>  
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          پرداخت حداقل 70% مبلغ تور هنگام رزرو الزامی است. 
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          کلیه پروازها و هتل ها چارتر و غیر قابل استرداد و تغییر تاریخ میباشد.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          نرخ کودک بدون تخت 6500000 تومان میباشد که با توجه به تاریخ سفر متغیر میباشد.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          مسافرین بالای 70 سال می بایست به همراه همسر یا یکی از فرزندان خود مسافرت نمایند.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          نرخ های موجود در پکیج بر اساس بلیط با نرخ
-                          <b class="red--text">5200000</b>
-                           تومان محاسبه شده است و با توجه به تاریخ سفر باید مجددا چک شود
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          قیمت های موجود در پکیج با نرخ درهم 
-                          <b class="red--text">12000</b>
-                           تومان محاسبه شده است در صورت هرگونه افزایش نرخ مابه تفاوت محاسبه خواهد شد.
-                        </li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
-                          با توجه به محدودیت های موجود در ترانسفر فرودگاهی بعضی از هتل ها در مناطق دبی هزینه ترنسفر بطور مجزا محاسبه و اضافه میگردد.
-                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کلیه نرخ ها به تومان می‌باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن‌های مورد تائید تایلند(سینوفارم - آستارزینکا - و ...)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسئول کنترل پاسپورت به‌عهده آژانس همکار است.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نرخ کودک زیر 2 سال (INF) 9.900.000 تومان می‌باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پرداخت 70% کل مبلغ تور الزامیست در غیر این صورت چنانچه نوسانات دلار بالای 50% باشد شامل مسافرین محترم می‌شود.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پکیج چارتر و غیر قابل استرداد می‌باشد و با جایگزینی اسامی و پرداخت 20% مبلغ کل تور تا 10 روز قبل از پرواز امکان پذیر است.</li>
                       </ul>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <v-row justify="center">
+                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                          hide-default-footer
+                          hide-default-header
+                          :headers="flightHeaders"
+                          :items="flights10"
+                          class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan mt-md-12"
+                        >
+                        </v-data-table>
+                      </v-row>
                     </v-col>
                   </v-row>
                 </div>
                 <div class="widthAll" v-else-if="tab == 4">
                   <v-row justify="center">
-                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in dubaiImages" :keys="i">
-                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item"></v-img>
+                  
+                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in srilankaImages" :keys="i">
+                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item.src" :alt="item.title"></v-img>
                     </div>
                   </v-row>
                   
@@ -845,10 +853,10 @@
                       
                       <v-carousel v-model="imageNumber">
                         <v-carousel-item
-                          v-for="(item,i) in dubaiImages" 
+                          v-for="(item,i) in srilankaImages" 
                           :keys="i"
                         >
-                          <img :src="item" alt="">
+                          <img :src="item.src" :alt="item.title">
                         </v-carousel-item>
                       </v-carousel>
                       <v-icon class="absolute cursorPointer" color="white" @click="imageDialog=false" style="top:5px;right:5px">mdi-close</v-icon>
@@ -917,7 +925,7 @@
                     اینترنتی را برایتان تداعی کند.
                   </p>
                 </v-row>
-                <v-row justify="" class="footerImagesParent mt-2 justify-center justify-md-space-between">
+                <v-row class="footerImagesParent mt-2 justify-center justify-md-space-between">
                   <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
                     <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
                   </a>

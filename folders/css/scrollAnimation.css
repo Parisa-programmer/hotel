@@ -44,3 +44,15 @@
 .scroll-reveal.loader {
   text-align: center;
 }
+
+@media (max-width:400px){
+  .scroll-reveal.box{
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+  }
+  
+  .scroll-reveal.box>div{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

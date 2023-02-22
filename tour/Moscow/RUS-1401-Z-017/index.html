@@ -335,13 +335,13 @@
       
       .tabelTour>.v-data-table__wrapper .v-data-table__mobile-row{
         min-height: 35px !important;
-        justify-content: center;
+        /* justify-content: center; */
       }
 
       .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row{
-        display: inline-block;
+        /* display: inline-block;
         width: 50%;
-        position: relative;
+        position: relative; */
       }
 
       .v-application--is-ltr .v-data-table__mobile-row__cell{
@@ -355,7 +355,7 @@
         font-weight: bold;
       }
 
-      .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row:nth-child(2)::before{
+      /* .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row:nth-child(2)::before{
         content: '<-----------------------------------------------';
         position: absolute;
         width: 46%;
@@ -366,7 +366,7 @@
         direction: ltr;
         display: flex;
         justify-content: start;
-      }
+      } */
       
       .tabelTour *{
         font-size: 13px;
@@ -741,7 +741,10 @@
                     <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'activeTab'" @click="tab = 3">نکات ضروری</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ active }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'activeTab'" @click="tab = 4">گالری تصاویر</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'activeTab'" @click="tab = 4">جزئیات پرواز</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 5 && 'activeTab'" @click="tab = 5">گالری تصاویر</h3>
                   </v-slide-item>
                 </v-slide-group>
               </v-row>
@@ -754,6 +757,10 @@
                   <h4 class="mb-4 mt-4 mt-md-0">
                     <v-icon size="5" color="red" class="ml-2">mdi-circle</v-icon>
                     مدت اقامت بیشتر به انتخاب مسافر قابل رزرو میباشد.
+                  </h4>
+                  <h4 class="mb-4 mt-4 mt-md-0">
+                    <v-icon size="5" color="red" class="ml-2">mdi-circle</v-icon>
+                    نرخ کودک زیر 2 سال (INF) 8.200.000 تومان می‌باشد.
                   </h4>
                   <h4 class="mb-4 mt-4 mt-md-0">
                     <v-icon size="5" color="red" class="ml-2">mdi-circle</v-icon>
@@ -793,7 +800,7 @@
                     <v-col cols="12" md="12">
                       <ul class=" mr-md-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه مسافرتی</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">4‌شب اقامت ر هتل با صبحانه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">4‌ شب اقامت در هتل با صبحانه</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر دو طرفه فرودگاهی به هتل</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بلیت رفت و برگشت پرواز ماهان ایر</li>
                       </ul>
@@ -813,22 +820,6 @@
                 </div>
                 <div class="widthAll" v-else-if="tab == 3">
                   <ul class="my-3 mr-9">
-                    <div class="float-left ml-lg-6 mr-sm-2 mr-md-6 mb-sm-2 mb-md-6 tabelParentFloat">
-                      <v-row class="mb-7" justify="center">
-                        <h2 class="tabel-tour-title"> تاریخ پرواز همه روزه</h2>
-                        <img src="/folders/image/tour/mahan-logo2.jpg" width="150" class="mr-3 logo-tour-title" alt="">
-                      </v-row>
-                      <v-row justify="center">
-                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
-                          hide-default-footer
-                          hide-default-header
-                          :headers="flightHeaders"
-                          :items="flights2"
-                          class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan"
-                        >
-                        </v-data-table>
-                      </v-row>
-                    </div>
                     <h3 class="tabel-tour-title red--text mb-6 mt-12 mt-sm-0">نکات ضروری تورهای روسیه</h3>
                     <li class="my-3 grey--text text--darken-3 bold text-tour text-justify ">
                       نرخ ها به تومان محاسبه شده است.
@@ -837,30 +828,44 @@
                     <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                       کمیسیون کودک زیر 12 سال نصف بزرگسالان است.
                     </li>
-                    <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسئولیت کنترل پاسپورت به عهده آژانس همکار می باشد.</li>
-                    <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نرخ کودک زیر 2 سال (INF) 8.200.000 تومان می‌باشد.</li>
-                    
+                    <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسئولیت کنترل پاسپورت به عهده آژانس همکار می باشد.</li> 
                     <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                       پرداخت 70% کل مبلغ تور در ابتدای ثبت نام ضروری است.
                     </li>
+                    
                     <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                       بیمه ما فوق بالای 60 سال الزامی است و هزینه مازاد خواهد داشت.
                     </li>
-                    <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت درخواست مسافر با مدت اقامت طولانی تر قابل محاسبه و توسط مشاوران اجرا خواهد شد.</li>
-                    <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">حداقل زمان لازم جهت اخذ ویزای عادی 8 روز کاری و با پرداخت 150$ بیشتر بابت ویزای فوری می‌توان با 3 روز کاری ویزا روسیه را دریافت کرد.</li>
                     <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پروازهای ماهان ایر در روزهای سه شنبه و پنجشنبه از فرودگاه 
                       <span class="red--text">VENOCOVA</span>
                       مسکو انجام میشود.
                     </li>
+                    <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت درخواست مسافر با مدت اقامت طولانی تر قابل محاسبه و توسط مشاوران اجرا خواهد شد.</li>
                     <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
                       قیمت‌های موجود در پکیج با نرخ دلار 45.000 تومان
 
                       محاسبه شده است در صورت هرگونه افزایش
                       نرخ مابه التفاوت محاسبه خواهد شد.
                     </li>
+                    <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">حداقل زمان لازم جهت اخذ ویزای عادی 8 روز کاری و با پرداخت 150$ بیشتر بابت ویزای فوری می‌توان با 3 روز کاری ویزا روسیه را دریافت کرد.</li>
                   </ul>
                 </div>
                 <div class="widthAll" v-else-if="tab == 4">
+                  <v-row class="mb-7 mt-7 mt-sm-0" justify="center">
+                    <h2 class="tabel-tour-title"> تنها پرواز مستقیم سریلانکا</h2>
+                    <img src="/folders/image/tour/mahan-logo2.jpg" width="150" class="mr-3 logo-tour-title" alt="">
+                  </v-row>
+                  <v-row justify="center">
+                    <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                      hide-default-footer
+                      :headers="moscowFlightHeaders"
+                      :items="moscowFlights"
+                      class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan tabelTourId"
+                    >
+                    </v-data-table>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 5">
                   <v-row justify="center">
                     <div class="d-inline-block galeryImageParent" v-for="(item,i) in moscowImages" :keys="i">
                       <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item.src" :alt='item.title'></v-img>
@@ -869,7 +874,7 @@
                   
                   <v-dialog
                     v-model="imageDialog"
-                    width="1000"
+                    max-width="1000"
                   >
                     <div class="relative">
                       <v-carousel v-model="imageNumber">
@@ -877,7 +882,7 @@
                           v-for="(item,i) in moscowImages" 
                           :keys="i"
                         >
-                          <img :src="item.src" :alt='item.title'>
+                          <img class="widthAll" :src="item.src" :alt='item.title'>
                         </v-carousel-item>
                       </v-carousel>
                       <v-icon class="absolute cursorPointer" color="white" @click="imageDialog=false" style="top:5px;right:5px">mdi-close</v-icon>

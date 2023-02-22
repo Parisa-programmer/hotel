@@ -295,6 +295,63 @@ new Vue({
       { text: '', sortable: false, value: 'text2', align: 'center', },
 
     ],
+    moscowFlightHeaders: [
+      { text: 'ردیف', sortable: true, value: 'id', align: 'center',width:10 },
+      { text: 'مسیر', align: 'center', sortable: false, value: 'from' },
+      { text: 'شنبه', sortable: false, value: 'time1', align: 'center', },
+      { text: 'یکشنبه', sortable: false, value: 'time2', align: 'center', },
+      { text: 'دوشنبه', sortable: false, value: 'time3', align: 'center', },
+      { text: 'سه‌شنبه', sortable: false, value: 'time4', align: 'center', },
+      { text: 'چهارشنبه', sortable: false, value: 'time5', align: 'center', },
+      { text: 'پنجشنبه', sortable: false, value: 'time6', align: 'center', },
+      { text: 'جمعه', sortable: false, value: 'time7', align: 'center', },
+    ],
+    moscowFlights: [
+      {
+        id:1,
+        from: 'پرواز از تهران به ونوکوا',
+        time1: '--',
+        time2: '--',
+        time3: '--',
+        time4: '5:30',
+        time5: '--',
+        time6: '5:30',
+        time7: '--',
+      },
+      {
+        id:2,
+        from: 'پرواز از ونوکوا به تهران ',
+        time1: '--',
+        time2: '--',
+        time3: '--',
+        time4: '11:45',
+        time5: '--',
+        time6: '11:45',
+        time7: '--',
+      },
+      {
+        id:3,
+        from: 'پرواز از تهران به شرمیتوا',
+        time1: '--',
+        time2: '5:30',
+        time3: '18:00',
+        time4: '--',
+        time5: '18:00',
+        time6: '--',
+        time7: '5:30',
+      },
+      {
+        id:4,
+        from: 'پرواز از شرمیتوا به تهران',
+        time1: '--',
+        time2: '11:15',
+        time3: '23:35',
+        time4: '--',
+        time5: '23:35',
+        time6: '--',
+        time7: '11:15',
+      },
+    ],
     flights: [
       {
         from: 'پرواز از تهران به دوحه',
@@ -576,6 +633,36 @@ new Vue({
       {
         from: 'پرواز از تهران به کویت',
         time1: '03:00',
+        time2: '03:30',
+        text1: 'IKA-KU',
+        text2: 'KU 516'
+      },
+      {
+        from: 'پرواز از کویت به بانکوک',
+        time1: '02:10',
+        time2: '15:30',
+        text1: 'KU-BKK',
+        text2: 'KU 413'
+      },
+      {
+        from: 'پرواز از بانکوک به کویت',
+        time1: '14:40',
+        time2: '11:40',
+        text1: 'BKK-KU',
+        text2: 'KU 412'
+      },
+      {
+        from: 'پرواز از کویت به تهران',
+        time1: '02:15',
+        time2: '22:50',
+        text1: 'KU-TKA',
+        text2: 'KU413'
+      },
+    ],
+    flights11: [
+      {
+        from: 'پرواز از تهران به ونوکوا',
+        time1: '05:30',
         time2: '03:30',
         text1: 'IKA-KU',
         text2: 'KU 516'

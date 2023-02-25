@@ -1,0 +1,90 @@
+.countDownDiv{
+  height:60px;
+  width: 60px;
+  background: grey;
+  font-size: 35px;
+}
+
+.countDownSmallText{
+  font-size: 18px;
+}
+
+@media (min-width: 1264px) and (max-width: 1400px){
+  .countDownText{
+    font-size: 18px !important;
+  }
+
+  .countDownDiv {
+    height: 45px;
+    width: 45px;
+    font-size: 23px;
+  }
+
+  .countDownSmallText {
+    font-size: 13px;
+  }
+
+  #flipdownParent {
+    top: 9% !important;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1263px){
+  .countDownText{
+    font-size: 12px !important;
+  }
+
+  .countDownDiv {
+    height: 30px;
+    width: 30px;
+    font-size: 18px;
+  }
+
+  .countDownSmallText {
+    font-size: 13px;
+  }
+
+  #flipdownParent {
+    top: 10% !important;
+  }
+}
+
+@media (min-width: 775px) and (max-width: 959px){
+  .countDownText{
+    font-size: 12px !important;
+  }
+
+  .countDownDiv {
+    height: 30px;
+    width: 30px;
+    font-size: 18px;
+  }
+
+  .countDownSmallText {
+    font-size: 13px;
+  }
+
+  #flipdownParent {
+    top: 6% !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 774px){
+  .countDownText{
+    font-size: 11px !important;
+  }
+
+  .countDownDiv {
+    height: 23px;
+    width: 23px;
+    font-size: 13px;
+  }
+
+  .countDownSmallText {
+    font-size: 8px;
+  }
+
+  #flipdownParent {
+    top: 6% !important;
+  }
+}

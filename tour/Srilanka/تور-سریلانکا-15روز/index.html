@@ -746,12 +746,11 @@
                     <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">
                       قیمت های اعلام شده بر حسب تومان می‌باشد.
                     </li>
-                    
                   </ul>
                   <v-row>
                     <v-col cols="12" lg="12">
                       <v-row class="mb-2" justify="center">
-                        <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                        <!-- <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
                           :headers="pricesHeaderThailand"
                           hide-default-footer
                           :items="pricesItemsThailand"
@@ -759,38 +758,25 @@
                           class=" rounded-lg even-odd-tabel tabelTourId"
                           style="border: 2px solid #9d9d9b !important;"
                         >
-                          <!-- <template #item="{ item }">
-                            div
-                            <tr>      
-                              <td class="bold text-center" v-for="(col,key) in item" :key="key">
-                                  {{ col }}
-                              </td>
-                            </tr>
-                        </template> -->
-                        <template v-slot:item.name="{ item }">
-                         <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>
-                                  
-                             
-                        </template>
-                        </v-data-table>
+                          <template v-slot:item.name="{ item }">
+                            <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>   
+                          </template>
+                        </v-data-table> -->
                       </v-row>
                     </v-col>
                   </v-row>
-                  
                 </div>
                 <div class="widthAll" v-else-if="tab == 1">
                   <v-row>
                     <v-col cols="12" md="12">
                       <ul class=" mr-md-6">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ویزای توریستی</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">سیم کارت به هر خانواده</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">11 شب اقامت به‌همراه صبحانه</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه سفر تا سقف 10.000 یورو</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر فرودگاهی و بین شهری</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">مدت اقامت به‌همراه صبحانه 11 شب</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">گشت شهری 4 ساعته در تمامی شهرها</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">پرواز های داخلی (بانکوک - پوکت - بانکوک )</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">پرواز کویتی بهمراه اقامت در هتل 5 ستاره فرودگاه کویتدر رفت و برگشت</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">لیدر فارسی زبان</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">سرویس غذا طبق جدول</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر بین شهری و فرودگاه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه سفر تا سقف 10 هزار یورو</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">کلیه ورودیه ها (بازدید از 8 اماکن دیدنی)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">پرواز مستقیم  ایرباس پهن پیکر 300 / 340</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">7 شب اقامت در هتل های منتخب Tripadvisor</li>
                       </ul>
                     </v-col>
                   </v-row>
@@ -798,14 +784,10 @@
                 <div class="widthAll" v-else-if="tab == 2">
                   <v-row>
                     <v-col cols="12" md="12">
-                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای تایلند</h3>
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای سریلانکا</h3>
                       <ul class="my-6 mr-9">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">یک قطعه عکس 4 * 6</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل پاسپورت با 7 ماه اعتبار</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">انجام واکسیناسیون هر 2 دوز</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کپی کارت ملی و تمام صفحات شناسنامه</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">تمکن مالی 6 ماهه با موجودی حداقل 50.000.000 تومان</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">همراه داشتن تست PCR تا 72 ساعت قبل از پرواز(از واکسن مرحله 2 حداقل 15 روز گذشته باشد)</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارت واکسن  بین المللی مورد تائید وزارت بهداشت سریلانکا</li>
                       </ul>
                     </v-col>
                   </v-row>
@@ -813,14 +795,15 @@
                 <div class="widthAll" v-else-if="tab == 3">
                   <v-row>
                     <v-col cols="12" md="6">
-                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">نکات ضروری تورهای تایلند</h3>
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">نکات ضروری تورهای سریلانکا</h3>
                       <ul class="my-6 mr-9">
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کلیه نرخ ها به تومان می‌باشد.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">واکسن‌های مورد تائید تایلند(سینوفارم - آستارزینکا - و ...)</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">مسئول کنترل پاسپورت به‌عهده آژانس همکار است.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نرخ کودک زیر 2 سال (INF) 9.900.000 تومان می‌باشد.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پرداخت 70% کل مبلغ تور الزامیست در غیر این صورت چنانچه نوسانات دلار بالای 50% باشد شامل مسافرین محترم می‌شود.</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پکیج چارتر و غیر قابل استرداد می‌باشد و با جایگزینی اسامی و پرداخت 20% مبلغ کل تور تا 10 روز قبل از پرواز امکان پذیر است.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کل پکیج چارتر و غیرقابل استرداد ولی چنانچه تا 10 روز قبل از پرواز جایگزین شود و در صورت کنسلی ، قابل جایگزینی با پرداخت 20٪ کل مبلغ تور</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">افرادی که دوز دوم واکسن آنها بیشتر از 6 ماه گذشته باشد نیاز به تست pcr می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">هزینه ویزا 40$ در فرودگاه کلمبو توسط مسافران پرداخت می شود</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پرداخت  %70 مبلغ تور الزامیست و در غیر این صورت چنانچه نوسانات دلار بیش از %5 باشدپرداخت مابه تفاوت  الزامیست</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">در صورت نیاز به استفاده از کلاس های بیزینس و فرست به ترتیب مبلغ 200 و 300 دلار اضافه نرخ خواهیم داشت که میهمانان عزیز علاوه بر استفاده از خدمات کترینیگ اختصاصی ،از خدمات CIP ، یک طرفه در فرودگاه امام به طور رایگان برخوردار خواهند شد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">پروازهای هفته اول با 2 میلیون تومان افزایش نرخ می باشد</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">نرخ کودک زیر دوسال 7.500.000 تومان می باشد</li>
                       </ul>
                     </v-col>
                     <v-col cols="12" md="6">

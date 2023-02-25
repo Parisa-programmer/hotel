@@ -1028,8 +1028,8 @@ input::-webkit-inner-spin-button {
   }
 
   .sections-card {
-    bottom: 69px;
-    margin-bottom: -50px;
+    bottom: 22px;
+    margin-bottom: -5px;
   }
 }
 
@@ -1227,8 +1227,8 @@ input::-webkit-inner-spin-button {
     }
 
     .sections-card {
-      bottom: 40px;
-      margin-bottom: -20px;
+      bottom: 20px;
+      margin-bottom: -4px;
     }
   }
 

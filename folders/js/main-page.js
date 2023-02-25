@@ -37,9 +37,13 @@ new Vue({
     originSearchInput4: '',
     destinationSearchInput: '',
     destinationSearchInput2: '',
+    flipDays:'',
+    flipHours:'',
+    flipMinutes:'',
+    flipSeconds:'',
     destinationSearchInput3: '',
     destinationSearchInput4: '',
-    showSlider:false,
+    showSlider: false,
     persianCityes: [
       { label: "Tehran, THR - تهران", code: "Tehran, THR", text: "تهران" },
       { label: "Mashhad, MHD - مشهد", code: "Mashhad, MHD", text: "مشهد" },
@@ -315,7 +319,7 @@ new Vue({
         price: '8,200,000',
         link: '/tour/Vietnam/v-1/',
         download: '/folders/image/tour/Vietnam-tour.jpg',
-        startFrom:'26 بهمن'
+        startFrom: '26 بهمن'
       },
       {
         image: './folders/image/tourSlider/03.jpg',
@@ -965,7 +969,7 @@ new Vue({
               axios.post('https://ahuan.ir/api/login?mobile=' + self.loginForm.phone)
                 .then(function (response) {
                   // handle success
-                 
+
                   if (response.data.sussecc) {
                     localStorage.setItem('user-name', response.data.result)
                     axios.get('https://ahuan.ir/api/login?mobile=' + self.loginForm.phone)
@@ -1120,7 +1124,7 @@ new Vue({
                   localStorage.setItem('user-name', options.displayname);
                   localStorage.setItem('isLoginAhuan', true);
                   self.loginStep = 3
-                } else{
+                } else {
                   console.log(response.data.error);
                   self.alertText = response.data.error
                   self.alertType = 'error'
@@ -1967,7 +1971,7 @@ new Vue({
         //   autoplay: true,
         //   autoplaySpeed: 2500,
         // });
-        
+
         $(".slick-logo").slick({
           slidesToShow: self.windowWidth > 1400 ? 5 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 4 : (self.windowWidth <= 960 && self.windowWidth > 775) ? 3 : (self.windowWidth <= 775 && self.windowWidth > 599) ? 2 : 1,
           slidesToScroll: 1,
@@ -1986,9 +1990,9 @@ new Vue({
         //   loop: true,
         // });
 
-        
+
       }, 1000);
-    self.isLoading = false
+      self.isLoading = false
     },
     getCityesExternal() {
       let self = this
@@ -2014,11 +2018,55 @@ new Vue({
           // handle error
           console.log(error);
         })
+    },
+    getFlip() {
+      let now = new Date().getTime()/1000
+      let newYear = new Date('2023/3/21').getTime()/1000
+      let untilTime = newYear - now
+      // days
+      let allDays = Math.floor((newYear - now)/ 86400);
+      this.flipDays = allDays
+      // hours
+      let hours = Math.floor(untilTime - (allDays * 86400))
+      let allHours = Math.floor(hours/3600)
+      flipHours = allHours
+      this.flipHours = allHours
+      // minuets 
+      let minutes = untilTime - (allDays * 86400) - (allHours * 3600)
+      flipMinutes = Math.floor(minutes/60)
+
+      this.flipMinutes = flipMinutes
+      // seconds 
+      let seconds = untilTime - (allDays * 86400) - (allHours * 3600) - (this.flipMinutes * 60)
+      let flipSeconds = Math.floor(seconds)+2
+      this.flipSeconds = flipSeconds
+      setInterval(() => {
+        if (flipSeconds > 0) {
+          flipSeconds = flipSeconds -1
+        } else{
+          flipSeconds = 59
+          if (flipMinutes > 0) {
+            flipMinutes = flipMinutes -1
+          } else{
+            flipMinutes = 59
+            if (flipHours > 0) {
+              flipHours = flipHours -1
+            } else if(allDays > 0){
+              flipHours = 23 
+              allDays = allDays -1
+            }
+          }
+        }
+        this.flipSeconds = flipSeconds
+        this.flipMinutes = flipMinutes
+        this.flipHours = flipHours
+        this.flipDays = allDays
+      }, 1000);
+      
     }
   },
   created() {
-    // 
-    
+    this.getFlip()
     if (localStorage.getItem('user-name')) {
       this.userName = localStorage.getItem('user-name')
     }
@@ -2027,7 +2075,7 @@ new Vue({
     }
 
     this.getCityesExternal();
-    
+
     this.start()
     this.getWidth()
     window.addEventListener('resize', this.getWidth());

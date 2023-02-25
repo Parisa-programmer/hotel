@@ -222,11 +222,14 @@ var FlipDown = function () {
       var diff = this.epoch - this.now <= 0 ? 0 : this.epoch - this.now;
       this.clockValues.d = Math.floor(diff / 86400);
       diff -= this.clockValues.d * 86400;
+      
       this.clockValues.h = Math.floor(diff / 3600);
       diff -= this.clockValues.h * 3600;
       this.clockValues.m = Math.floor(diff / 60);
       diff -= this.clockValues.m * 60;
       this.clockValues.s = Math.floor(diff);
+      // ثانیه console.log(Math.floor(diff ));
+       
 
       this._updateClockValues();
 

@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css">
     <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/folders/css/countdown.css">
     <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script>
     <script type="text/javascript" src="/folders/flipDown/js/main.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script>
@@ -400,7 +401,13 @@
           </v-card>
         </v-dialog>
         <v-row justify="center" class="d-none d-sm-flex mt-12 pt-12 relative grey lighten-3">
-          <img src="./folders/image/main-page-image.jpg" class="mt-1" width="100%" alt="" >
+          <img :src="selectedSection.title == 'پرواز' ? './folders/image/main-page-image1.jpg' : 
+          selectedSection.title == 'هتل' ? './folders/image/main-page-image2.jpg' : 
+          selectedSection.title == 'تور' ? './folders/image/main-page-image3.jpg' : 
+          selectedSection.title == 'آهوان' ? './folders/image/main-page-image4.jpg' : 
+          selectedSection.title == 'اتوبوس' ? './folders/image/main-page-image5.jpg' : 
+          selectedSection.title == 'قطار' ? './folders/image/main-page-image6.jpg' : 
+          './folders/image/main-page-image7.jpg'" class="mt-1" width="100%" alt="" >
           <!-- <div class="absolute widthAll pt-6">
             <v-row justify="center">
               <div class="indexDiv my-12">
@@ -409,22 +416,57 @@
               </div>
             </v-row>
           </div> -->
-          
           <div id="flipdownParent" class=" absolute">
-            <v-skeleton-loader class="my-6"
+            <v-skeleton-loader class="mt-9"
                 type="chip"
                 :loading="isLoading"
               >
-                <h3>زمان مانده تا 
-                  <span class="red--text">سال تحویل 1402</span>
-                </h3>
-                <div class="red mt-2 mb-md-4 d-block" style="height:5px;width:85px"></div>
+                <h2 class="text-center ">
+                  <span class="white--text red darken-2 px-6 countDownText">
+                    زمان مانده تا 
+                    سال تحویل 1402 هجری شمسی
+                  </span>
+                </h2>
               </v-skeleton-loader>
-            <div class="indexDiv" >
-              <div v-show="!isLoading" id="flipdown" class="flipdown"></div>
+            <div class="indexDiv mt-md-2" >
+              <v-row justify="center">
+                <div class="countDownDiv d-inline-block bold">
+                  <v-row justify="center" align="center" class="heightAll white--text">
+                    {{flipSeconds}}
+                  </v-row>
+                  <v-row justify="center" align="center" class="">
+                    <b class="grey--text text--darken-3 countDownSmallText" >ثانیه</b>
+                  </v-row>
+                </div>
+                <div class="countDownDiv d-inline-block bold mx-2">
+                  <v-row justify="center" align="center" class="heightAll white--text">
+                    {{flipMinutes}}
+                  </v-row>
+                  <v-row justify="center" align="center" class="">
+                    <b class="grey--text text--darken-3 countDownSmallText" >دقیقه</b>
+                  </v-row>
+                </div>
+                <div class="countDownDiv d-inline-block bold ml-2">
+                  <v-row justify="center" align="center" class="heightAll white--text">
+                    {{flipHours}}
+                  </v-row>
+                  <v-row justify="center" align="center" class="">
+                    <b class="grey--text text--darken-3 countDownSmallText" >ساعت</b>
+                  </v-row>
+                </div>
+                <div class="countDownDiv d-inline-block bold">
+                  <v-row justify="center" align="center" class="heightAll white--text">
+                    {{flipDays}}
+                  </v-row>
+                  <v-row justify="center" align="center" class="">
+                    <b class="grey--text text--darken-3 countDownSmallText" >روز</b>
+                  </v-row>
+                </div>
+              </v-row>
             </div>
           </div>
         </v-row>
+        <!-- <div v-show="!isLoading" id="flipdown" class="flipdown"></div> -->
         <v-row justify="center">
           <div class="indexDiv">
             <v-card elevation="1" class=" white relative pt-2 pt-sm-2 pt-md-4 pt-lg-6 pb-1 rounded-lg sections-card">
@@ -1740,7 +1782,7 @@
       integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="
       crossorigin="anonymous"
     ></script>
-    <!-- <script type="text/javascript" src="./folders/slick/slick.min.js"></script> -->
+    <script type="text/javascript" src="./folders/slick/slick.min.js"></script>
     <script>
       AOS.init({
         easing: 'ease-in-out-sine'

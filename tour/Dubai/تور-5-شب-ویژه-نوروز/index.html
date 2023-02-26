@@ -331,13 +331,6 @@
       
       .tabelTour>.v-data-table__wrapper .v-data-table__mobile-row{
         min-height: 35px !important;
-        justify-content: center;
-      }
-
-      .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row{
-        display: inline-block;
-        width: 50%;
-        position: relative;
       }
 
       .v-application--is-ltr .v-data-table__mobile-row__cell{
@@ -352,10 +345,10 @@
       }
 
       .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row:nth-child(2)::before{
-        content: '<-----------------------------------------------';
+        content: '<----------------------------------';
         position: absolute;
         width: 46%;
-        right: 80%;
+        right: 13%;
         text-align: right;
         overflow: hidden;
         white-space: nowrap;
@@ -705,7 +698,7 @@
         <div class="mt-9 mt-sm-12 pt-12">
           <v-row justify="center">
             <div class="widthAll relative">
-              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background11.jpg" alt="">
+              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background22.jpg" alt="">
               <div class="tourImageBackground"></div>
             </div>
             <div class="mb-12 indexDiv main-div" style="z-index: 3">
@@ -730,7 +723,10 @@
                     <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'activeTab'" @click="tab = 3">نکات ضروری</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ active }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'activeTab'" @click="tab = 4">گالری تصاویر</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'activeTab'" @click="tab = 4">جزئیات پرواز</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 5 && 'activeTab'" @click="tab = 5">گالری تصاویر</h3>
                   </v-slide-item>
                 </v-slide-group>
               </v-row>
@@ -842,6 +838,24 @@
                   </v-row>
                 </div>
                 <div class="widthAll" v-else-if="tab == 4">
+                  <v-row class="mb-7 mt-7 mt-sm-0" justify="center">
+                    <h2 class="tabel-tour-title">پرواز مستقیم به دبی</h2>
+                    <img src="/folders/image/tour/iranairtour-logo.jpg" width="30" class="mr-3 logo-tour-title" alt="">
+                    <img src="/folders/image/tour/gheshm-logo.jpg" width="70" class="mr-3 logo-tour-title" alt="">
+                    <img src="/folders/image/tour/mahan-logo2.jpg" width="90" class="mr-3 logo-tour-title" alt="">
+                  </v-row>
+                  <v-row justify="center">
+                    <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                      hide-default-footer
+                      :headers="dubai1FlightHeaders"
+                      :items="dubai1Flights"
+                      disable-pagination
+                      class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan tabelTourId"
+                    >
+                    </v-data-table>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 5">
                   <v-row justify="center">
                     <div class="d-inline-block galeryImageParent" v-for="(item,i) in dubaiImages" :keys="i">
                       <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item.src" :alt="item.title"></v-img>

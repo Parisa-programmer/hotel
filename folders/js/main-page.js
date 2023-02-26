@@ -2044,12 +2044,12 @@ new Vue({
         if (flipSeconds > 0) {
           flipSeconds = flipSeconds -1
         } else{
-          flipSeconds = 59
           if (flipMinutes > 0) {
+            flipSeconds = 59
             flipMinutes = flipMinutes -1
           } else{
-            flipMinutes = 59
             if (flipHours > 0) {
+              flipMinutes = 59
               flipHours = flipHours -1
             } else if(allDays > 0){
               flipHours = 23 

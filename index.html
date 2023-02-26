@@ -401,28 +401,28 @@
           </v-card>
         </v-dialog>
         <v-row justify="center" class="d-none d-sm-flex mt-12 pt-12 relative grey lighten-3">
-          <img :src="selectedSection.title == 'پرواز' ? './folders/image/main-page-image1.jpg' : 
+          <img src="./folders/image/main-page-image1.jpg" :style="{opacity:selectedSection.title == 'پرواز' ? '1' : '0'}" class="mt-1" width="100%" alt="" style="transition: all 500ms;">
+          <img src="./folders/image/main-page-image2.jpg" :style="{opacity:selectedSection.title == 'هتل' ? '1' : '0'}" class="mt-1 absolute" width="100%" alt="" style="transition: all 500ms;">
+          <img src="./folders/image/main-page-image3.jpg" :style="{opacity:selectedSection.title == 'تور' ? '1' : '0'}" class="mt-1 absolute" width="100%" alt="" style="transition: all 500ms;">
+          <img src="./folders/image/main-page-image4.jpg" :style="{opacity:selectedSection.title == 'آهوان' ? '1' : '0'}" class="mt-1 absolute" width="100%" alt="" style="transition: all 500ms;">
+          <img src="./folders/image/main-page-image5.jpg" :style="{opacity:selectedSection.title == 'اتوبوس' ? '1' : '0'}" class="mt-1 absolute" width="100%" alt="" style="transition: all 500ms;">
+          <img src="./folders/image/main-page-image6.jpg" :style="{opacity:selectedSection.title == 'قطار' ? '1' : '0'}" class="mt-1 absolute" width="100%" alt="" style="transition: all 500ms;">
+          <img src="./folders/image/main-page-image7.jpg" :style="{opacity:selectedSection.title == 'بیمه' ? '1' : '0'}" class="mt-1 absolute" width="100%" alt="" style="transition: all 500ms;">
+          <!-- <img src="./folders/image/main-page-image2.jpg" :class="selectedSection.title == 'هتل' ? 'd-block' : 'd-none'" class="mt-1" width="100%" alt="" style="transition: all 2s;"> -->
+          <!-- <img :src="selectedSection.title == 'پرواز' ? './folders/image/main-page-image1.jpg' : 
           selectedSection.title == 'هتل' ? './folders/image/main-page-image2.jpg' : 
           selectedSection.title == 'تور' ? './folders/image/main-page-image3.jpg' : 
           selectedSection.title == 'آهوان' ? './folders/image/main-page-image4.jpg' : 
           selectedSection.title == 'اتوبوس' ? './folders/image/main-page-image5.jpg' : 
           selectedSection.title == 'قطار' ? './folders/image/main-page-image6.jpg' : 
-          './folders/image/main-page-image7.jpg'" class="mt-1" width="100%" alt="" >
-          <!-- <div class="absolute widthAll pt-6">
-            <v-row justify="center">
-              <div class="indexDiv my-12">
-                <b class="red--text text-left pl-9 experience-title widthAll d-block" style="text-shadow: 1px 1px 0px black;">52 سال</b>
-                <b class="white--text text-left widthAll d-block experience-title2" style="text-shadow: 1px 1px 0px black;">تجربه با افتخار</b>
-              </div>
-            </v-row>
-          </div> -->
+          './folders/image/main-page-image7.jpg'" class="mt-1" width="100%" alt="" > -->
           <div id="flipdownParent" class=" absolute">
             <v-skeleton-loader class="mt-9"
                 type="chip"
                 :loading="isLoading"
               >
                 <h2 class="text-center ">
-                  <span class="white--text red darken-2 px-6 countDownText">
+                  <span class="white--text px-6 countDownText" style="background: rgb(255,0,0); background: linear-gradient(93deg, rgba(255,0,0,1) 0%, rgba(191,0,0,1) 100%);">
                     زمان مانده تا 
                     سال تحویل 1402 هجری شمسی
                   </span>
@@ -1408,7 +1408,7 @@
             </v-row>
           </div>
         </v-row>
-        <v-row justify="center" align="center" class="mt-6 grey darken-3">
+        <v-row justify="center" align="center" class="mt-6 " style="background: #150035;">
           <div class="indexDiv my-4">
             <v-row justify="center" class="mt-4">
               <div class="d-inline-block red mt-4 ml-4 " style="height:3px;width:60px"></div>
@@ -1426,14 +1426,14 @@
                   <div style="width:25%" >
                     <v-row justify="center">
                       <div>
-                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-008.jpg" alt="" style="border:5px solid #fff"></v-img>
+                        <v-img class="rounded-circle ml-2 " src="/folders/image/sri lanka.png" alt=""></v-img>
                       </div>
                     </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text text-justify font-small-xs">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                      <v-btn text color="red">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1443,14 +1443,14 @@
                   <div style="width:25%" >
                     <v-row justify="center">
                       <div>
-                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-003.jpg" alt="" style="border:5px solid #fff"></v-img>
+                        <v-img class="ml-2 " src="/folders/image/ISTANBUL.png" alt=""></v-img>
                       </div>
                     </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                      <v-btn text color="red">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1460,14 +1460,14 @@
                   <div style="width:25%" >
                     <v-row justify="center">
                       <div>
-                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-006.jpg" alt="" style="border:5px solid #fff"></v-img>
+                        <v-img class="ml-2 " src="/folders/image/MALAYSIA.png" alt=""></v-img>
                       </div>
                     </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                      <v-btn text color="red">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1477,14 +1477,48 @@
                   <div style="width:25%" >
                     <v-row justify="center">
                       <div>
-                        <v-img class="rounded-circle ml-2 " src="/folders/image/tour/europ-007.jpg" alt="" style="border:5px solid #fff"></v-img>
+                        <v-img class="ml-2 " src="/folders/image/RUSSIA.png" alt="" ></v-img>
                       </div>
                     </v-row>
                   </div>
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="white">مشاهده بیشتر</v-btn>
+                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                    </p>
+                  </div>
+                </v-row>
+              </v-col>
+              <v-col cols="12" md="6" class="my-3 my-md-8"> 
+                <v-row class="pl-md-4">
+                  <div style="width:25%" >
+                    <v-row justify="center">
+                      <div>
+                        <v-img class=" ml-2 " src="/folders/image/THAILAND.png" alt=""></v-img>
+                      </div>
+                    </v-row>
+                  </div>
+                  <div style="width:75%">
+                    <h4 class="white--text my-3">جاذبه های استانبول</h4>
+                    <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                    </p>
+                  </div>
+                </v-row>
+              </v-col>
+              <v-col cols="12" md="6" class="my-3 my-md-8"> 
+                <v-row class="">
+                  <div style="width:25%" >
+                    <v-row justify="center">
+                      <div>
+                        <v-img class=" ml-2 " src="/folders/image/DUBAI.png" alt="" ></v-img>
+                      </div>
+                    </v-row>
+                  </div>
+                  <div style="width:75%">
+                    <h4 class="white--text my-3">جاذبه های استانبول</h4>
+                    <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
+                      <v-btn text color="red">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>

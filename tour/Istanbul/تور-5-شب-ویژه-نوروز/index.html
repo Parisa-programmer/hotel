@@ -20,8 +20,6 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="description" content="تور تایلند نوروز 1402 یکی از محبوب ترین تورها در نوروز امسال خواهد بود. این کشور به دلیل جذابیت های خاص توریستی همواره مورد توجه توریست های ایرانی بوده است.">
-
     <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>خدمات گردشگری آهوان</title>
@@ -46,21 +44,354 @@
           d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
-    <style>
-      .hoverCard:hover{
-        box-shadow: 0 0 15px rgb(153, 153, 153);
-      }
+  </head>
+  <style>
+    *{
+      letter-spacing: -0.7px !important;
+    } 
 
-      .hoverCard .tourImage{
-        transition: all 500ms;
+    .tourImageBackground {
+      position: absolute;
+      width: 100%;
+      height: 98.5%;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.55) 0,
+        rgba(0, 0, 0, 0.55) 1%,
+        transparent 56%,
+        transparent 74%
+      );
+    }
+    
+    .tourPageTitle h3, .tourPageTitle span{
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tourPageTitle h3:hover {
+      color: rgb(44, 44, 44);
+      background: #fff;
+    }
+    
+    .tourPageTitle h3:hover .lighter{
+      /* content: ""; */
+      /* position: absolute; */
+      /* height: 15px;
+      width: 67%; */
+      background:#ffeb3b !important;
+      /* top: 47%;
+      right: 16%;
+      z-index: -1; */
+    }
+    
+    .tourPageTitle span{
+      color: rgb(44, 44, 44);
+    }
+
+    .v-slide-group__wrapper .v-slide-group__content {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .tabTitles{
+      color: #fff;
+    }
+
+    .activeTab {
+      color: rgb(44, 44, 44) !important;
+      background: #fff;
+      z-index: 1;
+    }
+
+    .activeTab::before {
+      content: "";
+      position: absolute;
+      height: 15px;
+      width: 67%;
+      background:#eccfb275;
+      top: 47%;
+      right: 16%;
+      z-index: -1;
+    }
+
+    .countryNmae{
+      margin-right:-52px;
+      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
+      font-size: 62px;
+      font-weight: bold;
+    }
+
+    .tour-date {
+      margin-right:-52px;
+      background: linear-gradient(94deg, rgba(255, 255, 255, 0) 0%, rgb(89 89 89 / 76%) 14%, rgb(89 89 89 / 67%) 87%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .main-div{
+      margin-top:-300px;
+    }
+
+    .logo-tour-title{
+      height: 35px;
+    }
+
+    .see-more{
+      font-weight: normal;
+      font-size: small;
+      text-decoration: underline;
+    }
+
+    .even-odd-tabel tbody tr:nth-child(even) {
+      background-color: #e3c8af4b !important;
+    }
+
+    .even-odd-tabel th {
+      background-color: #e3c8afe0 !important;
+    } 
+
+    .theme--light.v-data-table .v-data-footer,.v-application--is-ltr .v-data-footer__pagination{
+      direction: ltr !important;
+    }
+
+    .v-application--is-ltr .v-data-footer__select {
+      margin-left: 14px;
+      margin-right: auto;
+    }
+
+    .even-odd-tabel{
+      width: 100% !important;
+    }
+
+    .v-data-table,.v-data-table>.v-data-table__wrapper>table>tbody>tr>td,.theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>thead>tr:last-child>th {
+      border: 1px solid #9d9d9d;
+      font-weight: bold;
+    }
+
+    .galeryImageParent{
+      width: 24%;
+    }
+
+    .galeryImage{
+      position: relative;
+    }
+    
+    .galeryImage::after{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      /* background-color: #0000006e; */
+      z-index: 2222;
+      top: 0;
+      opacity: 1;
+    }
+    
+    .galeryImage:hover.galeryImage::after{
+      opacity: 0;
+    }
+    
+    .galeryImage:hover{
+      box-shadow: 0 0 5px rgb(59, 59, 59);
+    }
+
+    .halfLi{
+      width:49%
+    }
+
+    .even-odd-tabel td:nth-child(2) .bold{
+      font-size: 15px;
+      /* color: #bc8e5e !important;
+      text-shadow: 0 0 3px #ffd7ae; */
+    }
+    
+    @media (min-width:960px) and (max-width:1263px){
+      .main-div{
+        margin-top:-245px;
       }
       
-      .hoverCard:hover .tourImage{
-        width: 105%;
-        height: 105%;
+      .countryNmae{
+        font-size: 46px;
       }
-    </style>
-  </head>
+
+      .tourImageBackground {
+        height: 97.5%;
+      }
+    }
+    
+    @media (min-width:600px) and (max-width:959px) {
+      .main-div{
+        margin-top:-205px;
+      }      
+      
+      .tourImageBackground {
+        height: 96.5%;
+      }
+
+      .countryNmae{
+        font-size: 40px;
+      }
+
+      .tour-date{
+        font-size: 16px;
+      }
+
+      .tabTitles {
+        font-size: 15px !important;
+      }
+
+      .tabelTour{
+        width:80% !important
+      }
+      
+      .text-tour{
+        font-size: 14px;
+      }
+
+      .tabel-tour-title {
+        font-size: 18px !important;
+      }
+
+      .text-tour-call-us{
+        font-size: 16px ;
+      }
+
+      .galeryImageParent{
+        width: 45%;
+      }
+
+      .halfLi{
+        width:100%
+      }
+      
+      @media (max-width:774px) {
+        .main-div{
+          margin-top:-155px;
+        }
+
+        .tourImageBackground {
+          height: 96.5%;
+        }
+
+        .countryNmae{
+          font-size: 24px;
+          margin-right: -35px;
+          padding-right: 35px!important;
+        }
+
+        .tour-date{
+          font-size: 12px;
+          margin-right: -35px;
+          padding-right: 35px!important;
+        }
+
+        .tabTitles {
+          font-size: 13px !important;
+        }
+      }
+    }
+
+    @media (max-width:599px) {
+      .indexDiv{
+        width: 95% !important;
+      }
+
+      .main-div{
+        margin-top:-170px;
+      }
+
+      .backgroundImageTour{
+        width: 200%;
+      }
+
+      .countryNmae{
+        font-size: 26px;
+        margin-right: -35px;
+        padding-right: 35px!important;
+      }
+
+      .tour-date{
+        font-size: 14px;
+        margin-right: -35px;
+        padding-right: 35px!important;
+      }
+
+      .tabTitles{
+        font-size: 14px;
+        /* background: #fff; */
+        /* border: 1px solid #b37b63; */
+      }
+      
+      .tabelTour{
+        width:100% !important
+      }
+      
+      .tabelTour>.v-data-table__wrapper .v-data-table__mobile-row{
+        min-height: 35px !important;
+      }
+
+      .v-application--is-ltr .v-data-table__mobile-row__cell{
+        text-align: center;
+      }
+      
+      .tourPlan>.v-data-table__wrapper .v-data-table__mobile-row:nth-child(1){
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+      
+      .tabelTour *{
+        font-size: 13px;
+      }
+
+      .text-tour{
+        font-size: 14px;
+      }
+
+      .tabel-tour-title {
+        font-size: 16px !important;
+      }
+      
+      .text-tour-call-us{
+        font-size: 14px ;
+      }
+
+      .tourPageTitle h3, .tourPageTitle span{
+        /* color:black !important */
+      }
+
+      .tourImageBackground {
+        height: 97.5%;
+      }
+
+      .logo-tour-title{
+        height: 30px;
+      }
+
+      .tourPageTitle{
+        /* background-color: #fff; */
+      }
+
+      .tourPageTitle {
+        width: 500px;
+      }
+      
+      .v-data-table>.v-data-table__wrapper>table>tbody>tr>td,.theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>td:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:last-child, .theme--light.v-data-table>.v-data-table__wrapper>table>tbody>tr:not(:last-child)>th:not(.v-data-table__mobile-row), .theme--light.v-data-table>.v-data-table__wrapper>table>thead>tr:last-child>th {
+        border: unset;
+      }
+
+      .galeryImageParent{
+        width: 95%;
+      }
+
+      .halfLi{
+        width:100%
+      }
+    }
+  </style>
   <body>
     <!-- header -->
     <!-- main page -->
@@ -350,116 +681,180 @@
             </v-card>
           </v-dialog>
         </div>
-        <div class="mt-12 pt-12" style="min-height: 80vh;">
-          <div class="widthAll relative">
-            <v-img class="widthAll backgroundImageTour" height="250" src="/folders/image/tour/تایلند 2000-250 (1).jpg" alt=""></v-img>
-            <div class="tourImageBackground"></div>
-          </div>
+        <div class="mt-9 mt-sm-12 pt-12">
           <v-row justify="center">
-            <div class="my-6 indexDiv">
-              <h1 class="px-12">مقدمه:</h1>
-              <p class="text-justify answerText mt-4 px-12">نوروز امسال با توجه به اینکه با ماه رمضان همزمان شده است با سال های دیگر متفاوت است.
-                <b>تور تایلند نوروز 1402</b>
-                 به دلیل بعضی محدودیت های ماه رمضان در کشورهای اسلامی مانند: ترکیه، اندونزی و امارات می تواند بهترین انتخاب امسال برای مسافرت باشد.</p>
+            <div class="widthAll relative">
+              <img class="widthAll backgroundImageTour" src="/folders/image/tour/tour-background23.jpg" alt="">
+              <div class="tourImageBackground"></div>
+            </div>
+            <div class="mb-12 indexDiv main-div" style="z-index: 3">
+              <div>
+                <span class="white--text countryNmae px-12">استانبول _ 5 شب و 6 روز</span>
+              </div>
+              <div>
+                <b class="white--text px-12 tour-date">تاریخ پرواز : همه روزه </b>
+              </div>
+              <v-row class='mt-9 mt-sm-0 mt-lg-12 pt-6 pt-md-12' style="">
+                <v-slide-group ltr v-model="tab" class="ltr" hide-arrows center-activeTab>
+                  <v-slide-item v-slot="{ activeTab }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 0 && 'activeTab'" @click="tab = 0">لیست قیمت</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ activeTab }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 1 && 'activeTab'" @click="tab = 1">خدمات تور</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ activeTab }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 2 && 'activeTab'" @click="tab = 2">مدارک مورد نیاز</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'activeTab'" @click="tab = 3">نکات ضروری</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'activeTab'" @click="tab = 4">جزئیات پرواز</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 5 && 'activeTab'" @click="tab = 5">گالری تصاویر</h3>
+                  </v-slide-item>
+                </v-slide-group>
+              </v-row>
               
-              <v-row justify="center">
-               
-                <div class="mx-12 mt-4 pa-2 widthAll white rounded-lg d-inline-block hoverCard">
-                  <v-row >
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="rounded-lg hideOver">
-                        <div style="height:100px;width:250px">
-                          <img class="rounded-lg tourImage" src="/folders/image/tour/europ-001.jpg" height="100%" width="100%">
-                        </div>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="" style="font-family:Byekan !important" >بانکوک - پاتایا - پوکت (11 شب)</h4>
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-3">
-                        <img src="/folders/image/tour/Kuwait_Airlines_logo2.png" width='100' alt="">
-                      </v-row>
-                      <v-row justify="center">
-                        <span class="body-2 mt-2 mt-sm-3" style="font-family:Byekan !important">تاریخ رفت: 3 فروردین</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="mt-sm-4">
-                        هتل های 5 ستاره لوکس
-                      </v-row>
-                      <v-row justify="center">
-                        <span class="caption grey--text text--darken-3 mt-1 mt-sm-2" style="font-family:Byekan !important">2 شب بانکوک + 3شب پاتایا + 5 شب پوکت</span>
-                      </v-row>
-                      <v-row justify="center">
-                        <span class="caption grey--text text--darken-3" style="font-family:Byekan !important"> + 1 شب بانکوک</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify='center' class="mb-2" align=center>
-                        <img height="30" src="/folders/image/tour/thai-1401-n19.jpg" alt="">
-                      </v-row>
-                      <v-row justify='center'>
-                        <a href="/tour/Thailand/thai-1401-n19" class="text-decoration-none">
-                          <v-btn color="red" dark>مشاهده جزئیات</v-btn>
-                        </a>
+              <v-row class="white py-md-9 px-6">
+                <div class="widthAll" v-if="tab == 0">
+                  <v-row>
+                    <v-col cols="12" lg="12">
+                      <h4 class="mb-4 mt-4 mt-md-0">
+                        <v-icon size="5" color="red" class="ml-2">mdi-circle</v-icon>
+                        قیمت های اعلام شده بر حسب تومان می باشد.
+                      </h4>
+                      <v-row class="mb-2" justify="center">
+                        <v-data-table 
+                          :headers="pricesHeaderDubai"
+                          hide-default-footer
+                          :items="pricesItemsIstanbul4"
+                          disable-pagination
+                          class=" rounded-lg even-odd-tabel tabelTourId"
+                          style="border: 2px solid #9d9d9b !important;"
+                        >
+                        <template v-slot:item.name="{ item }">
+                          <div class="bold" style="letter-spacing: 1px !important;">{{ item.name }}</div>
+                         </template>
+                        </v-data-table>
                       </v-row>
                     </v-col>
                   </v-row>
                 </div>
+                <div class="widthAll" v-else-if="tab == 1">
+                  <v-row>
+                    <v-col cols="12" md="12">
+                      <ul class=" mr-md-6">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بلیت رفت و برگشت هواپیما</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">اقامت به همراه صبحانه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">ترانسفر فرودگاهی رفت و برگشت</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">به همراه تور لیدر فارسی زبان</li>   
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">بیمه مسافرتی تا سقف 10.000 یورو با پوشش کرونا</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour d-inline-block halfLi">هدیه ویژه آهوان گشت رایگان خرید به همراه ناهار</li>                    
+                      </ul>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 2">
+                  <v-row>
+                    <v-col cols="12" md="12">
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">مدارک مورد نیاز تورهای استانبول</h3>
+                      <ul class="my-6 mr-9">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اصل گذرنامه به همراه حداقل 7 ماه اعتبار</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">کارت واکسن و یا تست پی سی آر منفی</li>
+                      </ul>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 3">
+                  <v-row>
+                    <v-col cols="12" md="12">
+                      <h3 class="tabel-tour-title red--text mt-6 mt-sm-3 mt-md-0">نکات ضروری تورهای استانبول</h3>
+                      <ul class="my-6 mr-9">
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بار مجاز مسافر 30 کیلوگرم می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">بار مجاز مسافر 30 کیلوگرم می باشد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          نرخ نوزاد زیر 2 سال 850.000 تومان می‌باشد.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify"> به نفر سوم در اتاق سرویس اضافه تعلق میگیرد.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          پرداخت حداقل 50% مبلغ تور هنگام رزرو الزامی است.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          مسئولیت کنترل ممنوعیت خروج بعهده مسافر می باشد.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          بیمه افراد بالای 60 سال الزامی و هزینه آن جداگانه محاسبه می‌گردد.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">حرکت تاریخ های 27 و 28 و 29 اسفند و 1 فروردین
+                          <b class="red--text">+ 1.500.000</b> تومان.
+                        </li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">اطلاعات ترانسفر و گیت مربوطه در فرودگاه استانبول در معرفی نامه هتل درج شده است.</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour text-justify">
+                          قیمتهای موجود در پکیج با نرخ دلار 45.000 تومان
+
+                          محاسبه شده است در صورت هرگونه افزایش
+                          نرخ مابه التفاوت محاسبه خواهد شد.
+                        </li>
+                      </ul>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 4">
+                  <v-row class="mb-7 mt-7 mt-sm-0" justify="center">
+                    <h2 class="tabel-tour-title">جزئیات پرواز مستقیم استانبول</h2>
+                    <!-- <img src="/folders/image/tour/mahan-logo2.jpg" width="150" class="mr-3 logo-tour-title" alt=""> -->
+                  </v-row>
+                  <v-row justify="center">
+                    <v-data-table style="box-shadow: 0 0px 21px #dbdbdb !important;"
+                      hide-default-footer
+                      disable-pagination
+                      :headers="dubai1FlightHeaders"
+                      :items="istanbul1Flights"
+                      class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan tabelTourId"
+                    >
+                    <template v-slot:item.airline="{ item }">
+                      <img :width="item.airline == 'ماهان' ? 80 :item.airline == 'قشم‌ایر' ? 80 : 50" :src="item.airline == 'ماهان' ? '/folders/image/ماهان-لوگو.jpg' :item.airline == 'قشم‌ایر' ? '/folders/image/tour/gheshm-logo.jpg' : '/folders/image/لوگوآسمان.jpg'" alt="">
+                    </template>
+                    </v-data-table>
+                  </v-row>
+                </div>
+                <div class="widthAll" v-else-if="tab == 5">
+                  <v-row justify="center">
+                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in istanbulImages" :keys="i">
+                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item"></v-img>
+                    </div>
+                  </v-row>
+                  <v-dialog
+                    v-model="imageDialog"
+                    width="1000"
+                  >
+                    <div class="relative">
+                      <v-carousel v-model="imageNumber">
+                        <v-carousel-item
+                          v-for="(item,i) in istanbulImages" 
+                          :keys="i"
+                        >
+                          <img :src="item" alt="">
+                        </v-carousel-item>
+                      </v-carousel>
+                      <v-icon class="absolute cursorPointer" color="white" @click="imageDialog=false" style="top:5px;right:5px">mdi-close</v-icon>
+                    </div>
+                  </v-dialog>
+                </div>
               </v-row>
-              <h2 class="px-12 mt-8"> با انتخاب  تور تایلند نوروز 1402 از چه مکان هایی می توانید دیدن کنید؟</h2>
-              <p class="text-justify answerText mt-4 px-12">
-                کشور تایلند نه تنها برای توریست های ایرانی بلکه برای توریست های سراسر جهان جذابیت دارد. در این بخش به مهمترن موارد این جذابیت ها اشاره خواهیم کرد:
-                <br>
-                <p class="mr-12">
-                1.	 با خرید تور عید تایلند 1402  از پارک های طبیعی و زیبای این کشور از جمله: پارک ملی کائو یای، پارک پانک سیدا و پارک ملی تا پرایا و موارد دیگر می توانید بازدید داشته باشید.
-                </p>
-                <p class="mr-12">
-                  2.	با تور تایلند می توانید از مناطق حفاظت شده مانند: تونگ یای نارسانا، منطقه حفاظت شده هوآی کا کائنگ و غیره بازدید نمایید.
-                </p>
-                <p class="mr-12">
-                  3.	با رزرو تور تایلند می توانید از موزه های زیبایی مانند: آرت این پارادایس، موزه پزشکی بانکوک که موزه خاص و جذابی می باشد بازدید نمایید.
-                </p>
-                <p class="mr-12">
-                  4.	همچنین با  تور تایلند نوروز 1402 علاوه بر موارد ذکر شده می توانید از مراکز خرید متعدد، معابد قدیمی و سواحل زیبای این کشور استفاده نمایید.
-                </p>
-              </p>
-              <h2 class="px-12 mt-8">بهترین  تور تایلند نوروز 1402 را از کدام آژانس مسافرتی تهیه نماییم؟</h2>
-              <p class="text-justify answerText mt-4 px-12">
-                تور تایلند نوروز 1402 را می توانید به صورت پک کامل و یا به صورت جداگانه یعنی: تور پوکت، تور تایلند، تور بانکوک، تور پاتایا، تور دور تایلند را خرید نمایید. شهرهای مختلف این کشور جاذبه های خاص خود را دارد. ولی یکی از مهمترین موارد در خصوص تور های کشور های خارجی محل خرید این تور های می باشد. زیرا که در صورت ناهماهنگی مسافران در کشور غریب دچار مشکل و هزینه اضافی خواهند شد. پیشنهاد ما به شما در این خصوص شرکت آهوان تور می باشد.
-              </p>
-              <h2 class="px-12 mt-8">ویژگی های منحصر بفرد  شرکت آهوان تور</h2>
-              <p class="text-justify answerText mt-4 px-12">
-                این شرکت هم در زمینه  تور تایلند نوروز 1402 و هم در زمینه تور های دیگر یکی از حرفه ای ترین ها می باشد. در این بخش به ویژگی های این شرکت خدمات گردشگری اشاره خواهیم کرد:
-                <br>
-                <p class="mr-12">
-                  1.	این شرکت دارای 52 سال سابقه در زمینه خدمات گردشگری می باشد. این خدمات همر در زمینه تور های داخلی و هم تور های خارجی میباشد.
-                </p>
-                <p class="mr-12">
-                  2.	تور پوکت نوروز 1402 و هر تور به مقصد های دیگر را را به راحتی و به صورت رزرو آنلاین از این شرکت می توانید تهیه نمایید. زیرا که این شرکت دارای خدمات آنلاین رزرو می باشد. 
-                </p>
-                <p class="mr-12">
-                  3.	خرید تور پاتایا نوروز 1402 و تمامی تور های دیگر از این شرکت را با اطمینان خاطر به  صورت آنلاین انجام دهید. زیرا که سایت این شرکت دارای تمامی نماد های مربوط به تجارت الکترونیک می باشد. 
-                </p>
-                <p class="mr-12">
-                  4.	قیمت تور تایلند و تمامی خدمات این شرکت کاملا رقابتی و قابل مقایسه با سایر شرکت ها می باشد.
-                </p>
-                <p class="mr-12">
-                  5.	این شرکت جزو معدود شرکتهایی می باشد که برای تور بانکوک نوروز1402 و تمامی خدمات خود دارای دفتر حافظ منافع مشتری بوده و مشتریان خود را حتی پس از انجام تور و در حین برگزاری تور هم ساپورت می کند. 
-                </p>
-                <p class="mr-12">
-                  6.	این شرکت دارای باشگاه مشتریان خاص خود می باشد که با ثت نام در آن می توانید از تخفیفات تور تایلند نوروز 1402  و سایر خدمات بهره مند شوید.
-                </p>
-              </p>
+              <v-row class="white px-3 px-sm-9 py-5 mb-2 mb-sm-12 mt-2 mt-sm-6 rounded-xl justify-center d-none d-sm-flex">
+                <b class="d-inline-block grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;">
+                  جهت اخذ اطلاعات بیشتر با کارشناسان ما تماس حاصل فرمایید.
+                </b>
+                <b class="d-inline-block  grey--text text-center text--darken-3 text-tour-call-us" style="font-family: Byekan !important;"><a class="widthAll red--text mx-2" href="tel:02141889" style="text-decoration:none">تلفن: 41889-021</a></b>
+              </v-row>
+              <v-row class="px-3 px-sm-9 py-5 justify-center d-sm-none" style="background: #c1c1c1;position: fixed;bottom: 0;width: 100%;right: 0;">
+                <b class="d-inline-block text-center text-tour-call-us" style="font-family: Byekan !important;text-decoration: underline;letter-spacing: 0px !important;">
+                  <a href="tel:02141889" class="bold" style="color:#0a30ff">تماس با کارشناسان ما </a> 
+                </b>
+              </v-row>
             </div>
           </v-row>
         </div>
@@ -544,11 +939,6 @@
               </v-col>
             </v-row>
           </div>
-        </v-row>
-        <v-row class="px-3 px-sm-9 py-5 justify-center d-sm-none" style="background: #c1c1c1;position: fixed;bottom: 0;width: 100%;right: 0;">
-          <b class="d-inline-block text-center text-tour-call-us" style="font-family: Byekan !important;text-decoration: underline;letter-spacing: 0px !important;">
-            <a href="tel:02141889" class="bold" style="color:#0a30ff">تماس با کارشناسان ما </a> 
-          </b>
         </v-row>
       </v-app>
     </div>

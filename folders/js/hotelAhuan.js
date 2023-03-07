@@ -5,7 +5,6 @@ const vuetify = new Vuetify({
         primary: '#d1d1d1',
         secondary: '#b0bec5',
         anchor: '#8c9eff',
-
       },
     },
   },

@@ -22,12 +22,16 @@
     <meta charset="utf-8">
     <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <title>خدمات گردشگری آهوان</title>
-    <link rel="stylesheet" href="/folders/css/datepicker.css">
-    <link rel="stylesheet" href="/folders/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" />
+    <title>سنجش شانس اخذ ویزا</title>
+    <!-- <link rel="stylesheet" href="/folders/css/datepicker.css"> -->
+    <!-- <link rel="stylesheet" href="/folders/slick/slick.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" /> -->
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css"> -->
+    <!-- <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script> -->
+    <!-- <script type="text/javascript" src="/folders/flipDown/js/main.js"></script> -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script> -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -45,17 +49,8 @@
         })();
     </script>
     <style>
-      .hoverCard:hover{
-        box-shadow: 0 0 15px rgb(153, 153, 153);
-      }
-
-      .hoverCard .tourImage{
-        transition: all 500ms;
-      }
-      
-      .hoverCard:hover .tourImage{
-        width: 105%;
-        height: 105%;
+      label{
+        font-weight: bold;
       }
     </style>
   </head>
@@ -100,7 +95,49 @@
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور نوروز 1402</span>
+                  <v-navigation-drawer permanent class="menuHeader relative">
+                    <v-list nav dense>
+                      <div v-for="(link, i) in links" :key="i">
+                        <v-list-group  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :class="activeLinkMenuHeader == 'تورنوروز' && ' grey lighten-3 rounded-lg'"
+                            :key="link.text"
+                            no-action
+                            :value="activeLinkMenuHeader == 'تورنوروز' ? true : false"
+                        >
+                          <template v-slot:activator>
+                            <v-list-item-title >
+                              <span>{{ link.text }}</span>
+                            </v-list-item-title>
+                          </template>
+                          <v-list-item 
+                              v-for="sublink in link.subLinks"
+                              :key="sublink.text" class="cursorPointer titleHeader"
+                          >
+                                <v-list-item-title @click="sublink.active = !sublink.active" class="topMenu" style="font-weight: bold;">{{ sublink.text }}</v-list-item-title>
+                                <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);background:#fff" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
+                                  <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
+                                    <a class="relative" :href="sub2.link" style="text-decoration:none;color:rgb(39, 39, 39)">
+                                      <img class="absolute" v-if="sub2.new" height="33" src="folders/image/newYearcard2.png" alt="" style="left: -40px;top: -12px;    transform: rotate(-38deg);">
+                                      <v-icon size="9" color="red" class="mx-2">mdi-circle</v-icon>
+                                      {{sub2.text}}
+                                    </a>
+                                  </v-row>
+                                </div>
+                                
+                                <!-- <v-list-item class="absolute"
+                                    v-for="(sub2, k) in sublink.sub2" :key="k"
+                                    :to="sub2.to"
+                                >
+                                  <v-list-item-title>
+                                    
+                                      <v-icon size="6" color="red">mdi-circle</v-icon> {{sub2.text}}
+                                    </a>
+                                  </v-list-item-title> 
+                                </v-list-item> -->
+                          </v-list-item>
+                        </v-list-group>
+                      </div>
+                    </v-list>
+                  </v-navigation-drawer>
                   </v-skeleton-loader>
                   <v-skeleton-loader class="textLoader d-inline-block"
                     type="chip"
@@ -179,10 +216,60 @@
                           <v-icon class="ml-2">mdi-train-car</v-icon>
                           <v-list-item-title>تور</v-list-item-title>
                         </v-list-item>
-                        <v-list-item @click="showMenuSmall = false">
+                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
                           <v-icon class="ml-2">mdi-account-group</v-icon>
                           <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          
                         </v-list-item>
+                        <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
+                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                            <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
+                              <v-list-group
+                                  :key="link.text"
+                                  no-action
+                                  :value="false"
+                              >
+                                <template v-slot:activator>
+                                  <v-list-item-title >
+                                    <span>{{ link.text }}</span>
+                                  </v-list-item-title>
+                                </template>
+                                <v-list-item
+                                    v-for="sublink in link.sub2"
+                                    :key="sublink.text" class="cursorPointer titleHeader"
+                                >
+                                  <a class="relative widthAll d-flex" :href="sublink.link" style="text-decoration:none;color:rgb(39, 39, 39);height: 38px;">
+                                    <v-list-item-title class="topMenu" style="font-weight: bold;"> 
+                                      <v-icon size="9" color="red" class="ml-2">mdi-circle</v-icon>
+                                      {{ sublink.text }}
+                                      <img class="absolute" v-if="sublink.new" height="43" src="folders/image/newYearcard2.png" alt="" style="left: 32px;top: -5px;    transform: rotate(-38deg);">
+                                    </v-list-item-title>
+                                  </a>
+                                      <!-- <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
+                                        <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
+                                          
+                                            
+                                           
+                                            {{sub2.text}}
+                                          </a>
+                                        </v-row>
+                                      </div>
+                                      
+                                      <v-list-item class="absolute"
+                                          v-for="(sub2, k) in sublink.sub2" :key="k"
+                                          :to="sub2.to"
+                                      >
+                                        <v-list-item-title>
+                                          
+                                            <v-icon size="6" color="red">mdi-circle</v-icon> {{sub2.text}}
+                                          </a>
+                                        </v-list-item-title> 
+                                      </v-list-item> -->
+                                </v-list-item>
+                              </v-list-group>
+                            </div>
+                          </div>
+                          <!-- </v-navigation-drawer> -->
                         <v-list-item @click="showMenuSmall = false">
                           <v-icon class="ml-2">mdi-hospital-building</v-icon>
                           <v-list-item-title>هتل آهوان</v-list-item-title>
@@ -333,7 +420,7 @@
                   قبلا ثبت نام نکرده اید؟
                   <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
                 </span>
-                <span v-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                <span v-else-if="loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
                   {{loginForm.phone}}
                   <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
                 </span>
@@ -348,75 +435,206 @@
             </v-card>
           </v-dialog>
         </div>
-        <div class="mt-12 pt-12" style="min-height: 80vh;">
-          <v-row justify="center">
-            <div class="widthAll relative d-none d-sm-block">
-              <v-img class="widthAll backgroundImageTour" height="250" src="/folders/image/tour/مسکو 2000-250 (1).jpg" alt=""></v-img>
-              <div class="tourImageBackground"></div>
-            </div>
-            <div class="widthAll relative d-sm-none">
-              <v-img class="widthAll backgroundImageTour" height="250" src="/folders/image/tour/مسکو 2000-250 (2).jpg" alt=""></v-img>
-              <div class="tourImageBackground"></div>
-            </div>
-            <div class="my-6 indexDiv">
-              <v-row justify="center">
-                <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard">
-                  <v-row >
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="rounded-lg hideOver">
-                        <div style="height:100px;width:250px">
-                          <img class="rounded-lg tourImage" src="/folders/image/tour/rus-1.jpg" height="100%" width="100%">
-                        </div>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="" style="font-family:Byekan !important" >مسکو (4 شب)</h4>
-                      </v-row>
-                      <v-row justify="center" class="my-1">
-                        <img src="/folders/image/tour/mahan-logo2.jpg" width='120' alt="">
-                      </v-row>
-                      <v-row justify="center">
-                        <span class="body-2 mt-2 mt-sm-1" style="font-family:Byekan !important">روز‌های پرواز: همه‌روزه</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="mt-sm-4">
-                        هتل های 4 و 5 ستاره
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  19.900.000 تومان</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify='center' class="mb-2" align=center>
-                        <img src="/folders/image/tour/RUS-1401-Z 017.jpg" width="120" alt="">
-                      </v-row>
-                      <v-row justify='center'>
-                        <a href="./RUS-1401-Z-017" class="text-decoration-none">
-                          <v-btn color="red" dark>مشاهده جزئیات</v-btn>
-                        </a>
-                      </v-row>
-                      <v-row justify='center'>
-                        <a href="/folders/image/پکیج مسکو.jpg" class="text-decoration-none mt-2 " download>
-                          <v-btn color="red" outlined dark class="px-7">دانلود پکیج</v-btn>
-                        </a>
-                      </v-row>
-                    </v-col>
-                  </v-row>
-                </div>
-              </v-row>
-            </div>
-          </v-row>
-        </div>
+        <v-row class="d-none d-sm-flex mt-12 pt-12">
+        </v-row>
+        <v-row class="mt-2" justify="center">
+          <div class="indexDiv my-6 white py-6 px-4" style="min-height:500px">
+            <v-row justify="center" class="">
+              <v-col cols="12" class="py-0">
+                <v-row justify="space-around" class="mb-4">
+                  <div>
+                    <v-icon :color="testStep <= 0 ? 'grey darken-1' : '#1abc9c'">mdi-account-outline</v-icon>
+                    <span class="body-2 d-md-inline-block text-center" style="font-family: Byekan !important;" :style="{color: testStep <= 0 ?  '#757575' : '#1abc9c',width: windowWidth < 600 && '100%' }">مشخصات هویتی</span>
+                  </div>
+                  <div>
+                    <v-icon :color="testStep <= 1 ? 'grey darken-1' : '#1abc9c'">mdi-wallet-travel</v-icon>
+                    <span class="body-2 d-md-inline-block text-center" style="font-family: Byekan !important;" :style="{color: testStep <= 1 ?  '#757575' : '#1abc9c',width: windowWidth < 600 && '100%' }">سوابق سفر</span>
+                  </div>
+                  <div>
+                    <v-icon :color="testStep <= 2 ? 'grey darken-1' : '#1abc9c'">mdi-semantic-web</v-icon>
+                    <span class="body-2 d-md-inline-block text-center" style="font-family: Byekan !important;" :style="{color: testStep <= 2 ?  '#757575' : '#1abc9c',width: windowWidth < 600 && '100%' }">سوابق شغلی</span>
+                  </div>
+                  <div>
+                    <v-icon :color="testStep <= 3 ? 'grey darken-1' : '#1abc9c'">mdi-credit-card-check-outline</v-icon>
+                    <span class="body-2 d-md-inline-block text-center" style="font-family: Byekan !important;" :style="{color: testStep <= 3 ?  '#757575' : '#1abc9c',width: windowWidth < 600 && '100%' }">سوابق مالی</span>
+                  </div>
+                  <div>
+                    <v-icon :color="testStep <= 4 ? 'grey darken-1' : '#1abc9c'">mdi-note-text-outline</v-icon>
+                    <span class="body-2 d-md-inline-block text-center" style="font-family: Byekan !important;" :style="{color: testStep <= 4 ?  '#757575' : '#1abc9c',width: windowWidth < 600 && '100%' }">پاسخ آزمون</span>
+                  </div>
+                </v-row>
+              </v-col>
+            </v-row>
+            
+            <v-row justify="center" class="">
+              <v-col cols="12" class="py-0">
+                <v-progress-linear reverse background-color="grey lighten-4" class="rounded-lg" :value="testStep == 1 ? 25 : testStep == 2 ? 50 : testStep == 3 ? 75 :100 "></v-progress-linear>
+              </v-col>
+              <!-- <v-col cols="12" sm="5" class="py-0">
+                <img  v-if="!isLoading" src="/folders/image/3image.png" alt="" class="relative" style="left: 0;bottom:32px;width:90%">
+              </v-col> -->
+            </v-row>
+            <v-form ref="nextPageForm"
+                        lazy-validation>
+              <div class="indexDiv my-4" v-if="testStep == 1">
+                <h4>سن :</h4>
+                <v-row justify="center">
+                  
+                  <!-- <v-col cols="12" md="4">
+                    <v-checkbox
+                      v-model="ex4"
+                      label="زیر 20 سال"
+                      color="red"
+                      value="red"
+                      hide-details
+                    ></v-checkbox>
+                  </v-col> -->
+                  <v-radio-group
+                    v-model="ex7"
+                    class="widthAll"
+                  >
+                    <v-row>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="زیر 20 سال"
+                          color="red"
+                          value="0"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="20 تا 30 سال"
+                          color="red"
+                          value="1"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="30 تا 40 سال"
+                          color="red"
+                          value="2"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="40 تا 50 سال"
+                          color="red"
+                          value="3"
+                        ></v-radio>
+                      </v-col>
+                    </v-row>
+                  </v-radio-group>
+                </v-row>
+                <v-divider class="mx-12 mb-6"></v-divider>
+                <h4>وضعیت تاهل :</h4>
+                <v-row justify="center">
+                  <v-radio-group
+                    v-model="ex7"
+                    class="widthAll"
+                  >
+                    <v-row>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="مجرد"
+                          color="red"
+                          value="0"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="متاهل"
+                          color="red"
+                          value="1"
+                        ></v-radio>
+                      </v-col>
+                    </v-row>
+                  </v-radio-group>
+                </v-row>
+                <v-divider class="mx-12 mb-6"></v-divider>
+                <h4>تعداد فرزندان :</h4>
+                <v-row justify="center">
+                  <v-radio-group
+                    v-model="ex7"
+                    class="widthAll"
+                  >
+                    <v-row>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="بدون فرزند"
+                          color="red"
+                          value="0"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="1 فرزند"
+                          color="red"
+                          value="1"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="2 فرزند و بیشتر"
+                          color="red"
+                          value="2"
+                        ></v-radio>
+                      </v-col>
+                    </v-row>
+                  </v-radio-group>
+                </v-row>
+                <v-divider class="mx-12 mb-6"></v-divider>
+                <h4>میزان تحصیلات :</h5>
+                <v-row justify="center">
+                  <v-radio-group
+                    v-model="ex7"
+                    class="widthAll"
+                  >
+                    <v-row>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="محصل یا دانشجو"
+                          color="red"
+                          value="0"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="کارشناسی"
+                          color="red"
+                          value="1"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="کارشناسی ارشد"
+                          color="red"
+                          value="2"
+                        ></v-radio>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                        <v-radio class=""
+                          label="دکترا"
+                          color="red"
+                          value="3"
+                        ></v-radio>
+                      </v-col>
+                    </v-row>
+                  </v-radio-group>
+                </v-row>
+                <v-divider class="mx-12 mb-6"></v-divider>
+              </div>
+            </v-form>
+            <v-row>
+              <v-btn v-if="testStep > 0" class="red--text red lighten-4 " @click="testStep--"> بازگشت به مرحله قبلی</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn class="green darken-2 px-9" dark @click="testStep++">مرحله بعدی</v-btn>
+               <!-- @click="scrollTopNextPage();testStep = 1;dateError = false;" -->
+               <!-- @click="changeBookStep(3)" -->
+            </v-row>
+          </div>    
+        </v-row>
+              
+          
         <!-- loading -->
         <div v-if="isLoading || isLoadingAxios" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9998 ;top:0;right:0;background:#00000048">
           <img src="/folders/image/logo-header.png" class="white pa-12 rounded-xl" alt="">
@@ -464,7 +682,7 @@
                     اینترنتی را برایتان تداعی کند.
                   </p>
                 </v-row>
-                <v-row justify="" class="footerImagesParent mt-2 justify-center justify-md-space-between">
+                <v-row class="footerImagesParent mt-2 justify-center justify-md-space-between">
                   <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
                     <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
                   </a>
@@ -499,20 +717,15 @@
             </v-row>
           </div>
         </v-row>
-        <v-row class="px-3 px-sm-9 py-5 justify-center d-sm-none" style="background: #c1c1c1;position: fixed;bottom: 0;width: 100%;right: 0;">
-          <b class="d-inline-block text-center text-tour-call-us" style="font-family: Byekan !important;text-decoration: underline;letter-spacing: 0px !important;">
-            <a href="tel:02141889" class="bold" style="color:#0a30ff">تماس با کارشناسان ما </a> 
-          </b>
-        </v-row>
       </v-app>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <!-- import component slides -->
-    <script src="/folders/js/tour/europ.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="/folders/dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
     <script src="/folders/dist/mds.bs.datetimepicker.js"></script>
+    <script src="/folders/js/visa.js"></script>
     <script
       src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
       integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="

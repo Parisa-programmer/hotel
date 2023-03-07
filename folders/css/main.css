@@ -961,6 +961,69 @@ input::-webkit-inner-spin-button {
   top:102px !important;
 }
 
+.menuHeader{
+  width: fit-content !important;
+  overflow: unset;
+  z-index: 22;
+}
+
+.menuHeader .v-list-item__icon{
+  display: none !important;
+}
+
+.menuHeader .v-list-group__items{
+  position: absolute !important;
+  top: 47px;
+  right: -7px;
+  background: #fff;
+  width: 122px !important;
+}
+
+.v-application--is-ltr .v-list--dense.v-list--nav .v-list-group--no-action>.v-list-group__items>.v-list-item{
+  padding-left: 0 !important;
+  overflow: unset;
+}
+
+.v-navigation-drawer__border{
+  display: none;
+}
+
+.submenu2:hover , .titleHeader:hover{
+  background-color: rgba(49, 49, 49, 0.068);
+}
+
+.submenu{
+  display: none;
+}
+
+.menuHeader .v-list--dense .v-list-item, .menuHeader .v-list-item--dense {
+  min-height: 29px !important;
+}
+
+.submenu:hover{
+  display: block;
+}
+
+.topMenu:hover + .submenu{
+  display: block;
+}
+
+.topDivVisa{
+  top: 100px;
+}
+
+@media (min-width:1601px) and (max-width:1800px) {
+  .topDivVisa{
+    top: 80px;
+  }
+}
+
+@media (max-width:1600px) {
+  .topDivVisa{
+    top: 60px;
+  }
+}
+
 /* responsive */
 @media (min-width: 1264px) and (max-width: 1400px) {
   .v-expansion-panel-header {

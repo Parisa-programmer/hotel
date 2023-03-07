@@ -68,9 +68,18 @@
         width: 600px;
       }
 
+      .mainParent{
+        min-height:500px;
+        margin-top: -50px;
+      }
+
       @media (max-width:599px){
         .contact-card{
           width: 500px;
+        }
+
+        .mainParent{
+          margin-top: -25px;
         }
       }
       @media (max-width:499px){
@@ -374,11 +383,11 @@
             </v-card>
           </v-dialog>
         </div>
-        <v-row class="mt-12 pt-12">
-          <img src="/folders/image/support-background-contact-us.jpg" class="mt-2" style="min-width:100%" height="400" alt="" >
+        <v-row class="mt-6 mt-sm-12 pt-12">
+          <img src="/folders/image/support-background-contact-us.jpg" class="mt-2" style="min-width:100%" alt="" >
         </v-row>
         <v-row justify="center">
-          <div class="" style="min-height:500px;margin-top: -50px;">
+          <div class="mainParent" style="">
             <v-row justify="center" class="relative">
               <v-col cols="12" lg="6">
                 <v-row justify="end" class="justify-center justify-lg-end">
@@ -452,13 +461,13 @@
                     </div>
                     <div class="widthAll relative">
                       <v-row justify="center">
-                        <a href="mailto:info@ahuan.ir" class="text-decoration-none">
+                        <a rel="nofollow" href="mailto:info@ahuan.ir" class="text-decoration-none">
                           <v-icon class="mx-1 mt-4 cursorPointer mt-1">mdi-email-outline</v-icon>
                         </a>
-                        <a href="https://www.instagram.com/ahuan.tour/" class="text-decoration-none">
+                        <a rel="nofollow" href="https://www.instagram.com/ahuan.tour/" class="text-decoration-none">
                           <v-icon class="mx-1 mt-4 cursorPointer mt-1">mdi-instagram</v-icon>
                         </a>
-                        <a href="" class="text-decoration-none">
+                        <a rel="nofollow" href="" class="text-decoration-none">
                           <v-icon class="mx-1 mt-4 cursorPointer" style="transform: rotate(-36deg);">mdi-send</v-icon>
                         </a>
                         

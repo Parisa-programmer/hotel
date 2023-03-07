@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Bootstrap CSS -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/folders/css/main.css">
+    <!-- <link rel="stylesheet" href="/folders/css/sass.sass"> -->
+    <link rel="stylesheet" href="/folders/css/isLoader.css">
+    <link rel="icon" href="/folders/image/logoSite.png">
+    <link rel="icon" href="/folders/image/logoSite.png" type="image/png" />
+    <link rel="icon" href="/folders/image/logoSite.png" type="image/png" />
+    <link rel="stylesheet" href="/folders/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"> -->
+    <!-- disabel auto zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <!-- jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- <meta name="format-detection" content="telephone=no"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>وقت سفارت انگلیس</title>
+    <!-- <link rel="stylesheet" href="/folders/css/datepicker.css"> -->
+    <!-- <link rel="stylesheet" href="/folders/slick/slick.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" /> -->
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css"> -->
+    <!-- <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script> -->
+    <!-- <script type="text/javascript" src="/folders/flipDown/js/main.js"></script> -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script> -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-11034061729');
+    </script>
+    <script type="text/javascript">
+      window.RAYCHAT_TOKEN = '508e083e-4f49-4e50-a2d4-be92972eedac';
+        (function () {
+          d = document;
+          s = d.createElement("script");
+          s.src = "https://widget-react.raychat.io/install/widget.js";
+          s.async = 1;
+          d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
+    <style>
+      label{
+        font-weight: bold;
+      }
+
+      .cards:hover{
+        box-shadow: 0 0 5px rgb(150, 150, 150);
+      }
+
+      .cardItemsSide b{
+        color:#757575
+      }
+      
+      .cardItemsSide:hover b{
+        color:#ff0000
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <!-- main page -->
+    <!-- image slider and hotel tab -->
+    <div v-cloak id="tour">
+      <v-app>
+        <div class="headerDiv " v-cloak style="top: 0;right:0">
+          <div id="header" v-cloak class="widthAll fixed" style="top: 0;right:0;z-index: 99;">
+            <v-row class="header grey lighten-3" justify="center">
+              <div class=" indexDiv py-1 py-sm-3 pb-0">
+                <a href="/"><img height="20px" src="/folders/image/logo-header.png" alt="صفحه اصلی" ></a>
+                <span class="headerSpan .v-application .body-2 d-none d-sm-inline-block">رزرو آنلاین خدمات گردشگری</span>
+                <v-icon color="grey darken-2" class="mr-2 float-left d-none d-sm-inline-block">
+                  mdi-phone-in-talk
+                </v-icon>
+                <span class="ml-3 ml-sm-0 headerText float-left grey--text text--darken-3">
+                  <a href="tel:02141889" class="grey--text text--darken-3 text-decoration-none">021-41889</a>
+                </span>
+              </div>
+            </v-row>
+            <v-row class="white top-bar " justify="center" align="center">
+              <div class="indexDiv headerButtons">
+                <v-row align="center" justify="space-between" class="d-none d-md-flex">
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a class="text-decoration-none" >
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
+                    </a>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                  <v-navigation-drawer permanent class="menuHeader relative">
+                    <v-list nav dense>
+                      <div v-for="(link, i) in links" :key="i">
+                        <v-list-group  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :class="activeLinkMenuHeader == 'تورنوروز' && ' grey lighten-3 rounded-lg'"
+                            :key="link.text"
+                            no-action
+                            :value="activeLinkMenuHeader == 'تورنوروز' ? true : false"
+                        >
+                          <template v-slot:activator>
+                            <v-list-item-title >
+                              <span>{{ link.text }}</span>
+                            </v-list-item-title>
+                          </template>
+                          <v-list-item 
+                              v-for="sublink in link.subLinks"
+                              :key="sublink.text" class="cursorPointer titleHeader"
+                          >
+                                <v-list-item-title @click="sublink.active = !sublink.active" class="topMenu" style="font-weight: bold;">{{ sublink.text }}</v-list-item-title>
+                                <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);background:#fff" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
+                                  <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
+                                    <a class="relative" :href="sub2.link" style="text-decoration:none;color:rgb(39, 39, 39)">
+                                      <img class="absolute" v-if="sub2.new" height="33" src="folders/image/newYearcard2.png" alt="" style="left: -40px;top: -12px;    transform: rotate(-38deg);">
+                                      <v-icon size="9" color="red" class="mx-2">mdi-circle</v-icon>
+                                      {{sub2.text}}
+                                    </a>
+                                  </v-row>
+                                </div>
+                                
+                                <!-- <v-list-item class="absolute"
+                                    v-for="(sub2, k) in sublink.sub2" :key="k"
+                                    :to="sub2.to"
+                                >
+                                  <v-list-item-title>
+                                    
+                                      <v-icon size="6" color="red">mdi-circle</v-icon> {{sub2.text}}
+                                    </a>
+                                  </v-list-item-title> 
+                                </v-list-item> -->
+                          </v-list-item>
+                        </v-list-group>
+                      </div>
+                    </v-list>
+                  </v-navigation-drawer>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل آهوان</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">مجله گردشگری</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">اخبار روز</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">خدمات ویزا</span>
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">دفتر حافظ منافع مشتری</span>
+                  </v-skeleton-loader>
+                  <span></span>
+                  <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <div v-if="isLogin" class="cursorPointer" @click="logOut">
+                      <span class="font-14 grey--text d-inline-block ml-4">
+                      {{userName}}         
+                      </span>
+                    </div>
+                    <div v-else class="cursorPointer" @click="loginDialog = true;loginStep=1;resetLoginForm()">
+                      <v-icon color="grey darken-2" large class="icon-small-xs ml-3 ml-sm-0">
+                        mdi-account-outline
+                      </v-icon>
+                      <span class="font-14 grey--text d-none d-sm-inline-block ">
+                        ورود - ثبت نام      
+                      </span>
+                    </div>
+                  </v-skeleton-loader>   
+                </v-row>
+                <v-row class="d-flex d-md-none humberger-header-menue">
+                  <v-app-bar-nav-icon @click.stop="showMenuSmall = !showMenuSmall" style="z-index:1"></v-app-bar-nav-icon>
+                  <v-navigation-drawer
+                    v-model="showMenuSmall"
+                    fixed
+                    right
+                    class="menue-list"
+                    temporary style="z-index:2;"
+                  >
+                    <v-list
+                      nav
+                      dense
+                    >
+                      <v-list-item-group v-model="activePage"
+                        active-class="red--text text--accent-4 "
+                      >
+                        <a class="text-decoration-none">
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-airplane</v-icon>
+                          <v-list-item-title>
+                            پرواز
+                          </v-list-item-title>
+                        </v-list-item></a>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-train-car</v-icon>
+                          <v-list-item-title>تور</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
+                          <v-icon class="ml-2">mdi-account-group</v-icon>
+                          <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          
+                        </v-list-item>
+                        <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
+                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                            <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
+                              <v-list-group
+                                  :key="link.text"
+                                  no-action
+                                  :value="false"
+                              >
+                                <template v-slot:activator>
+                                  <v-list-item-title >
+                                    <span>{{ link.text }}</span>
+                                  </v-list-item-title>
+                                </template>
+                                <v-list-item
+                                    v-for="sublink in link.sub2"
+                                    :key="sublink.text" class="cursorPointer titleHeader"
+                                >
+                                  <a class="relative widthAll d-flex" :href="sublink.link" style="text-decoration:none;color:rgb(39, 39, 39);height: 38px;">
+                                    <v-list-item-title class="topMenu" style="font-weight: bold;"> 
+                                      <v-icon size="9" color="red" class="ml-2">mdi-circle</v-icon>
+                                      {{ sublink.text }}
+                                      <img class="absolute" v-if="sublink.new" height="43" src="folders/image/newYearcard2.png" alt="" style="left: 32px;top: -5px;    transform: rotate(-38deg);">
+                                    </v-list-item-title>
+                                  </a>
+                                      <!-- <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
+                                        <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
+                                          
+                                            
+                                           
+                                            {{sub2.text}}
+                                          </a>
+                                        </v-row>
+                                      </div>
+                                      
+                                      <v-list-item class="absolute"
+                                          v-for="(sub2, k) in sublink.sub2" :key="k"
+                                          :to="sub2.to"
+                                      >
+                                        <v-list-item-title>
+                                          
+                                            <v-icon size="6" color="red">mdi-circle</v-icon> {{sub2.text}}
+                                          </a>
+                                        </v-list-item-title> 
+                                      </v-list-item> -->
+                                </v-list-item>
+                              </v-list-group>
+                            </div>
+                          </div>
+                          <!-- </v-navigation-drawer> -->
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-hospital-building</v-icon>
+                          <v-list-item-title>هتل آهوان</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-book-open-page-variant-outline</v-icon>
+                          <v-list-item-title>مجله گردشگری</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-newspaper-variant-outline</v-icon>
+                          <v-list-item-title>اخبار روز</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-checkbook</v-icon>
+                          <v-list-item-title>خدمات ویزا</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="showMenuSmall = false">
+                          <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                          <v-list-item-title>دفتر حافظ منافع مشتری</v-list-item-title>
+                        </v-list-item>
+                      </v-list-item-group>
+                    </v-list>
+                  </v-navigation-drawer>
+                  <v-spacer></v-spacer>
+                  <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <div v-if="isLogin" class="cursorPointer" @click="logOut">
+                      <span class="font-14 grey--text d-inline-block ml-4">
+                      {{userName}}         
+                      </span>
+                    </div>
+                    <div v-else class="cursorPointer" @click="loginDialog = true;loginStep=1;resetLoginForm()">
+                      <v-icon color="grey darken-2" large class="icon-small-xs ml-3 ml-sm-0">
+                        mdi-account-outline
+                      </v-icon>
+                      <span class="font-14 grey--text d-none d-sm-inline-block " style="white-space: nowrap;">
+                        ورود - ثبت نام      
+                      </span>
+                    </div>
+                  </v-skeleton-loader>   
+                </v-row>
+              </div>
+            </v-row> 
+          </div>
+          <v-dialog v-if="loginDialog" class="rounded-lg loginDialog"
+            v-model="loginDialog"
+            style="z-index: 9999999999998"
+            width="450"
+          >
+            <v-card class="pa-2 hideOver relative" style="border-radius: 10px;">
+              <div class="rounded-xl absolute grey lighten-4" style="height: 50px;width:50px;bottom:20px;right: -20px;"></div>
+              <div class="rounded-circle absolute red lighten-5" style="height: 50px;width:50px;top:-20px;left: -20px;"></div>
+              <div class="rounded-xl absolute grey lighten-4" style="height: 45px;width: 106px;bottom: -38px;right: 50%;"></div>
+              <v-icon class="absolute black--text" @click="loginDialog = false" style="top: 5px;right: 5px;">mdi-close</v-icon>
+              <div class="my-6">
+                <h3 v-if="loginStep == 2 && UserType == 1 " class="text-center ">
+                  تایید شماره موبایل
+                </h3>
+                <h3 v-else-if="(loginType == 'login' && loginStep != 3) && (UserType == 1 && loginStep == 1 && loginType == 'login')  || (UserType == 2 && loginStep == 1 && loginType == 'login')" class="text-center mt-6">
+                  ورود به حساب کاربری
+                </h3>
+                <h4 v-else-if="loginStep != 3 && UserType == 1 || (UserType == 2 && loginStep == 1 && loginType == 'register')" class="text-center mt-6">
+                  ثبت نام در سایت گردشگری آهوان
+                </h4>
+                <span v-if="showAlert" class="widthAll text-center d-block caption mt-2" :class="alertType == 'error' ? 'red--text' : 'green--text'" style="font-family: Byekan !important;">{{ alertText }}</span>
+              </div>
+              <v-row v-if="loginStep == 1" justify="center">
+                <div class="grey lighten-4 my-6 rounded-lg hideOver body-2" style="width:240px;font-family: Byekan !important;">
+                  <v-row>
+                    <v-col class="py-3 text-center cursorPointer text-center " @click="UserType = 1" :class="UserType == 1 && 'red lighten-5'">
+                      <h4 :class="UserType == 1 ? 'red--text' : 'grey--text text--darken-1' ">
+                        مسافر
+                      </h4>
+                    </v-col>
+                    <v-col class="py-3 text-center cursorPointer " @click="UserType = 2" :class="UserType == 2 && 'red lighten-5'">
+                      <h4 :class="UserType == 2 ? 'red--text' : 'grey--text text--darken-1' ">
+                        شرکت
+                      </h4>
+                    </v-col>
+                  </v-row>
+                </div>
+              </v-row>
+              <v-row v-if="loginStep == 1" justify="center">
+                <v-form
+                  ref="loginForm"
+                  lazy-validation
+                >
+                <div v-if="UserType == 1">
+                  <v-text-field v-if="loginType == 'register'" outlined class="mt-2 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.name' label="نام" :rules="nameRules"></v-text-field>
+                  <v-text-field v-if="loginType == 'register'" outlined class="mt-1 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.family' label="نام خانوادگی" :rules="familyRules"></v-text-field>
+                  <v-text-field outlined  class="mt-1 rounded-xl" label="موبایل" pattern="\d*" type="number" append-icon="mdi-phone" v-model='loginForm.phone' :rules="phoneRules"></v-text-field>
+                </div>
+                <div v-if="UserType == 2 && loginType == 'login'"  style="width:240px;">
+                  <v-row>
+                    <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' label="ایمیل" :rules="emailRules"></v-text-field>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" pattern="\d*" v-model='loginForm.phone' label="موبایل" :rules="phoneRules"></v-text-field>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' label="رمزعبور" :rules="emptyRules"></v-text-field>
+                  </v-row>
+                </div>
+                <div v-if="UserType == 2 && loginType == 'register'" style="width:240px;">
+                  <v-row>
+                    <v-text-field outlined class="mt-2 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.name' label="نام نماینده" :rules="nameRules"></v-text-field>
+                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-outline" v-model='loginForm.family' label="نام خانوادگی نماینده" :rules="familyRules"></v-text-field>
+                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-account-group" v-model='loginForm.companeyName' label="نام شرکت یا آژانس" :rules="emptyRules"></v-text-field>
+                    <v-select
+                      v-model="loginForm.companeyWork"
+                      :items="companeyWorkItems"
+                      :rules="emptyRules" outlined
+                      class="mt-2 rounded-xl" append-icon="mdi-semantic-web"
+                      label="حوضه فعالیت شرکت"
+                    ></v-select>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-numeric" v-model='loginForm.code' pattern="\d*" label="کد ثبت شرکت" :rules="emptyRules"></v-text-field>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="number" append-icon="mdi-phone" v-model='loginForm.phone' pattern="\d*" label="شماره موبایل نماینده" :rules="phoneRules"></v-text-field>
+                    <v-text-field outlined class="mt-1 rounded-xl" append-icon="mdi-mail" v-model='loginForm.mail' label="آدرس ایمیل شرکت" :rules="emailRules"></v-text-field>
+                    <v-text-field outlined class="mt-1 rounded-xl" type="password" append-icon="mdi-star" v-model='loginForm.password' label="رمزعبور" :rules="emptyRules"></v-text-field>
+                  </v-row>
+                </div>
+                </v-form>
+              </v-row>
+              <v-row v-if="loginStep == 2 && UserType != 2 " justify="center">
+                <v-form
+                  ref="loginOtpForm"
+                  lazy-validation
+                >
+                  <span class="body-2 text-center d-block" style="font-family: Byekan !important;">کد 4 رقمی ارسال شده بر روی شماره موبایل را لطفا وارد نمایید.</span>
+                  <div class="mb-2 mt-4 px-12">
+                    <v-otp-input pattern="\d*" v-model="loginForm.otp" class="mx-6 mx-md-12"
+                      length="4"
+                    ></v-otp-input>
+                  </div>
+                </v-form>
+              </v-row>
+              <v-row v-if="loginStep == 3 || (UserType == 2 && loginType == 'register' && loginStep == 2) || (UserType == 2 && loginStep == 2)" justify="center">
+                <img class="my-6" src="/folders/image/success.png" alt="" width="130px">
+                <h5 v-if="UserType == 2 && loginType == 'register'" class="green--text text--darken-2 my-3 text-center d-block">اطلاعات شما با موفقیت دریافت شد.لطفا منتظر تایید باشید.</h5>
+                <h4 v-else class="green--text text--darken-2 my-3 widthAll text-center">عملیات ورود با موفقیت انجام شد.</h4>
+              </v-row>
+              <v-row justify="center">
+                <span v-if="resendSeconds != 0 && loginStep == 2 && UserType == 1" class="body-2 text-center mb-2 widthAll text-center" style="font-family: Byekan !important;">امکان ارسال مجدد تا {{resendSeconds}} ثانیه دیگر</span>
+                <div class="widthAll">
+                  <v-row justify="center">
+                    <div v-if="resendSeconds == 0 && loginStep == 2 && UserType == 1" @click="resendSeconds = 60" class="body-2 blue--text text--darken-2 text-decoration-underline mb-3 cursorPointer d-inline-block mx-auto" style="font-family: Byekan !important;" >ارسال مجدد کد</div>
+                  </v-row>
+                </div>
+                <span v-if="loginType == 'login' && loginStep == 1" class="body-2 text-center widthAll my-4" style="font-family: Byekan !important;">
+                  قبلا ثبت نام نکرده اید؟
+                  <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
+                </span>
+                <span v-else-if="loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                  {{loginForm.phone}}
+                  <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
+                </span>
+                <span v-else-if="loginType != 'login' && loginStep == 1" class="body-2 text-center widthAll my-4" style="font-family: Byekan !important;">
+                  قبلا ثبت نام کرده اید؟
+                  <span @click="loginType = 'login'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">وارد شوید</span>
+                </span>
+                <v-btn v-if="loginStep == 1 || ( loginStep ==2 && UserType == 1)" :disabled="loginStep == 2 && loginForm.otp.length < 4 " @click="loginOrRegisterValidate()" dark class="widthAll red my-4 rounded-xl py-7 mt-1" style="width: 55%;">
+                  {{(UserType == 2 && loginType == 'login' ||( loginStep == 2 && UserType == 1)) ? 'ورود' : 'مرحله بعدی'}}
+                </v-btn>
+              </v-row>
+            </v-card>
+          </v-dialog>
+        </div>
+        <v-row class="mt-6" justify="center">
+          <div class="indexDiv mt-12 relative">
+            <v-row class="mt-12 widthAll" justify="center">
+              <v-col cols="9" class="pl-8">
+                <img src="/folders/image/انگلیس اسلایدر.jpg" class="widthAll" height="250px" alt="">
+                <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                <h1 class="d-inline-block font-small-title-xs">وقت سفارت انگلیس</h1>
+                <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                <p class="text-justify answerText font-small-xs mt-6">
+                  برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                  در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                    برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                    در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                </p>
+                <v-row justify="center">
+                  <div class="indexDiv relative">
+                    <v-skeleton-loader class="mb-sm-5 mt-6 textLoader"
+                      type="chip"
+                      :loading="isLoading"
+                    >
+                      <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                      <h3 class="d-inline-block font-small-title-xs">چگونه وقت سفارت انگلیس بگیریم</h3>
+                      <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                    </v-skeleton-loader>
+                    <p class="text-justify answerText font-small-xs mt-6">
+                      برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                      در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                    </p>
+                    <p class="text-justify answerText font-small-xs mt-6">
+                      برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                      در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                        برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارکنیم.
+                    </p>
+                  </div>
+                </v-row>
+                <v-row justify="center">
+                  <div class="indexDiv relative">
+                    <v-skeleton-loader class="mt-12 textLoader" type="chip" :loading="isLoading">
+                      <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                        <h3 class="d-inline-block font-small-title-xs">وقت فوری</h3>
+                      <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                    </v-skeleton-loader>
+                    <p class="text-justify answerText font-small-xs mt-6">
+                      برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                      در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                    </p>
+                  </div>
+                </v-row>
+                <v-row justify="center">
+                  <div class="indexDiv relative">
+                    <v-skeleton-loader class="mt-12 textLoader" type="chip" :loading="isLoading">
+                      <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                        <h3 class="d-inline-block font-small-title-xs">وقت عادی</h3>
+                      <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                    </v-skeleton-loader>
+                    <p class="text-justify answerText font-small-xs mt-6">
+                      برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                      در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                    </p>
+                  </div>
+                </v-row>      
+                <v-row justify="center">
+                  <div class="indexDiv relative">
+                    <v-skeleton-loader class="mb-sm-5 mt-12 textLoader"
+                      type="chip"
+                      :loading="isLoading"
+                    >
+                      <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                      <h3 class="d-inline-block font-small-title-xs">مراحل گرفتن وقت سفارت انگلیس</h3>
+                      <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                    </v-skeleton-loader>
+                    <p class="text-justify answerText font-small-xs mt-6">
+                      برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                      در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                    </p>
+                    <p class="text-justify answerText font-small-xs mt-6">
+                      برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                      در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                        برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارکنیم.
+                    </p>
+                  </div>
+                </v-row> 
+                <v-row justify="center">
+                  <div class="indexDiv relative">
+                    <v-skeleton-loader class="mb-sm-5 mt-12 textLoader"
+                      type="chip"
+                      :loading="isLoading"
+                    >
+                      <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                      <h3 class="d-inline-block font-small-title-xs">مدارک لازم برای تعیین وقت سفارت انگلیس</h3>
+                      <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+                    </v-skeleton-loader>
+                    <p class="text-justify answerText font-small-xs mt-6">
+                      برای سفر به کلیه کشورهایی که نیاز به ویزا دارند میبایست مراحلی را پشت سر بگذاریم تا با ارائه یکسری مدارک مورد نیاز برای آن کشور مقصد درخواست خود را ارسال نمائیم و سفارت بعد از بررسی مدارک شما در صورت تکمیل مدارک و حائز شرایط کشور متبوع برای شما ویزا صادر می‌کند.
+                      در این صفحه وبسایت ، ما شما را با مراحل دریافت وقت از سفارت بصورت کامل آشنا می‌کنیم.
+                    </p>
+                  </div>
+                </v-row> 
+              </v-col>
+              <v-col cols="3" class="pr-8" style="border-right:2px solid rgb(223, 223, 223)">
+                <v-row>
+                  <div class="red widthAll rounded-lg pt-12" style="height:500px">
+                    <v-btn color="red" class="widthAll py-8 mt-12" dark>
+                      <v-icon>mdi-text-box-edit-outline</v-icon>
+                      سنجش شانس اخذ ویزا
+                    </v-btn>
+                  </div>
+                  <v-card class="widthAll mt-4 pa-3 relative hideOver">
+                    <div class="widthAll absolute" style="height:5px;right:127px;top:20px;border-bottom: 3px dotted #d8d8d8;z-index:1"></div>
+                    <h3 style="z-index:2">مطالب مرتبط</h3>
+                    <a class="text-decoration-none">
+                      <v-row class="mt-6 cardItemsSide" align="center">  
+                        <span>
+                          <img src="/folders/image/tour/moscow-003.jpg" class="rounded-lg float-right" height="63" width="86" alt="">
+                          <v-row class="pr-2 mt-6">
+                            <b style="font-family: Byekan !important;    font-size: 11px;">
+                              چک لیست سفر به انگلیس
+                            </b>
+                          </v-row>
+                        </span>
+                      </v-row>
+                    </a>
+                    <v-divider class="mx-6 mt-5"></v-divider>
+                    <a class="text-decoration-none">
+                      <v-row class="mt-6 cardItemsSide" align="center">  
+                        <span>
+                          <img src="/folders/image/tour/moscow-003.jpg" class="rounded-lg float-right" height="63" width="86" alt="">
+                          <v-row class="pr-2 mt-6">
+                            <b style="font-family: Byekan !important;    font-size: 11px;">
+                              برترین مرکز خریدهای انگلیس
+                            </b>
+                          </v-row>
+                        </span>
+                      </v-row>
+                    </a>
+                    <v-divider class="mx-6 mt-5"></v-divider>
+                    <a class="text-decoration-none">
+                      <v-row class="mt-6 cardItemsSide" align="center">  
+                        <span>
+                          <img src="/folders/image/tour/moscow-003.jpg" class="rounded-lg float-right" height="63" width="86" alt="">
+                          <v-row class="pr-2 mt-6">
+                            <b style="font-family: Byekan !important;    font-size: 11px;">
+                              لیست سوغاتی های انگلیس
+                            </b>
+                          </v-row>
+                        </span>
+                      </v-row>
+                    </a>
+                    <v-divider class="mx-6 mt-5"></v-divider>
+                    <a class="text-decoration-none">
+                      <v-row class="mt-6 cardItemsSide" align="center">  
+                        <span>
+                          <img src="/folders/image/tour/moscow-003.jpg" class="rounded-lg float-right" height="63" width="86" alt="">
+                          <v-row class="pr-2 mt-4">
+                            <b style="font-family: Byekan !important;    font-size: 11px;">
+                              حرفه ای ترین رستوران های انگلیس
+                            </b>
+                          </v-row>
+                        </span>
+                      </v-row>
+                    </a>
+                    <v-divider class="mx-6 mt-5"></v-divider>
+                    <a class="text-decoration-none">
+                      <v-row class="mt-6 cardItemsSide" align="center">  
+                        <span>
+                          <img src="/folders/image/tour/moscow-003.jpg" class="rounded-lg float-right" height="63" width="86" alt="">
+                          <v-row class="pr-2 mt-4">
+                            <b style="font-family: Byekan !important;    font-size: 11px;">
+                              اماکن دیدنی انگلیس
+                            </b>
+                          </v-row>
+                        </span>
+                      </v-row>
+                    </a>
+                    <v-divider class="mx-6 mt-5"></v-divider>
+                    <a class="text-decoration-none">
+                      <v-row class="mt-6 cardItemsSide" align="center">  
+                        <span>
+                          <img src="/folders/image/tour/moscow-003.jpg" class="rounded-lg float-right" height="63" width="86" alt="">
+                          <v-row class="pr-2 mt-4">
+                            <b style="font-family: Byekan !important;    font-size: 11px;">
+                              شهر های توریستی انگلیس
+                            </b>
+                          </v-row>
+                        </span>
+                      </v-row>
+                    </a>
+                    <v-divider class="mx-6 mt-5"></v-divider>
+                    <a class="text-decoration-none">
+                      <v-row class="mt-6 cardItemsSide" align="center">  
+                        <span>
+                          <img src="/folders/image/tour/moscow-003.jpg" class="rounded-lg float-right" height="63" width="86" alt="">
+                          <v-row class="pr-2 mt-4">
+                            <b style="font-family: Byekan !important;    font-size: 11px;">
+                              شهر های دانشجویی انگلیس
+                            </b>
+                          </v-row>
+                        </span>
+                      </v-row>
+                    </a>
+                  </v-card>
+                </v-row>
+              </v-col>
+            </v-row>
+          </div>
+        </v-row> 
+        <!-- <v-parallax class="mt-12" height="300" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+          <v-row class="heightAll" align="center" justify="center">
+            <div class="indexDiv relative">
+              <v-row class="heightAll" align="center" justify="end">
+                <v-btn class="px-12 py-6 bold" dark color="#bf0000" >سنجش شانس اخذ ویزا انگلیس</v-btn>
+              </v-row>
+            </div>
+          </v-row>
+        </v-parallax>  -->
+        <!-- <v-row class="mt-12" justify="center">
+          <span color="#bf0000" class="px-12 bold mb-12 py-2 rounded-lg d-none d-md-block" style="color:#bf0000;border:2px solid #bf0000">جهت مشاوره با کارشناسان ما با شماره 41889-021 تماس حاصل فرمائید.</span>
+          <v-btn outlined color="#bf0000" class="px-12 bold mb-12 d-block d-md-none">مشاوره با کارشناسان ما</v-btn>
+        </v-row> -->
+          
+           
+        
+        <v-row justify="center">
+          <div class="indexDiv relative mt-12">
+            <v-skeleton-loader class="mb-sm-5 textLoader"
+              type="chip"
+              :loading="isLoading"
+            >
+              <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+              <h3 class="d-inline-block font-small-title-xs">پرسش و پاسخ</h3>
+              <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+            </v-skeleton-loader>
+            <v-expansion-panels multiple class="ltr questionPanell" >
+              <v-expansion-panel class="white"
+                v-for="(item,i) in questions2"
+                :key="i"
+              >
+                <v-skeleton-loader class="my-2 my-sm-6"
+                  type="list-item-avatar"
+                  :loading="isLoading"
+                >
+                  <v-card class="py-2">
+                    <v-row>
+                      <v-expansion-panel-header>
+                        <v-icon color="#bf0000" large class="mx-3 float-right">mdi-chat-question</v-icon>
+                        <span class="float-right questionText mt-sm-2 font-small-xs">{{item.question}}</span>
+                      </v-expansion-panel-header>
+                    </v-row>
+                    <v-row>
+                      <v-expansion-panel-content>
+                        <span class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer}}
+                        </span>
+                        <br v-if="item.answer2">
+                        <span v-if="item.answer2" class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer2}}
+                        </span>
+                        <br v-if="item.answer3">
+                        <span v-if="item.answer3" class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer3}}
+                        </span>
+                      </v-expansion-panel-content>
+                    </v-row>
+                  </v-card>
+                </v-skeleton-loader>
+              </v-expansion-panel>             
+            </v-expansion-panels>
+          </div>
+        </v-row>
+        <!-- loading -->
+        <div v-if="isLoading || isLoadingAxios" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9998 ;top:0;right:0;background:#00000048">
+          <img src="/folders/image/logo-header.png" class="white pa-12 rounded-xl" alt="">
+        </div>
+        <!-- alert -->
+        <v-alert v-if="showAlert && (loginStep == 1) || (loginStep == 2 && UserType==1)" dark class="white--text fixed" 
+          :type="alertType" style="z-index:9999;bottom: 0;right: 10px;min-width: 200px;"
+        >{{alertText}}</v-alert>
+        <!-- footer -->
+        <v-row justify="center" class="grey lighten-3">
+          <div class=" indexDiv px-sm-6 pb-sm-0 pt-2 pt-sm-0  rounded-lg">
+            <v-row>
+              <v-col cols="12" md="6" class="pa-0 pa-sm-3">
+                <v-row class=" mt-2">
+                  <v-col cols="5" md="6" class="pa-0 pa-sm-3 pb-sm-0">
+                    <h4>درباره هتل آهوان</h4>
+                    <ul class="mr-4 mr-md-2 my-2">
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تماس با ما</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">درباره ما</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">سوالات متداول</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">فرصت‌های شغلی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">شرایط قوانین</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">حقوق مسافرین</li>
+                    </ul>
+                  </v-col>
+                  <v-col cols="7" md="6" class="pa-0 pa-sm-3">
+                    <h4>پیشنهادات آهوان</h4>
+                    <ul class="mr-4 mr-md-2 my-2">
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تورهای ویژه آهوان</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">هتل‌های ویژه آهوان</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پروازهای ویژه آهوان</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین تورهای داخلی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین تورهای خارجی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین هتل‌های داخلی</li>
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">پرفروشترین هتل‌های خارجی</li>
+                    </ul>
+                  </v-col>
+                </v-row>
+              </v-col>
+              <v-col cols="12" md="6" class=" ">
+                <v-row>
+                  <p class="body-2 text-justify grey--text text--darken-3 my-6" style="font-family: Byekan !important;line-height:25px">
+                    آهوان با ارائه بهترین و با کیفیت ترین خدمات گردشگری به صورت آنلاین 
+                    میکوشد تا بعنوان معتبرترین شرکت گردشگری در ایران تجربه لذت بخش یک رزرو 
+                    اینترنتی را برایتان تداعی کند.
+                  </p>
+                </v-row>
+                <v-row class="footerImagesParent mt-2 justify-center justify-md-space-between">
+                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
+                    <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
+                  </a>
+                  <a referrerpolicy="origin" target="_blank" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
+                    <img class="mx-2 mx-md-1" src="/folders/image/logo.png"></img>
+                  </a>
+                  <a target="_blank" href="https://www.cao.ir/">
+                    <img class="mx-2 mx-md-1" src="/folders/image/cao.png"></img>
+                  </a>
+                  <a target="_blank" href="http://www.aira.ir/">
+                    <img class="mx-2 mx-md-1" src="/folders/image/lohoaira.png"></img>
+                  </a>
+                  <a target="_blank" href="https://www.cao.ir/paxrights">
+                    <img class="mx-2 mr-md-1" src="/folders/image/Passenger.png"></img>
+                  </a>
+                </v-row>
+                <v-row class="grey--text text--darken-3 mt-4 font-small-xs" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
+                <v-row class="grey--text text--darken-3 mt-3" style="font-family: Byekan !important;">
+                  <v-col class="grey--text text--darken-3 mt-1 mt-sm-4 font-small-xs">شماره تماس:41889-021</v-col>
+                  <v-col>
+                    <v-icon class="mx-1 cursorPointer whatsup-footer">mdi-whatsapp</v-icon>
+                    <v-icon class="mx-1 cursorPointer email-footer">mdi-email-outline</v-icon>
+                    <v-icon class="mx-1 cursorPointer instagram-footer">mdi-instagram</v-icon>
+                    <v-icon class="mx-1 cursorPointer twitter-footer">mdi-twitter</v-icon>
+                    <v-icon class="mx-1 cursorPointer send-footer" style="transform: rotate(-36deg);">mdi-send</v-icon>
+                  </v-col>
+                </v-row>
+                <v-row class="body-2 justify-center justify-sm-start grey--text text--darken-3 mt-4" style="font-family: Byekan !important;">
+                  کلیه حقوق این وب سایت متعلق به شرکت خدمات مسافرتی آهوان می‌باشد.
+                </v-row>
+              </v-col>
+            </v-row>
+          </div>
+        </v-row>
+      </v-app>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <!-- import component slides -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="/folders/dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
+    <script src="/folders/dist/mds.bs.datetimepicker.js"></script>
+    <script src="/folders/js/visa.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+      integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="/folders/slick/slick.min.js"></script>
+
+  </body>
+</html>

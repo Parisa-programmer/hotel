@@ -93,48 +93,11 @@
       .main-page-sectionImage{
         height: 350px;
       }
-
-      .menuHeader{
-        width: fit-content !important;
-        overflow: unset;
-        z-index: 22;
-      }
       
-      .menuHeader .v-list-item__icon{
-        display: none !important;
-      }
-      
-      .menuHeader .v-list-group__items{
-        position: absolute !important;
-        top: 60px;
-        right: -7px;
-        background: #fff;
-        width: 122px !important;
-      }
-      
-      .v-application--is-ltr .v-list--dense.v-list--nav .v-list-group--no-action>.v-list-group__items>.v-list-item{
-        padding-left: 0 !important;
-        overflow: unset;
-      }
-
-      .v-navigation-drawer__border{
-        display: none;
-      }
-
-      .submenu2:hover , .titleHeader:hover{
-        background-color: rgba(49, 49, 49, 0.068);
-      }
-      
-      .submenu{
-        display: none;
-      }
-      
-      .submenu:hover{
-        display: block;
-      }
-
-      .topMenu:hover + .submenu{
-        display: block;
+      @media (min-width: 1401px) and (max-width: 1750px){
+        #flipdownParent {
+          top: 8%;
+        }
       }
 
       @media (max-width: 960px){
@@ -183,7 +146,7 @@
                   type="chip"
                   :loading="isLoading"
                 >
-                  <a class="text-decoration-none" @click="activeLinkMenuHeader != 'پرواز' ? activeLinkMenuHeader = 'پرواز' : activeLinkMenuHeader=''">
+                  <a href="/flight" class="text-decoration-none" @click="activeLinkMenuHeader != 'پرواز' ? activeLinkMenuHeader = 'پرواز' : activeLinkMenuHeader=''">
                     <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                   </a>
                 </v-skeleton-loader>
@@ -246,8 +209,10 @@
                 <v-skeleton-loader class="textLoader d-inline-block"
                   type="chip"
                   :loading="isLoading"
-                >
+                > 
+                <a href="/iranhotels" class="text-decoration-none">
                   <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'آهوان'">هتل آهوان</span>
+                </a>
                 </v-skeleton-loader>
                 <v-skeleton-loader class="textLoader d-inline-block"
                   type="chip"
@@ -255,23 +220,30 @@
                 >
                   <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'مجله'">مجله گردشگری</span>
                 </v-skeleton-loader>
+                
                 <v-skeleton-loader class="textLoader d-inline-block"
                   type="chip"
                   :loading="isLoading"
                 >
-                  <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'اخبار'">اخبار روز</span>
+                  <a href="/visa" class="text-decoration-none">
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'ویزا'">خدمات ویزا</span>
+                  </a>
                 </v-skeleton-loader>
                 <v-skeleton-loader class="textLoader d-inline-block"
                   type="chip"
                   :loading="isLoading"
                 >
-                  <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'ویزا'">خدمات ویزا</span>
+                  <a href="/office-protector-customer-interests" class="text-decoration-none">
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'دفتر'">دفتر حافظ منافع مشتری</span>
+                  </a>
                 </v-skeleton-loader>
                 <v-skeleton-loader class="textLoader d-inline-block"
                   type="chip"
                   :loading="isLoading"
                 >
-                  <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'دفتر'">دفتر حافظ منافع مشتری</span>
+                  <a href="/contact-us/" class="text-decoration-none">
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'اخبار'">تماس با ما</span>
+                  </a>
                 </v-skeleton-loader>
                 <span></span>
                 <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
@@ -309,17 +281,20 @@
                     <v-list-item-group v-model="activePage"
                       active-class="red--text text--accent-4 "
                     >
+                      <a href="/flight" class="text-decoration-none">
+                        <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                          <v-icon class="ml-2">mdi-airplane</v-icon>
+                          <v-list-item-title>
+                            پرواز
+                          </v-list-item-title>
+                        </v-list-item>
+                      </a>
                       <a href="" class="text-decoration-none">
-                      <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                        <v-icon class="ml-2">mdi-airplane</v-icon>
-                        <v-list-item-title>
-                          پرواز
-                        </v-list-item-title>
-                      </v-list-item></a>
-                      <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                        <v-icon class="ml-2">mdi-train-car</v-icon>
-                        <v-list-item-title>تور</v-list-item-title>
-                      </v-list-item>
+                        <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                          <v-icon class="ml-2">mdi-train-car</v-icon>
+                          <v-list-item-title>تور</v-list-item-title>
+                        </v-list-item>
+                      </a>
                       <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
                         <v-icon class="ml-2">mdi-account-group</v-icon>
                         <v-list-item-title>تور نوروز 1402</v-list-item-title>
@@ -374,26 +349,35 @@
                           </div>
                         </div>
                         <!-- </v-navigation-drawer> -->
-                      <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                        <v-icon class="ml-2">mdi-hospital-building</v-icon>
-                        <v-list-item-title>هتل آهوان</v-list-item-title>
-                      </v-list-item>
+                        <a href="/iranhotels" class="text-decoration-none">
+                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                            <v-icon class="ml-2">mdi-hospital-building</v-icon>
+                            <v-list-item-title>هتل آهوان</v-list-item-title>
+                          </v-list-item>
+                        </a>
+                      
                       <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
                         <v-icon class="ml-2">mdi-book-open-page-variant-outline</v-icon>
                         <v-list-item-title>مجله گردشگری</v-list-item-title>
                       </v-list-item>
-                      <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                        <v-icon class="ml-2">mdi-newspaper-variant-outline</v-icon>
-                        <v-list-item-title>اخبار روز</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                        <v-icon class="ml-2">mdi-checkbook</v-icon>
-                        <v-list-item-title>خدمات ویزا</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                        <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
-                        <v-list-item-title>دفتر حافظ منافع مشتری</v-list-item-title>
-                      </v-list-item>
+                      <a href="/visa" class="text-decoration-none">
+                        <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                          <v-icon class="ml-2">mdi-checkbook</v-icon>
+                          <v-list-item-title>خدمات ویزا</v-list-item-title>
+                        </v-list-item>
+                      </a>
+                      <a href="/office-protector-customer-interests/" class="text-decoration-none">
+                        <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                          <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                          <v-list-item-title>دفتر حافظ منافع مشتری</v-list-item-title>
+                        </v-list-item>
+                      </a>
+                      <a href="/contact-us/" class="text-decoration-none">
+                        <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                          <v-icon class="ml-2">mdi-newspaper-variant-outline</v-icon>
+                          <v-list-item-title>تماس با ما</v-list-item-title>
+                        </v-list-item>
+                      </a>
                     </v-list-item-group>
                   </v-list>
                 </v-navigation-drawer>
@@ -560,7 +544,7 @@
                 :loading="isLoading"
               >
                 <h2 class="text-center ">
-                  <span class="white--text px-6 countDownText" style="background: rgb(255,0,0); background: linear-gradient(93deg, rgba(255,0,0,1) 0%, rgba(191,0,0,1) 100%);">
+                  <span class="white--text px-6 countDownText" style="background: linear-gradient(93deg, rgb(255 0 0) 0%, rgb(158 0 0) 76%);">
                     زمان مانده تا 
                     سال تحویل 1402 هجری شمسی
                   </span>
@@ -1157,7 +1141,7 @@
                 </v-row>
                 <v-row justify="center">
                   <v-col cols="12" sm="6" md="4" lg="3" class="px-2 py-1" :class="byReturn == 3 ? 'd-block d-lg-none' : 'd-none'">
-                      <v-btn v-if="byReturn == 3" dark color="red" class="mt-4 pt-6 pb-5 ronded-xl widthAll" @click="searchInHeaderBox" >جستجو</v-btn>
+                      <v-btn v-if="byReturn == 3" dark color="#bf0000" class="mt-4 pt-6 pb-5 ronded-xl widthAll" @click="searchInHeaderBox" >جستجو</v-btn>
                   </v-col>
                 </v-row>
               </v-card>
@@ -1219,15 +1203,15 @@
           </div>
         </v-row> -->
         <v-row justify="center" align="center" class="mb-6">
-          <div class="red mt-1 ml-4 " style="height:3px;width:60px"></div>
+          <div class="mt-1 ml-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
           <h3 class="font-small-title-xs">تور های ویژه آهوان</h3>
-          <div class="red mt-1 mr-4 " style="height:3px;width:60px"></div>
+          <div class="mt-1 mr-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
         </v-row>
         <v-row justify="center" class="">
           <div class="indexDiv">
             <v-row>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-left">
+                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-right" data-aos-duration="1000">
                   <a href="/tour/Istanbul/">
                     <v-img height="220" src="/folders/image/tourSlider/0001.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1244,7 +1228,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="8" class="pa-0">
-                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver" data-aos="fade-right">
+                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver" data-aos="fade-top" data-aos-duration="1000">
                   <a href="/tour/Europe">
                     <v-img height="220" src="/folders/image/tourSlider/0004.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1261,7 +1245,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-left">
+                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-left" data-aos-duration="1000">
                   <a href="/tour/Dubai/">
                     <v-img height="220" src="/folders/image/tourSlider/0003.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1278,7 +1262,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 mr-2 ml-md-2 rounded-lg hideOver" data-aos="fade-right">
+                <div class="relative cursorPointer my-2 mr-2 ml-md-2 rounded-lg hideOver" data-aos="fade-right" data-aos-duration="1000">
                   <a href="/tour/Srilanka/" class="" >
                     <v-img height="220" src="/folders/image/tourSlider/0002.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1295,7 +1279,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="12" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 mr-md-2 rounded-lg hideOver" data-aos="fade-right">
+                <div class="relative cursorPointer my-2 mr-md-2 rounded-lg hideOver" data-aos="fade-right" data-aos-duration="1000">
                   <a href="/tour/Moscow/">
                     <v-img height="220" src="/folders/image/tourSlider/0006.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1304,7 +1288,7 @@
                           <h1 class="white--text" style="text-shadow: 0 0 2px black;">تور روسیه</h1>
                         </v-row>
                         <v-row>
-                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 19.800 میلیون</span>
+                          <span class="white--text ma-2" style="text-shadow: 0 0 2px black;">شروع قیمت از 19.900 میلیون</span>
                         </v-row>
                       </div>
                     </v-row>
@@ -1329,7 +1313,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver" data-aos="fade-left">
+                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver" data-aos="fade-left" data-aos-duration="1000">
                   <a href="">
                     <v-img height="220" src="/folders/image/tourSlider/0008.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1395,7 +1379,7 @@
                       <!-- سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود. -->
                   </p>
                 </div>
-                  <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
+                  <v-btn color="#bf0000"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
               </v-col>
               <v-col cols="12" md="6" class="">
                 <v-row justify="center">
@@ -1467,9 +1451,9 @@
               type="chip"
               :loading="isLoading"
             >
-              <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px"></div>
+              <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
               <h3 class="d-inline-block font-small-title-xs">پرسش و پاسخ</h3>
-              <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px"></div>
+              <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
             </v-skeleton-loader>
             <v-expansion-panels multiple class="ltr questionPanell" >
               <v-expansion-panel class="white"
@@ -1483,7 +1467,7 @@
                   <v-card class="py-2">
                     <v-row class="">
                       <v-expansion-panel-header class="">
-                        <v-icon color="red" large class="mx-3 float-right">mdi-chat-question</v-icon>
+                        <v-icon color="#bf0000" large class="mx-3 float-right">mdi-chat-question</v-icon>
                         <span class="float-right questionText mt-sm-2 font-small-xs">{{item.question}}</span>
                       </v-expansion-panel-header>
                     </v-row>
@@ -1517,9 +1501,9 @@
                 </v-row>
               </v-col>
               <v-col cols="12" md="6" class="order-1 order-md-2"> 
-                <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
+                <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%;background-color: #bf0000 !important;"></div>
                 <h3 class="d-inline-block font-small-title-xs">باشگاه مشتریان آهوان</h3>
-                <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
+                <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%;background-color: #bf0000 !important;"></div>
                 <div paragraph>
                   <p class="text-justify mt-3 mt-sm-6 font-small-xs paragraph">
                     ما به خرید شما احترام می‌گذاریم و آن را ارج می‌نهیم.
@@ -1531,7 +1515,7 @@
                       <!-- سرسبز شمالی ایران و در مرز استان های خوش آب و هوای گیلان و مازندران واقع است.هتل چهار ستاره آهوان با بیش از 18 هکتار مساحت از وسیع ترین مناطق اقامتی ایران است که دارای 212 واحد اقامتی شامل 18 واحد ویلایی 2 خوابه،32 واحد واحد ویلایی یک خوابه و 162 واحد آپارتمانی 2 تخته تا 6 تخته است.همواره از زمان محول شدن مسئولیت این مجموعه به شرکت آهوان سعی بر این شده است که خدمات هتل به روز و در حد استانداردهای بین المللی ارائه شود. -->
                   </p>
                 </div>
-                  <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
+                  <v-btn color="#bf0000"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
               </v-col>
             </v-row>
           </div>
@@ -1540,9 +1524,9 @@
           <div class="indexDiv">
             <v-row>
               <v-col cols="12" md="6"> 
-                <div class="d-inline-block red mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%"></div>
+                <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:10%;background-color: #bf0000 !important;"></div>
                 <h3 class="d-inline-block font-small-title-xs">دفتر حافظ منافع مشتری</h3>
-                <div class="d-inline-block red mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%"></div>
+                <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:10%;background-color: #bf0000 !important;"></div>
                 <div paragraph>
                   <p class="text-justify mt-3 mt-sm-6 font-small-xs paragraph">
                     دفتر حافظ منافع مشتریان به مسافرین اطمینان خاطر می دهد که صدای آنان توسط برگزارکنندگان تور جام جهانی 2022 قطر شنیده می شود و دغدغه های آنان در طراحی و اجرای پکیج ها لحاظ می گردد.
@@ -1553,7 +1537,7 @@
                   </p>
                 </div>
                 <a href="/office-protector-customer-interests">
-                  <v-btn color="red"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
+                  <v-btn color="#bf0000"  class="px-sm-9 mt-2 mt-sm-4 float-left font-small-xs" dark>مشاهده بیشتر</v-btn>
                 </a>
               </v-col>
               <v-col cols="12" md="6">
@@ -1567,9 +1551,9 @@
         <v-row justify="center" align="center" class="mt-6 " style="background: #150035;">
           <div class="indexDiv my-4">
             <v-row justify="center" class="mt-4">
-              <div class="d-inline-block red mt-4 ml-4 " style="height:3px;width:60px"></div>
+              <div class="d-inline-block mt-4 ml-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
               <h3 class="d-inline-block font-small-title-xs white--text">مجله گردشگری</h3>
-              <div class="d-inline-block red mt-4 mr-4 " style="height:3px;width:60px"></div>
+              <div class="d-inline-block mt-4 mr-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
               <div class="widthAll d-block">
                 <v-row justify="center" class="mt-6">
                   <p class="white--text text-center font-small-xs" style="max-width:600px">شرکت خدمات مسافرتی آهوان در سال 1348 با هدف ترویج فرهنگ گردشگری و ایجاد تسهیلات برای مسافران افتتاح گردید و طی 5 دهه حضور فعال در این عرصه همواره سعی بر افزایش کیفیت و بهبود خدمات خود داشته است.</p>
@@ -1589,7 +1573,7 @@
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text text-justify font-small-xs">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                      <v-btn text color="#bf0000">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1606,7 +1590,7 @@
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                      <v-btn text color="#bf0000">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1623,7 +1607,7 @@
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                      <v-btn text color="#bf0000">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1640,7 +1624,7 @@
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                      <v-btn text color="#bf0000">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1657,7 +1641,7 @@
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                      <v-btn text color="#bf0000">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1674,7 +1658,7 @@
                   <div style="width:75%">
                     <h4 class="white--text my-3">جاذبه های استانبول</h4>
                     <p class="white--text font-small-xs text-justify">خدمات متمایز شرکت خدمات مسافرتی آهوان هتل چهار ستاره تفریحی و اقامتی آهوان چابکسر است که به موازات ساحل زیبای دریای خزر و امتداد جنگل های بی نظیر و ...
-                      <v-btn text color="red">مشاهده بیشتر</v-btn>
+                      <v-btn text color="#bf0000">مشاهده بیشتر</v-btn>
                     </p>
                   </div>
                 </v-row>
@@ -1923,25 +1907,25 @@
                   </p>
                 </v-row>
                 <v-row class="footerImagesParent mt-2 justify-center justify-md-space-between">
-                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
+                  <a referrerpolicy="origin" target="_blank"  rel="nofollow" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
                     <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
                   </a>
-                  <a referrerpolicy="origin" target="_blank" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
+                  <a referrerpolicy="origin" target="_blank"  rel="nofollow" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
                     <img class="mx-2 mx-md-1" src="/folders/image/logo.png"></img>
                   </a>
-                  <a target="_blank" href="https://www.cao.ir/">
+                  <a target="_blank"  rel="nofollow" href="https://www.cao.ir/">
                     <img class="mx-2 mx-md-1" src="/folders/image/cao.png"></img>
                   </a>
-                  <a target="_blank" href="http://www.aira.ir/">
+                  <a target="_blank"  rel="nofollow" href="http://www.aira.ir/">
                     <img class="mx-2 mx-md-1" src="/folders/image/lohoaira.png"></img>
                   </a>
-                  <a target="_blank" href="https://www.cao.ir/paxrights">
+                  <a target="_blank"  rel="nofollow" href="https://www.cao.ir/paxrights">
                     <img class="mx-2 mr-md-1" src="/folders/image/Passenger.png"></img>
                   </a>
                 </v-row>
                 <v-row class="grey--text text--darken-3 mt-4 font-small-xs" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
-                <v-row class="grey--text text--darken-3 mt-3" style="font-family: Byekan !important;">
-                  <v-col class="grey--text text--darken-3 mt-1 mt-sm-4 font-small-xs">شماره تماس:41889-021</v-col>
+                <v-row class="grey--text text--darken-3 mt-3" align="center" style="font-family: Byekan !important;">
+                  <v-col class="grey--text text--darken-3 font-small-xs">شماره تماس:41889-021</v-col>
                   <v-col>
                     <v-icon class="mx-1 cursorPointer whatsup-footer">mdi-whatsapp</v-icon>
                     <v-icon class="mx-1 cursorPointer email-footer">mdi-email-outline</v-icon>

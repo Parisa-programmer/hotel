@@ -162,49 +162,35 @@
                   :loading="isLoading"
                 >
                 <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
-                <v-navigation-drawer permanent class="menuHeader relative">
-                  <v-list nav dense>
-                    <div v-for="(link, i) in links" :key="i">
-                      <v-list-group  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :class="activeLinkMenuHeader == 'تورنوروز' && ' grey lighten-3 rounded-lg'"
-                          :key="link.text"
-                          no-action
-                          :value="activeLinkMenuHeader == 'تورنوروز' ? true : false"
-                      >
-                        <template v-slot:activator>
-                          <v-list-item-title >
-                            <span>{{ link.text }}</span>
-                          </v-list-item-title>
-                        </template>
-                        <v-list-item 
-                            v-for="sublink in link.subLinks"
-                            :key="sublink.text" class="cursorPointer titleHeader"
-                        >
-                              <v-list-item-title @click="sublink.active = !sublink.active" class="topMenu" style="font-weight: bold;">{{ sublink.text }}</v-list-item-title>
-                              <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);background:#fff" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
-                                <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
-                                  <a class="relative" :href="sub2.link" style="text-decoration:none;color:rgb(39, 39, 39)">
-                                    <img class="absolute" v-if="sub2.new" height="33" src="folders/image/newYearcard2.png" alt="" style="left: -40px;top: -12px;    transform: rotate(-38deg);">
-                                    <v-icon size="9" color="red" class="mx-2">mdi-circle</v-icon>
-                                    {{sub2.text}}
-                                  </a>
-                                </v-row>
-                              </div>
-                              
-                              <!-- <v-list-item class="absolute"
-                                  v-for="(sub2, k) in sublink.sub2" :key="k"
-                                  :to="sub2.to"
-                              >
-                                <v-list-item-title>
-                                  
-                                    <v-icon size="6" color="red">mdi-circle</v-icon> {{sub2.text}}
-                                  </a>
-                                </v-list-item-title> 
-                              </v-list-item> -->
-                        </v-list-item>
-                      </v-list-group>
-                    </div>
-                  </v-list>
-                </v-navigation-drawer>
+                <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
+                  type="chip"
+                  :loading="isLoading"
+                >
+                  <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                  <div class="absolute show-sub-menu" style="right:-19%">
+                    <v-list nav dense>
+                      <div v-for="(link, i) in links" :key="i" class="">
+                        <!-- <v-navigation-drawer permanent class="menuHeader relative"> -->
+                          <v-list-item 
+                              v-for="sublink in link.subLinks"
+                              :key="sublink.text" class="cursorPointer titleHeader"
+                          >
+                            <v-list-item-title @click="sublink.active = !sublink.active" class="topMenu" style="font-weight: bold;width:140px">{{ sublink.text }}</v-list-item-title>
+                            <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);background:#fff" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
+                              <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
+                                <a class="relative" :href="sub2.link" style="text-decoration:none;color:rgb(39, 39, 39)">
+                                  <img class="absolute" v-if="sub2.new" height="33" src="folders/image/newYearcard2.png" alt="" style="left: -40px;top: -12px;    transform: rotate(-38deg);">
+                                  <v-icon size="9" color="red" class="mx-2">mdi-circle</v-icon>
+                                  {{sub2.text}}
+                                </a>
+                              </v-row>
+                            </div>
+                          </v-list-item>
+                      </div>
+                    </v-list>
+                  </div>
+                </v-skeleton-loader>
+                
                 </v-skeleton-loader>
                 <v-skeleton-loader class="textLoader d-inline-block"
                   type="chip"
@@ -538,7 +524,7 @@
           selectedSection.title == 'اتوبوس' ? './folders/image/main-page-image5.jpg' : 
           selectedSection.title == 'قطار' ? './folders/image/main-page-image6.jpg' : 
           './folders/image/main-page-image7.jpg'" class="mt-1" width="100%" alt="" > -->
-          <div id="flipdownParent" class=" absolute">
+          <div v-if="(new Date('2023/3/21').getTime()) - (new Date().getTime()) > 0" id="flipdownParent" class=" absolute">
             <v-skeleton-loader class="mt-9"
                 type="chip"
                 :loading="isLoading"
@@ -1202,7 +1188,15 @@
             </v-row>
           </div>
         </v-row> -->
-        <v-row justify="center" align="center" class="mb-6">
+        <v-row justify="center">
+          <div class="indexDiv">
+            <a href="/visa">
+              <img class="widthAll rounded-xl" src="/folders/image/ویزلاین.jpg" alt="">
+            </a>
+          </div>
+        </v-row>
+        
+        <v-row justify="center" align="center" class="mb-6 mt-12">
           <div class="mt-1 ml-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
           <h3 class="font-small-title-xs">تور های ویژه آهوان</h3>
           <div class="mt-1 mr-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
@@ -1211,7 +1205,7 @@
           <div class="indexDiv">
             <v-row>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-right" data-aos-duration="1000">
+                <div class="relative cursorPointer my-2 ml-sm-2 rounded-lg hideOver" data-aos="fade-right" data-aos-duration="1000">
                   <a href="/tour/Istanbul/">
                     <v-img height="220" src="/folders/image/tourSlider/0001.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1228,7 +1222,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="8" class="pa-0">
-                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver" data-aos="fade-top" data-aos-duration="1000">
+                <div class="relative cursorPointer my-2 mr-sm-2 rounded-lg hideOver" data-aos="fade-top" data-aos-duration="1000">
                   <a href="/tour/Europe">
                     <v-img height="220" src="/folders/image/tourSlider/0004.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1245,7 +1239,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-left" data-aos-duration="1000">
+                <div class="relative cursorPointer my-2 ml-sm-2 rounded-lg hideOver" data-aos="fade-left" data-aos-duration="1000">
                   <a href="/tour/Dubai/">
                     <v-img height="220" src="/folders/image/tourSlider/0003.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1262,7 +1256,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 mr-2 ml-md-2 rounded-lg hideOver" data-aos="fade-right" data-aos-duration="1000">
+                <div class="relative cursorPointer my-2 mr-sm-2 ml-md-2 rounded-lg hideOver" data-aos="fade-right" data-aos-duration="1000">
                   <a href="/tour/Srilanka/" class="" >
                     <v-img height="220" src="/folders/image/tourSlider/0002.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1296,7 +1290,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="8" class="scroll-reveal box left pa-0">
-                <div class="relative cursorPointer my-2 ml-2 rounded-lg hideOver" data-aos="fade-top" data-aos-duration="1000">
+                <div class="relative cursorPointer my-2 ml-sm-2 rounded-lg hideOver" data-aos="fade-top" data-aos-duration="1000">
                   <a href="/tour/Thailand/">
                     <v-img height="220" src="/folders/image/tourSlider/0007.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
@@ -1313,8 +1307,8 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="6" md="4" class="pa-0">
-                <div class="relative cursorPointer my-2 mr-2 rounded-lg hideOver" data-aos="fade-left" data-aos-duration="1000">
-                  <a href="">
+                <div class="relative cursorPointer my-2 mr-sm-2 rounded-lg hideOver" data-aos="fade-left" data-aos-duration="1000">
+                  <a href="/tour/Thailand-Malaysia/">
                     <v-img height="220" src="/folders/image/tourSlider/0008.jpg" alt=""></v-img>
                     <v-row align="end" justify="start" class="absolute heightAll widthAll maintourImages" style="z-index: 2;top: 0;cursor:pointer">
                       <div>
@@ -1333,6 +1327,7 @@
             </v-row>
           </div>
         </v-row>
+
         <!-- <v-row class="my-6 " justify="center">
           <v-sheet max-width="100%" class="indexDiv transparent">
             <v-skeleton-loader class=" mt-4"
@@ -1414,29 +1409,6 @@
                       <a :href="item.download" class="text-decoration-none" style="width:50%" download>
                         <v-btn outlined color="red" class="my-2 px-5 cardButtonsTour">دانلود PDF</v-btn>
                       </a>
-                    </v-row>
-                  </v-card>
-                </div>
-              </div>
-            </v-skeleton-loader>  
-          </v-sheet>
-        </v-row> -->
-        <!-- new articles -->
-        <!-- <v-row v-show="showSlider" class="my-6" justify="center">
-          <v-sheet @mouseOver="clear()" @mouseLeave="start" max-width="100%" class="indexDiv transparent">
-            <v-skeleton-loader class=" mt-4"
-              type="image"
-              :loading="isLoading"
-            >
-              <h4 class="font-small-title-xs">مطالب پیشنهادی آهوان</h4>
-              <div class="red mt-1 mb-2 " style="height:3px;width:55px"></div>
-              <div class="widthAll slick-title slick-parent relative ">
-                <div v-for="(item, i) in newItems" :key="i">
-                  <v-card outlined class="newesCardSlider" >
-                    <img width="100%" :src="item.image">
-                    <h5 class="ma-2 font-small-title-xs text-center">{{ item.text }}</h5>
-                    <v-row justify="center">
-                      <v-btn outlined color="red" class="ma-2 px-12">مشاهده</v-btn>
                     </v-row>
                   </v-card>
                 </div>
@@ -1548,7 +1520,35 @@
             </v-row>
           </div>
         </v-row>
-        <v-row justify="center" align="center" class="mt-6 " style="background: #150035;">
+        <v-row v-show="showSlider" class="my-6 pb-6" justify="center"  style="background: #150035;">
+          <v-sheet @mouseOver="clear()" @mouseLeave="start" max-width="100%" class="indexDiv transparent">
+            <v-skeleton-loader class=" mt-4"
+              type="image"
+              :loading="isLoading"
+            >
+            <h2 class="d-inline-block font-small-title-xs white--text mt-6">مجله گردشگری</h2>
+              <div class="widthAll slick-title slick-parent relative mt-8 mb-12">
+                <div v-for="(item, i) in magazineItems" :key="i">
+                  <v-card outlined class="newesCardSlider rounded-xl" >
+                    <div class="widthAll px-3 pt-3">
+                      <img class="rounded-xl" width="100%" :src="item.image">
+                      <h4 class="my-2 font-small-title-xs mt-3">{{ item.title }}</h4>
+                      <p class="text-justify grey--text text--darken-1 body-2" style="font-family:Byekan !important">
+                        {{ item.text }}
+                      </p>
+                      <v-row justify="end">
+                        <a :href="item.link" class="text-decoration-none">
+                          <v-btn dark color="#bf0000" to="/jkjkj" class="py-0 mb-6 rounded-xl caption">مشاهده بیشتر</v-btn>
+                        </a>
+                      </v-row>
+                    </div>
+                  </v-card>
+                </div>
+              </div>
+            </v-skeleton-loader>  
+          </v-sheet>
+        </v-row>
+        <!-- <v-row justify="center" align="center" class="mt-6 " style="background: #150035;">
           <div class="indexDiv my-4">
             <v-row justify="center" class="mt-4">
               <div class="d-inline-block mt-4 ml-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
@@ -1665,7 +1665,7 @@
               </v-col>
             </v-row>
           </div>
-        </v-row>
+        </v-row> -->
         <v-row v-show="showSlider" class="pb-6 pt-12 white" justify="center">
           <v-sheet max-width="100%" class="indexDiv transparent">
             <v-skeleton-loader class=" mt-4"

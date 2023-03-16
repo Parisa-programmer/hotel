@@ -1012,6 +1012,18 @@ input::-webkit-inner-spin-button {
   top: 100px;
 }
 
+.show-sub-menu{
+  display: none;
+}
+
+/* .show-sub-menu .v-list--nav, .show-sub-menu .v-list--nav .v-list-item{
+  padding-left: 0 !important;
+} */
+
+.show-sub-menu-parent:hover .show-sub-menu{
+  display: block;
+}
+
 @media (min-width:1601px) and (max-width:1800px) {
   .topDivVisa{
     top: 80px;

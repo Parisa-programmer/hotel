@@ -1063,6 +1063,36 @@ new Vue({
         text2: 'KU413'
       },
     ],
+    flights12: [
+      {
+        from: 'پرواز از تهران به کویت',
+        time1: '03:30',
+        time2: '02:00',
+        text1: 'IKA-KU',
+        text2: 'KU 516'
+      },
+      {
+        from: 'پرواز از کویت به کوالالامپور',
+        time1: '22:40',
+        time2: '09:25',
+        text1: 'KU-KUL',
+        text2: 'KU 409'
+      },
+      {
+        from: 'پرواز از بانکوک به کویت',
+        time1: '07:10',
+        time2: '04:10',
+        text1: 'BKK-KU',
+        text2: 'KU 414'
+      },
+      {
+        from: 'پرواز از کویت به تهران',
+        time1: '02:15',
+        time2: '22:50',
+        text1: 'KU-IKA',
+        text2: 'KU 515'
+      },
+    ],
     pricesHeaderIstanbul: [
       // { text: '', sortable: false, value: 'image', align: 'center', },
       { text: 'ردیف', align: 'center', sortable: true, value: 'id', width: '90px' },
@@ -1146,6 +1176,35 @@ new Vue({
         baby2: '76.000.000'
       },
     ],
+    pricesItemsThailandMalaysia: [
+      {
+        id: 1,
+        name: 'SHANGRILA',
+        star: 'TOP 5',
+        duble: '109.000.000',
+        single: '129.000.000',
+        baby: '99.000.000',
+        baby2: '89.000.000'
+      },
+      {
+        id: 2,
+        name: 'MOVENPICK SUKHUMVIT',
+        star: '5',
+        duble: '109.000.000',
+        single: '129.000.000',
+        baby: '99.000.000',
+        baby2: '89.000.000'
+      },
+      {
+        id: 3,
+        name: 'KALIMA RESOIT',
+        star: '5',
+        duble: '109.000.000',
+        single: '129.000.000',
+        baby: '99.000.000',
+        baby2: '89.000.000'
+      },
+    ],
     page_text: {
       pageStart: 'number',
       pageStop: 'number',
@@ -1208,6 +1267,32 @@ new Vue({
       {
         src: '/folders/image/tour/تایلند-6.jpg',
         title: 'معبد سپیده دم'
+      },
+    ],
+    thilandMlaysiaImages: [
+      {
+        src: '/folders/image/tour/تایلند-مالزی000-1.jpg',
+        title: 'Phra Nang Beach'
+      },
+      {
+        src: '/folders/image/tour/تایلند-مالزی000-2.jpg',
+        title: 'Wiang kum kam'
+      },
+      {
+        src: '/folders/image/tour/تایلند-مالزی000-3.jpg',
+        title: 'Khao Sok National Park'
+      },
+      {
+        src: '/folders/image/tour/تایلند-مالزی000-4.jpg',
+        title: 'Cameron Highlands'
+      },
+      {
+        src: '/folders/image/tour/تایلند-مالزی000-5.jpg',
+        title: 'Kuala lampur'
+      },
+      {
+        src: '/folders/image/tour/تایلند-مالزی000-6.jpg',
+        title: 'Kuala lampur'
       },
     ],
     srilankaImages: [

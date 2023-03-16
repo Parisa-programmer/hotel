@@ -26,18 +26,18 @@ new Vue({
         subLinks: [
           {
             text: 'اروپا',
-            active:false,
-            sub2:[
+            active: false,
+            sub2: [
               {
-                text:'فرانسه و ترکیه(9 روز)',
+                text: 'فرانسه و ترکیه(9 روز)',
                 link: '/tour/Europe/تور-ترکیه-فرانسه/'
               },
               {
-                text:'فرانسه-ایتالیا-ترکیه(11روز)',
+                text: 'فرانسه-ایتالیا-ترکیه(11روز)',
                 link: '/tour/Europe/تور-فرانسه-ایتالیا-ترکیه/'
               },
               {
-                text:'فرانسه - اسپانیا - ایتالیا - ترکیه(16روز)',
+                text: 'فرانسه - اسپانیا - ایتالیا - ترکیه(16روز)',
                 link: '/tour/Europe/تور-فرانسه-اسپانیا-ایتالیا-ترکیه/'
               },
               {
@@ -68,96 +68,96 @@ new Vue({
           },
           {
             text: 'سریلانکا',
-            active:false,
-            sub2:[
+            active: false,
+            sub2: [
               {
-                text:'14 شب و 15 روز',
+                text: '14 شب و 15 روز',
                 link: '/tour/Srilanka/تور-سریلانکا-15روز/'
               },
             ]
           },
           {
             text: 'روسیه',
-            active:false,
-            sub2:[
+            active: false,
+            sub2: [
               {
-                text:'4 شب و 5 روز',
+                text: '4 شب و 5 روز',
                 link: '/tour/Moscow/RUS-1401-Z-017/'
               },
             ]
           },
           {
             text: 'تایلند',
-            active:false,
-            sub2:[
+            active: false,
+            sub2: [
               {
-                text:'4 شب و 5 روز',
+                text: '4 شب و 5 روز',
                 link: '/tour/Thailand/thai-1401-n19/'
               },
             ]
           },
           {
             text: 'تایلند-مالزی',
-            active:false,
-            sub2:[
+            active: false,
+            sub2: [
               {
-                text:'11 شب',
+                text: '11 شب',
                 link: ''
               },
             ]
           },
           {
             text: 'استانبول',
-            active:false,
-            sub2:[
+            active: false,
+            sub2: [
               {
-                text:'5 شب و 6 روز',
+                text: '5 شب و 6 روز',
                 link: '/tour/Istanbul/تور-5-شب-ویژه-نوروز/',
-                new:true,
+                new: true,
               },
               {
-                text:'6 شب و 7 روز',
+                text: '6 شب و 7 روز',
                 link: '/tour/Istanbul/تور-6-شب-ویژه-نوروز/',
-                new:true,
+                new: true,
               },
               {
-                text:'7 شب و 8 روز',
+                text: '7 شب و 8 روز',
                 link: '/tour/Istanbul/تور-7-شب-ویژه-نوروز/',
-                new:true,
+                new: true,
               },
               {
-                text:'3 شب و 4 روز',
+                text: '3 شب و 4 روز',
                 link: '/tour/Istanbul/003-4/',
               },
               {
-                text:'4 شب و 5 روز',
+                text: '4 شب و 5 روز',
                 link: '/tour/Istanbul/004-5/',
               },
               {
-                text:'5 شب و 6 روز',
+                text: '5 شب و 6 روز',
                 link: '/tour/Istanbul/005-6/',
               },
             ]
           },
           {
             text: 'دبی',
-            active:false,
-            sub2:[
+            active: false,
+            sub2: [
               {
-                text:'5 شب و 6 روز',
+                text: '5 شب و 6 روز',
                 link: '/tour/Dubai/تور-5-شب-ویژه-نوروز/',
-                new:true,
+                new: true,
               },
               {
-                text:'3 شب و 4 روز',
+                text: '3 شب و 4 روز',
                 link: '/tour/Dubai/تور-3-شب-دبی/'
               },
               {
-                text:'4 شب و 5 روز',
+                text: '4 شب و 5 روز',
                 link: '/tour/Dubai/تور-4-شب-دبی/'
               },
               {
-                text:'5 شب و 6 روز',
+                text: '5 شب و 6 روز',
                 link: '/tour/Dubai/تور-5-شب-دبی/'
               },
             ]
@@ -165,7 +165,7 @@ new Vue({
         ],
       },
     ],
-    activeLinkMenuHeader:'',
+    activeLinkMenuHeader: '',
     userName: '',
     windowWidth: 0,
     showMenuSmall: false,
@@ -518,6 +518,49 @@ new Vue({
         text: 'اطلاعیه سفرهای نوروزی',
         price: '8,200,000'
       },
+    ],
+    magazineItems: [
+      {
+        image: '/folders/image/magazine-turkiye.jpg',
+        title: 'جاذبه های استانبول',
+        text: 'تور نوروزی استانبول، به دلیل خدمات تفریحی‌ای که برای افراد به همراه داره، می‌تونه به شما در روند تجربه یک سفر متفاوت کمک کنه. تور استانبول از تمام شهرهای ایران، در میان تورهای پرطرفداری قرار می‌گیره که هزینه نسبتا مناسبی برای افراد داره...',
+        link:'/tour/Istanbul'
+      },
+      {
+        image: '/folders/image/magazine-urope.jpg',
+        title: 'اروپا و جذابیت‌های آن',
+        text: 'سفر با تور نوروزی اروپا بدون شک یکی از زیباترین و بهترین تجربیات زندگی هر فرد می‌باشد. این قاره یکی از مقاصد زیبا برای سفر است که در سالهای اخیر به یکی از محبوب‌ترین مقاصد توریستی جهان تبدیل‌شده‌است. در بین تمامی مردم جهان...',
+        link:'/tour/Europe/'
+      },
+      {
+        image: '/folders/image/magazine-dubai.jpg',
+        title: 'جاذبه های دبی',
+        text: 'دبی یکی از شهرهای بزرگ و پرطرفدار امارات متحده عربی است که درواقع یک شهر لاکچری و مدرن در بین تمام شهرهای دنیا می‌باشد.بدلیل کوتاه بودن مسافت پرواز و همسایگی با این کشور نه تنها منطقه خاورمیانه، بلکه در سراسر جهان زبانزد خاص و عام است...',
+        link:'/tour/Dubai/'
+      },
+      {
+        image: '/folders/image/magazine-thailand.jpg',
+        title: 'تور تایلند 1402',
+        text: 'کشور تایلند نه تنها برای توریست های ایرانی بلکه برای توریست های سراسر جهان جذابیت دارد بلکه با خرید تور تایلند 1402 از پارک های طبیعی و زیبای این کشور از جمله: پارک ملی کائو یای، پارک پانک سیدا و پارک ملی تا پرایا و موارد دیگر...',
+        link:'/tour/Thailand/'
+      },
+      {
+        image: '/folders/image/magazine-dubai.jpg',
+        title: 'جاذبه های دبی',
+        text: 'دبی یکی از شهرهای بزرگ و پرطرفدار امارات متحده عربی است که درواقع یک شهر لاکچری و مدرن در بین تمام شهرهای دنیا می‌باشد.بدلیل کوتاه بودن مسافت پرواز و همسایگی با این کشور نه تنها منطقه خاورمیانه، بلکه در سراسر جهان زبانزد خاص و عام است...',
+        link:'/tour/Dubai/'
+      },
+      {
+        image: '/folders/image/magazine-thailand.jpg',
+        title: 'تور تایلند 1402',
+        text: 'کشور تایلند نه تنها برای توریست های ایرانی بلکه برای توریست های سراسر جهان جذابیت دارد بلکه با خرید تور تایلند 1402 از پارک های طبیعی و زیبای این کشور از جمله: پارک ملی کائو یای، پارک پانک سیدا و پارک ملی تا پرایا و موارد دیگر...',
+        link:'/tour/Thailand/'
+      },
+      // {
+      //   image: '/tour/Srilanka/',
+      //   title: 'جاذبه های سریلانکا',
+      //   text: ''
+      // },
     ],
     slides: [
       './folders/image/sliderMain1.jpg',
@@ -2109,13 +2152,13 @@ new Vue({
         //   autoplaySpeed: 2000,
         // });
 
-        // $(".slick-title").slick({
-        //   slidesToShow: self.windowWidth > 1400 ? 3 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 599) ? 2 : 1,
-        //   slidesToScroll: 1,
-        //   rtl: true,
-        //   autoplay: true,
-        //   autoplaySpeed: 2500,
-        // });
+        $(".slick-title").slick({
+          slidesToShow: self.windowWidth > 1400 ? 3 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 3 : (self.windowWidth <= 960 && self.windowWidth > 599) ? 2 : 1,
+          slidesToScroll: 1,
+          rtl: true,
+          autoplay: true,
+          autoplaySpeed: 2500,
+        });
 
         $(".slick-logo").slick({
           slidesToShow: self.windowWidth > 1400 ? 5 : (self.windowWidth <= 1400 && self.windowWidth > 960) ? 4 : (self.windowWidth <= 960 && self.windowWidth > 775) ? 3 : (self.windowWidth <= 775 && self.windowWidth > 599) ? 2 : 1,
@@ -2168,46 +2211,47 @@ new Vue({
       let now = new Date().getTime() / 1000
       let newYear = new Date('2023/3/21').getTime() / 1000
       let untilTime = newYear - now
-      // days
-      let allDays = Math.floor((newYear - now) / 86400);
-      this.flipDays = allDays
-      // hours
-      let hours = Math.floor(untilTime - (allDays * 86400))
-      let allHours = Math.floor(hours / 3600)
-      flipHours = allHours
-      this.flipHours = allHours
-      // minuets 
-      let minutes = untilTime - (allDays * 86400) - (allHours * 3600)
-      flipMinutes = Math.floor(minutes / 60)
+      if (untilTime > 0) {
+        // days
+        let allDays = Math.floor((newYear - now) / 86400);
+        this.flipDays = allDays
+        // hours
+        let hours = Math.floor(untilTime - (allDays * 86400))
+        let allHours = Math.floor(hours / 3600)
+        flipHours = allHours
+        this.flipHours = allHours
+        // minuets 
+        let minutes = untilTime - (allDays * 86400) - (allHours * 3600)
+        flipMinutes = Math.floor(minutes / 60)
 
-      this.flipMinutes = flipMinutes
-      // seconds 
-      let seconds = untilTime - (allDays * 86400) - (allHours * 3600) - (this.flipMinutes * 60)
-      let flipSeconds = Math.floor(seconds) + 2
-      this.flipSeconds = flipSeconds
-      setInterval(() => {
-        if (flipSeconds > 0) {
-          flipSeconds = flipSeconds - 1
-        } else {
-          if (flipMinutes > 0) {
-            flipSeconds = 59
-            flipMinutes = flipMinutes - 1
+        this.flipMinutes = flipMinutes
+        // seconds 
+        let seconds = untilTime - (allDays * 86400) - (allHours * 3600) - (this.flipMinutes * 60)
+        let flipSeconds = Math.floor(seconds) + 2
+        this.flipSeconds = flipSeconds
+        setInterval(() => {
+          if (flipSeconds > 0) {
+            flipSeconds = flipSeconds - 1
           } else {
-            if (flipHours > 0) {
-              flipMinutes = 59
-              flipHours = flipHours - 1
-            } else if (allDays > 0) {
-              flipHours = 23
-              allDays = allDays - 1
+            if (flipMinutes > 0) {
+              flipSeconds = 59
+              flipMinutes = flipMinutes - 1
+            } else {
+              if (flipHours > 0) {
+                flipMinutes = 59
+                flipHours = flipHours - 1
+              } else if (allDays > 0) {
+                flipHours = 23
+                allDays = allDays - 1
+              }
             }
           }
-        }
-        this.flipSeconds = flipSeconds
-        this.flipMinutes = flipMinutes
-        this.flipHours = flipHours
-        this.flipDays = allDays
-      }, 1000);
-
+          this.flipSeconds = flipSeconds
+          this.flipMinutes = flipMinutes
+          this.flipHours = flipHours
+          this.flipDays = allDays
+        }, 1000);
+      }
     }
   },
   created() {

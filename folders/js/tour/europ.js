@@ -16,6 +16,152 @@ new Vue({
   el: '#tour',
   vuetify: new Vuetify(),
   data: {
+    links: [
+      {
+        text: 'تور نوروز 1402',
+        subLinks: [
+          {
+            text: 'اروپا',
+            active: false,
+            sub2: [
+              {
+                text: 'فرانسه و ترکیه(9 روز)',
+                link: '/tour/Europe/تور-ترکیه-فرانسه/'
+              },
+              {
+                text: 'فرانسه-ایتالیا-ترکیه(11روز)',
+                link: '/tour/Europe/تور-فرانسه-ایتالیا-ترکیه/'
+              },
+              {
+                text: 'فرانسه - اسپانیا - ایتالیا - ترکیه(16روز)',
+                link: '/tour/Europe/تور-فرانسه-اسپانیا-ایتالیا-ترکیه/'
+              },
+              {
+                text: 'اسپانیا - سوئیس - ترکیه(12روز)',
+                link: '/tour/Europe/تور-اسپانیا-سوئیس-ترکیه/'
+              },
+              {
+                text: 'اسپانیا - ترکیه(13روز)',
+                link: '/tour/Europe/تور-اسپانیا-ترکیه/'
+              },
+              {
+                text: 'سوئیس - ترکیه(11 روز)',
+                link: '/tour/Europe/تور-سوئیس-ترکیه/'
+              },
+              {
+                text: 'اسپانیا - فرانسه - ترکیه(13روز)',
+                link: '/tour/Europe/تور-اسپانیا-فرانسه-ترکیه/'
+              },
+              {
+                text: 'سوئیس - ترکیه(8روز)',
+                link: '/tour/Europe/تور-سوئیس/'
+              },
+              {
+                text: 'دور اروپا(23 روز)',
+                link: '/tour/Europe/تور-دور-اروپا/'
+              },
+            ]
+          },
+          {
+            text: 'سریلانکا',
+            active: false,
+            sub2: [
+              {
+                text: '14 شب و 15 روز',
+                link: '/tour/Srilanka/تور-سریلانکا-15روز/'
+              },
+            ]
+          },
+          {
+            text: 'روسیه',
+            active: false,
+            sub2: [
+              {
+                text: '4 شب و 5 روز',
+                link: '/tour/Moscow/RUS-1401-Z-017/'
+              },
+            ]
+          },
+          {
+            text: 'تایلند',
+            active: false,
+            sub2: [
+              {
+                text: '4 شب و 5 روز',
+                link: '/tour/Thailand/thai-1401-n19/'
+              },
+            ]
+          },
+          {
+            text: 'تایلند-مالزی',
+            active: false,
+            sub2: [
+              {
+                text: '11 شب',
+                link: ''
+              },
+            ]
+          },
+          {
+            text: 'استانبول',
+            active: false,
+            sub2: [
+              {
+                text: '5 شب و 6 روز',
+                link: '/tour/Istanbul/تور-5-شب-ویژه-نوروز/',
+                new: true,
+              },
+              {
+                text: '6 شب و 7 روز',
+                link: '/tour/Istanbul/تور-6-شب-ویژه-نوروز/',
+                new: true,
+              },
+              {
+                text: '7 شب و 8 روز',
+                link: '/tour/Istanbul/تور-7-شب-ویژه-نوروز/',
+                new: true,
+              },
+              {
+                text: '3 شب و 4 روز',
+                link: '/tour/Istanbul/003-4/',
+              },
+              {
+                text: '4 شب و 5 روز',
+                link: '/tour/Istanbul/004-5/',
+              },
+              {
+                text: '5 شب و 6 روز',
+                link: '/tour/Istanbul/005-6/',
+              },
+            ]
+          },
+          {
+            text: 'دبی',
+            active: false,
+            sub2: [
+              {
+                text: '5 شب و 6 روز',
+                link: '/tour/Dubai/تور-5-شب-ویژه-نوروز/',
+                new: true,
+              },
+              {
+                text: '3 شب و 4 روز',
+                link: '/tour/Dubai/تور-3-شب-دبی/'
+              },
+              {
+                text: '4 شب و 5 روز',
+                link: '/tour/Dubai/تور-4-شب-دبی/'
+              },
+              {
+                text: '5 شب و 6 روز',
+                link: '/tour/Dubai/تور-5-شب-دبی/'
+              },
+            ]
+          },
+        ],
+      },
+    ],
+    activeLinkMenuHeader: '',
     isLoading: true,
     loginStep: 1,
     showAlert: false,

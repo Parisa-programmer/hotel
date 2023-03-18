@@ -365,7 +365,7 @@
                     type="chip"
                     :loading="isLoading"
                   >
-                    <a class="text-decoration-none" >
+                    <a href="/flight" class="text-decoration-none" @click="activeLinkMenuHeader != 'پرواز' ? activeLinkMenuHeader = 'پرواز' : activeLinkMenuHeader=''">
                       <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                     </a>
                   </v-skeleton-loader>
@@ -373,43 +373,82 @@
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
+                  </v-skeleton-loader>
+                
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                  <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
+                  <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                    <div class="absolute show-sub-menu" style="right:-19%">
+                      <v-list nav dense>
+                        <div v-for="(link, i) in links" :key="i" class="">
+                          <!-- <v-navigation-drawer permanent class="menuHeader relative"> -->
+                            <v-list-item 
+                                v-for="sublink in link.subLinks"
+                                :key="sublink.text" class="cursorPointer titleHeader"
+                            >
+                              <v-list-item-title @click="sublink.active = !sublink.active" class="topMenu" style="font-weight: bold;width:140px">{{ sublink.text }}</v-list-item-title>
+                              <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);background:#fff" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
+                                <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
+                                  <a class="relative" :href="sub2.link" style="text-decoration:none;color:rgb(39, 39, 39)">
+                                    <img class="absolute" v-if="sub2.new" height="33" src="/folders/image/newYearcard2.png" alt="" style="left: -40px;top: -12px;    transform: rotate(-38deg);">
+                                    <v-icon size="9" color="red" class="mx-2">mdi-circle</v-icon>
+                                    {{sub2.text}}
+                                  </a>
+                                </v-row>
+                              </div>
+                            </v-list-item>
+                        </div>
+                      </v-list>
+                    </div>
+                  </v-skeleton-loader>
+                  
+                  </v-skeleton-loader>
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  > 
+                  <a href="/iranhotels" class="text-decoration-none">
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'آهوان'">هتل آهوان</span>
+                  </a>
                   </v-skeleton-loader>
                   <v-skeleton-loader class="textLoader d-inline-block"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">تور نوروز 1402</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'مجله'">مجله گردشگری</span>
+                  </v-skeleton-loader>
+                  
+                  <v-skeleton-loader class="textLoader d-inline-block"
+                    type="chip"
+                    :loading="isLoading"
+                  >
+                    <a href="/visa" class="text-decoration-none">
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'ویزا'">خدمات ویزا</span>
+                    </a>
                   </v-skeleton-loader>
                   <v-skeleton-loader class="textLoader d-inline-block"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">هتل آهوان</span>
+                    <a href="/office-protector-customer-interests" class="text-decoration-none">
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'دفتر'">دفتر حافظ منافع مشتری</span>
+                    </a>
                   </v-skeleton-loader>
                   <v-skeleton-loader class="textLoader d-inline-block"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">مجله گردشگری</span>
-                  </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">اخبار روز</span>
-                  </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">خدمات ویزا</span>
-                  </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0">دفتر حافظ منافع مشتری</span>
+                    <a href="/contact-us/" class="text-decoration-none">
+                      <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader = 'اخبار'">تماس با ما</span>
+                    </a>
                   </v-skeleton-loader>
                   <span></span>
                   <v-skeleton-loader class="textLoader d-inline-block " :class="isLoading && 'mt-2'"
@@ -447,41 +486,103 @@
                       <v-list-item-group v-model="activePage"
                         active-class="red--text text--accent-4 "
                       >
+                        <a href="/flight" class="text-decoration-none">
+                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                            <v-icon class="ml-2">mdi-airplane</v-icon>
+                            <v-list-item-title>
+                              پرواز
+                            </v-list-item-title>
+                          </v-list-item>
+                        </a>
                         <a href="" class="text-decoration-none">
-                        <v-list-item @click="showMenuSmall = false">
-                          <v-icon class="ml-2">mdi-airplane</v-icon>
-                          <v-list-item-title>
-                            پرواز
-                          </v-list-item-title>
-                        </v-list-item></a>
-                        <v-list-item @click="showMenuSmall = false">
-                          <v-icon class="ml-2">mdi-train-car</v-icon>
-                          <v-list-item-title>تور</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item @click="showMenuSmall = false">
+                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                            <v-icon class="ml-2">mdi-train-car</v-icon>
+                            <v-list-item-title>تور</v-list-item-title>
+                          </v-list-item>
+                        </a>
+                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
                           <v-icon class="ml-2">mdi-account-group</v-icon>
                           <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          
                         </v-list-item>
-                        <v-list-item @click="showMenuSmall = false">
-                          <v-icon class="ml-2">mdi-hospital-building</v-icon>
-                          <v-list-item-title>هتل آهوان</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item @click="showMenuSmall = false">
+                        <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
+                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                            <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
+                              <v-list-group
+                                  :key="link.text"
+                                  no-action
+                                  :value="false"
+                              >
+                                <template v-slot:activator>
+                                  <v-list-item-title >
+                                    <span>{{ link.text }}</span>
+                                  </v-list-item-title>
+                                </template>
+                                <v-list-item
+                                    v-for="sublink in link.sub2"
+                                    :key="sublink.text" class="cursorPointer titleHeader"
+                                >
+                                  <a class="relative widthAll d-flex" :href="sublink.link" style="text-decoration:none;color:rgb(39, 39, 39);height: 38px;">
+                                    <v-list-item-title class="topMenu" style="font-weight: bold;"> 
+                                      <v-icon size="9" color="red" class="ml-2">mdi-circle</v-icon>
+                                      {{ sublink.text }}
+                                      <img class="absolute" v-if="sublink.new" height="43" src="/folders/image/newYearcard2.png" alt="" style="left: 32px;top: -5px;    transform: rotate(-38deg);">
+                                    </v-list-item-title>
+                                  </a>
+                                      <!-- <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
+                                        <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
+                                          
+                                            
+                                           
+                                            {{sub2.text}}
+                                          </a>
+                                        </v-row>
+                                      </div>
+                                      
+                                      <v-list-item class="absolute"
+                                          v-for="(sub2, k) in sublink.sub2" :key="k"
+                                          :to="sub2.to"
+                                      >
+                                        <v-list-item-title>
+                                          
+                                            <v-icon size="6" color="red">mdi-circle</v-icon> {{sub2.text}}
+                                          </a>
+                                        </v-list-item-title> 
+                                      </v-list-item> -->
+                                </v-list-item>
+                              </v-list-group>
+                            </div>
+                          </div>
+                          <!-- </v-navigation-drawer> -->
+                          <a href="/iranhotels" class="text-decoration-none">
+                            <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                              <v-icon class="ml-2">mdi-hospital-building</v-icon>
+                              <v-list-item-title>هتل آهوان</v-list-item-title>
+                            </v-list-item>
+                          </a>
+                        
+                        <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
                           <v-icon class="ml-2">mdi-book-open-page-variant-outline</v-icon>
                           <v-list-item-title>مجله گردشگری</v-list-item-title>
                         </v-list-item>
-                        <v-list-item @click="showMenuSmall = false">
-                          <v-icon class="ml-2">mdi-newspaper-variant-outline</v-icon>
-                          <v-list-item-title>اخبار روز</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item @click="showMenuSmall = false">
-                          <v-icon class="ml-2">mdi-checkbook</v-icon>
-                          <v-list-item-title>خدمات ویزا</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item @click="showMenuSmall = false">
-                          <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
-                          <v-list-item-title>دفتر حافظ منافع مشتری</v-list-item-title>
-                        </v-list-item>
+                        <a href="/visa" class="text-decoration-none">
+                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                            <v-icon class="ml-2">mdi-checkbook</v-icon>
+                            <v-list-item-title>خدمات ویزا</v-list-item-title>
+                          </v-list-item>
+                        </a>
+                        <a href="/office-protector-customer-interests/" class="text-decoration-none">
+                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                            <v-icon class="ml-2">mdi-book-open-page-variant</v-icon>
+                            <v-list-item-title>دفتر حافظ منافع مشتری</v-list-item-title>
+                          </v-list-item>
+                        </a>
+                        <a href="/contact-us/" class="text-decoration-none">
+                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
+                            <v-icon class="ml-2">mdi-newspaper-variant-outline</v-icon>
+                            <v-list-item-title>تماس با ما</v-list-item-title>
+                          </v-list-item>
+                        </a>
                       </v-list-item-group>
                     </v-list>
                   </v-navigation-drawer>
@@ -820,7 +921,12 @@
                   <v-col cols="5" md="6" class="pa-0 pa-sm-3 pb-sm-0">
                     <h4>درباره هتل آهوان</h4>
                     <ul class="mr-4 mr-md-2 my-2">
-                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تماس با ما</li>
+                      
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">
+                        <a href="/contact-us/" class="text-decoration-none black--text">
+                          تماس با ما    
+                        </a>
+                      </li>
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">درباره ما</li>
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">سوالات متداول</li>
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">فرصت‌های شغلی</li>
@@ -851,25 +957,25 @@
                   </p>
                 </v-row>
                 <v-row class="footerImagesParent mt-2 justify-center justify-md-space-between">
-                  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
+                  <a referrerpolicy="origin" target="_blank"  rel="nofollow" href="https://trustseal.enamad.ir/?id=73832&Code=v3MxZxRYBX3uIkiwT158">
                     <img class="ml-2 mx-md-1" src="/folders/image/logo (1).png"></img>
                   </a>
-                  <a referrerpolicy="origin" target="_blank" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
+                  <a referrerpolicy="origin" target="_blank"  rel="nofollow" href="https://logo.samandehi.ir/Verify.aspx?id=104501&p=rfthobpdaodsdshwobpdrfth">
                     <img class="mx-2 mx-md-1" src="/folders/image/logo.png"></img>
                   </a>
-                  <a target="_blank" href="https://www.cao.ir/">
+                  <a target="_blank"  rel="nofollow" href="https://www.cao.ir/">
                     <img class="mx-2 mx-md-1" src="/folders/image/cao.png"></img>
                   </a>
-                  <a target="_blank" href="http://www.aira.ir/">
+                  <a target="_blank"  rel="nofollow" href="http://www.aira.ir/">
                     <img class="mx-2 mx-md-1" src="/folders/image/lohoaira.png"></img>
                   </a>
-                  <a target="_blank" href="https://www.cao.ir/paxrights">
+                  <a target="_blank"  rel="nofollow" href="https://www.cao.ir/paxrights">
                     <img class="mx-2 mr-md-1" src="/folders/image/Passenger.png"></img>
                   </a>
                 </v-row>
                 <v-row class="grey--text text--darken-3 mt-4 font-small-xs" style="font-family: Byekan !important;">آدرس:ضلع شمال غربی میدان آرژانتین، ساختمان بانک تجارت، شماره 18</v-row>
-                <v-row class="grey--text text--darken-3 mt-3" style="font-family: Byekan !important;">
-                  <v-col class="grey--text text--darken-3 mt-1 mt-sm-4 font-small-xs">شماره تماس:41889-021</v-col>
+                <v-row class="grey--text text--darken-3 mt-3" align="center" style="font-family: Byekan !important;">
+                  <v-col class="grey--text text--darken-3 font-small-xs">شماره تماس:41889-021</v-col>
                   <v-col>
                     <v-icon class="mx-1 cursorPointer whatsup-footer">mdi-whatsapp</v-icon>
                     <v-icon class="mx-1 cursorPointer email-footer">mdi-email-outline</v-icon>

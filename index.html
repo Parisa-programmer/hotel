@@ -111,6 +111,10 @@
         .main-page-sectionImage{
           height: 250px;
         }
+
+        .text-magazine{
+          height: 100px;
+        }
       }
 
       /* whatsup-email
@@ -179,7 +183,7 @@
                             <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);background:#fff" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
                               <v-row v-for="(sub2, k) in sublink.sub2" :key="k" class="caption pa-2 submenu2" style="font-family:Byekan !important;font-weight: bold;">
                                 <a class="relative" :href="sub2.link" style="text-decoration:none;color:rgb(39, 39, 39)">
-                                  <img class="absolute" v-if="sub2.new" height="33" src="folders/image/newYearcard2.png" alt="" style="left: -40px;top: -12px;    transform: rotate(-38deg);">
+                                  <img class="absolute" v-if="sub2.new" height="33" src="/folders/image/newYearcard2.png" alt="" style="left: -40px;top: -12px;    transform: rotate(-38deg);">
                                   <v-icon size="9" color="red" class="mx-2">mdi-circle</v-icon>
                                   {{sub2.text}}
                                 </a>
@@ -307,7 +311,7 @@
                                   <v-list-item-title class="topMenu" style="font-weight: bold;"> 
                                     <v-icon size="9" color="red" class="ml-2">mdi-circle</v-icon>
                                     {{ sublink.text }}
-                                    <img class="absolute" v-if="sublink.new" height="43" src="folders/image/newYearcard2.png" alt="" style="left: 32px;top: -5px;    transform: rotate(-38deg);">
+                                    <img class="absolute" v-if="sublink.new" height="43" src="/folders/image/newYearcard2.png" alt="" style="left: 32px;top: -5px;    transform: rotate(-38deg);">
                                   </v-list-item-title>
                                 </a>
                                     <!-- <div class="absolute  submenu rounded-lg" style="right: 120px;white-space: nowrap;top: 0;border:1px solid rgb(172, 172, 172);" :style="{width:sublink.text == 'اروپا' ? '252px' : '150px'}">
@@ -1191,7 +1195,8 @@
         <v-row justify="center">
           <div class="indexDiv">
             <a href="/visa">
-              <img class="widthAll rounded-xl" src="/folders/image/ویزلاین.jpg" alt="">
+              <img class="widthAll rounded-xl d-none d-md-block" src="/folders/image/ویزلاین.jpg" alt="">
+              <img class="widthAll rounded-xl d-block d-md-none" src="/folders/image/ویزلاین موبایل.jpg" alt="">
             </a>
           </div>
         </v-row>
@@ -1528,12 +1533,12 @@
             >
             <h2 class="d-inline-block font-small-title-xs white--text mt-6">مجله گردشگری</h2>
               <div class="widthAll slick-title slick-parent relative mt-8 mb-12">
-                <div v-for="(item, i) in magazineItems" :key="i">
-                  <v-card outlined class="newesCardSlider rounded-xl" >
+                <div class="px-3 px-md-0" v-for="(item, i) in magazineItems" :key="i">
+                  <v-card outlined class="newesCardSlider rounded-xl " >
                     <div class="widthAll px-3 pt-3">
                       <img class="rounded-xl" width="100%" :src="item.image">
                       <h4 class="my-2 font-small-title-xs mt-3">{{ item.title }}</h4>
-                      <p class="text-justify grey--text text--darken-1 body-2" style="font-family:Byekan !important">
+                      <p class="text-justify grey--text text--darken-1 body-2 text-magazine" style="font-family:Byekan !important">
                         {{ item.text }}
                       </p>
                       <v-row justify="end">
@@ -1876,7 +1881,12 @@
                   <v-col cols="5" md="6" class="pa-0 pa-sm-3 pb-sm-0">
                     <h4>درباره هتل آهوان</h4>
                     <ul class="mr-4 mr-md-2 my-2">
-                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">تماس با ما</li>
+                      
+                      <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">
+                        <a href="/contact-us/" class="text-decoration-none black--text">
+                          تماس با ما    
+                        </a>
+                      </li>
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">درباره ما</li>
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">سوالات متداول</li>
                       <li class=" my-2 my-sm-4 caption" style="font-family: Byekan !important;">فرصت‌های شغلی</li>

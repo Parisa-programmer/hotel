@@ -22,16 +22,16 @@
     <meta charset="utf-8">
     <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <title>خدمات گردشگری آهوان</title>
-    <link rel="stylesheet" href="/folders/css/datepicker.css">
-    <link rel="stylesheet" href="/folders/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" />
+    <title>باشگاه مشتریان</title>
+    <!-- <link rel="stylesheet" href="/folders/css/datepicker.css"> -->
+    <!-- <link rel="stylesheet" href="/folders/slick/slick.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/slick/slick-theme.css" /> -->
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css">
-    <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/flipdown.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/folders/flipDown/css/style.css"> -->
     <!-- <script type="text/javascript" src="/folders/flipDown/js/flipdown.js"></script> -->
     <!-- <script type="text/javascript" src="/folders/flipDown/js/main.js"></script> -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11034061729"></script> -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -48,6 +48,86 @@
           d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
+    <style>
+      label{
+        font-weight: bold;
+      }
+
+      .cards:hover{
+        box-shadow: 0 0 5px rgb(150, 150, 150);
+      }
+
+      .flagsImage{
+        width:100%;
+        /* transition: all 1s;
+        height:80% */
+      }
+
+      .banner-top{
+        width:100%
+      }
+
+      @media (min-width:1100px) and (max-width:1400px) {
+        .banner-top{
+          width:120%;    
+          object-position: 219px;
+        }
+      }
+
+      @media (min-width:800px) and (max-width:1099px) {
+        .banner-top{
+          width:128%;    
+          object-position: 219px;
+        }
+
+        .answerText{
+          max-width: 450px !important;
+          font-size: 14px;
+          line-height: 26px;
+        }
+      }
+
+      @media (min-width:600px) and (max-width:799px) {
+        .banner-top{
+          width:160%;    
+          /* object-position: 219px; */
+        }
+
+        .answerText{
+          max-width: 100% !important;
+          font-size: 15px;
+          line-height: 28px;
+        }
+      }
+      
+      @media (max-width:599px) {
+        .banner-top{
+          width: unset;
+          height: 300px;
+        }
+
+        .answerText{
+          max-width: 100% !important;
+          font-size: 15px;
+          line-height: 28px;
+        }
+        
+        @media (max-width:400px){
+          .banner-top{
+            height: 350px;
+          }
+        }
+        @media (max-width:350px){
+          .banner-top{
+            height: 400px;
+          }
+        }
+      }
+      
+      /* .flagsImage:hover{
+        width:105%
+      } */
+    </style>
   </head>
   <body>
     <!-- header -->
@@ -439,281 +519,214 @@
             </v-card>
           </v-dialog>
         </div>
-        <v-row class="d-none d-sm-flex mt-12 pt-12">
-        </v-row>
-        <v-row justify="center">
-          <div class="indexDiv my-12 my-sm-0 my-md-12">
-            <v-row justify="center" class="relative mt-5 mt-sm-0">
-              <v-col cols="12" md="6" class="order-2 order-md-1">
-                <h3 class="red--text">دفتر حافظ منافع مشتری</h3>
-                <p class="mt-6 text-justify pl-4 font-small-xs" style="line-height:40px">
-                  برند رسمی آژانس مسافرتی آهوان به خوبی از جنس دغدغه‌های مسافرین آگاه است. نیاز ضروری کسب اعتماد به محصولات عرضه شده و اطمینان خاطر مسافرین از دریافت خدمات تورهایی در عالی ترین سطح منجر به تشکیل دفتر حافظ منافع مشتریان شد.
-
-این دپارتمان در حقیقت یک سیستم پیشرفته PTS (Passenger Tracking System) است که خدمات عرضه شده به مسافرین را از اولین نقطه تماس آنان با برند 
-<b>آهوان</b>
- تا بازگشت از سفر و مرور خاطرات لذت‌بخش آن دنبال می‌کند. بازوی اجرایی مهم این سیستم مرکز تماس آنلاین مستقر در تهران است.
-                </p>
+        <v-row justify="center" align="center" class="mt-12 ">
+          <div class="mt-12 indexDiv">
+            <v-row class="my-12 ">
+              <v-col cols="12" md="6" class=""> 
+                <v-row class="heightAll" align="center">
+                  <div class="px-6 relative">
+                    <div class="absolute" style="top:-200px;right:-50px;z-index: 1;">
+                      <img src="/folders/image/inverted-commas.png" alt="">
+                    </div>
+                    <div style="z-index:222">
+                      <h2 class="font-small-title-xs mb-3">باشگاه مشتریان آهوان</h2>
+                      <p class="font-small-xs paragraph text-justify">
+                        ما به خرید شما احترام می‌گذاریم و آن را ارج می‌نهیم.
+                        جایگاه ویژه خریداران و مشتریان وفادار ما اینجاست.
+                        تمامی اعضای این باشگاه با توجه به خریدشان، امتیازات نقره‌ای/ برنز و طلایی را اخذ می‌کنند و به خدمات بیشتر با نرخ ویژه‌تر و جایگاه بهتر دست می‌یابند.
+                      </p>
+                    </div>
+                  </div>
+                </v-row>
               </v-col>
-              <v-col cols="12" md="6" class="order-1 order-md-2">
-                <img width="100%" src="/folders/image/2حافظ-منافع-مشتری.png" alt="">
-              </v-col>
-              <v-col cols="12" class="order-3">
-                <p class="mt-1 text-justify pa-4 grey lighten-2 font-small-xs" style="line-height:40px">
-                  <b class="red--text">دفتر حافظ منافع مشتریان</b>
-                   به مسافرین اطمینان خاطر می‌دهد که صدای آنان توسط برگزارکنندگان تور شنیده می‌شود و دغدغه‌های آنان در طراحی و اجرای پکیج‌ها لحاظ می‌گردد. شما در هر لحظه از شبانه ­روز می‌توانید نظرات، انتقادات و پیشنهادات خود را از طریق فرم ذیل به اطلاع تصمیم گیران پروژه برسانید و در حین لذت بردن از تورهای ویژه آهوان نیز نمایندگان تام الختیار این برند را همگام و همراه در کنار خود داشته باشید.
-                </p>
+              <v-col cols="12" md="6">
+                <v-row justify="center" class="mt-12">
+                  <div class="widthAll relative">
+                    <div class="absolute" style="width:90%;height:80%;left:-50px;top:-50px;z-index:1;background:#bf0000"></div>
+                    <div class="widthAll " style="box-shadow: 0 0px 12px #c2c2c2;">
+                      <v-img src="/folders/image/باشگاه-مشتریان2.png" alt=""  height="650" style="z-index: 2;"></v-img>
+                    </div>
+                    <div class="absolute pa-4" style="width:300px;right:-30%;bottom:60px;z-index:3;background: #bf0000">
+                      <h4 class="d-block font-small-title-xs text-center white--text">امکانات ویژه باشگاه مسافران</h4>
+                      <v-row class="mt-4 justify-md-space-between ">
+                        <v-col>
+                          <v-row align="center">
+                            <img width='22' src="/folders/image/check32.png" class="ml-1" alt="">
+                            <b class="white--text">نقره‌ای</b>
+                          </v-row>
+                        </v-col>
+                        <v-col>
+                          <v-row align="center" justify="center">
+                            <img width='22' src="/folders/image/check32.png" class="ml-1" alt="">
+                            <b class="white--text" >برنز</b>
+                          </v-row>
+                        </v-col>
+                        <v-col>
+                          <v-row align="center" justify="end">
+                            <img width='22' src="/folders/image/check32.png" class="ml-1" alt="">
+                            <b class="white--text" >طلائی</b>
+                          </v-row>
+                        </v-col>
+                      </v-row>
+                    </div>
+                  </div>
+                </v-row>
               </v-col>
             </v-row>
-          </div>    
-        </v-row>
-        <v-row justify="center" class="grey lighten-2">
-          <div class="indexDiv" >
-            <v-form ref="sendTextForm" lazy-validation>
-              <v-card outlined class="my-6" >
-                <v-row align="center">
-                    <h4 class="ma-3">
-                      دفتر حافظ منافع مشتری
-                    </h4>
-                </v-row>
-                <v-divider></v-divider>
-                <v-row class="">
-                    <v-col cols="12" sm="4" class="px-2 px-md-4 py-2 ticketForm">
-                        <label for="" class="mr-4">نام و نام خانوادگی
-                          <span class="red--text">*</span>
-                        </label>
-                        <v-text-field filled clsss="grey" :rules="nameRules" v-model="theUser.name"></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="4" class="px-2 px-md-4 py-2 ticketForm">
-                      <label for="" class="mr-4">تلفن همراه
-                        <span class="red--text">*</span>
-                      </label>
-                      <v-text-field filled clsss="grey" :rules="phoneRules" v-model="theUser.phone"></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="4" class="px-2 px-md-4 py-2 ticketForm">
-                    <label for="" class="mr-4">ایمیل</label>
-                    <v-text-field filled clsss="grey" :rules="emailRules2" v-model="theUser.mail"></v-text-field>
-                  </v-col>
-                    <v-col cols="12" class="px-4 my-4">
-                        <label for="" class="mr-4 d-block">پیشنهاد شما مربوط می شود به:
-                          <span class="red--text">*</span>
-                        </label>
-                        <v-row>
-                          <v-checkbox class="mx-3 checkboxFormOpinian" 
-                            v-model="theUser.about.first"
-                            label="قبل سفر"
-                            color="red"
-                            hide-details
-                          ></v-checkbox>
-                          <v-checkbox class="mx-3 checkboxFormOpinian"
-                            v-model="theUser.about.twice" 
-                            label="هنگام ثبت نام"
-                            color="red"
-                            hide-details
-                          ></v-checkbox>
-                          <v-checkbox class="mx-3 checkboxFormOpinian"
-                            v-model="theUser.about.Third" 
-                            label="در حین سفر"
-                            color="red"
-                            hide-details
-                          ></v-checkbox>
-                          <v-checkbox class="mx-3 checkboxFormOpinian"
-                            v-model="theUser.about.Fourth" 
-                            label="هنگام برگشت"
-                            color="red"
-                            hide-details
-                          ></v-checkbox>
-                        </v-row>
-                    </v-col>
-                    <v-col cols="12" class="px-4 my-6">
-                      <label for="" class="mr-4 d-block">موضوع طرح شده توسط شما:
-                        <span class="red--text">*</span>
-                      </label>
-                      <v-row class="">
-                        <v-checkbox class="mx-3 checkboxFormOpinian" 
-                          v-model="theUser.title.first"
-                          label="نحوه ثبت نام"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                        <v-checkbox class="mx-3 checkboxFormOpinian"
-                          v-model="theUser.title.twice" 
-                          label="خدمات پرواز"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                        <v-checkbox class="mx-3 checkboxFormOpinian"
-                          v-model="theUser.title.Third" 
-                          label="نحوه برخورد کانتر"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                        <v-checkbox class="mx-3 checkboxFormOpinian"
-                          v-model="theUser.title.Fourth" 
-                          label="ارتباط با تور لیدر"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                        <v-checkbox class="mx-3 checkboxFormOpinian"
-                          v-model="theUser.title.fifth" 
-                          label="نحوه اطلاع رسانی"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                        <v-checkbox class="mx-3 checkboxFormOpinian"
-                          v-model="theUser.title.sixth" 
-                          label="خدمات هتل"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                        <v-checkbox class="mx-3 checkboxFormOpinian"
-                          v-model="theUser.title.seventh" 
-                          label="خدمات بیمه"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                        <v-checkbox class="mr-3"
-                          v-model="theUser.title.Eighth" 
-                          label="سایر"
-                          color="red"
-                          hide-details
-                        ></v-checkbox>
-                      </v-row>
-                      <!-- <v-text-field filled clsss="grey" :rules="familyRules" v-model="user.family"></v-text-field> -->
-                    </v-col>
-                  <v-col cols="12" class="px-4 py-2 ticketForm">
-                    <label for="" class="mr-4">در صورت عقد قرار داد
-                      <span class="red--text">(شماره قرار داد وارد شود)</span></label>
-                    <v-text-field filled clsss="grey"  v-model="theUser.contractNumber"></v-text-field>
-                  </v-col>
-                  <v-col cols="12" class="px-4 py-2 ticketForm">
-                    <label for="" class="mr-4">پیام شما:
-                      <span class="red--text">( حداکثر دو خط )</span>
-                      </label>
-                    <v-textarea 
-                      v-model="theUser.text"
-                      name="input-7-1"
-                      :rules="emptyRules"
-                      variant="filled"
-                      auto-grow
-                      model-value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-                    ></v-textarea>
-                    <!-- <v-text-field filled clsss="grey" :rules="nameRules" v-model="user.name"></v-text-field> -->
-                  </v-col>
-                  
-                    <!-- <v-col cols="12" sm="6" md="4" class="px-4 px-lg-4 px-md-6 py-2">
-                        <label for="" class="mr-2">ملیت</label>
-                        <v-select :rules="emptyRules"
-                                  color="white"
-                                  class="font-small-xs"
-                                  :items="nationalities"
-                                  v-model="user.nationality"></v-select>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-3 px-lg-4 py-2" v-if="user.nationality == 'ایرانی' ">
-                        <label for="" class="mr-4">کد ملی</label>
-                        <v-text-field filled clsss="grey" pattern="\d*" type="number" v-model="user.nationalityCode" :rules="nationalNumberRules"></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-4 py-2" v-else>
-                        <label for="" class="mr-4">شماره پاسپورت</label>
-                        <v-text-field filled clsss="grey" v-model="user.passportNumber" :rules="emptyRules"></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-3 py-2">
-                        <label for="" class="mr-2">جنسیت</label>
-                        <v-select color="white"
-                                  class="font-small-xs"
-                                  :items="genders"
-                                  v-model="user.gender"
-                                  :rules="emptyRules"></v-select>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-2 px-lg-3 py-2 ">
-                        <label for="" class="mr-4">تاریخ تولد</label>
-                        <v-row class="relative">
-                            <v-col class="px-1 ">
-                                <v-select color="white"
-                                          placeholder="روز"
-                                          class="font-small-xs user-date"
-                                          :items="dateDays"
-                                          v-model="user.birthdayDay"
-                                          :rules="emptyRules"
-                                          hide-details></v-select>
-                            </v-col>
-                            <v-col class="px-1">
-                                <v-select color="white"
-                                          placeholder="ماه"
-                                          class="font-small-xs"
-                                          :items="dateMonthsPersian"
-                                          v-model="user.birthdayMonth"
-                                          :rules="emptyRules"
-                                          hide-details></v-select>
-                            </v-col>
-                            <v-col class="px-1">
-                                <v-select color="white"
-                                          placeholder="سال"
-                                          class="font-small-xs"
-                                          :items="dateYears"
-                                          v-model="user.birthdayYear"
-                                          :rules="emptyRules"
-                                          hide-details></v-select>
-                            </v-col>
-                            <span v-if="dateError && (!user.birthdayYear || !user.birthdayMonth || !user.birthdayDay)" class="caption red--text widthAll" style="font-family:Byekan !important">تاریخ تولد را مشخص کنید.</span>
-                        </v-row>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4" class="px-2 px-lg-3 py-2" v-if="user.nationality != 'ایرانی' ">
-                        <label for="" class="mr-4">تاریخ انقضا پاسپورت</label>
-                        <v-row>
-                            <v-col class="px-1">
-                                <v-select color="white"
-                                          placeholder="روز"
-                                          class="font-small-xs"
-                                          :items="dateDays"
-                                          v-model="user.expirePassDay"
-                                          :rules="emptyRules"
-                                          hide-details></v-select>
-                            </v-col>
-                            <v-col class="px-1">
-                                <v-select color="white"
-                                          placeholder="ماه"
-                                          class="font-small-xs"
-                                          :items="dateMonths"
-                                          v-model="user.expirePassMonth"
-                                          :rules="emptyRules"
-                                          hide-details></v-select>
-                            </v-col>
-                            <v-col class="px-1">
-                                <v-select color="white"
-                                          placeholder="سال"
-                                          class="font-small-xs"
-                                          :items="dateYearsPass"
-                                          v-model="user.expirePassYear"
-                                          :rules="emptyRules"
-                                          hide-details></v-select>
-                            </v-col>
-                            <span v-if="dateError && (!user.expirePassYear || !user.expirePassMonth || !user.expirePassDay)" class=" caption red--text widthAll" style="font-family:Byekan !important">تاریخ انقضا را مشخص کنید.</span>
-                        </v-row>
-                    </v-col> -->
-                </v-row> 
-                <v-row justify="end">
-                  <v-btn class="px-12 float-left ma-4" @click="sendFormOpinion" color="red" dark>ارسال</v-btn>
-                </v-row>
-              </v-card>
-            </v-form>
-            <v-dialog v-if="sendTextDialog" class="rounded-lg loginDialog"
-              v-model="sendTextDialog"
-              style="z-index: 9999999999998"
-              width="450"
-            >
-              <v-card class="pa-2 hideOver relative" style="border-radius: 10px;">
-                <div class="rounded-xl absolute grey lighten-4" style="height: 50px;width:50px;bottom:20px;right: -20px;"></div>
-                <div class="rounded-circle absolute red lighten-5" style="height: 50px;width:50px;top:-20px;left: -20px;"></div>
-                <div class="rounded-xl absolute grey lighten-4" style="height: 45px;width: 106px;bottom: -38px;right: 50%;"></div>
-                <v-icon class="absolute black--text" @click="sendTextDialog = false" style="top: 5px;right: 5px;">mdi-close</v-icon>
-                <v-row justify="center">
-                  <img class="my-6" src="/folders/image/success.png" alt="" width="130px">
-                  <h4 class="green--text text--darken-2 my-3 widthAll text-center">ارسال نظر با موفقیت انجام شد.</h4>
-                </v-row>
-              </v-card>
-            </v-dialog>
           </div>
         </v-row>
+        <v-row class="mt-12" justify="center" style="background:#eeeeeb">
+          <div class="my-12 indexDiv">
+            <h3 class="text-center">
+              به محض ثبت نام شما در سایت آهوان به مرحله نقره‌ای دست پیدا خواهید کرد 
+            </h3>
+            <p class="mt-3 widthAll text-center body-2" style="font-family:Byekan !important">و هرچه پروفایل خود را تکمیل‌تر نمائید به درجات بیشتری دسترسی پیدا خواهید کرد و دست یافتن به سایر درجات برنز و طلائی راحت‌تر می‌شود.</p>
+            <v-row class="my-12">
+              <v-col cols="4" class="px-2">
+                <div class="widthAll white py-2 mt-6 heightAll">
+                  <v-row justify="center" class="relative">
+                    <div class="absolute rounded-circle" style="width:55px;height:55px;top:-35px;background:#bf0000">
+                      <v-row class="heightAll" align="center">
+                        <img class="mr-2" src="/folders/image/test/medal.png" alt="">
+                      </v-row>
+                    </div>
+                    <h4 class="d-inline-block font-small-title-xs mt-9" style="color:#bf0000">امکانات کارت نقره‌ای</h4>
+                    <ol class="mr-8 my-3">
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">در کلیه مراحل پاسخ‌گوئی/ثبت نام/اخذ کارت پرواز/چک‌این هتل ها شما در اولویت هستید.</li>
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">تخفیفات ویژه در اکثر محصولات شرکت آهوان مثل هتل اختصاصی 4 ستاره مشهد و تهران.</li>
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">انتقال امتیاز ویژه برای شما میهمان وفادار در ایام خاص شخصی شما و شرکت.</li>
+                    </ol>
+                  </v-row>
+                </div>
+                
+              </v-col>
+              <v-col cols="4" class="px-2">
+                <div class="widthAll white py-2 mt-6  heightAll">
+                  <v-row justify="center" class="relative">
+                    <div class="absolute rounded-circle" style="width:55px;height:55px;top:-35px;background:#bf0000">
+                      <v-row class="heightAll" align="center">
+                        <img class="mr-2" src="/folders/image/test/medal.png" alt="">
+                      </v-row>
+                    </div>
+                    <h4 class="d-inline-block font-small-title-xs mt-9" style="color:#bf0000">امکانات کارت برنز</h4>
+                    <ol class="mr-8 my-3">
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">بیش از 2% تخفیف در کلیه پکیج‌های سفر</li>
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">خدمات رسانی رایگان درب منازل</li>
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">تخفیف بالای 30% در هتل‌های اختصاصی آهوان در مشهد و شمال(رامسر)</li>
+                    </ol>
+                  </v-row>
+                </div>
+                
+              </v-col>
+              <v-col cols="4" class="px-2">
+                <div class="widthAll white py-2 mt-6  heightAll">
+                  <v-row justify="center" class="relative">
+                    <div class="absolute rounded-circle" style="width:55px;height:55px;top:-35px;background:#bf0000">
+                      <v-row class="heightAll" align="center">
+                        <img class="mr-2" src="/folders/image/test/medal.png" alt="">
+                      </v-row>
+                    </div>
+                    <h4 class="d-inline-block font-small-title-xs mt-9 " style="color:#bf0000">امکانات کارت طلائی</h4>
+                    <ol class="mr-8 my-3">
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">استفاده از خدمات ترانسفر رایگان یک طرفه از منزل به هتل</li>
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">جایگاه رایگان CIP در پرواز های چارتر آهوان (خارجی)</li>
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">ارسال آخرین تعرفه تخفیفات ویژه در کلیه مسیرها</li>
+                      <li class="body-2 mt-3" style="font-family:Byekan !important;line-height: 25px;">خدمات رسانی درب منزل</li>
+                    </ol>
+                  </v-row>
+                </div>
+                
+              </v-col>
+            </v-row>
+          </div>
+        </v-row>
+        <v-row class="mt-12 " justify="center">
+          <div class="indexDiv ">
+            <v-row>
+              <v-col cols="12" md="5" class="">
+                <v-row class="py-12" justify="center" align="center" style="background:#eeeeeb">
+                  <div class="white rounded-circle" style="height: 300px;width: 300px;">
+                    <v-row class="heightAll rounded-lg" justify="center" align="center">
+                      <img class="main-page-sectionImage" height="200" width="200" src="/folders/image/باشگاه-مشتریان.png" alt="">
+                    </v-row>
+                  </div>
+                </v-row>
+              </v-col> 
+              <v-col cols="12" md="1" class="">
+                <v-row class="heightAll" align="center">
+                  <div class="widthAll mx-6" style="height: 300px;background-color: #bf0000;"></div>
+                </v-row>
+              </v-col>
+              <v-col cols="12" md="6" class=""> 
+                <h2 class="d-inline-block font-small-title-xs mt-12">چگونه امتیازات خود را افزایش دهیم؟</h2>
+                <div >
+                  <p class="text-justify mt-3 mt-sm-3 font-small-xs paragraph " style="font-family:Byekan !important">
+                    شما می‌توانید با روش‌های ذیل امتیازات خود را افزایش داده و به عضویت کارت‌هایی با رتبه بهتر دست یابید:
+                  </p>
+                  <ol class="mr-6 mt-4 mb-12 ">
+                    <li class="mt-2">ثبت نام و تکمیل پروفایل کاربری</li>
+                    <li class="mt-2">معرفی محصولات آهوان به دیگر دوستان</li>
+                    <li class="mt-2" style="font-family:Byekan !important">ثبت نظر و امتیاز به محصولات هتل-پرواز-تور</li>
+                    <li class="mt-2" style="font-family:Byekan !important">ثبت خاطرات نو در برنامه وبلاگ آهوان(خاطرات شما)</li>
+                    <li class="mt-2" style="font-family:Byekan !important">شرکت در نظرسنجی و مسابقات ویژه</li>
+                    <li class="mt-2" style="font-family:Byekan !important">خرید محصولات مختلف سایت</li>
+                  </ol>
+                
+                </div>
+              </v-col>
+            </v-row>
+          </div>
+        </v-row>
+        <v-row class="mb-6" justify="center">
+          <div class="indexDiv relative">
+            <v-skeleton-loader class="mb-5 textLoader"
+              type="chip"
+              :loading="isLoading"
+            >
+              <div class="d-inline-block mt-1 ml-1 ml-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+              <h3 class="d-inline-block font-small-title-xs mt-6">پرسش و پاسخ</h3>
+              <div class="d-inline-block mt-1 mr-1 mr-sm-4 " style="height:3px;width:60px;background-color: #bf0000 !important;"></div>
+            </v-skeleton-loader>
+            <v-expansion-panels multiple class="ltr questionPanell" >
+              <v-expansion-panel class="white"
+                v-for="(item,i) in questions3"
+                :key="i"
+              >
+                <v-skeleton-loader class="my-2 my-sm-6"
+                  type="list-item-avatar"
+                  :loading="isLoading"
+                >
+                  <v-card class="py-2">
+                    <v-row class="">
+                      <v-expansion-panel-header class="">
+                        <v-icon color="#bf0000" large class="mx-3 float-right">mdi-chat-question</v-icon>
+                        <span class="float-right questionText mt-sm-2 font-small-xs">{{item.question}}</span>
+                      </v-expansion-panel-header>
+                    </v-row>
+                    <v-row>
+                      <v-expansion-panel-content>
+                        <span class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer}}
+                        </span>
+                        <br v-if="item.answer2">
+                        <span v-if="item.answer2" class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer2}}
+                        </span>
+                        <br v-if="item.answer3">
+                        <span v-if="item.answer3" class="answerText grey--text text--darken-2 font-small-xs">
+                          {{item.answer3}}
+                        </span>
+                      </v-expansion-panel-content>
+                    </v-row>
+                  </v-card>
+                </v-skeleton-loader>
+              </v-expansion-panel>             
+            </v-expansion-panels>
+          </div>
+        </v-row>
+        <!-- </v-parallax> -->
+        
+        
         <!-- loading -->
         <div v-if="isLoading || isLoadingAxios" class="widthAll heightAll d-flex fixed align-center justify-center" style="z-index:9998 ;top:0;right:0;background:#00000048">
           <img src="/folders/image/logo-header.png" class="white pa-12 rounded-xl" alt="">
@@ -809,7 +822,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="/folders/dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
     <script src="/folders/dist/mds.bs.datetimepicker.js"></script>
-    <script src="/folders/js/tour/europ.js"></script>
+    <script src="/folders/js/visa.js"></script>
     <script
       src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
       integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="

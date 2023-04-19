@@ -772,7 +772,7 @@
             <div class="mb-12 indexDiv main-div" style="z-index: 3">
               <h1 class="white--text countryNmae px-12 d-inline-block">اسپانیا - ترکیه</h1>
               <br>
-              <b class="white--text px-12 tour-date">تاریخ حرکت : 28 اسفند</b>
+              <b class="white--text px-12 tour-date">تاریخ حرکت : 9 خرداد</b>
               <!-- <v-row style="overflow-x: scroll;">
                 <div>
                   <v-row class="tourPageTitle mt-12 mt-sm-0 mt-lg-12 pt-sm-6 pt-md-12">
@@ -796,10 +796,13 @@
                     <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 2 && 'active'" @click="tab = 2">مدارک مورد نیاز</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ active }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'active'" @click="tab = 3">مسیر تور</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 3 && 'active'" @click="tab = 3">نکات ضروری</h3>
                   </v-slide-item>
                   <v-slide-item v-slot="{ active }">
-                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'active'" @click="tab = 4">گالری تصاویر</h3>
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 4 && 'active'" @click="tab = 4">مسیر تور</h3>
+                  </v-slide-item>
+                  <v-slide-item v-slot="{ active }">
+                    <h3 class="py-2 py-md-4 px-2 px-sm-4 px-lg-8 cursorPointer tabTitles relative" :class="tab == 5 && 'active'" @click="tab = 5">گالری تصاویر</h3>
                   </v-slide-item>
                 </v-slide-group>
               </v-row>
@@ -811,9 +814,9 @@
                       <ul class="mt-md-9 mr-md-6">
                         <li class="my-3 grey--text text--darken-3 bold text-tour">بيمه ي مسافرتي</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">هزینه اخذ ويزاي شنگن</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">ترانسفرفرودگاهی با اتوبوس هاي توريستي</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">بلیط رفت و برگشت هواپیمادر مسیرهای بین المللی</li>
-                        <li class="my-3 grey--text text--darken-3 bold text-tour">اقامت در هتل هاي چهار ستاره وپنج ستاره همراه با صبحانه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">ترانسفر فرودگاهی با اتوبوس هاي توريستي</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">اقامت در هتل هاي پنج ستاره همراه با صبحانه</li>
+                        <li class="my-3 grey--text text--darken-3 bold text-tour">بلیط رفت و برگشت هواپیمادر مسیرهای بین المللی و داخلی</li>
                         <li class="my-3 grey--text text--darken-3 bold text-tour">گشت شهری با اتوبوسهای توریستی به همراه تورلیدرفارسی زبان</li>
                       </ul>
                     </v-col>
@@ -831,7 +834,7 @@
                       <v-row class="mt-3" justify="center">
                         <v-data-table hide-default-footer hide-default-header style="box-shadow: 0 0 21px #dbdbdb !important;"
                           :headers="priceHeaders"
-                          :items="prices7"
+                          :items="prices07"
                           class="even-odd-tabel rounded-lg hideOver tabelTour"
                         >
                         <template
@@ -859,37 +862,31 @@
                         ﮔﺸﺖ ﺷﻬﺮﯼ مادرید شامل ﺑﺎﺯﺩﯾﺪ ﺍﺯ خیابان گرنویا،میدان شهرداری،میدان گاو بازی،بازار سن میگل و ...
                       </p>
                       <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز سوم :</b>
-                        ﮔﺸﺖ ﺷﻬﺮﯼ و ﺑﺎﺯﺩﯾﺪ ﺍﺯ شهر قرون وسطایی Toledo
-                      </p>
-                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز چهارم :</b>
                         ترانسفر به والنسیا و انتقال به هتل
                       </p>
-                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز پنجم :</b>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز چهارم :</b>
                         گشت شهری والنسیا
                       </p>
-                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز ششم :</b>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز پنجم :</b>
                         ترانسفر به بارسلون و انتقال به هتل 
                       </p>
-                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هفتم :</b>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز ششم :</b>
                         ﮔﺸﺖ ﺷﻬﺮﯼ بارسلون و بازدید از کلیسای ساگرادافامیلیا 
                       </p>
-                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هشتم :</b>
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هفتم :</b>
                         ﮔﺸﺖ ﺷﻬﺮﯼ بارسلون و بازدید از تپه Montjuic و تله کابین 
                       </p>
+                      <p class="my-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز هشتم :</b>
+                        وقت آزاد
+                      </p>
                       <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز نهم :</b>
-                        وقت آزاد
-                      </p>
-                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دهم :</b>
-                        وقت آزاد
-                      </p>
-                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز یازدهم :</b>
                         ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻓﺮﻭﺩﮔﺎﻩ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪاستانبول و انتقال به هتل
                       </p>
-                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دوازدهم :</b>
-                        گشت شهری استانبول همراه با صرف شام
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز دهم :</b>
+                        وقت آزاد همراه با صرف شام
                       </p>
-                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز سیزدهم :</b>
-                        ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻓﺮﻭﺩﮔﺎﻩ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ ﺗﻬﺮﺍﻥ
+                      <p class="mt-3 grey--text text--darken-3 bold text-tour" style="font-family:Byekan !important"><b class="grey--text text--darken-3">روز یازدهم :</b>
+                        ﺍﻧﺘﻘﺎﻝ ﺑﻪ ﻓﺮﻭﺩﮔﺎﻩ ﺟﻬﺖ ﭘﺮﻭﺍﺯ ﺑﻪ تهران
                       </p>
                     </v-col>
                     <div class="d-lg-none widthAll my-sm-4 px-12">
@@ -897,7 +894,7 @@
                     </div>
                     <v-col cols="12" lg="6">
                       <v-row class="mb-7" justify="center">
-                        <h2 class="tabel-tour-title"> حرکت 28 اسفند هواپیمایی</h2>
+                        <h2 class="tabel-tour-title"> حرکت 9 خرداد هواپیمایی</h2>
                         <img src="/folders/image/tour/Turkish_Airlines_logo.png" class="mr-3 logo-tour-title" alt="">
                       </v-row>
                       <v-row justify="center">
@@ -905,7 +902,7 @@
                           hide-default-footer
                           hide-default-header
                           :headers="flightHeaders"
-                          :items="flights6"
+                          :items="flights07"
                           class="even-odd-tabel rounded-lg hideOver tabelTour tourPlan"
                         >
                         </v-data-table>
@@ -994,7 +991,25 @@
                     </v-col>
                   </v-row>
                 </div>
-                <div class="widthAll" v-else-if="tab == 4">
+                <div class="widthAll" v-else-if="tab == 3">
+                  <v-row>
+                    <ul class="my-6 mr-6">
+                      <li class="my-3 grey--text text--darken-3 bold text-tour">
+                        هزینه تست PCR (رفت و برگشت) بر عهده خود مسافر می‌باشد.
+                      </li>
+                      <li class="my-3 grey--text text--darken-3 bold text-tour">
+                        شرایط سفر و اجرای تور با توجه به قوانین کشور مقصد در خصوص کرونا امکان تغییر دارد.
+                      </li>
+                      <li class="my-3 grey--text text--darken-3 bold text-tour">
+                        هزینه عوارض خروج از کشور و همچنین سفارت هایی که نیاز به ترجمه مدارک می‌باشد،هزینه دارالترجمه برعهده مسافرین محترم می‌باشد.
+                      </li>
+                      <li class="my-3 grey--text text--darken-3 bold text-tour">
+                        مسافرین محترمی کهدر 4 سال گذشته از سفارت فرانسه دارای ویزای شنگن بوده‌اند،کلیه ی مراحل اخذ ویزای ایشان در سفارت فراسه به صورت غیر حضوری انجام خواهد شد.
+                      </li>
+                    </ul>
+                  </v-row>  
+                </div>
+                <div class="widthAll" v-else-if="tab == 5">
                   <v-row justify="center">
                   
                     <div class="d-inline-block galeryImageParent" v-for="(item,i) in urope005Images" :keys="i">

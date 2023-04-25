@@ -159,23 +159,15 @@
                     <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                   </a>
                 </v-skeleton-loader>
-                <v-skeleton-loader class="textLoader d-inline-block"
-                  type="chip"
-                  :loading="isLoading"
-                >
-                  <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
-                </v-skeleton-loader>
+                
               
-                <v-skeleton-loader class="textLoader d-inline-block"
-                  type="chip"
-                  :loading="isLoading"
-                >
+              
                 <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
                 <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
                   type="chip"
                   :loading="isLoading"
                 >
-                  <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                  <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
                   <div class="absolute show-sub-menu" style="right:-19%">
                     <v-list nav dense>
                       <div v-for="(link, i) in links" :key="i" class="">
@@ -284,19 +276,13 @@
                           </v-list-item-title>
                         </v-list-item>
                       </a>
-                      <a href="" class="text-decoration-none">
-                        <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                          <v-icon class="ml-2">mdi-train-car</v-icon>
-                          <v-list-item-title>تور</v-list-item-title>
-                        </v-list-item>
-                      </a>
-                      <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
+                      <v-list-item  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تور' ? '#f6d2cb' : ''}" class="rounded-lg">
                         <v-icon class="ml-2">mdi-account-group</v-icon>
-                        <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                        <v-list-item-title>تور</v-list-item-title>
                         
                       </v-list-item>
                       <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
-                        <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                        <div v-if="activeLinkMenuHeader == 'تور'">
                           <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
                             <v-list-group
                                 :key="link.text"
@@ -533,55 +519,7 @@
           selectedSection.title == 'اتوبوس' ? './folders/image/main-page-image5.jpg' : 
           selectedSection.title == 'قطار' ? './folders/image/main-page-image6.jpg' : 
           './folders/image/main-page-image7.jpg'" class="mt-1" width="100%" alt="" > -->
-          <div v-if="(new Date('2023/3/21').getTime()) - (new Date().getTime()) > 0" id="flipdownParent" class=" absolute">
-            <v-skeleton-loader class="mt-9"
-                type="chip"
-                :loading="isLoading"
-              >
-                <h2 class="text-center ">
-                  <span class="white--text px-6 countDownText" style="background: linear-gradient(93deg, rgb(255 0 0) 0%, rgb(158 0 0) 76%);">
-                    زمان مانده تا 
-                    سال تحویل 1402 هجری شمسی
-                  </span>
-                </h2>
-              </v-skeleton-loader>
-            <div class="indexDiv mt-md-2" >
-              <v-row justify="center">
-                <div class="countDownDiv d-inline-block bold">
-                  <v-row justify="center" align="center" class="heightAll white--text">
-                    {{flipSeconds}}
-                  </v-row>
-                  <v-row justify="center" align="center" class="">
-                    <b class="grey--text text--darken-3 countDownSmallText" >ثانیه</b>
-                  </v-row>
-                </div>
-                <div class="countDownDiv d-inline-block bold mx-2">
-                  <v-row justify="center" align="center" class="heightAll white--text">
-                    {{flipMinutes}}
-                  </v-row>
-                  <v-row justify="center" align="center" class="">
-                    <b class="grey--text text--darken-3 countDownSmallText" >دقیقه</b>
-                  </v-row>
-                </div>
-                <div class="countDownDiv d-inline-block bold ml-2">
-                  <v-row justify="center" align="center" class="heightAll white--text">
-                    {{flipHours}}
-                  </v-row>
-                  <v-row justify="center" align="center" class="">
-                    <b class="grey--text text--darken-3 countDownSmallText" >ساعت</b>
-                  </v-row>
-                </div>
-                <div class="countDownDiv d-inline-block bold">
-                  <v-row justify="center" align="center" class="heightAll white--text">
-                    {{flipDays}}
-                  </v-row>
-                  <v-row justify="center" align="center" class="">
-                    <b class="grey--text text--darken-3 countDownSmallText" >روز</b>
-                  </v-row>
-                </div>
-              </v-row>
-            </div>
-          </div>
+          
         </v-row>
         <!-- <div v-show="!isLoading" id="flipdown" class="flipdown"></div> -->
         <v-row justify="center">
@@ -754,7 +692,7 @@
                           <v-icon class="showPopup" style="color:#424242">
                             mdi-calendar-month
                           </v-icon>
-                          {{date1 ? date1 : 'انتخاب تاریخ'}}
+                          {{selectedDate ? selectedDate : 'انتخاب تاریخ'}}
                         </div>
                       </div>
                     </v-skeleton-loader>
@@ -1546,7 +1484,7 @@
                       </p>
                       <v-row justify="end">
                         <a :href="item.link" class="text-decoration-none">
-                          <v-btn dark color="#bf0000" to="/jkjkj" class="py-0 mb-6 rounded-xl caption">مشاهده بیشتر</v-btn>
+                          <v-btn dark color="#bf0000"  class="py-0 mb-6 rounded-xl caption">مشاهده بیشتر</v-btn>
                         </a>
                       </v-row>
                     </div>

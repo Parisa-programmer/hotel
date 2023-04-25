@@ -17,7 +17,7 @@ new Vue({
     // header
     links: [
       {
-        text: 'تور نوروز 1402',
+        text: 'تور',
         subLinks: [
           {
             text: 'اروپا',
@@ -106,21 +106,6 @@ new Vue({
             active: false,
             sub2: [
               {
-                text: '5 شب و 6 روز',
-                link: '/tour/Istanbul/تور-5-شب-ویژه-نوروز/',
-                new: true,
-              },
-              {
-                text: '6 شب و 7 روز',
-                link: '/tour/Istanbul/تور-6-شب-ویژه-نوروز/',
-                new: true,
-              },
-              {
-                text: '7 شب و 8 روز',
-                link: '/tour/Istanbul/تور-7-شب-ویژه-نوروز/',
-                new: true,
-              },
-              {
                 text: '3 شب و 4 روز',
                 link: '/tour/Istanbul/003-4/',
               },
@@ -138,11 +123,6 @@ new Vue({
             text: 'دبی',
             active: false,
             sub2: [
-              {
-                text: '5 شب و 6 روز',
-                link: '/tour/Dubai/تور-5-شب-ویژه-نوروز/',
-                new: true,
-              },
               {
                 text: '3 شب و 4 روز',
                 link: '/tour/Dubai/تور-3-شب-دبی/'

@@ -18,7 +18,7 @@ new Vue({
   data: {
     links: [
       {
-        text: 'تور نوروز 1402',
+        text: 'تور',
         subLinks: [
           {
             text: 'اروپا',
@@ -106,21 +106,7 @@ new Vue({
             text: 'استانبول',
             active: false,
             sub2: [
-              {
-                text: '5 شب و 6 روز',
-                link: '/tour/Istanbul/تور-5-شب-ویژه-نوروز/',
-                new: true,
-              },
-              {
-                text: '6 شب و 7 روز',
-                link: '/tour/Istanbul/تور-6-شب-ویژه-نوروز/',
-                new: true,
-              },
-              {
-                text: '7 شب و 8 روز',
-                link: '/tour/Istanbul/تور-7-شب-ویژه-نوروز/',
-                new: true,
-              },
+              
               {
                 text: '3 شب و 4 روز',
                 link: '/tour/Istanbul/003-4/',
@@ -139,11 +125,7 @@ new Vue({
             text: 'دبی',
             active: false,
             sub2: [
-              {
-                text: '5 شب و 6 روز',
-                link: '/tour/Dubai/تور-5-شب-ویژه-نوروز/',
-                new: true,
-              },
+              
               {
                 text: '3 شب و 4 روز',
                 link: '/tour/Dubai/تور-3-شب-دبی/'
@@ -972,9 +954,9 @@ new Vue({
         from: 'پرواز از تهران به شرمیتوا',
         time1: '--',
         time2: '5:30',
-        time3: '18:00',
+        time3: '17:00',
         time4: '--',
-        time5: '18:00',
+        time5: '5:30',
         time6: '--',
         time7: '5:30',
       },
@@ -983,9 +965,9 @@ new Vue({
         from: 'پرواز از شرمیتوا به تهران',
         time1: '--',
         time2: '11:15',
-        time3: '23:35',
+        time3: '22:45',
         time4: '--',
-        time5: '23:35',
+        time5: '11:00',
         time6: '--',
         time7: '11:15',
       },
@@ -1773,6 +1755,7 @@ new Vue({
     pricesItemsDubai3: [],
     pricesItemsDubai4: [],
     pricesItemsMoskow: [],
+    pricesItemsMoskow2: [],
     pricesItemsThailand: [
       {
         id: 1,
@@ -1867,6 +1850,32 @@ new Vue({
       {
         src: '/folders/image/tour/moscow-005.jpg',
         title: 'آسمن خراش های هفت خواهران مسکو'
+      },
+    ],
+    moscowImages2: [
+      {
+        src: '/folders/image/tour/moscow-001.jpg',
+        title: 'کاخ کرملین مسکو'
+      },
+      {
+        src: '/folders/image/tour/moscow-002.jpg',
+        title: 'کلیسای معراج کولومنسکویه'
+      },
+      {
+        src: '/folders/image/tour/moscow-003.jpg',
+        title: 'مرکز خرید ماننایا پلوشاد'
+      },
+      {
+        src: '/folders/image/tour/moscow-004.jpg',
+        title: 'میدان سرخ'
+      },
+      {
+        src: '/folders/image/tour/moscow-005.jpg',
+        title: 'آسمن خراش های هفت خواهران مسکو'
+      },
+      {
+        src: '/folders/image/پکیج مسکو.jpg',
+        title: 'پکیج مسکو'
       },
     ],
     thilandImages: [
@@ -4918,27 +4927,27 @@ new Vue({
       {
         نام: 'HOLIDAY INN SELIGERSKAYA',
         درجه: 4,
-        دوتخته: 19900000,
-        تکنفره: 25900000,
-        کودک: 13000000,
-        کودک2: 12000000,
+        دوتخته: '22.700.000',
+        تکنفره: '27.990.000',
+        کودک: '18.000.000',
+        کودک2: '12.000.000',
         کمیسیون: 800000
       },
       {
         نام: 'HOLIDAY INN SOKOLNIKI',
         درجه: 4,
-        دوتخته: 23500000,
-        تکنفره: 29000000,
-        کودک: 14000000,
-        کودک2: 12000000,
+        دوتخته: '24.850.000',
+        تکنفره: '32.400.000',
+        کودک: '20.200.000',
+        کودک2: '12.000.000',
         کمیسیون: 1200000
       },
       {
         نام: 'GOLDEN RING HOTEL MOSCOW',
         درجه: 5,
-        دوتخته: 32900000,
-        تکنفره: 46000000,
-        کودک: 28500000,
+        دوتخته: '34.000.000',
+        تکنفره: '50.800.000',
+        کودک: '23.500.000',
         کودک2: 12000000,
         کمیسیون: 1500000
       },
@@ -4956,6 +4965,41 @@ new Vue({
         baby2: newObjectDate7[i].کودک2,
       })
       this.pricesItemsMoskow = pricesItemsMoskow;
+    }
+    // __________________________________________
+    let newObjectDate7_2 = [
+      {
+        نام: 'Vega Hotel',
+        درجه: 4,
+        دوتخته: 48900000,
+        تکنفره: 68000000,
+        کودک: 43700000,
+        کودک2: 28500000,
+        کمیسیون: 1600000
+      },
+      {
+        نام: 'Holiday inn Vorota',
+        درجه: 4,
+        دوتخته: 48900000,
+        تکنفره: 68000000,
+        کودک: 43700000,
+        کودک2: 28500000,
+        کمیسیون: 1600000
+      },
+    ]
+    var pricesItemsMoskow2 = []
+    for (let i = 0; i < newObjectDate7_2.length; i++) {
+      pricesItemsMoskow2.push({
+        id: i + 1,
+        name: newObjectDate7_2[i].نام,
+        star: newObjectDate7_2[i].درجه,
+        coosion: newObjectDate7_2[i].کمیسیون,
+        duble: newObjectDate7_2[i].دوتخته,
+        single: newObjectDate7_2[i].تکنفره,
+        baby: newObjectDate7_2[i].کودک,
+        baby2: newObjectDate7_2[i].کودک2,
+      })
+      this.pricesItemsMoskow2 = pricesItemsMoskow2;
     }
     // __________________________________________
   },

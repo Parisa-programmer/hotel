@@ -96,23 +96,15 @@
                       <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                     </a>
                   </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
-                  </v-skeleton-loader>
+                  
                 
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
+                
                   <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
                   <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
                     <div class="absolute show-sub-menu" style="right:-19%">
                       <v-list nav dense>
                         <div v-for="(link, i) in links" :key="i" class="">
@@ -221,19 +213,13 @@
                             </v-list-item-title>
                           </v-list-item>
                         </a>
-                        <a href="" class="text-decoration-none">
-                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                            <v-icon class="ml-2">mdi-train-car</v-icon>
-                            <v-list-item-title>تور</v-list-item-title>
-                          </v-list-item>
-                        </a>
-                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
+                        <v-list-item  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تور' ? '#f6d2cb' : ''}" class="rounded-lg">
                           <v-icon class="ml-2">mdi-account-group</v-icon>
-                          <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          <v-list-item-title>تور</v-list-item-title>
                           
                         </v-list-item>
                         <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
-                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                          <div v-if="activeLinkMenuHeader == 'تور'">
                             <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
                               <v-list-group
                                   :key="link.text"
@@ -440,7 +426,7 @@
                   قبلا ثبت نام نکرده اید؟
                   <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
                 </span>
-                <span v-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                <span v-else-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
                   {{loginForm.phone}}
                   <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
                 </span>
@@ -477,55 +463,7 @@
                 <div class="mx-12 widthAll">
                   <!-- <h3>تور های دبی نوروز <span class="red--text">1402</span></h3> -->
                 </div>
-                <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard relative ">
-                  <v-row >
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="rounded-lg hideOver">
-                        <div style="height:100px;width:250px">
-                          <img class="rounded-lg tourImage" src="/folders/image/tour/dobai-3.jpg" height="100%" alt="دبی" width="100%">
-                        </div>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="" style="font-family:Byekan !important" >دبی - 5 شب و 6 روز</h4>
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-3">
-                        <img src="/folders/image/iranairtour.png" width='40' alt="ایرتور">
-                        <img src="/folders/image/tour/gheshm-logo.jpg" width='80' alt="قشم ایر">
-                        <img src="/folders/image/tour/mahan-logo.jpg" width='60' alt="ماهان ایر">
-                      </v-row>
-                      <v-row justify="center">
-                        <span class="body-2 mt-2 mt-sm-3" style="font-family:Byekan !important">روز های پرواز: همه روزه</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="mt-sm-4">
-                        هتل های 3 و 4 و 5 ستاره
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  25.900.000 تومان</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <img src="/folders/image/newYearcard.png" alt="" class="absolute newYearcard" style="left:12px;top:-4px;height: 111px;">
-                      <!-- <h3 class="red--text absolute white" style="transform: rotate(-30deg);left:0;top:12px">ویژه نوروز</h3> -->
-                      <v-row justify='center'>
-                        <a href="./تور-5-شب-ویژه-نوروز/" class="text-decoration-none mt-8">
-                          <v-btn color="red" dark >مشاهده جزئیات</v-btn>
-                        </a>
-                      </v-row>
-                    </v-col>
-                  </v-row>
-                </div>
+                
                 <div class="mx-12 mt-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard">
                   <v-row >
                     <v-col cols="12" sm="6" lg="3">

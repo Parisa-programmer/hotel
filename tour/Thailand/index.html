@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="description" content="تور تایلند نوروز 1402 یکی از محبوب ترین تورها در نوروز امسال خواهد بود. این کشور به دلیل جذابیت های خاص توریستی همواره مورد توجه توریست های ایرانی بوده است.">
+    <meta name="description" content="تور تایلند یکی از محبوب ترین تورها در امسال خواهد بود. این کشور به دلیل جذابیت های خاص توریستی همواره مورد توجه توریست های ایرانی بوده است.">
 
     <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
@@ -97,23 +97,15 @@
                       <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                     </a>
                   </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
-                  </v-skeleton-loader>
+                  
                 
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
+                
                   <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
                   <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
                     <div class="absolute show-sub-menu" style="right:-19%">
                       <v-list nav dense>
                         <div v-for="(link, i) in links" :key="i" class="">
@@ -222,19 +214,13 @@
                             </v-list-item-title>
                           </v-list-item>
                         </a>
-                        <a href="" class="text-decoration-none">
-                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                            <v-icon class="ml-2">mdi-train-car</v-icon>
-                            <v-list-item-title>تور</v-list-item-title>
-                          </v-list-item>
-                        </a>
-                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
+                        <v-list-item  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تور' ? '#f6d2cb' : ''}" class="rounded-lg">
                           <v-icon class="ml-2">mdi-account-group</v-icon>
-                          <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          <v-list-item-title>تور</v-list-item-title>
                           
                         </v-list-item>
                         <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
-                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                          <div v-if="activeLinkMenuHeader == 'تور'">
                             <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
                               <v-list-group
                                   :key="link.text"
@@ -464,9 +450,8 @@
           <v-row justify="center">
             <div class="my-6 indexDiv">
               <h1 class="px-12">مقدمه:</h1>
-              <p class="text-justify answerText mt-4 px-12">نوروز امسال با توجه به اینکه با ماه رمضان همزمان شده است با سال های دیگر متفاوت است.
-                <b>تور تایلند نوروز 1402</b>
-                 به دلیل بعضی محدودیت های ماه رمضان در کشورهای اسلامی مانند: ترکیه، اندونزی و امارات می تواند بهترین انتخاب امسال برای مسافرت باشد.</p>
+              <p class="text-justify answerText mt-4 px-12"> امسال                 
+                 به دلیل بعضی محدودیت ها در کشورهای اسلامی مانند: ترکیه، اندونزی و امارات می تواند بهترین انتخاب امسال برای مسافرت باشد.</p>
               
               <v-row justify="center">
                
@@ -522,7 +507,7 @@
                   </v-row>
                 </div>
               </v-row>
-              <h2 class="px-12 mt-8"> با انتخاب  تور تایلند نوروز 1402 از چه مکان هایی می توانید دیدن کنید؟</h2>
+              <h2 class="px-12 mt-8"> با انتخاب  تور تایلند از چه مکان هایی می توانید دیدن کنید؟</h2>
               <p class="text-justify answerText mt-4 px-12">
                 کشور تایلند نه تنها برای توریست های ایرانی بلکه برای توریست های سراسر جهان جذابیت دارد. در این بخش به مهمترن موارد این جذابیت ها اشاره خواهیم کرد:
                 <br>
@@ -539,31 +524,31 @@
                   4.	همچنین با  تور تایلند نوروز 1402 علاوه بر موارد ذکر شده می توانید از مراکز خرید متعدد، معابد قدیمی و سواحل زیبای این کشور استفاده نمایید.
                 </p>
               </p>
-              <h2 class="px-12 mt-8">بهترین  تور تایلند نوروز 1402 را از کدام آژانس مسافرتی تهیه نماییم؟</h2>
+              <h2 class="px-12 mt-8">بهترین  تور تایلند  را از کدام آژانس مسافرتی تهیه نماییم؟</h2>
               <p class="text-justify answerText mt-4 px-12">
-                تور تایلند نوروز 1402 را می توانید به صورت پک کامل و یا به صورت جداگانه یعنی: تور پوکت، تور تایلند، تور بانکوک، تور پاتایا، تور دور تایلند را خرید نمایید. شهرهای مختلف این کشور جاذبه های خاص خود را دارد. ولی یکی از مهمترین موارد در خصوص تور های کشور های خارجی محل خرید این تور های می باشد. زیرا که در صورت ناهماهنگی مسافران در کشور غریب دچار مشکل و هزینه اضافی خواهند شد. پیشنهاد ما به شما در این خصوص شرکت آهوان تور می باشد.
+                تور تایلند را می توانید به صورت پک کامل و یا به صورت جداگانه یعنی: تور پوکت، تور تایلند، تور بانکوک، تور پاتایا، تور دور تایلند را خرید نمایید. شهرهای مختلف این کشور جاذبه های خاص خود را دارد. ولی یکی از مهمترین موارد در خصوص تور های کشور های خارجی محل خرید این تور های می باشد. زیرا که در صورت ناهماهنگی مسافران در کشور غریب دچار مشکل و هزینه اضافی خواهند شد. پیشنهاد ما به شما در این خصوص شرکت آهوان تور می باشد.
               </p>
               <h2 class="px-12 mt-8">ویژگی های منحصر بفرد  شرکت آهوان تور</h2>
               <p class="text-justify answerText mt-4 px-12">
-                این شرکت هم در زمینه  تور تایلند نوروز 1402 و هم در زمینه تور های دیگر یکی از حرفه ای ترین ها می باشد. در این بخش به ویژگی های این شرکت خدمات گردشگری اشاره خواهیم کرد:
+                این شرکت هم در زمینه  تور تایلند و هم در زمینه تور های دیگر یکی از حرفه ای ترین ها می باشد. در این بخش به ویژگی های این شرکت خدمات گردشگری اشاره خواهیم کرد:
                 <br>
                 <p class="mr-12">
                   1.	این شرکت دارای 52 سال سابقه در زمینه خدمات گردشگری می باشد. این خدمات همر در زمینه تور های داخلی و هم تور های خارجی میباشد.
                 </p>
                 <p class="mr-12">
-                  2.	تور پوکت نوروز 1402 و هر تور به مقصد های دیگر را را به راحتی و به صورت رزرو آنلاین از این شرکت می توانید تهیه نمایید. زیرا که این شرکت دارای خدمات آنلاین رزرو می باشد. 
+                  2.	تور پوکت و هر تور به مقصد های دیگر را را به راحتی و به صورت رزرو آنلاین از این شرکت می توانید تهیه نمایید. زیرا که این شرکت دارای خدمات آنلاین رزرو می باشد. 
                 </p>
                 <p class="mr-12">
-                  3.	خرید تور پاتایا نوروز 1402 و تمامی تور های دیگر از این شرکت را با اطمینان خاطر به  صورت آنلاین انجام دهید. زیرا که سایت این شرکت دارای تمامی نماد های مربوط به تجارت الکترونیک می باشد. 
+                  3.	خرید تور پاتایا و تمامی تور های دیگر از این شرکت را با اطمینان خاطر به  صورت آنلاین انجام دهید. زیرا که سایت این شرکت دارای تمامی نماد های مربوط به تجارت الکترونیک می باشد. 
                 </p>
                 <p class="mr-12">
                   4.	قیمت تور تایلند و تمامی خدمات این شرکت کاملا رقابتی و قابل مقایسه با سایر شرکت ها می باشد.
                 </p>
                 <p class="mr-12">
-                  5.	این شرکت جزو معدود شرکتهایی می باشد که برای تور بانکوک نوروز1402 و تمامی خدمات خود دارای دفتر حافظ منافع مشتری بوده و مشتریان خود را حتی پس از انجام تور و در حین برگزاری تور هم ساپورت می کند. 
+                  5.	این شرکت جزو معدود شرکتهایی می باشد که برای تور بانکوک و تمامی خدمات خود دارای دفتر حافظ منافع مشتری بوده و مشتریان خود را حتی پس از انجام تور و در حین برگزاری تور هم ساپورت می کند. 
                 </p>
                 <p class="mr-12">
-                  6.	این شرکت دارای باشگاه مشتریان خاص خود می باشد که با ثت نام در آن می توانید از تخفیفات تور تایلند نوروز 1402  و سایر خدمات بهره مند شوید.
+                  6.	این شرکت دارای باشگاه مشتریان خاص خود می باشد که با ثت نام در آن می توانید از تخفیفات تور تایلند و سایر خدمات بهره مند شوید.
                 </p>
               </p>
             </div>

@@ -207,6 +207,8 @@
       /* color: #ff6062 !important;
       text-shadow: 0 0 3px #ff7765; */
     }
+
+    
     
     @media (min-width:960px) and (max-width:1263px){
       .main-div{
@@ -458,23 +460,15 @@
                       <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                     </a>
                   </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
-                  </v-skeleton-loader>
+                  
                 
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
+                
                   <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
                   <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
                     <div class="absolute show-sub-menu" style="right:-19%">
                       <v-list nav dense>
                         <div v-for="(link, i) in links" :key="i" class="">
@@ -583,19 +577,13 @@
                             </v-list-item-title>
                           </v-list-item>
                         </a>
-                        <a href="" class="text-decoration-none">
-                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                            <v-icon class="ml-2">mdi-train-car</v-icon>
-                            <v-list-item-title>تور</v-list-item-title>
-                          </v-list-item>
-                        </a>
-                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
+                        <v-list-item  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تور' ? '#f6d2cb' : ''}" class="rounded-lg">
                           <v-icon class="ml-2">mdi-account-group</v-icon>
-                          <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          <v-list-item-title>تور</v-list-item-title>
                           
                         </v-list-item>
                         <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
-                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                          <div v-if="activeLinkMenuHeader == 'تور'">
                             <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
                               <v-list-group
                                   :key="link.text"
@@ -829,7 +817,7 @@
               </div>
               <div>
                 <b class="white--text px-12 tour-date">
-                  تاریخ پرواز : همه‌روزه (با پرواز ماهان)
+                   تاریخ پرواز : همه‌روزه (بجز روزهای شنبه) با پرواز ماهان
                 </b>
               </div>
               <v-row class='mt-9 mt-sm-0 mt-lg-12 pt-6 pt-md-12' style="">
@@ -866,11 +854,11 @@
                   </h4>
                   <h4 class="mb-4 mt-4 mt-md-0">
                     <v-icon size="5" color="red" class="ml-2">mdi-circle</v-icon>
-                    نرخ کودک زیر 2 سال (INF) 8.200.000 تومان می‌باشد.
+                    نرخ کودک زیر 2 سال (INF) 1.600.000 تومان می‌باشد.
                   </h4>
                   <h4 class="mb-4 mt-4 mt-md-0">
                     <v-icon size="5" color="red" class="ml-2">mdi-circle</v-icon>
-                    ویزای توریستی هزینه 100$ به مبلغ پکیج اضافه خوهد شد.
+                    ویزای توریستی هزینه 120$ به مبلغ پکیج اضافه خوهد شد.
                   </h4>
                   <v-row>
                     <v-col cols="12" lg="12">
@@ -976,8 +964,8 @@
                 </div>
                 <div class="widthAll" v-else-if="tab == 5">
                   <v-row justify="center">
-                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in moscowImages" :keys="i">
-                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" @click="imageNumber = i;imageDialog = true" :src="item.src" :alt='item.title'></v-img>
+                    <div class="d-inline-block galeryImageParent" v-for="(item,i) in moscowImages2" :keys="i">
+                      <v-img class="galeryImage cursorPointer rounded-lg ma-1" height="134" @click="imageNumber = i;imageDialog = true" :src="item.src" :alt='item.title'></v-img>
                     </div>
                   </v-row>
                   
@@ -986,14 +974,13 @@
                     max-width="1000"
                   >
                     <div class="relative">
-                      <v-carousel v-model="imageNumber">
+                      <v-carousel v-model="imageNumber" height="100%">
                         <v-carousel-item
-                          v-for="(item,i) in moscowImages" 
+                          v-for="(item,i) in moscowImages2" 
                           :keys="i"
                         >
-                          <img class="widthAll" :src="item.src" :alt='item.title'>
+                          <v-img class="widthAll" :src="item.src" :alt='item.title' />
                         </v-carousel-item>
-                      </v-carousel>
                       <v-icon class="absolute cursorPointer" color="white" @click="imageDialog=false" style="top:5px;right:5px">mdi-close</v-icon>
                     </div>
                   </v-dialog>

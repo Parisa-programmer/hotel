@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="description" content="تور نوروزی استانبول، به دلیل خدمات تفریحی‌ای که برای افراد به همراه داره، می‌تونه به شما در روند تجربه یک سفر متفاوت کمک کنه.">
+    <meta name="description" content="تور استانبول، به دلیل خدمات تفریحی‌ای که برای افراد به همراه داره، می‌تونه به شما در روند تجربه یک سفر متفاوت کمک کنه.">
     <!-- <meta name="format-detection" content="telephone=no"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>خدمات گردشگری آهوان</title>
@@ -96,23 +96,15 @@
                       <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                     </a>
                   </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
-                  </v-skeleton-loader>
+                  
                 
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
+                
                   <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
                   <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
                     <div class="absolute show-sub-menu" style="right:-19%">
                       <v-list nav dense>
                         <div v-for="(link, i) in links" :key="i" class="">
@@ -221,19 +213,13 @@
                             </v-list-item-title>
                           </v-list-item>
                         </a>
-                        <a href="" class="text-decoration-none">
-                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                            <v-icon class="ml-2">mdi-train-car</v-icon>
-                            <v-list-item-title>تور</v-list-item-title>
-                          </v-list-item>
-                        </a>
-                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
+                        <v-list-item  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تور' ? '#f6d2cb' : ''}" class="rounded-lg">
                           <v-icon class="ml-2">mdi-account-group</v-icon>
-                          <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          <v-list-item-title>تور</v-list-item-title>
                           
                         </v-list-item>
                         <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
-                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                          <div v-if="activeLinkMenuHeader == 'تور'">
                             <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
                               <v-list-group
                                   :key="link.text"
@@ -440,7 +426,7 @@
                   قبلا ثبت نام نکرده اید؟
                   <span @click="loginType = 'register'" class=" blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">ثبت نام</span>
                 </span>
-                <span v-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
+                <span v-else-if="loginType == 'login' && loginStep == 2 && UserType != 2" class="body text-center widthAll grey--text text--darken-1" style="font-family: Byekan !important;">
                   {{loginForm.phone}}
                   <span @click="loginStep = 1" v-if="UserType == 1" class="blue--text text--darken-2 cursorPointer" style="text-decoration: underline;">تغییر شماره</span>
                 </span>
@@ -460,158 +446,16 @@
           <v-row justify="center">
             <div class="my-sm-6 indexDiv">
               <h1 class="px-12">تور استانبول</h1>
-              <p class="text-justify answerText mt-4 px-12">تور نوروزی استانبول، به دلیل خدمات تفریحی‌ای که برای افراد به همراه داره، می‌تونه به شما در روند تجربه یک سفر متفاوت کمک کنه. تور استانبول از تمام شهرهای ایران، در میان تورهای پرطرفداری قرار می‌گیره که هزینه نسبتا مناسبی برای افراد داره. از اونجایی که شهر استانبول بین شهرهای توریستی پرطرفدار قرار داره، در ادامه این بحث می‌خوایم بیشتر به تور نوروزی استانبول و قیمت اون بپردازیم.</p>
+              <p class="text-justify answerText mt-4 px-12">
+                تور استانبول، به دلیل خدمات تفریحی‌ای که برای افراد به همراه داره، می‌تونه به شما در روند تجربه یک سفر متفاوت کمک کنه. تور استانبول از تمام شهرهای ایران، در میان تورهای پرطرفداری قرار می‌گیره که هزینه نسبتا مناسبی برای افراد داره. از اونجایی که شهر استانبول بین شهرهای توریستی پرطرفدار قرار داره، در ادامه این بحث می‌خوایم بیشتر به تور استانبول و قیمت اون بپردازیم.
+              </p>
               <v-row justify="center">
                 <div class="mx-12 widthAll">
                   <!-- <h3>تور های استانبول ویژه نوروز <span class="red--text">1402</span></h3> -->
                 </div>
-                <div class="mx-12 mt-sm-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard relative">
-                  <v-row >
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="rounded-lg hideOver">
-                        <div style="height:100px;width:250px">
-                          <img class="rounded-lg tourImage" src="/folders/image/tour/istanbul-4.jpg" height="100%" width="100%">
-                        </div>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="mt-2" style="font-family:Byekan !important" >استانبول - 5 شب و 6 روز</h4>
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        
-                        <img src="/folders/image/tour/Turkish_Airlines_logo2.png" class="mx-2" width='70' alt="">
-                        <img src="/folders/image/tour/airtour-logo.jpg" class="mx-2" width='40' alt="">
-                        <img src="/folders/image/tour/mahan-logo.jpg" class="mx-2" width='60' alt="">
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="mt-sm-4">
-                        هتل های 3 و 4 و 5 ستاره
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  17.900.000 تومان</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="mt-2 mt-sm-3">روزهای پرواز: همه روزه</h4>
-                        <img src="/folders/image/newYearcard.png" alt="" class="absolute newYearcard" style="left:12px;top:-4px;height: 111px;">
-                      </v-row>
-                      <v-row justify='center' class="mt-4">
-                        <a href="./تور-5-شب-ویژه-نوروز/" class="text-decoration-none">
-                          <v-btn color="red" class="px-9" dark>مشاهده جزئیات</v-btn>
-                        </a>
-                      </v-row>
-                    </v-col>
-                  </v-row>
-                </div>
-                <div class="mx-12 mt-sm-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard relative">
-                  <v-row >
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="rounded-lg hideOver">
-                        <div style="height:100px;width:250px">
-                          <img class="rounded-lg tourImage" src="/folders/image/tour/istanbul-5.jpg" height="100%" width="100%">
-                        </div>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="mt-2" style="font-family:Byekan !important" >استانبول - 6 شب و 7 روز</h4>
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        
-                        <img src="/folders/image/tour/Turkish_Airlines_logo2.png" class="mx-2" width='70' alt="">
-                        <img src="/folders/image/tour/airtour-logo.jpg" class="mx-2" width='40' alt="">
-                        <img src="/folders/image/tour/mahan-logo.jpg" class="mx-2" width='60' alt="">
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="mt-sm-4">
-                        هتل های 3 و 4 و 5 ستاره
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  18.900.000 تومان</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="mt-2 mt-sm-3">روزهای پرواز: همه روزه</h4>
-                        <img src="/folders/image/newYearcard.png" alt="" class="absolute newYearcard" style="left:12px;top:-4px;height: 111px;">
-                      </v-row>
-                      <v-row justify='center' class="mt-4">
-                        <a href="./تور-6-شب-ویژه-نوروز/" class="text-decoration-none">
-                          <v-btn color="red" class="px-9" dark>مشاهده جزئیات</v-btn>
-                        </a>
-                      </v-row>
-                    </v-col>
-                  </v-row>
-                </div>
-                <div class="mx-12 mt-sm-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard relative">
-                  <v-row >
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="rounded-lg hideOver">
-                        <div style="height:100px;width:250px">
-                          <img class="rounded-lg tourImage" src="/folders/image/tour/istanbul-6.jpg" height="100%" width="100%">
-                        </div>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="mt-2" style="font-family:Byekan !important" >استانبول - 7 شب و 8 روز</h4>
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        
-                        <img src="/folders/image/tour/Turkish_Airlines_logo2.png" class="mx-2" width='70' alt="">
-                        <img src="/folders/image/tour/airtour-logo.jpg" class="mx-2" width='40' alt="">
-                        <img src="/folders/image/tour/mahan-logo.jpg" class="mx-2" width='60' alt="">
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-lg-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center" class="mt-sm-4">
-                        هتل های 3 و 4 و 5 ستاره
-                      </v-row>
-                      <v-row justify="center" class="mt-1 mt-sm-4">
-                        <span class="caption grey--text text--darken-3 " style="font-family:Byekan !important">شروع قیمت از  21.500.000 تومان</span>
-                      </v-row>
-                    </v-col>
-                    <div class="d-block d-sm-none widthAll px-12 mx-1">
-                      <v-divider class="d-block d-sm-none mx-12 my-1" ></v-divider>
-                    </div>
-                    <v-divider class="d-none d-sm-block my-6" vertical></v-divider>
-                    <v-col cols="12" sm="6" lg="3">
-                      <v-row justify="center">
-                        <h4 class="mt-2 mt-sm-3">روزهای پرواز: همه روزه</h4>
-                        <img src="/folders/image/newYearcard.png" alt="" class="absolute newYearcard" style="left:12px;top:-4px;height: 111px;">
-                      </v-row>
-                      <v-row justify='center' class="mt-4">
-                        <a href="./تور-7-شب-ویژه-نوروز/" class="text-decoration-none">
-                          <v-btn color="red" class="px-9" dark>مشاهده جزئیات</v-btn>
-                        </a>
-                      </v-row>
-                    </v-col>
-                  </v-row>
-                </div>
+                
+                
+                
                 <div class="mx-12 mt-sm-6 pa-2 widthAll white rounded-lg d-inline-block hoverCard">
                   <v-row >
                     <v-col cols="12" sm="6" lg="3">
@@ -759,7 +603,7 @@
               <p class="text-justify answerText mt-4 px-12">
                 با توجه به اینکه شهر استانبول دارای اماکن گردشگری و تاریخی بسیاری هست، می‌تونه جذابیت بالایی برای مسافرت افراد داشته باشه. در تور استانبول، می‌توان علاوه بر بازدید از اماکن گردشگری مختلف، تجربه خوردن انواع خوراکی‌های خوشمزه و محلی رو کسب کنین. در شهر استانبول، انواع تفریحات از خرید تا سرگرمی وجود داره. 
                 با توجه به اینکه شهر استانبول در دوره‌های مختلف تاریخی وجود داشته و ایفای نقش کرده است، به لحاظ گردشگری و تاریخی، دارای بناها و امارت‌های غنی‌ای هست که در تور استانبول، می‌تونین از اون‌ها بازدید به عمل بیارین. آثار دوران بیزانس و عثمانی، به قدری در این شهر بسیار هست که از جمله مهم‌ترین و آشناترین اون‌ها، مسجد ایاصوفیه، آب انبار باسیلیکا، مسجد سلیمانیه، برج گاتا و مواردی از این قبیل اشاره کرد.
-                جدا از بحث اماکن گردشگری، در صورتی که تور نوروزی استانبول را انتخاب کردین، توصیه می‌شه حتما خوراکی‌های مختلف و خوشمزه رو تجربه کنین. در کشور ترکیه غذاهای خوشمزه و ارزان قیمت بسیاری وجود داره که به شما فرصت تجربه متفاوتی رو می‌ده.
+                جدا از بحث اماکن گردشگری، در صورتی که تور استانبول را انتخاب کردین، توصیه می‌شه حتما خوراکی‌های مختلف و خوشمزه رو تجربه کنین. در کشور ترکیه غذاهای خوشمزه و ارزان قیمت بسیاری وجود داره که به شما فرصت تجربه متفاوتی رو می‌ده.
                 علاوه بر انواع اماکن گردشگری و تاریخی، مراکز تفریحی‌ای که در استانبول وجود داره، به تجربه یک سفر به یادماندنی کمک می‌کنه. خانه خون آشام استانبول، پارک آبی آکوالند، سالن شب ترکی و مراکز خریدی که در این شهر وجود دارن، هر کدوم به نحوی برای ایجاد تجربه‌های متفاوت، موثر هستن.
               </p>
               <h2 class="px-12 mt-8">هتل‌های استانبول</h2>
@@ -780,7 +624,7 @@
               <p class="text-justify answerText mt-4 px-12">
                 قیمت تور استانبول به عوامل مختلفی از جمله 
                 <b class="red--text tet--darken-4">پرواز ، هتل ، مدت اقامت و زمان سفر</b>
-                بستگی پیدا می‌کنه. از اونجایی که مدت زمان مسافرت متفاوت هست، لازمه قبل از هر چیزی برنامه خودتون رو بر حسب تعداد روزهای سفر تنظیم کنین. از دیگر فاکتورهای موثر در تعیین قیمت و تعرفه سفر به ترکیه با تور نوروزی استانبول، هتلی هست که انتخاب می‌کنین. 
+                بستگی پیدا می‌کنه. از اونجایی که مدت زمان مسافرت متفاوت هست، لازمه قبل از هر چیزی برنامه خودتون رو بر حسب تعداد روزهای سفر تنظیم کنین. از دیگر فاکتورهای موثر در تعیین قیمت و تعرفه سفر به ترکیه با تور استانبول، هتلی هست که انتخاب می‌کنین. 
                 هتل‌هایی که برای این تور توسط مجموعه آهوان در نظر گرفته شده، در انواع 3، 4 و 5 ستاره هست و بسته به این مسئله و نیز تعداد روزهای سفر، بازه قیمتی متفاوتی تعریف می‌شه. حتی تعداد تخت‌های هتل هم روی تعریف قیمت موثر هست. به همین دلیل نمی‌توان از یک قیمت مشخص برای توصیف تور استانبول بهره گرفت.
                 در حالت کلی، ترکیه بهترین گزینه مسافرتی به لحاظ هزینه هست که برای سفر عید می‌تونین انتخاب کنین.
               </p>

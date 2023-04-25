@@ -402,23 +402,15 @@
                       <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0 ">پرواز</span>
                     </a>
                   </v-skeleton-loader>
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
-                  </v-skeleton-loader>
+                  
                 
-                  <v-skeleton-loader class="textLoader d-inline-block"
-                    type="chip"
-                    :loading="isLoading"
-                  >
+                
                   <!-- <img src="/tour/Dubai/تور-3-شب-دبی/" alt=""> -->
                   <v-skeleton-loader class="textLoader d-inline-block show-sub-menu-parent"
                     type="chip"
                     :loading="isLoading"
                   >
-                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''">تور نوروز 1402</span>
+                    <span class="ml-2 ml-md-3 ml-lg-5 mb-2 mb-0"  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''">تور</span>
                     <div class="absolute show-sub-menu" style="right:-19%">
                       <v-list nav dense>
                         <div v-for="(link, i) in links" :key="i" class="">
@@ -527,19 +519,13 @@
                             </v-list-item-title>
                           </v-list-item>
                         </a>
-                        <a href="" class="text-decoration-none">
-                          <v-list-item @click="showMenuSmall = false;activeLinkMenuHeader=''">
-                            <v-icon class="ml-2">mdi-train-car</v-icon>
-                            <v-list-item-title>تور</v-list-item-title>
-                          </v-list-item>
-                        </a>
-                        <v-list-item  @click="activeLinkMenuHeader != 'تورنوروز' ? activeLinkMenuHeader = 'تورنوروز' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تورنوروز' ? '#f6d2cb' : ''}" class="rounded-lg">
+                        <v-list-item  @click="activeLinkMenuHeader != 'تور' ? activeLinkMenuHeader = 'تور' : activeLinkMenuHeader=''" :style="{background:activeLinkMenuHeader == 'تور' ? '#f6d2cb' : ''}" class="rounded-lg">
                           <v-icon class="ml-2">mdi-account-group</v-icon>
-                          <v-list-item-title>تور نوروز 1402</v-list-item-title>
+                          <v-list-item-title>تور</v-list-item-title>
                           
                         </v-list-item>
                         <!-- <v-navigation-drawer permanent class="relative widthAll"> -->
-                          <div v-if="activeLinkMenuHeader == 'تورنوروز'">
+                          <div v-if="activeLinkMenuHeader == 'تور'">
                             <div v-for="(link, i) in links[0].subLinks" :key="i" class="my-2">
                               <v-list-group
                                   :key="link.text"

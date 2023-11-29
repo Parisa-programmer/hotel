@@ -1,22 +1,165 @@
-
 <!DOCTYPE html>
-<html>
-<head>
-  <title>
-    Wrapping an Image with the text
-  </title>
-</head>
-<body>
-  
-  <div id="6pTRhpdR" style="min-height: 480px;">
-    <script
-      type="text/JavaScript"
-      src="https://survey.porsline.ir/embed/eyJ3aWR0aCI6IjEwMCUiLCJoZWlnaHQiOiIxMDAlIiwiYm9yZGVyIjoibm9uZSJ9/6pTRhpdR"
-    >
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Simple Ajax Send Form</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <!-- Place favicon.ico in the root directory -->
+  </head>
+
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+    <div class="container">
+      <p>Hello world! This is jquery simple AJAX example.</p>
+
+      <div class="row">
+        <div class="col-md-3">
+          <form method="post" action="post.php" class="js-simple-ajax-form">
+            <?php if (isset($_GET['result']) && isset($_GET['message'])): ?>
+            <div
+              class="status alert alert-<?= $_GET['result'] == 'success' ? 'success' : 'danger' ?>"
+            >
+              <?= strip_tags($_GET['message']) ?>
+            </div>
+            <?php else: ?>
+            <div class="status"></div>
+            <?php endif; ?>
+
+            <label for="email">Email*:</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="form-control"
+              required
+            />
+            <button type="submit" class="btn btn-success">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="js/vendor/jquery-3.1.0.min.js"><\/script>'
+        );
     </script>
-  </div>
-  <script>
-    
-  </script>
-</body>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+      var App = {};
+      App.notify = function (type, message) {
+        //you can wrap here any notification library you have (e.g. toastr, etc)
+        //alert(type + '! ' + message)
+        console.log(type + "! " + message);
+      };
+      App.getErrorMessage = function (jqxhr, exception) {
+        if (jqxhr.status === 0) {
+          return "Can not connect to server. Please check your network connection";
+        } else if (jqxhr.status == 404) {
+          return "Requested page not found. Error - 404";
+        } else if (jqxhr.status == 401) {
+          return "Not authorized!";
+        } else if (exception === "parsererror") {
+          return "Requested JSON parse failed.";
+        } else if (exception === "timeout") {
+          return "Request Time out error.";
+        } else if (exception === "abort") {
+          return "Request aborted.";
+        } else {
+          return "Uncaught Error.n" + jqxhr.responseText;
+        }
+      };
+
+      $(function () {
+        $(".js-simple-ajax-form").submit(function (event) {
+          var $this = $(this);
+          event.preventDefault();
+          if ($this.prop("disabled")) {
+            return;
+          }
+          $.ajax({
+            type: $this.attr("method"),
+            url: $this.attr("action"),
+            data: $this.serialize(),
+            beforeSend: function () {
+              $this.prop("disabled", true);
+              $this.find(".status").text("Sending...");
+            },
+            success: function (data) {
+              // successful request; do something with the data
+              if (data.result === "success") {
+                App.notify("success", "Successfully subscribed!");
+                $this
+                  .find(".status")
+                  .removeClass("alert alert-success alert-danger")
+                  .addClass("alert alert-success")
+                  .text("Successfully subscribed!");
+                //do whatever you need to do after;
+              } else {
+                App.notify("error", data.message);
+                $this
+                  .find(".status")
+                  .removeClass("alert alert-success alert-danger")
+                  .addClass("alert alert-danger")
+                  .text(data.message);
+              }
+            },
+            error: function (jqxhr, exception) {
+              var message = App.getErrorMessage(jqxhr, exception);
+              App.notify("error", message);
+              $this
+                .find(".status")
+                .removeClass("alert alert-success alert-danger")
+                .addClass("alert alert-danger")
+                .text(message);
+            },
+            complete: function () {
+              $this.prop("disabled", false);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
+post.php
+<?php
+$result = ['result' =>
+'fail', 'message' => 'error when adding to database']; if (!isset($_POST)) {
+$result = ['result' => 'fail', 'message' => 'wrong request']; } elseif
+(!isset($_POST['email']) || !$_POST['email']) { $result = ['result' => 'fail',
+'message' => 'no email']; } elseif (!filter_var($_POST['email'],
+FILTER_VALIDATE_EMAIL)) { $result = ['result' => 'fail', 'message' => 'wrong
+email']; //replace with checking add to database or whatever } elseif (true) {
+$result = ['result' => 'success', 'message' => 'successfully sent']; }
+returnBack($result); function returnBack($result) { if
+(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+header('Content-type:application/json;charset=utf-8'); echo
+json_encode($result); return; } //change it to your page header('Location: ' .
+'/simpleajax/?'.http_build_query($result)); }
